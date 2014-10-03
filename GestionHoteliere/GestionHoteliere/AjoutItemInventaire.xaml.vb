@@ -50,7 +50,7 @@
                 'Ajouter les liens dans les tables d'intersection
                 'tblFournitureHotel
                 MonItemHotel.CodeHotel = MonHotel.CodeHotel
-                MonItemHotel.CodeFourniture = MonItem.CodeFourniture
+                MonItemHotel.NoSeqFourniture = MonItem.NoSeqFourniture
                 MonItemHotel.QuantiteMin = ajoutinv_txtQuantiteMin.Text
                 MonItemHotel.QuantiteMax = ajoutinv_txtQuantiteMax.Text
                 MonItemHotel.QuantiteFournitureHotel = ajoutinv_txtQuantiteFourniture.Text
@@ -59,7 +59,7 @@
 
                 Try
                     'tblFournitureFournisseur
-                    MonItemFournisseur.CodeFourniture = MonItem.CodeFourniture
+                    MonItemFournisseur.NoSeqFourniture = MonItem.NoSeqFourniture
                     MonItemFournisseur.CodeFournisseur = FournisseurSelection.CodeFournisseur
                     MonItemFournisseur.PrixFournitureFournisseur = ajoutinv_txtPrixFournitureFournisseur.Text
                     MaBD.tblFournitureFournisseur.Add(MonItemFournisseur)

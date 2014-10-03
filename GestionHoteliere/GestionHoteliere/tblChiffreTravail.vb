@@ -13,8 +13,8 @@ Imports System.Collections.Generic
 Partial Public Class tblChiffreTravail
     Public Property NoChiffreTravail As Integer
     Public Property DateChiffre As Date
-    Public Property HeureDebut As System.TimeSpan
-    Public Property HeureFin As System.TimeSpan
+    Public Property HeureDebut As String
+    Public Property HeureFin As String
     Public Property NoEmploye As Integer
 
     Public Overridable Property tblEmploye As tblEmploye

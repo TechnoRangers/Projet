@@ -92,12 +92,12 @@
             Dim Fourniture As tblFourniture
 
             Fourniture = (From tabFourniture In MaBD.tblFourniture
-                         Where tabFourniture.CodeFourniture = FournitureSelection.CodeFourniture
+                         Where tabFourniture.NoSeqFourniture = FournitureSelection.NoSeqFourniture
                          Select tabFourniture).ToList.First
 
             MaBD.tblFourniture.Remove(Fourniture)
             MaBD.SaveChanges()
-            MessageBox.Show("L'item " + FournitureSelection.CodeFourniture + " a été supprimé.")
+            MessageBox.Show("L'item " + FournitureSelection.NoSeqFourniture + " a été supprimé.")
         Catch ex As Exception
             MessageBox.Show("Erreur lors de la suppression.")
         End Try
@@ -108,31 +108,31 @@
 
     Private Sub Inv_BtnRechercheCode_Click(sender As Object, e As RoutedEventArgs) Handles Inv_BtnRechercheCode.Click
 
-        Dim Trouver As Boolean
-        Trouver = False
-        Dim i As Integer
-        i = 0
+        'Dim Trouver As Boolean
+        'Trouver = False
+        'Dim i As Integer
+        'i = 0
 
-        Dim res = From q1 In MaBD.tblFourniture
-                  Select q1.CodeFourniture
+        'Dim res = From q1 In MaBD.tblFourniture
+        '          Select q1.CodeFourniture
 
-        While i < res.Count And Trouver = False
-            If Inv_textBoxRechercheCode.Text = res.ToList(i) Then
-                Trouver = True
-            End If
-            i = i + 1
-        End While
+        'While i < res.Count And Trouver = False
+        '    If Inv_textBoxRechercheCode.Text = res.ToList(i) Then
+        '        Trouver = True
+        '    End If
+        '    i = i + 1
+        'End While
 
-        If Trouver = True Then
-            Dim res2 = From t1 In MaBD.tblFournisseur Join t2 In MaBD.tblFournitureFournisseur On t1.CodeFournisseur Equals t2.CodeFournisseur Join t3 In MaBD.tblFournitureHotel On t3.CodeFourniture Equals t2.CodeFourniture
-                          Where t3.CodeHotel = _monHotel.CodeHotel And t3.CodeFourniture = Inv_textBoxRechercheCode.Text
-                         Select New With {.NomFournisseur = t1.NomFournisseur, .codeFourniture = t2.CodeFourniture, .DescFourniture = t2.tblFourniture.DescFourniture, .Prix = t2.PrixFournitureFournisseur, .QuantiteMin = t3.QuantiteMin, .QuantiteMax = t3.QuantiteMax, .Quantite = t3.QuantiteFournitureHotel}
+        'If Trouver = True Then
+        '    Dim res2 = From t1 In MaBD.tblFournisseur Join t2 In MaBD.tblFournitureFournisseur On t1.CodeFournisseur Equals t2.CodeFournisseur Join t3 In MaBD.tblFournitureHotel On t3.NoSeqFourniture Equals t2.NoSeqFourniture
+        '                  Where t3.CodeHotel = _monHotel.CodeHotel And t3.NoSeqFourniture = Inv_textBoxRechercheCode.Text
+        '                 Select New With {.NomFournisseur = t1.NomFournisseur, .codeFourniture = t2.NoSeqFourniture, .DescFourniture = t2.tblFourniture.DescFourniture, .Prix = t2.PrixFournitureFournisseur, .QuantiteMin = t3.QuantiteMin, .QuantiteMax = t3.QuantiteMax, .Quantite = t3.QuantiteFournitureHotel}
 
 
-            DatagridInv.ItemsSource = res2.ToList()
-        ElseIf Trouver = False Then
-            MessageBox.Show("Code inexistant")
-        End If
+        '    DatagridInv.ItemsSource = res2.ToList()
+        'ElseIf Trouver = False Then
+        '    MessageBox.Show("Code inexistant")
+        'End If
 
     End Sub
 

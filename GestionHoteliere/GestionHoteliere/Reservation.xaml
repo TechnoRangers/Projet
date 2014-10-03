@@ -2,7 +2,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     WindowStartupLocation="CenterScreen"
-    Title="Techno Rangers Version 1.02 Reservation" Height="490.8" Width="1011.8">
+    Title="Techno Rangers Version 1.02 Reservation" WindowState="Maximized" Width="987.701">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF437E87" Offset="1"/>
+            <GradientStop Color="White"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid x:Name="Res_grdReservation" Margin="0,0,-5.4,-3.6">
         <GroupBox x:Name="Res_GroupBoxSejour" Header="Séjour" HorizontalAlignment="Left" Margin="50,20,0,0" VerticalAlignment="Top" Height="198" Width="916" FontSize="16">
             <Grid x:Name="Res_GrdSejour" HorizontalAlignment="Left" Height="200" Margin="0,-12,-12,-16" VerticalAlignment="Top" Width="916">

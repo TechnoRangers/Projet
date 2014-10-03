@@ -11,6 +11,7 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class tblFourniture
+    Public Property NoSeqFourniture As Integer
     Public Property CodeFourniture As String
     Public Property DescFourniture As String
     Public Property NoSeqChambre As Nullable(Of Integer)

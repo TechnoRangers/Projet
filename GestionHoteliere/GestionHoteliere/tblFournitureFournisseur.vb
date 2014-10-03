@@ -11,7 +11,7 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class tblFournitureFournisseur
-    Public Property CodeFourniture As String
+    Public Property NoSeqFourniture As Integer
     Public Property CodeFournisseur As String
     Public Property PrixFournitureFournisseur As Decimal
 

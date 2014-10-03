@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="82c217e5b65b46b1ad3fc0da2c1f0a41" Name="Diagram1">
+      <Diagram DiagramId="3335fbe974fe4e50aaa1b6eb22b32e10" Name="Diagram1">
         <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblCategorieFourniture" Width="1.5" PointX="12.75" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblCommande" Width="1.5" PointX="12" PointY="15.875" IsExpanded="true" />
         <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblFournisseur" Width="1.5" PointX="18" PointY="8" IsExpanded="true" />
@@ -36,13 +36,13 @@
         <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_Categ_CodeCateg" ManuallyRouted="false" />
         <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Com_FourCom_NoCom" ManuallyRouted="false" />
         <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Emp_Com_NoEmp" ManuallyRouted="false" />
-        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_Com_CodFour" ManuallyRouted="false" />
-        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_CourCom_CodFournisseur" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_Com_NoSeqFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_CourCom_NoSeqFournisseur" ManuallyRouted="false" />
         <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_Chamb_NoSeqChamb" ManuallyRouted="false" />
-        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_EntFour_CodFour" ManuallyRouted="false" />
-        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_FourCom_CodFour" ManuallyRouted="false" />
-        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_FourFour_CodFourniture" ManuallyRouted="false" />
-        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_FourHot_CodFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_EntFour_NoSeqFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_FourCom_NoSeqFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_FourFour_NoSeqFourniture" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_FourHot_NoSeqFour" ManuallyRouted="false" />
         <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Hot_FourHot_CodHot" ManuallyRouted="false" />
         <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Emp_ChifHor_NoEmp" ManuallyRouted="false" />
         <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Emp_EntFour_NoEmp" ManuallyRouted="false" />

@@ -1,8 +1,9 @@
 ﻿Public Class Menu
     Dim MaBD As P2014_BDTestFrancoisEntities
-    Dim EmployeConnection As tblEmploye
+    Dim EmployeConnexion As tblEmploye
+    Dim HotelConnexion As tblHotel
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
+    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, Optional ByRef _HotelConnexion As tblHotel = Nothing)
         InitializeComponent()
         MaBD = _MaBD
     End Sub
@@ -12,7 +13,7 @@
 
         Dim Disponibilite_ As New ClientReservation(MaBD)
         Disponibilite_.Show()
-        Me.Close()
+        'Me.Close()
 
     End Sub
 
@@ -20,7 +21,7 @@
 
         Dim Inventaire_ As New Inventaire
         Inventaire_.Show()
-        Me.Close()
+        'Me.Close()
 
     End Sub
 
@@ -28,7 +29,7 @@
 
         Dim Equipement_ As New Equipement
         Equipement_.Show()
-        Me.Close()
+        'Me.Close()
 
     End Sub
 
@@ -36,7 +37,7 @@
 
         Dim Statistique_ As New Statistique
         Statistique_.Show()
-        Me.Close()
+        'Me.Close()
 
     End Sub
 
@@ -60,13 +61,13 @@
 
         Dim Entretien_ As New Entretien
         Entretien_.Show()
-        Me.Close()
+        'Me.Close()
     End Sub
 
     Private Sub Men_btnResSalle_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnResSalle.Click
         Dim Salle As New ReservationSalle
         Salle.Show()
-        Me.Close()
+        'Me.Close()
 
     End Sub
 End Class
