@@ -52,7 +52,7 @@ GO
 
 
 CREATE VIEW Approvisionnement.VueInventaire AS
-SELECT FH.CodeHotel, F.NoSeqFourniture, DescFourniture, F.CodeCategorie, NomCategorie, QuantiteFournitureHotel, PrixFournitureFournisseur , QuantiteMin, QuantiteMax , Four.CodeFournisseur, NomFournisseur
+SELECT FH.CodeHotel, F.NoSeqFourniture, CodeFourniture, DescFourniture, F.CodeCategorie, NomCategorie, QuantiteFournitureHotel, PrixFournitureFournisseur , QuantiteMin, QuantiteMax , Four.CodeFournisseur, NomFournisseur
 FROM Approvisionnement.tblFourniture AS F
 JOIN Approvisionnement.tblFournitureHotel AS FH
 	ON F.NoSeqFourniture = FH.NoSeqFourniture

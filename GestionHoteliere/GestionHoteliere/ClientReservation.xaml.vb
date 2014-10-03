@@ -16,9 +16,9 @@
 
     Private Sub Cli_BtnRechercher_Click(sender As Object, e As RoutedEventArgs) Handles Cli_BtnRechercher.Click
 
-        Dim RechercheClient_ As New RechercheClient(BD)
-        RechercheClient_.Show()
-        Me.Close()
+        'Dim RechercheClient_ As New RechercheClient(BD)
+        'RechercheClient_.Show()
+        'Me.Close()
 
     End Sub
 
