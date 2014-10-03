@@ -1,5 +1,7 @@
 ﻿Public Class Menu
 
+    Dim EmployeConnection As tblEmploye
+
     Private Sub Men_btnResChambre_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnResChambre.Click
 
 

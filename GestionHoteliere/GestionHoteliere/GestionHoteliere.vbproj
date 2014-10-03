@@ -95,13 +95,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
-
     <Compile Include="CheckUp.xaml.vb">
       <DependentUpon>CheckUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChangementHoraire.xaml.vb">
       <DependentUpon>ChangementHoraire.xaml</DependentUpon>
-
     </Compile>
     <Compile Include="ClientReservation.xaml.vb">
       <DependentUpon>ClientReservation.xaml</DependentUpon>
@@ -313,7 +311,6 @@
     <Compile Include="VueInventaire.vb">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
-
     <Page Include="CheckUp.xaml">
     </Page>
     <Page Include="AjoutItemInventaire.xaml">
@@ -577,6 +574,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo_hotel_payette.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
