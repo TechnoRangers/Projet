@@ -128,5 +128,17 @@
         LocSal_TxtBoxClient.Text = NewCl.NoSeqClient.ToString
     End Sub
 
+
+    'Private Sub LocSal_TxtBoxClient_KeyDown(sender As Object, e As KeyEventArgs) Handles LocSal_TxtBoxClient.PreviewKeyDown
+    '    If Char.IsDigit(e.) Then
+    '        e.Handled = False
+    '    Else
+    '        e.Handled = True
+    '    End If
+    'End Sub
+    'Private Sub OnKeyDownHandler(ByVal sender As Object, ByVal e As KeyEventArgs)
+    '        Case
+    'End Sub
+
 End Class
 

@@ -1,0 +1,14 @@
+﻿<Window x:Class="LocationEquipement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Location d'equipement" Height="400" Width="700">
+    <Grid>
+        <ListBox Name="LocEqui_ListBoxInventaire" HorizontalAlignment="Left" Height="218" Margin="23,80,0,0" VerticalAlignment="Top" Width="188"/>
+        <ListBox Name="LocEqui_ListBoxReserv" HorizontalAlignment="Left" Height="218" Margin="296,80,0,0" VerticalAlignment="Top" Width="188"/>
+        <Button Name="LocEqui_BtnAjout" Content=">>>" HorizontalAlignment="Left" Margin="216,132,0,0" VerticalAlignment="Top" Width="75" />
+        <Button Name="LocEqui_BtnEnl" Content="asdf" HorizontalAlignment="Left" Margin="216,181,0,0" VerticalAlignment="Top" Width="75" />
+        <Button Name="LocEqui_BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="465,325,0,0" VerticalAlignment="Top" Width="106" Height="37" />
+        <Button Name="LocEqui_BtnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="587,325,0,0" VerticalAlignment="Top" Width="97" Height="37" />
+
+    </Grid>
+</Window>

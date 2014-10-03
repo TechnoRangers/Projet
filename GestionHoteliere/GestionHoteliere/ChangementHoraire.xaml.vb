@@ -1,4 +1,5 @@
 ﻿Public Class ChangementHoraire
+
     Dim BD As P2014_BDTestFrancoisEntities
     Dim ChiffreTravail As tblChiffreTravail
     Dim hreDebut As String
@@ -18,12 +19,14 @@
         'hreFin = ChiffreTravail.HeureFin
 
     End Sub
+
     Private Sub Cha_BtnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Cha_BtnAnnuler.Click
 
         Dim Horaire_ As New Horaire
         Horaire_.Show()
         Me.Close()
     End Sub
+
 
     Private Sub Cha_BtnValider_Click(sender As Object, e As RoutedEventArgs) Handles Cha_BtnValider.Click
 
@@ -44,6 +47,4 @@
         End Try
 
     End Sub
-
 End Class
-
