@@ -23,9 +23,6 @@
             If LocSal_CmbBoxPaiement.SelectedIndex = 0 Then
                 Throw New System.Exception
             End If
-            '   If LocSal_DatePicker.SelectedDateThen
-            'Throw New System.Exception
-            'End If
         Catch ex As Exception
             MessageBox.Show("La réservation n'a pu être ajouter, vérifier tous les champs")
             Return False
@@ -129,16 +126,17 @@
     End Sub
 
 
-    'Private Sub LocSal_TxtBoxClient_KeyDown(sender As Object, e As KeyEventArgs) Handles LocSal_TxtBoxClient.PreviewKeyDown
-    '    If Char.IsDigit(e.) Then
-    '        e.Handled = False
-    '    Else
-    '        e.Handled = True
-    '    End If
-    'End Sub
-    'Private Sub OnKeyDownHandler(ByVal sender As Object, ByVal e As KeyEventArgs)
-    '        Case
-    'End Sub
+
+    Private Sub OnKeyDownHandler(ByVal sender As Object, ByVal e As KeyEventArgs)
+        Select Case e.Key
+            Case Key.D0 To Key.D9
+                e.Handled = False
+            Case Key.NumPad0 To Key.NumPad9
+                e.Handled = False
+            Case Else
+                e.Handled = True
+        End Select
+    End Sub
 
 End Class
 
