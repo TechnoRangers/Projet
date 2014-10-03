@@ -25,8 +25,8 @@ CREATE TABLE Personnel.tblChiffreTravail
 (
 	NoChiffreTravail		int				NOT NULL	IDENTITY(1000,1),
 	DateChiffre				date			NOT NULL,
-	HeureDebut				time(0)			NOT NULL,
-	HeureFin				time(0)			NOT NULL,
+	HeureDebut				char(5)			NOT NULL,
+	HeureFin				char(5)			NOT NULL,
 	NoEmploye				int				NOT NULL
 )
 

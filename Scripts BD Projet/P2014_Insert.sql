@@ -6927,31 +6927,31 @@ GO
 
 PRINT('Chargement Personnel.tblChiffreTravail')
 GO
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-05','08:00:00','16:00:00','1011')--test diff dept et hotel
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-05','08:00:00','16:00:00','1012')--test diff dept et hotel
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-05','08:00:00','16:00:00','1016')--test diff dept et hotel
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-05','08:00:00','16:00:00','1017')--test diff dept et hotel
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-10','10:00:00','18:00:00','1013')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-15','11:30:00','15:30:00','1014')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-25','09:30:00','17:30:00','1015')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-09-05','08:00:00','16:00:00','1016')--test meme dept et hotel
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-09-05','08:00:00','16:00:00','1017')--test meme dept et hotel
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-09-05','08:00:00','16:00:00','1018')--test meme dept et hotel
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-09-05','08:00:00','16:00:00','1019')--test meme dept et hotel
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-10-01','08:30:00','16:30:00','1020')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-10-10','08:30:00','16:30:00','1021')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-10-20','08:00:00','20:00:00','1022')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-10-30','08:00:00','18:00:00','1023')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-11-05','20:00:00','06:00:00','1024')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-11-06','18:00:00','03:00:00','1025')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-11-07','16:00:00','23:00:00','1026')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-12-03','10:00:00','18:00:00','1027')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-12-23','10:00:00','18:00:00','1028')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-12-22','08:00:00','16:00:00','1011')--test meme dept et diff hotel
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-12-22','08:00:00','16:00:00','1016')--test meme dept et diff hotel
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2015-01-02','11:00:00','16:00:00','1029')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2015-01-05','14:00:00','16:00:00','1030')
-INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2015-01-09','06:00:00','16:00:00','1031')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-05','08:00','16:00','1011')--test diff dept et hotel
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-05','08:00','16:00','1012')--test diff dept et hotel
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-05','08:00','16:00','1016')--test diff dept et hotel
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-05','08:00','16:00','1017')--test diff dept et hotel
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-10','10:00','18:00','1013')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-15','11:30','15:30','1014')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-08-25','09:30','17:30','1015')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-09-05','08:00','16:00','1016')--test meme dept et hotel
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-09-05','08:00','16:00','1017')--test meme dept et hotel
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-09-05','08:00','16:00','1018')--test meme dept et hotel
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-09-05','08:00','16:00','1019')--test meme dept et hotel
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-10-01','08:30','16:30','1020')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-10-10','08:30','16:30','1021')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-10-20','08:00','20:00','1022')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-10-30','08:00','18:00','1023')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-11-05','20:00','06:00','1024')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-11-06','18:00','03:00','1025')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-11-07','16:00','23:00','1026')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-12-03','10:00','18:00','1027')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-12-23','10:00','18:00','1028')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-12-22','08:00','16:00','1011')--test meme dept et diff hotel
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2014-12-22','08:00','16:00','1016')--test meme dept et diff hotel
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2015-01-02','11:00','16:00','1029')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2015-01-05','14:00','16:00','1030')
+INSERT INTO Personnel.tblChiffreTravail(DateChiffre,HeureDebut,HeureFin,NoEmploye) VALUES ('2015-01-09','06:00','16:00','1031')
 GO
 
 
