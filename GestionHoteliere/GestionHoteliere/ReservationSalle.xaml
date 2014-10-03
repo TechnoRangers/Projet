@@ -32,7 +32,7 @@
         <Label Name="LocSal_LblEmail" Content="E-mail" HorizontalAlignment="Left" Margin="277,159,0,0" VerticalAlignment="Top"/>
         <TextBox Name="LocSal_TxtBoxEmail" HorizontalAlignment="Left" Height="23" Margin="326,162,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186"/>
         <Label Name="LocSal_LblClient" Content="No.Client" HorizontalAlignment="Left" Margin="400,46,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="LocSal_TxtBoxClient" HorizontalAlignment="Left" Height="23" Margin="460,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="115"/>
+        <TextBox Name="LocSal_TxtBoxClient" HorizontalAlignment="Left" Height="23" Margin="460,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="115" KeyDown="OnKeyDownHandler" />
         <Label Name="LocSal_LblSalle" Content="Salle" HorizontalAlignment="Left" Margin="24,268,0,0" VerticalAlignment="Top"/>
         <ComboBox Name="LocSal_CmbBoxSalle" HorizontalAlignment="Left" Margin="59,271,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Name="LocSal_LblNbPers" Content="Nombre de personne" HorizontalAlignment="Left" Margin="241,267,0,0" VerticalAlignment="Top"/>
