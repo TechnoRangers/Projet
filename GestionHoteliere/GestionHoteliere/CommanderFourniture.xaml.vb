@@ -1,7 +1,7 @@
 ﻿Public Class CommanderFourniture
     Dim MaBD As P2014_BDTestFrancoisEntities
     Dim Fournisseur As tblFournisseur
-    Dim ItemCommande As New List(Of tblFourniture)
+    Dim ItemCommande As New List(Of tblFournitureFournisseur)
     Dim PrixCommande As Double
 
     Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
@@ -42,31 +42,33 @@
     Private Sub com_btnAjouterFourniture_Click(sender As Object, e As RoutedEventArgs) Handles com_btnAjouterFourniture.Click
         Dim FournitureSelection As tblFourniture = CType(com_dtgFournitureCommande.SelectedItem, tblFourniture)
 
-        ItemCommande.Add(FournitureSelection)
+        Dim FournitureFournisseur As tblFournitureFournisseur
+
+        FournitureFournisseur = (From tabFournitureFournisseur In MaBD.tblFournitureFournisseur
+                                    Where tabFournitureFournisseur.CodeFourniture = FournitureSelection.CodeFourniture And Fournisseur.CodeFournisseur = tabFournitureFournisseur.CodeFournisseur
+                                    Select tabFournitureFournisseur).ToList.First
+
+        ItemCommande.Add(FournitureFournisseur)
+
         CalculPrixTotal()
         com_lbvCommande.ItemsSource = ItemCommande.ToList
     End Sub
 
     Private Sub com_btnRetirerFourniture_Click(sender As Object, e As RoutedEventArgs) Handles com_btnRetirerFourniture.Click
-        Dim FournitureSelection As tblFourniture = CType(com_lbvCommande.SelectedItem, tblFourniture)
+        Dim FournitureSelection As tblFournitureFournisseur = CType(com_lbvCommande.SelectedItem, tblFournitureFournisseur)
 
         ItemCommande.Remove(FournitureSelection)
         com_lbvCommande.ItemsSource = ItemCommande.ToList
     End Sub
 
-
-
     Sub CalculPrixTotal()
         PrixCommande = 0
-        For Each Item As tblFourniture In ItemCommande
-            PrixCommande += (From tabFournisseur In MaBD.tblFournisseur
-                                  Join tabFournitureFournisseur In MaBD.tblFournitureFournisseur On tabFournitureFournisseur.CodeFournisseur Equals tabFournisseur.CodeFournisseur
-                                  Where tabFournitureFournisseur.CodeFourniture = Item.CodeFourniture
-                                  Select tabFournitureFournisseur.PrixFournitureFournisseur).ToList.First
+        For Each Item As tblFournitureFournisseur In ItemCommande
+            PrixCommande += Item.PrixFournitureFournisseur
         Next
 
         com_lblPrixTotal.Content = PrixCommande.ToString + " $"
-
+        PrixCommande = Math.Round(PrixCommande)
     End Sub
 
     Private Sub com_btnCommander_Click(sender As Object, e As RoutedEventArgs) Handles com_btnCommander.Click
@@ -74,7 +76,7 @@
             Dim Commande As New tblCommande()
 
             Commande.NoEmploye = com_txtNoEmploye.Text
-            Commande.StatutCommande = "En commande"
+            Commande.StatutCommande = "Commande"
             Commande.CodeFournisseur = Fournisseur.CodeFournisseur
             Commande.DateCommande = System.DateTime.Today
             Commande.PrixTotal = PrixCommande
@@ -83,7 +85,7 @@
             MaBD.SaveChanges()
 
             Try
-                For Each Fourniture As tblFourniture In ItemCommande
+                For Each Fourniture As tblFournitureFournisseur In ItemCommande
                     Dim FournitureCommande As New tblFournitureCommande
 
                     FournitureCommande.NoCommande = Commande.NoCommande
@@ -93,6 +95,7 @@
                     MaBD.tblFournitureCommande.Add(FournitureCommande)
                     MaBD.SaveChanges()
                 Next
+                MessageBox.Show("La commande a été complétée avec succès.")
             Catch ex As Exception
                 MessageBox.Show("Erreur ajout table intersect")
             End Try
@@ -102,6 +105,5 @@
             MessageBox.Show("Erreur lors de l'ajout de la commande.")
         End Try
 
-        MessageBox.Show("La commande a été complétée avec succès.")
     End Sub
 End Class

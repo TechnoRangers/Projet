@@ -8,8 +8,8 @@
         <GroupBox x:Name="Che_GroupBoxListeFour" Header="Liste fourniture" HorizontalAlignment="Left" Margin="34,81,0,0" VerticalAlignment="Top" Height="400" Width="956" FontSize="20">
             <DataGrid HorizontalAlignment="Right" Margin="0,21,11,0" VerticalAlignment="Top" Height="340" Width="923"/>
         </GroupBox>
-        <GroupBox x:Name="Che_GroupeBoxCommentaire" Header="Commentaire" HorizontalAlignment="Left" Margin="34,495,0,0" VerticalAlignment="Top" Height="152" Width="956">
-            <RichTextBox HorizontalAlignment="Left" Height="108" Margin="10,10,0,0" VerticalAlignment="Top" Width="926">
+        <GroupBox x:Name="Che_GroupeBoxCommentaire" Header="Commentaire" HorizontalAlignment="Left" Margin="34,495,0,0" VerticalAlignment="Top" Height="183" Width="956">
+            <RichTextBox HorizontalAlignment="Left" Height="146" Margin="10,10,0,0" VerticalAlignment="Top" Width="926">
                 <FlowDocument>
                     <Paragraph>
                         <Run Text=""/>
@@ -17,26 +17,6 @@
                 </FlowDocument>
             </RichTextBox>
         </GroupBox>
-        <Button x:Name="Che_BtnEnregistrer" Content="Enregistrer" HorizontalAlignment="Left" Margin="500,669,0,0" VerticalAlignment="Top" Width="159" Height="44" FontSize="16">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
-                    <GradientStop Color="#FFEBEBEB"/>
-                    <GradientStop Color="#FFDDDDDD"/>
-                    <GradientStop Color="#FF5ECB24"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Button x:Name="Che_BtnReinitialiser" Content="Réinitialiser" HorizontalAlignment="Left" Margin="704,669,0,0" VerticalAlignment="Top" Width="159" Height="44" FontSize="16">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
-                    <GradientStop Color="#FFEBEBEB"/>
-                    <GradientStop Color="#FFDDDDDD"/>
-                    <GradientStop Color="#FFE92929"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
 
     </Grid>
 </Window>

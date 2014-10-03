@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Entretien"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Entretien" Height="300" Width="514.4" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    Title="Entretien" Height="300" Width="514.4" WindowStartupLocation="CenterScreen" IsEnabled="False">
     <Grid>
         <Button x:Name="Ent_BtnCheckUp" HorizontalAlignment="Left" Margin="25,78,0,0" VerticalAlignment="Top" Width="212" Height="169" >
             <StackPanel Orientation="Horizontal" Width="208" Height="169">

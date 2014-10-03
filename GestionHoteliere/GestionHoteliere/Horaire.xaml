@@ -3,10 +3,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Horaire" Height="413.612" Width="846.667">
     <Grid>
-        <Label x:Name="Hor_LblTypeEmploi" Content="Département" FontSize="20" HorizontalAlignment="Left" Margin="31,34,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="Hor_CmbTypeEmploi" HorizontalAlignment="Left" Margin="160,37,0,0" VerticalAlignment="Top" Width="176" Height="28"/>
-        <Calendar x:Name="Hor_Calendrier" HorizontalAlignment="Left" Margin="49,88,0,0" VerticalAlignment="Top" Width="287" Height="235" />
-        <DataGrid x:Name="Hor_DtgChiffreTravail" HorizontalAlignment="Left" Margin="363,37,0,0" VerticalAlignment="Top" Height="323" Width="467" />
+        <Label Content="Département" FontSize="20" HorizontalAlignment="Left" Margin="31,34,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="160,37,0,0" VerticalAlignment="Top" Width="176" Height="28"/>
+        <Calendar HorizontalAlignment="Left" Margin="49,88,0,0" VerticalAlignment="Top" Width="287" Height="235"/>
+        <DataGrid HorizontalAlignment="Left" Margin="363,37,0,0" VerticalAlignment="Top" Height="323" Width="467"/>
         <Button x:Name="Hor_BtnQuitter" Content="Quitter" HorizontalAlignment="Left" Margin="31,323,0,0" VerticalAlignment="Top" Width="118" Height="37" />
         <Button x:Name="Hor_BtnChangement" Content="Changement" HorizontalAlignment="Left" Margin="222,323,0,0" VerticalAlignment="Top" Width="114" Height="37"/>
 
