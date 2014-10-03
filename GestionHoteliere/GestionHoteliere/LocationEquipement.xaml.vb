@@ -5,6 +5,10 @@
 
     Private Sub LocEqui_BtnAjout_Click(sender As Object, e As RoutedEventArgs) Handles LocEqui_BtnAjout.Click
         LocEqui_ListBoxReserv.Items.Add(LocEqui_ListBoxInventaire.SelectedItem)
+
+        Dim Qt As String
+        Qt = InputBox("Quantité à commander", "Quantité")
+
     End Sub
 
     Private Sub LocEqui_BtnEnl_Click(sender As Object, e As RoutedEventArgs) Handles LocEqui_BtnEnl.Click
@@ -16,6 +20,10 @@
     End Sub
 
     Private Sub LocEqui_BtnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles LocEqui_BtnAnnuler.Click
+
+    End Sub
+
+    Private Sub Window_Loaded(sender As Object, e As RoutedEventArgs)
 
     End Sub
 End Class

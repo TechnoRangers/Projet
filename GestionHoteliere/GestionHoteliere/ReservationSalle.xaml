@@ -10,8 +10,8 @@
         </GroupBox>
         <CheckBox Name="LocSal_CheckBoxClient" Content="Nouveau Client" HorizontalAlignment="Left" Margin="23,85,0,0" VerticalAlignment="Top"/>
         <Label Name="LocSal_LblCredit" Content="Carte de Credit" HorizontalAlignment="Left" Margin="7,358,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.502,1.633"/>
-        <TextBox Name="LocSal_TxtBoxCredit" HorizontalAlignment="Left" Height="23" Margin="102,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="LocSal_TxtBoxExpi" HorizontalAlignment="Left" Height="23" Margin="136,388,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="54"/>
+        <TextBox Name="LocSal_TxtBoxCredit" HorizontalAlignment="Left" Height="23" Margin="102,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyDown="OnKeyDownHandler" />
+        <TextBox Name="LocSal_TxtBoxExpi" HorizontalAlignment="Left" Height="23" Margin="136,388,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="54" KeyDown="OnKeyDownHandler" />
         <Button Name="LocSal_BtnRec" Content="Rechercher" HorizontalAlignment="Left" Margin="420,210,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.419,0.926"/>
         <Button Name="LocSal_BtnAjout" Content="Ajouter" HorizontalAlignment="Left" Margin="500,210,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Name="LocSal_LblPre" Content="Prenom" HorizontalAlignment="Left" Margin="23,131,0,0" VerticalAlignment="Top"/>
@@ -24,9 +24,9 @@
         <Label Name="LocSal_Prix" Content="Prix" HorizontalAlignment="Left" Margin="426,357,0,0" VerticalAlignment="Top"/>
         <TextBox Name="LocSal_TxtBoxPrix" HorizontalAlignment="Left" Height="23" Margin="460,358,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Name="LocSal_NoRes" Content="No.Réservation" HorizontalAlignment="Left" Margin="13,18,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="LocSal_TxtBoxNoRes" HorizontalAlignment="Left" Height="23" Margin="106,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="LocSal_TxtBoxNoRes" HorizontalAlignment="Left" Height="23" Margin="106,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyDown="OnKeyDownHandler" />
         <Label Name="LocSal_lblTel" Content="Téléphone" HorizontalAlignment="Left" Margin="23,158,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="LocSal_TxtBoxTel" HorizontalAlignment="Left" Height="23" Margin="94,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="178"/>
+        <TextBox Name="LocSal_TxtBoxTel" HorizontalAlignment="Left" Height="23" Margin="94,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="178" KeyDown="OnKeyDownHandler" />
         <Label Name="LocSal_lblAdr" Content="Adresse" HorizontalAlignment="Left" Margin="23,184,0,0" VerticalAlignment="Top"/>
         <TextBox Name="LocSal_TxtBoxAdr" HorizontalAlignment="Left" Height="23" Margin="79,188,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="193"/>
         <Label Name="LocSal_LblEmail" Content="E-mail" HorizontalAlignment="Left" Margin="277,159,0,0" VerticalAlignment="Top"/>
@@ -41,7 +41,7 @@
         <Button Name="LocSal_Equi" Content="LocationEquipement" HorizontalAlignment="Left" Margin="304,423,0,0" VerticalAlignment="Top" Width="117"/>
         <Label x:Name="LocSal_Date" Content="Date " HorizontalAlignment="Left" Margin="383,19,0,0" VerticalAlignment="Top"/>
         <DatePicker Name="LocSal_DatePicker" HorizontalAlignment="Left" Margin="426,19,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="LocSal_TxtBoxNb" HorizontalAlignment="Left" Height="23" Margin="375,271,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="46"/>
+        <TextBox Name="LocSal_TxtBoxNb" HorizontalAlignment="Left" Height="23" Margin="375,271,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="46" KeyDown="OnKeyDownHandler" />
 
     </Grid>
 </Window>
