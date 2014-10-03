@@ -1,0 +1,20 @@
+﻿<Window x:Name="eqrec_frmEquipementRecreatif" x:Class="EquipementRecreatif"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="EquipementRecreatif" Height="288.095" Width="753.571">
+    <Grid Margin="0,0,0.2,-17.4">
+        <DataGrid x:Name="eqrec_dtgEquipementRecreatif" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="234" Width="643">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Code Equipement" Binding="{Binding CodeEquipementRecreatif, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Nom Equipement" Binding="{Binding NomEquipement, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Catégorie Equipement" Binding="{Binding CategorieEquipement, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Date Aquisition" Binding="{Binding DateAquisition, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Date Fin Garantie" Binding="{Binding DateFinGarantie, Mode=OneWay}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="eqrec_btnAjouter" Content="Ajouter" HorizontalAlignment="Left" Margin="658,12,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="eqrec_btnModifier" Content="Modifier" HorizontalAlignment="Left" Margin="658,39,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="eqrec_btnSupprimer" Content="Supprimer" HorizontalAlignment="Left" Margin="658,66,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="P2014_BDTestFrancoisModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblEmploye">
+          <Key>
+            <PropertyRef Name="noEmploye" />
+          </Key>
+          <Property Name="noEmploye" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nomEmploye" Type="varchar" MaxLength="20" />
+          <Property Name="prenomEmploye" Type="varchar" MaxLength="20" />
+          <Property Name="adresseEmploye" Type="varchar" MaxLength="30" />
+          <Property Name="noTelephoneEmploye" Type="varchar" MaxLength="14" />
+          <Property Name="motDePasseEmploye" Type="char" MaxLength="8" />
+          <Property Name="posteEmploye" Type="varchar" MaxLength="20" />
+          <Property Name="identifiantEmploye" Type="char" MaxLength="8" />
+        </EntityType>
+        <EntityContainer Name="P2014_BDTestFrancoisModelStoreContainer">
+          <EntitySet Name="tblEmploye" EntityType="Self.tblEmploye" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="P2014_BDTestFrancoisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblEmploye">
+          <Key>
+            <PropertyRef Name="noEmploye" />
+          </Key>
+          <Property Name="noEmploye" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nomEmploye" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="prenomEmploye" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="adresseEmploye" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="noTelephoneEmploye" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="motDePasseEmploye" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="posteEmploye" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="identifiantEmploye" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="P2014_BDTestFrancoisEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblEmploye" EntityType="Self.tblEmploye" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="P2014_BDTestFrancoisModelStoreContainer" CdmEntityContainer="P2014_BDTestFrancoisEntities">
+          <EntitySetMapping Name="tblEmploye">
+            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblEmploye">
+              <MappingFragment StoreEntitySet="tblEmploye">
+                <ScalarProperty Name="noEmploye" ColumnName="noEmploye" />
+                <ScalarProperty Name="nomEmploye" ColumnName="nomEmploye" />
+                <ScalarProperty Name="prenomEmploye" ColumnName="prenomEmploye" />
+                <ScalarProperty Name="adresseEmploye" ColumnName="adresseEmploye" />
+                <ScalarProperty Name="noTelephoneEmploye" ColumnName="noTelephoneEmploye" />
+                <ScalarProperty Name="motDePasseEmploye" ColumnName="motDePasseEmploye" />
+                <ScalarProperty Name="posteEmploye" ColumnName="posteEmploye" />
+                <ScalarProperty Name="identifiantEmploye" ColumnName="identifiantEmploye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

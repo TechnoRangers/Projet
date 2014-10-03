@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D59274A9-2E2A-476F-80B9-0F190835DC1A}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>GestionHoteliere</RootNamespace>
+    <AssemblyName>GestionHoteliere</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>true</IncrementalBuild>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>GestionHoteliere.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>false</IncrementalBuild>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>GestionHoteliere.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="Application.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AjoutItemInventaire.xaml.vb">
+      <DependentUpon>AjoutItemInventaire.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BD.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BD.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+
+    <Compile Include="CheckUp.xaml.vb">
+      <DependentUpon>CheckUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangementHoraire.xaml.vb">
+      <DependentUpon>ChangementHoraire.xaml</DependentUpon>
+
+    </Compile>
+    <Compile Include="ClientReservation.xaml.vb">
+      <DependentUpon>ClientReservation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CommanderFourniture.xaml.vb">
+      <DependentUpon>CommanderFourniture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConsoleAdmin.xaml.vb">
+      <DependentUpon>ConsoleAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DispoChambre.xaml.vb">
+      <DependentUpon>DispoChambre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Entretien.xaml.vb">
+      <DependentUpon>Entretien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Equipement.xaml.vb">
+      <DependentUpon>Equipement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Horaire.xaml.vb">
+      <DependentUpon>Horaire.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\CategorieFourniture.xaml.vb">
+      <DependentUpon>CategorieFourniture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\Chambre.xaml.vb">
+      <DependentUpon>Chambre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\Employe.xaml.vb">
+      <DependentUpon>Employe.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\EquipementGeneriqueChambre.xaml.vb">
+      <DependentUpon>EquipementGeneriqueChambre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\EquipementRecreatif.xaml.vb">
+      <DependentUpon>EquipementRecreatif.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\Facture.xaml.vb">
+      <DependentUpon>Facture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\Forfait.xaml.vb">
+      <DependentUpon>Forfait.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\Fournisseur.xaml.vb">
+      <DependentUpon>Fournisseur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\Fourniture.xaml.vb">
+      <DependentUpon>Fourniture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\Hotel.xaml.vb">
+      <DependentUpon>Hotel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\Pays.xaml.vb">
+      <DependentUpon>Pays.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\Province.xaml.vb">
+      <DependentUpon>Province.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\Salle.xaml.vb">
+      <DependentUpon>Salle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\TypeChambre.xaml.vb">
+      <DependentUpon>TypeChambre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces principales\Ville.xaml.vb">
+      <DependentUpon>Ville.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifCategorieFourniture.xaml.vb">
+      <DependentUpon>ModifCategorieFourniture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifChambre.xaml.vb">
+      <DependentUpon>ModifChambre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifEmploye.xaml.vb">
+      <DependentUpon>ModifEmploye.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifEquipementGenChambre.xaml.vb">
+      <DependentUpon>ModifEquipementGenChambre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifEquipementRecreatif.xaml.vb">
+      <DependentUpon>ModifEquipementRecreatif.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifFacture.xaml.vb">
+      <DependentUpon>ModifFacture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifForfait.xaml.vb">
+      <DependentUpon>ModifForfait.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifFournisseur.xaml.vb">
+      <DependentUpon>ModifFournisseur.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifFourniture.xaml.vb">
+      <DependentUpon>ModifFourniture.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifHotel.xaml.vb">
+      <DependentUpon>ModifHotel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifPays.xaml.vb">
+      <DependentUpon>ModifPays.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifProvince.xaml.vb">
+      <DependentUpon>ModifProvince.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifSalle.xaml.vb">
+      <DependentUpon>ModifSalle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifTypeChambre.xaml.vb">
+      <DependentUpon>ModifTypeChambre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces secondaires\ModifVille.xaml.vb">
+      <DependentUpon>ModifVille.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventaire.xaml.vb">
+      <DependentUpon>Inventaire.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.xaml.vb">
+      <DependentUpon>Menu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation.xaml.vb">
+      <DependentUpon>Reservation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReservationSalle.xaml.vb">
+      <DependentUpon>ReservationSalle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Statistique.xaml.vb">
+      <DependentUpon>Statistique.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="tblCategorieFourniture.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblChambreReservationChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblChiffreTravail.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblClient.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblCommande.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEmploye.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEntretienFourniture.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEquipementGeneriqueChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEquipementRecreatif.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblEquipementRecreatifHotel.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFacture.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblForfait.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFournisseur.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFourniture.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFournitureCommande.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFournitureFournisseur.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblFournitureHotel.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblHotel.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblPays.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblProvince.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblRabais.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblReservationChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblReservationSalle.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblSalle.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblTypeChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblVille.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VueInventaire.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+
+    <Page Include="CheckUp.xaml">
+    </Page>
+    <Page Include="AjoutItemInventaire.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangementHoraire.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClientReservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CommanderFourniture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Connection.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Application.xaml.vb">
+      <DependentUpon>Application.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Connection.xaml.vb">
+      <DependentUpon>Connection.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="ConsoleAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DispoChambre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Entretien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Equipement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Horaire.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Interfaces principales\CategorieFourniture.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\Chambre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\Employe.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\EquipementGeneriqueChambre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\EquipementRecreatif.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\Facture.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\Forfait.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\Fournisseur.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\Fourniture.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\Hotel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\Pays.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\Province.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\Salle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\TypeChambre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces principales\Ville.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifCategorieFourniture.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifChambre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifEmploye.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifEquipementGenChambre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifEquipementRecreatif.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifFacture.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifForfait.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifFournisseur.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifFourniture.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifHotel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifPays.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifProvince.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifSalle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifTypeChambre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Interfaces secondaires\ModifVille.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Inventaire.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Menu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Reservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReservationSalle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Statistique.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="System.Threading.Tasks" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows" />
+    <Import Include="System.Windows.Controls" />
+    <Import Include="System.Windows.Data" />
+    <Import Include="System.Windows.Documents" />
+    <Import Include="System.Windows.Input" />
+    <Import Include="System.Windows.Shapes" />
+    <Import Include="System.Windows.Media" />
+    <Import Include="System.Windows.Media.Imaging" />
+    <Import Include="System.Windows.Navigation" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWpfExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.WPF.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EntityDeploy Include="BD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BD.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BD.edmx</DependentUpon>
+      <LastGenOutput>BD.Context.vb</LastGenOutput>
+    </None>
+    <None Include="BD.edmx.diagram">
+      <DependentUpon>BD.edmx</DependentUpon>
+    </None>
+    <None Include="BD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BD.edmx</DependentUpon>
+      <LastGenOutput>BD.vb</LastGenOutput>
+    </None>
+    <None Include="Interfaces principales\App.Config" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <AppDesigner Include="My Project\" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

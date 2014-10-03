@@ -1,0 +1,37 @@
+﻿<Window x:Name="emp_frmModifEmploye" x:Class="ModifEmploye"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="ModifEmploye" Height="298.842" Width="579.151">
+    <Grid>
+        <GroupBox x:Name="emp_grbEmploye" Header="Employé" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="251" Width="553">
+            <Grid HorizontalAlignment="Left" Height="234" VerticalAlignment="Top" Width="538" Margin="0,0,-2,-11.6">
+                <Label Content="Numéro Employé : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Label Content="Nom Employé : " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                <Label Content="Prenom Employé : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                <Label Content="Sexe : " HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+                <Label Content="Adresse Employé : " HorizontalAlignment="Left" Margin="10,134,0,0" VerticalAlignment="Top"/>
+                <Label Content="Type Emploi : " HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="emp_txtNoEmploye" IsEnabled="False" Text="{Binding NoEmploye}" HorizontalAlignment="Left" Height="23" Margin="127,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="emp_txtNomEmploye" Text="{Binding NomEmploye}" HorizontalAlignment="Left" Height="23" Margin="127,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="emp_txtPrenomEmploye" Text="{Binding PrenomEmploye}" HorizontalAlignment="Left" Height="23" Margin="127,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="emp_txtSexeEmploye" Text="{Binding SexeEmploye}" HorizontalAlignment="Left" Height="23" Margin="127,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="emp_txtAdresseEmploye" Text="{Binding AdresseEmploye}" HorizontalAlignment="Left" Height="23" Margin="127,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="emp_txtTypeEmploi" Text="{Binding TypeEmploi}" HorizontalAlignment="Left" Height="23" Margin="127,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Numéro Téléphone : " HorizontalAlignment="Left" Margin="252,10,0,0" VerticalAlignment="Top"/>
+                <Label Content="Numéro Assurance Social :" HorizontalAlignment="Left" Margin="252,41,0,0" VerticalAlignment="Top"/>
+                <Label Content="Date Naissance : " HorizontalAlignment="Left" Margin="252,72,0,0" VerticalAlignment="Top"/>
+                <Label Content="Identifiant Employé : " HorizontalAlignment="Left" Margin="252,103,0,0" VerticalAlignment="Top"/>
+                <Label Content="Mot de passe : " HorizontalAlignment="Left" Margin="252,134,0,0" VerticalAlignment="Top"/>
+                <Label Content="Code Hôtel : " HorizontalAlignment="Left" Margin="252,165,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="emp_txtNoTelephoneEmploye" Text="{Binding NoTelephoneEmploye}" HorizontalAlignment="Left" Height="23" Margin="410,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="emp_txtNasEmploye" Text="{Binding NasEmploye}" HorizontalAlignment="Left" Height="23" Margin="410,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <DatePicker x:Name="emp_dtpDateNaissance" SelectedDate="{Binding DateNaissance}" HorizontalAlignment="Left" Margin="410,71,0,0" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="emp_txtIdentifiantEmploye" Text="{Binding IdentifiantEmploye}" HorizontalAlignment="Left" Height="23" Margin="410,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="emp_txtMdpEmploye" Text="{Binding MdpEmploye}" HorizontalAlignment="Left" Height="23" Margin="410,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <TextBox x:Name="emp_txtCodeHotel" Text="{Binding CodeHotel}" HorizontalAlignment="Left" Height="23" Margin="410,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="emp_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="453,202,0,0" VerticalAlignment="Top" Width="75"/>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>

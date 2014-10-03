@@ -1,0 +1,53 @@
+﻿<Window x:Class="ClientReservation"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="ClientReservation" Height="389.166" Width="947.222">
+    <Grid Background="PaleTurquoise">
+        <Rectangle Margin="0,0,-0.2,-0.2">
+            <Rectangle.Fill>
+                <LinearGradientBrush>
+                    <GradientStop Color="OrangeRed" Offset="0.0" />
+                    <GradientStop Color="DodgerBlue" Offset="1.0" />
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <GroupBox x:Name="Res_GroupBoxCoord" Header="Coordonnées" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="332" Width="916" FontSize="16" Background="White">
+            <Grid HorizontalAlignment="Left" Height="310" VerticalAlignment="Top" Width="906" Margin="0,0,-2,-2.8">
+                <Label x:Name="Res_LblCivilite" Content="Civilité" HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" FontSize="14"/>
+                <ComboBox x:Name="Res_CmbCivil" HorizontalAlignment="Left" Margin="62.6,24,0,0" VerticalAlignment="Top" Width="89" RenderTransformOrigin="0.865,0.421" Grid.Column="1">
+                    <ComboBoxItem Content="Monsieur"/>
+                    <ComboBoxItem Content="Madame"/>
+                    <ComboBoxItem Content="Mademoiselle"/>
+                </ComboBox>
+                <Label x:Name="Res_LblNom" Content="*Nom" HorizontalAlignment="Left" Margin="454.8,24,0,0" VerticalAlignment="Top" FontSize="14" Grid.Column="1"/>
+                <TextBox x:Name="Res_TextBoxNom" HorizontalAlignment="Left" Height="23" Margin="524.8,24,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176" RenderTransformOrigin="0.504,0.356" Grid.Column="1"/>
+                <Label x:Name="Res_LblPren" Content="*Prénom" HorizontalAlignment="Left" Margin="196.8,24,0,0" VerticalAlignment="Top" FontSize="14" Grid.Column="1"/>
+                <TextBox x:Name="Res_TextBoxPren" HorizontalAlignment="Left" Height="23" Margin="255.8,24,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173" Grid.Column="1"/>
+                <Label x:Name="Res_LblAdresse" Content="Adresse" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" FontSize="14" Grid.ColumnSpan="2"/>
+                <TextBox x:Name="Res_TextBoxAdresse" HorizontalAlignment="Left" Height="23" Margin="62.6,125,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="592" Grid.Column="1"/>
+                <Label x:Name="Res_LblCodePostal" Content="*Code postal" HorizontalAlignment="Left" Margin="321,76,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="Res_TextBoxCodePostal" HorizontalAlignment="Left" Height="23" Margin="431,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="89"/>
+                <Label x:Name="Res_LblDateDeNaissance" Content="**Date de naissance" HorizontalAlignment="Left" Margin="10,174,0,0" VerticalAlignment="Top" FontSize="14"/>
+                <TextBox x:Name="Res_JourDateNaiss" HorizontalAlignment="Left" Height="23" Margin="148,178,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+                <Label x:Name="Res_BarreObl1" Content="/" HorizontalAlignment="Left" Margin="194,172,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.357,-0.403"/>
+                <TextBox x:Name="Res_MoisDateNaiss" HorizontalAlignment="Left" Height="23" Margin="211,177,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47"/>
+                <Label x:Name="Res_BarreObl2" Content="/" HorizontalAlignment="Left" Margin="261,173,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="Res_AnneeDateNaiss" HorizontalAlignment="Left" Height="23" Margin="277,177,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="57"/>
+                <Label x:Name="Res_LblJour" Content="JJ" HorizontalAlignment="Left" Margin="159,202,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="Res_LblMois" Content="MM" Margin="219,205,0,0" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-8.705,1.308"/>
+                <Label x:Name="Res_LblAnnee" Content="AAAA" HorizontalAlignment="Left" Margin="286,205,0,0" VerticalAlignment="Top" FontSize="12"/>
+                <Label x:Name="Res_NoTel" Content="No Tel" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="1.184,-2.778"/>
+                <TextBox x:Name="Res_TextBoxTelPart1" HorizontalAlignment="Left" Height="23" Margin="140,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="52"/>
+                <Label x:Name="Res_LblSeparation1" Content="-" HorizontalAlignment="Left" Margin="120,76,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="Res_TextBoxTelPart2" HorizontalAlignment="Left" Height="23" Margin="63,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="52"/>
+                <TextBox x:Name="Res_TextBoxTelPart3" HorizontalAlignment="Left" Height="23" Margin="217,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="57"/>
+                <Label x:Name="Res_LblSeparation2" Content="-" HorizontalAlignment="Left" Margin="197,72,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="Cli_BtnContinuer" Content="Continuer" HorizontalAlignment="Left" Margin="771,235,0,0" VerticalAlignment="Top" Width="125" Height="65"/>
+                <Button x:Name="Cli_BtnRechercher" Content="Rechercher" HorizontalAlignment="Left" Margin="621,235,0,0" VerticalAlignment="Top" Width="125" Height="65"/>
+                <Button x:Name="Cli_BtnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="471,235,0,0" VerticalAlignment="Top" Width="125" Height="65"/>
+                <Label Content="*   = Champ obligatoire pour la recherche" HorizontalAlignment="Left" Margin="10,253,0,0" VerticalAlignment="Top" Width="277" Height="29" />
+                <Label Content="** = Champ facultatif" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Width="277" Height="29" />
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

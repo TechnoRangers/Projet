@@ -1,0 +1,14 @@
+﻿<Window x:Class="Ajouter"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Ajouter" Height="151.145" Width="245.038">
+    <Grid>
+        <Label Content="CodePays : " HorizontalAlignment="Left" Margin="26,26,0,0" VerticalAlignment="Top"/>
+        <Label Content="NomPays : " HorizontalAlignment="Left" Margin="26,52,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtCodePays" HorizontalAlignment="Left" Height="23" Margin="102,29,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding CodePays}"/>
+        <TextBox x:Name="txtNomPays" HorizontalAlignment="Left" Height="23" Margin="102,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="{Binding NomPays}"/>
+        <Label Content="Ajouter un pays" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnConfirm" Content="Confirmer" HorizontalAlignment="Left" Margin="147,85,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.599,-0.012"/>
+
+    </Grid>
+</Window>

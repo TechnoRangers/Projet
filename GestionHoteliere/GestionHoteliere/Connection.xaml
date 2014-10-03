@@ -1,0 +1,21 @@
+﻿<Window x:Name="Con_frmConnection"  x:Class="Connection"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    WindowStartupLocation="CenterScreen"
+    Title="Techno Rangers Version 1.3 Connection" Height="300" Width="700">
+    <Grid Margin="0,0,4,-3.6" Height="278" VerticalAlignment="Top">
+        <GroupBox x:Name="Con_GrpLogin" Header="Login" HorizontalAlignment="Right" Margin="0,0,358,36" VerticalAlignment="Bottom" Height="204" Width="320" FontWeight="Bold" >
+            <Grid x:Name="Con_GrdLogin" HorizontalAlignment="Left" Height="194" VerticalAlignment="Top" Width="310" Margin="0,0,-2.8,-12.4" >
+                <Label x:Name="Con_LblIdentifiant" Content="Identifiant : "  HorizontalAlignment="Left" Margin="3.6,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="Con_LblMotDePasse"  Content="Mot de passe : " HorizontalAlignment="Left" Margin="3.6,49,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="Con_LblHotel"       Content="Hôtel : "        HorizontalAlignment="Left" Margin="3.6,88,0,0" VerticalAlignment="Top"/>
+                <TextBox     x:Name="Con_TxtIdentifiant"  HorizontalAlignment="Left"  Margin="100.397,10,0,0"  VerticalAlignment="Top" Width="177" Height="23" TextWrapping="Wrap"/>
+                <ComboBox    x:Name="Con_CmbHotel"        HorizontalAlignment="Left" Margin="101.397,88,0,0"   VerticalAlignment="Top" Width="176" />
+                <PasswordBox x:Name="Con_TxtMotPasse"     HorizontalAlignment="Left" Margin="101.6,55,0,0"     VerticalAlignment="Top" Width="176"/>
+                <Button      x:Name="Con_BtnConnexion"    HorizontalAlignment="Left" Margin="121.397,125,0,0"  VerticalAlignment="Top" Width="156" Height="45" Content="Connexion"/>
+            </Grid>
+        </GroupBox>
+    </Grid> 
+</Window>  
+
+

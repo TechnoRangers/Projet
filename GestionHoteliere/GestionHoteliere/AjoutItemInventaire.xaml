@@ -1,0 +1,26 @@
+﻿<Window x:Name="ajoutinv_frmAjoutInventaire" x:Class="AjoutItemInventaire"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="AjoutItemInventaire" ResizeMode="NoResize" Height="236.8" Width="539.2">
+    <Grid>
+        <Label Content="Ajouter un item à l'inventaire" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="Fournisseur : " HorizontalAlignment="Left" Margin="35,44,0,0" VerticalAlignment="Top"/>
+        <Label Content="Code Fourniture : " HorizontalAlignment="Left" Margin="35,75,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nom Fourniture : " HorizontalAlignment="Left" Margin="35,106,0,0" VerticalAlignment="Top"/>
+        <Label Content="Catégorie : " HorizontalAlignment="Left" Margin="35,136,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="ajoutinv_txtCodeFourniture" HorizontalAlignment="Left" Height="23" Margin="146,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ajoutinv_txtNomFourniture" HorizontalAlignment="Left" Height="23" Margin="146,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Prix : " HorizontalAlignment="Left" Margin="348,44,0,0" VerticalAlignment="Top"/>
+        <Label Content="Quantite Minimum : " HorizontalAlignment="Left" Margin="271,75,0,0" VerticalAlignment="Top"/>
+        <Label Content="Quantite Maximum : " HorizontalAlignment="Left" Margin="271,106,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="ajoutinv_txtQuantiteMin" HorizontalAlignment="Left" Height="23" Margin="391,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ajoutinv_txtQuantiteMax" HorizontalAlignment="Left" Height="23" Margin="391,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="ajoutinv_txtPrixFournitureFournisseur" HorizontalAlignment="Left" Height="23" Margin="391,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="ajoutinv_btnAjouter" Content="Ajouter" HorizontalAlignment="Left" Margin="397,155,0,0" VerticalAlignment="Top" Width="114" Height="36"/>
+        <ComboBox x:Name="ajoutinv_cmbNomFournisseur" HorizontalAlignment="Left" Margin="146,44,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="ajoutinv_cmbNomCategorie" HorizontalAlignment="Left" Margin="146,137,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Quantite Fourniture : " HorizontalAlignment="Left" Margin="35,167,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="ajoutinv_txtQuantiteFourniture" HorizontalAlignment="Left" Height="23" Margin="163,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"/>
+
+    </Grid>
+</Window>
