@@ -1,11 +1,16 @@
 ﻿Public Class Menu
-
+    Dim MaBD As P2014_BDTestFrancoisEntities
     Dim EmployeConnection As tblEmploye
+
+    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
+        InitializeComponent()
+        MaBD = _MaBD
+    End Sub
+
 
     Private Sub Men_btnResChambre_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnResChambre.Click
 
-
-        Dim Disponibilite_ As New ClientReservation
+        Dim Disponibilite_ As New ClientReservation(MaBD)
         Disponibilite_.Show()
         Me.Close()
 

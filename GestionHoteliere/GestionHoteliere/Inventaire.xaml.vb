@@ -61,7 +61,7 @@
 
     Private Sub Inv_btnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Inv_btnAnnuler.Click
 
-        Dim Menu_ As New Menu
+        Dim Menu_ As New Menu(MaBD)
         Menu_.Show()
         Me.Close()
 
@@ -82,18 +82,6 @@
         FenetreAjouter.ShowDialog()
 
         FiltrerDatagrid()
-        'Dim FenetreAjouter As Ajouter
-        'FenetreAjouter = New Ajouter(MaBD, _monHotel)
-        'FenetreAjouter.ShowDialog()
-
-        'If Inv_ComboBoxHotel IsNot Nothing Then
-
-        '    Dim res = From t1 In MaBD.tblFournisseur Join t2 In MaBD.tblFournitureFournisseur On t1.CodeFournisseur Equals t2.CodeFournisseur Join t3 In MaBD.tblFournitureHotel On t3.CodeFourniture Equals t2.CodeFourniture
-        '                 Where t3.CodeHotel = _monHotel.CodeHotel
-        '                Select New With {.NomFournisseur = t1.NomFournisseur, .codeFourniture = t2.CodeFourniture, .DescFourniture = t2.tblFourniture.DescFourniture, .Prix = t2.PrixFournitureFournisseur, .QuantiteMin = t3.QuantiteMin, .QuantiteMax = t3.QuantiteMax, .Quantite = t3.QuantiteFournitureHotel}
-        '    DatagridInv.ItemsSource = res.ToList()
-
-        'End If
 
     End Sub
 
@@ -145,6 +133,10 @@
         ElseIf Trouver = False Then
             MessageBox.Show("Code inexistant")
         End If
+
+    End Sub
+
+    Private Sub Inv_textBoxRechercheCode_TextChanged(sender As Object, e As TextChangedEventArgs) Handles Inv_textBoxRechercheCode.TextChanged
 
     End Sub
 End Class

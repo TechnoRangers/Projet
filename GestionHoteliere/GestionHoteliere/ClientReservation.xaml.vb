@@ -1,4 +1,10 @@
 ﻿Public Class ClientReservation
+    Dim MaBD As P2014_BDTestFrancoisEntities
+
+    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
+        InitializeComponent()
+        MaBD = _MaBD
+    End Sub
 
     Private Sub Cli_BtnContinuer_Click(sender As Object, e As RoutedEventArgs) Handles Cli_BtnContinuer.Click
 
@@ -14,7 +20,7 @@
 
     Private Sub Cli_BtnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Cli_BtnAnnuler.Click
 
-        Dim Menu_ As New Menu
+        Dim Menu_ As New Menu(MaBD)
         Menu_.Show()
         Me.Close()
 

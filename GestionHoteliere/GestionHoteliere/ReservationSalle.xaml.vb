@@ -87,7 +87,7 @@
 
     Private Sub LocSal_BtnCancel_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnCancel.Click
         'fermer la fenetre pour le moment pourrais eventuellement demander si l'utilisateur veut seulement effacer les données inscrit
-        Dim Menu As New Menu
+        Dim Menu As New Menu(MaBd)
         Menu.Show()
         Me.Close()
     End Sub

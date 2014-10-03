@@ -7,7 +7,7 @@
 
     Private Sub Dis_BtnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Dis_BtnAnnuler.Click
 
-        Dim Menu_ As New Menu
+        Dim Menu_ As New Menu(BD)
         Menu_.Show()
         Me.Close()
 
@@ -15,7 +15,7 @@
 
     Private Sub Dis_BtnRéserver_Click(sender As Object, e As RoutedEventArgs) Handles Dis_BtnRéserver.Click
 
-        Dim Reservation_ As New Reservation
+        Dim Reservation_ As New Reservation(BD)
 
 
 

@@ -1,7 +1,12 @@
 ﻿Public Class Reservation
-
+    Dim MaBD As P2014_BDTestFrancoisEntities
 
     Dim lst As ListCollectionView
+
+    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
+        InitializeComponent()
+        MaBD = _MaBD
+    End Sub
 
     Public WriteOnly Property LesChambres() As IList
 
@@ -12,7 +17,7 @@
 
     Private Sub Res_btnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Res_btnAnnuler.Click
 
-        Dim Menu_ As New Menu
+        Dim Menu_ As New Menu(MaBD)
         Menu_.Show()
         Me.Close()
 
@@ -20,7 +25,7 @@
 
     Private Sub Res_btnReserver_Click(sender As Object, e As RoutedEventArgs) Handles Res_btnReserver.Click
 
-        Dim Menu_ As New Menu
+        Dim Menu_ As New Menu(MaBD)
         Menu_.Show()
         Me.Close()
 
