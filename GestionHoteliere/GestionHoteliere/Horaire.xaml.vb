@@ -69,4 +69,26 @@
 
     End Sub
 
+    Private Sub Hor_BtnAjout_Click(sender As Object, e As RoutedEventArgs) Handles Hor_BtnAjout.Click
+        Dim FenetreModifChiffreTravail As ChangementHoraire
+        FenetreModifChiffreTravail = New ChangementHoraire(BD)
+        FenetreModifChiffreTravail.ShowDialog()
+
+        Dim res = From Ct In BD.tblChiffreTravail
+                  Select Ct
+
+        Hor_DtgChiffreTravail.ItemsSource = res.ToList
+    End Sub
+
+    Private Sub Hor_BtnChangement_Click(sender As Object, e As RoutedEventArgs) Handles Hor_BtnChangement.Click
+        Try
+            Dim ChiffreSelection As tblChiffreTravail = CType(Hor_DtgChiffreTravail.SelectedItem, tblChiffreTravail)
+
+            Dim FenetreModifChiffreTravail As ChangementHoraire
+            FenetreModifChiffreTravail = New ChangementHoraire(BD, ChiffreSelection)
+            FenetreModifChiffreTravail.ShowDialog()
+        Catch
+            MessageBox.Show("Aucune row selectionné")
+        End Try
+    End Sub
 End Class
