@@ -1,20 +1,16 @@
 ﻿<Window x:Class="ChangementHoraire"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="ChangementHoraire" Height="347.49" Width="325.34">
+    Title="ChangementHoraire" Height="347.49" Width="340.54">
     <Grid Margin="0,0,4,0.2">
         <Label x:Name="Cha_LblNoEmp" Content="Numéro de l'employé" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Cha_LblHreDeb" Content="Heure de commencement" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Cha_LblHreDeb" Content="Heure de commencement" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Cha_LblHreFin" Content="Heure de fin" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Cha_TxtNoEmp" HorizontalAlignment="Left" Height="23" Margin="182,30,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="Cha_CmbMinfin" HorizontalAlignment="Left" Height="23" Margin="252,165,0,0"  VerticalAlignment="Top" Width="50"/>
-        <Label x:Name="Hor_LblDate" Content="Date" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="Cha_DtpDate" HorizontalAlignment="Left" Margin="182,79,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="Cha_BtnAnnuler" Content="Quitter" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Width="115" Height="43"/>
-        <Button x:Name="Cha_BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="187,266,0,0" VerticalAlignment="Top" Width="115" Height="43"/>
-        <ComboBox x:Name="Cha_CmbMinDeb" HorizontalAlignment="Left" Height="23" Margin="252,125,0,0"  VerticalAlignment="Top" Width="50"/>
-        <ComboBox x:Name="Cha_CmbHrefin" HorizontalAlignment="Left" Height="23" Margin="182,165,0,0"  VerticalAlignment="Top" Width="41"/>
-        <ComboBox x:Name="Cha_CmbHreDeb" HorizontalAlignment="Left" Height="23" Margin="182,125,0,0"  VerticalAlignment="Top" Width="41"/>
+        <TextBox x:Name="Cha_TxtNoEmp" HorizontalAlignment="Left" Height="23" Margin="182,28,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Cha_TxtHreDeb" HorizontalAlignment="Left" Height="23" Margin="182,165,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Cha_TxtHrefin" HorizontalAlignment="Left" Height="23" Margin="182,93,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="Cha_BtnChanger" Content="Changer" HorizontalAlignment="Left" Margin="182,262,0,0" VerticalAlignment="Top" Width="120" Height="47"/>
+        <Button x:Name="Cha_BtnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="10,262,0,0" VerticalAlignment="Top" Width="115" Height="47"/>
 
     </Grid>
 </Window>
