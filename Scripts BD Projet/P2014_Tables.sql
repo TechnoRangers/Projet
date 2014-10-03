@@ -33,7 +33,7 @@ CREATE TABLE Personnel.tblChiffreTravail
 
 CREATE TABLE Personnel.tblEntretienFourniture
 (
-	CodeFourniture			varchar(10)		NOT NULL,
+	NoSeqFourniture			int				NOT NULL,
 	NoEmploye				int				NOT NULL,
 	EtatFourniture			varchar(15)		NOT NULL,
 	CommentaireFourniture	text			NULL
@@ -67,7 +67,7 @@ CREATE TABLE Approvisionnement.tblFournisseur
 
 CREATE TABLE Approvisionnement.tblFournitureFournisseur
 (
-	CodeFourniture				varchar(10)		NOT NULL,
+	NoSeqFourniture				int				NOT NULL,
 	CodeFournisseur				varchar(10)		NOT NULL,
 	PrixFournitureFournisseur	money			NOT NULL
 )
@@ -78,7 +78,7 @@ CREATE TABLE Approvisionnement.tblFourniture
 	NoSeqFourniture		int				NOT NULL	IDENTITY(1000,1),
 	CodeFourniture		varchar(10)		NOT NULL,
 	DescFourniture		varchar(50)		NOT NULL,
-	NoSeqChambre		int				NULL,
+	NoSeqChambre		int				NULL	DEFAULT NULL,
 	CodeCategorie		char(3)			NOT NULL
 )
 
@@ -93,7 +93,7 @@ CREATE TABLE Approvisionnement.tblCategorieFourniture
 CREATE TABLE Approvisionnement.tblFournitureCommande
 (
 	NoCommande			int			NOT NULL,
-	CodeFourniture		varchar(10)	NOT NULL,
+	NoSeqFourniture		int			NOT NULL,
 	QuantiteCommande	int			NOT NULL
 )
 
@@ -101,7 +101,7 @@ CREATE TABLE Approvisionnement.tblFournitureCommande
 CREATE TABLE Approvisionnement.tblFournitureHotel
 (
 	CodeHotel				char(3)			NOT NULL,
-	CodeFourniture			varchar(10)		NOT NULL,
+	NoSeqFourniture			int				NOT NULL,
 	QuantiteMin				smallint		NOT NULL,
 	QuantiteMax				int				NOT NULL,
 	QuantiteFournitureHotel	int				NULL

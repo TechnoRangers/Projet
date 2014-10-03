@@ -1,27 +1,27 @@
 USE P2014_BDTestFrancois
 GO
 
-INSERT INTO Approvisionnement.tblFourniture VALUES('ZZZ','FOURNITURETEST',NULL,'AUT');
+--INSERT INTO Approvisionnement.tblFourniture VALUES('ZZZ','FOURNITURETEST',NULL,'AUT');
 
-INSERT INTO Approvisionnement.tblFournitureHotel VALUES('HMR','ZZZ',10,100,10);
-INSERT INTO Approvisionnement.tblFournitureFournisseur VALUES('ZZZ','101',100);
-INSERT INTO Approvisionnement.tblFournitureCommande VALUES(1001,'ZZZ',5);
+--INSERT INTO Approvisionnement.tblFournitureHotel VALUES('HMR','ZZZ',10,100,10);
+--INSERT INTO Approvisionnement.tblFournitureFournisseur VALUES('ZZZ','101',100);
+--INSERT INTO Approvisionnement.tblFournitureCommande VALUES(1001,'ZZZ',5);
 
-SELECT *
-FROM Approvisionnement.tblFourniture
+--SELECT *
+--FROM Approvisionnement.tblFourniture
 
-SELECT *
-FROM Approvisionnement.tblFournitureHotel
+--SELECT *
+--FROM Approvisionnement.tblFournitureHotel
 
-SELECT *
-FROM Approvisionnement.tblFournitureFournisseur
+--SELECT *
+--FROM Approvisionnement.tblFournitureFournisseur
 
-SELECT *
-FROM Approvisionnement.VueInventaire
+--SELECT *
+--FROM Approvisionnement.VueInventaire
 
 
-DELETE FROM Approvisionnement.tblFourniture
-WHERE CodeFourniture = 'ZZZ'
+--DELETE FROM Approvisionnement.tblFourniture
+--WHERE NoSeqFourniture = 'ZZZ'
 
 
 CREATE TRIGGER TestSupprimerFourniture 
@@ -30,42 +30,42 @@ INSTEAD OF DELETE
 AS
 BEGIN
 
-DECLARE @CodeFourniture varchar(10)
+DECLARE @NoSeqFourniture varchar(10)
 
-SELECT @CodeFourniture = CodeFourniture
+SELECT @NoSeqFourniture = NoSeqFourniture
 FROM deleted
 
 DELETE FROM Approvisionnement.tblFournitureCommande
-WHERE CodeFourniture = @CodeFourniture
+WHERE NoSeqFourniture = @NoSeqFourniture
 
 DELETE FROM Approvisionnement.tblFournitureFournisseur
-WHERE CodeFourniture = @CodeFourniture
+WHERE NoSeqFourniture = @NoSeqFourniture
 
 DELETE FROM Approvisionnement.tblFournitureHotel
-WHERE CodeFourniture = @CodeFourniture
+WHERE NoSeqFourniture = @NoSeqFourniture
 
 DELETE FROM Approvisionnement.tblFourniture
-WHERE CodeFourniture = @CodeFourniture
+WHERE NoSeqFourniture = @NoSeqFourniture
 
 END
 GO
 
 
 CREATE VIEW Approvisionnement.VueInventaire AS
-SELECT FH.CodeHotel, F.CodeFourniture, DescFourniture, F.CodeCategorie, NomCategorie, QuantiteFournitureHotel, PrixFournitureFournisseur , QuantiteMin, QuantiteMax , Four.CodeFournisseur, NomFournisseur
+SELECT FH.CodeHotel, F.NoSeqFourniture, DescFourniture, F.CodeCategorie, NomCategorie, QuantiteFournitureHotel, PrixFournitureFournisseur , QuantiteMin, QuantiteMax , Four.CodeFournisseur, NomFournisseur
 FROM Approvisionnement.tblFourniture AS F
 JOIN Approvisionnement.tblFournitureHotel AS FH
-	ON F.CodeFourniture = FH.CodeFourniture
+	ON F.NoSeqFourniture = FH.NoSeqFourniture
 JOIN Approvisionnement.tblFournitureFournisseur AS FF
-	ON F.CodeFourniture = FF.CodeFourniture
+	ON F.NoSeqFourniture = FF.NoSeqFourniture
 JOIN Approvisionnement.tblFournisseur AS Four
 	ON FF.CodeFournisseur = Four.CodeFournisseur
 JOIN Approvisionnement.tblCategorieFourniture AS CF
 	ON F.CodeCategorie = CF.CodeCategorie
 
 
-SELECT *
-FROM Approvisionnement.VueInventaire
-ORDER BY CodeFourniture
+--SELECT *
+--FROM Approvisionnement.VueInventaire
+--ORDER BY NoSeqFourniture
 
-DROP VIEW Approvisionnement.VueInventaire
+--DROP VIEW Approvisionnement.VueInventaire
