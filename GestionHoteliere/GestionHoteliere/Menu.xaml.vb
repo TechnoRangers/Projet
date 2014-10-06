@@ -14,8 +14,8 @@
             Men_LbltypeEmploi.Visibility = Windows.Visibility.Hidden
             Men_LblNomEmploye.Visibility = Windows.Visibility.Hidden
         Else
-            Men_LblNomEmploye.DataContext = EmployeConnexion.NomEmploye
-            Men_LbltypeEmploi.DataContext = EmployeConnexion.TypeEmploi
+            Men_LblNomEmploye.Content = _EmployeConnexion.NomEmploye
+            Men_LbltypeEmploi.Content = _EmployeConnexion.TypeEmploi
         End If
 
 

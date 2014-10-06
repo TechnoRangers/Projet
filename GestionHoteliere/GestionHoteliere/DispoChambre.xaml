@@ -29,9 +29,9 @@
             <Button x:Name="Dis_BtnRéserver" Content="Réserver" HorizontalAlignment="Left" Margin="823,703,0,0" VerticalAlignment="Top" Width="137" RenderTransformOrigin="2.16,1.416" Height="59"/>
             <DataGrid x:Name="Dis_GrtChambre" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="729" Width="488" Loaded="Dis_GrtChambre_Loaded" AutoGenerateColumns="False">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="No chambre" Binding="{Binding CodeChambre}"/>
-                    <DataGridTextColumn Header="  Statut  " Binding="{Binding StatutChambre}"/>
-                    <DataGridTextColumn Header="type de chambre" Binding="{Binding NomTypeChambre}"/>
+                    <DataGridTextColumn Header="No chambre" Binding="{Binding NoSeqChambre}"/>
+                    <DataGridTextColumn Header="Code" Binding="{Binding CodeChambre}"/>
+                    <DataGridTextColumn Header="Étage" Binding="{Binding EtageChambre}"/>
                     <DataGridTextColumn Header="nombre de lit" Binding="{Binding NbLit}"/>
                     <DataGridTextColumn Header="type de lit" Binding="{Binding TypeLit}"/>
                     <DataGridTextColumn Header="Description" Binding="{Binding DescChambre}"/>

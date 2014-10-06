@@ -6900,6 +6900,8 @@ INSERT INTO Personnel.tblEmploye(NomEmploye,PreNomEmploye,SexeEmploye,AdresseEmp
 INSERT INTO Personnel.tblEmploye(NomEmploye,PreNomEmploye,SexeEmploye,AdresseEmploye,TypeEmploi,NoTelephoneEmploye,NasEmploye,DateNaissance,IdentifiantEmploye,MdpEmploye,CodeHotel) VALUES ('Bouchard'		,'Michelle'	,'F','9980 Vert'			,'Entretien','(600)-135-3614','027-854-106','1980-12-25','BouMi001','MB130201','HRN')
 INSERT INTO Personnel.tblEmploye(NomEmploye,PreNomEmploye,SexeEmploye,AdresseEmploye,TypeEmploi,NoTelephoneEmploye,NasEmploye,DateNaissance,IdentifiantEmploye,MdpEmploye,CodeHotel) VALUES ('Tremblay'		,'Linne'	,'F','3040 Noir'			,'ventes'	,'(600)-152-2536','034-856-106','1985-12-25','TreLi001','LT122001','HRN')
 INSERT INTO Personnel.tblEmploye(NomEmploye,PreNomEmploye,SexeEmploye,AdresseEmploye,TypeEmploi,NoTelephoneEmploye,NasEmploye,DateNaissance,IdentifiantEmploye,MdpEmploye,CodeHotel) VALUES ('Hikkins'		,'Amélia'	,'F','1445 Orange'			,'Gerance'  ,'(600)-468-1425','016-000-106','1990-12-25','HikAm001','AH010801','HRN')
+
+INSERT INTO Personnel.tblEmploye(NomEmploye,PreNomEmploye,SexeEmploye,AdresseEmploye,TypeEmploi,NoTelephoneEmploye,NasEmploye,DateNaissance,IdentifiantEmploye,MdpEmploye,CodeHotel) VALUES ('Admin'		,'Admin'	,'M','1234 Admin'			,'Admin'  ,'(600)-468-1425','016-000-106','1990-12-25','admin123','admin123','HRN')
 GO
 
 

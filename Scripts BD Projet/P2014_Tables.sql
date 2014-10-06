@@ -257,7 +257,8 @@ CREATE TABLE Reservation.tblClient
 	PrenomClient	varchar(20)	NOT NULL,
 	NoTelephone		varchar(14)	NOT NULL,
 	AdresseClient	varchar(30)	NOT NULL,
-	EmailClient		varchar(30)	NOT NULL	
+	EmailClient		varchar(30)	NOT NULL,
+	CodePostal		char(6)		NULL	
 )
 
 
@@ -308,3 +309,5 @@ CREATE TABLE Reservation.tblForfait
 	DescForfait	text			NOT NULL,
 	NbNuit		tinyint			NOT NULL
 )
+
+

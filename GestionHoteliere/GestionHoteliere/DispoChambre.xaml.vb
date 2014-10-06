@@ -18,11 +18,17 @@
 
     Private Sub Dis_BtnRéserver_Click(sender As Object, e As RoutedEventArgs) Handles Dis_BtnRéserver.Click
 
-        Dim Reservation_ As New Reservation(BD)
+        Dim ChambresSelection As New List(Of tblChambre)
+
+        For Each Chambre As tblChambre In Dis_GrtChambre.SelectedItems
+            ChambresSelection.Add(Chambre)
+        Next
+
+        Dim Reservation_ As New Reservation(BD, ChambresSelection)
 
 
 
-        Reservation_.LesChambres = Dis_GrtChambre.SelectedItems
+        'Reservation_.LesChambres = Dis_GrtChambre.SelectedItems
         Reservation_.Show()
         Me.Close()
 
@@ -103,16 +109,23 @@
 
     Private Sub Dis_GrtChambre_Loaded(sender As Object, e As RoutedEventArgs) Handles Dis_GrtChambre.Loaded
 
+        Dim Chambres = From tabChambre In BD.tblChambre
+                       Select tabChambre
 
+        Dis_GrtChambre.ItemsSource = Chambres.ToList
 
+        'Dim _Chambre = From Ch In BD.tblChambre Join Tc In BD.tblTypeChambre On Ch.CodeTypeChambre Equals Tc.CodeTypeChambre
+        'Select New With {.CodeChambre = Ch.EtageChambre, .StatutChambre = Ch.StatutChambre, .NomTypeChambre = Tc.NomTypeChambre, .NbLit = Ch.NbLit, .TypeLit = Ch.TypeLit, .DescChambre = Ch.DescChambre}
 
-        Dim _Chambre = From Ch In BD.tblChambre Join Tc In BD.tblTypeChambre On Ch.CodeTypeChambre Equals Tc.CodeTypeChambre
-        Select New With {.CodeChambre = Ch.EtageChambre, .StatutChambre = Ch.StatutChambre, .NomTypeChambre = Tc.NomTypeChambre, .NbLit = Ch.NbLit, .TypeLit = Ch.TypeLit, .DescChambre = Ch.DescChambre}
-
-        Dis_GrtChambre.DataContext = _Chambre.ToList()
-        Dis_GrtChambre.ItemsSource = _Chambre.ToList()
+        'Dis_GrtChambre.DataContext = _Chambre.ToList()
+        'Dis_GrtChambre.ItemsSource = _Chambre.ToList()
 
     End Sub
+
+    Sub FiltrerDatagrid()
+
+    End Sub
+
 
 End Class
 
