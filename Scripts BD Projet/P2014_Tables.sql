@@ -36,8 +36,9 @@ CREATE TABLE Personnel.tblEntretienFourniture
 	NoSeqFourniture			int				NOT NULL,
 	NoEmploye				int				NOT NULL,
 	EtatFourniture			varchar(15)		NOT NULL,
-	CommentaireFourniture	text			NULL
+	CommentaireFourniture	varchar(300)	NULL
 )
+
 
 
 
