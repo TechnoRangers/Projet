@@ -1,42 +1,50 @@
 ﻿<Window x:Name="Che_FrmChe" x:Class="CheckUp"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Techno Rangers Version 1.4 Menu" WindowStartupLocation="CenterScreen" Height="800" Width="1100">
-    <Grid Margin="0,0,-6.4,0" Width="1045">
-        <Label x:Name="Che_LblNoChambre" Content="No chambre :" HorizontalAlignment="Left" Margin="34,29,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <ComboBox x:Name="Che_ComboBoxNoChambre" HorizontalAlignment="Left" Margin="145,29,0,0" VerticalAlignment="Top" Width="126" Height="32"/>
-        <GroupBox x:Name="Che_GroupBoxListeFour" Header="Liste fourniture" HorizontalAlignment="Left" Margin="34,81,0,0" VerticalAlignment="Top" Height="400" Width="956" FontSize="20">
-            <DataGrid HorizontalAlignment="Right" Margin="0,21,11,0" VerticalAlignment="Top" Height="340" Width="923"/>
-        </GroupBox>
-        <GroupBox x:Name="Che_GroupeBoxCommentaire" Header="Commentaire" HorizontalAlignment="Left" Margin="34,495,0,0" VerticalAlignment="Top" Height="152" Width="956">
-            <RichTextBox HorizontalAlignment="Left" Height="108" Margin="10,10,0,0" VerticalAlignment="Top" Width="926">
-                <FlowDocument>
-                    <Paragraph>
-                        <Run Text=""/>
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
-        </GroupBox>
-        <Button x:Name="Che_BtnEnregistrer" Content="Enregistrer" HorizontalAlignment="Left" Margin="500,669,0,0" VerticalAlignment="Top" Width="159" Height="44" FontSize="16">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
-                    <GradientStop Color="#FFEBEBEB"/>
-                    <GradientStop Color="#FFDDDDDD"/>
-                    <GradientStop Color="#FF5ECB24"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
-        <Button x:Name="Che_BtnReinitialiser" Content="Réinitialiser" HorizontalAlignment="Left" Margin="704,669,0,0" VerticalAlignment="Top" Width="159" Height="44" FontSize="16">
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
-                    <GradientStop Color="#FFEBEBEB"/>
-                    <GradientStop Color="#FFDDDDDD"/>
-                    <GradientStop Color="#FFE92929"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
+    Title="Techno Rangers Version 1.4 Menu" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF437E87" Offset="1"/>
+            <GradientStop Color="White"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Viewbox Stretch="Uniform">
+        <Grid Margin="0,0,-6.4,0" Width="1045">
+            <Label x:Name="Che_LblNoChambre" Content="No chambre :" HorizontalAlignment="Left" Margin="34,29,0,0" VerticalAlignment="Top" FontSize="16"/>
+            <ComboBox x:Name="Che_ComboBoxNoChambre" HorizontalAlignment="Left" Margin="145,29,0,0" VerticalAlignment="Top" Width="126" Height="32"/>
+            <GroupBox x:Name="Che_GroupBoxListeFour" Header="Liste fourniture" HorizontalAlignment="Left" Margin="34,81,0,0" VerticalAlignment="Top" Height="400" Width="956" FontSize="20">
+                <DataGrid HorizontalAlignment="Right" Margin="0,21,11,0" VerticalAlignment="Top" Height="340" Width="923"/>
+            </GroupBox>
+            <GroupBox x:Name="Che_GroupeBoxCommentaire" Header="Commentaire" HorizontalAlignment="Left" Margin="34,495,0,0" VerticalAlignment="Top" Height="152" Width="956">
+                <RichTextBox HorizontalAlignment="Left" Height="108" Margin="10,10,0,0" VerticalAlignment="Top" Width="926">
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run Text=""/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+            </GroupBox>
+            <Button x:Name="Che_BtnEnregistrer" Content="Enregistrer" HorizontalAlignment="Left" Margin="667,652,0,0" VerticalAlignment="Top" Width="159" Height="44" FontSize="16">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB"/>
+                        <GradientStop Color="#FFDDDDDD"/>
+                        <GradientStop Color="#FF5ECB24"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="Che_BtnReinitialiser" Content="Réinitialiser" HorizontalAlignment="Left" Margin="831,652,0,0" VerticalAlignment="Top" Width="159" Height="44" FontSize="16">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB"/>
+                        <GradientStop Color="#FFDDDDDD"/>
+                        <GradientStop Color="#FFE92929"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
 
-    </Grid>
+        </Grid>
+    </Viewbox>
 </Window>

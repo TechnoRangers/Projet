@@ -8,7 +8,7 @@
 
         Try
             'ConnectionEmploye()
-            Dim Menu_ As New Menu(MaBD)
+            Dim Menu_ As New Menu(MaBD, Employe)
             con_lblErreurConnexion.Visibility = Windows.Visibility.Hidden
             Menu_.Show()
             Con_frmConnection.Close()

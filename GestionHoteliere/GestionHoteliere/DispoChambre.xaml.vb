@@ -7,8 +7,6 @@
 
     Private Sub Dis_BtnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Dis_BtnAnnuler.Click
 
-        Dim Menu_ As New Menu(BD)
-        Menu_.Show()
         Me.Close()
 
     End Sub

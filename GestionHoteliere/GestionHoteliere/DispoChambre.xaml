@@ -1,39 +1,46 @@
 ﻿<Window x:Name="Dis_frmDisponibilite" x:Class="DispoChambre"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    WindowStartupLocation="CenterScreen"
-    Title="Techno Rangers Version 1.02 Disponibilité" Height="800" Width="1000">
-    <Grid x:Name="Dis_GrdDispo">
+    Title="Techno Rangers Version 1.02 Disponibilité" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF437E87" Offset="1"/>
+            <GradientStop Color="White"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Viewbox Stretch="Uniform">
+        <Grid x:Name="Dis_GrdDispo">
 
-        <GroupBox x:Name="Dis_GrbFiltre" Header="Filtre" HorizontalAlignment="Left" Height="319" Margin="536,22,0,0" VerticalAlignment="Top" Width="424">
-            <Grid x:Name="Dis_GrdChoix" HorizontalAlignment="Left" Height="254" Margin="198,10,0,0" VerticalAlignment="Top" Width="161">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5*"/>
-                    <RowDefinition Height="249*"/>
-                </Grid.RowDefinitions>
-                <CheckBox x:Name="Dis_ChkReserver" Content="Réserver" HorizontalAlignment="Left" Margin="93,90.734,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-                <CheckBox x:Name="Dis_ChkDisponible" Content="Disponible" HorizontalAlignment="Left" Margin="10,90.734,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.976,0.918" Grid.Row="1"/>
-                <ComboBox x:Name="Dis_CmbChoix1" HorizontalAlignment="Left" Margin="10,175.2,0,0" VerticalAlignment="Top" Width="141" Grid.Row="1"/>
-                <ComboBox x:Name="Dis_CmbChoix2" HorizontalAlignment="Left" Margin="10,133.2,0,95.4" Width="141" Grid.Row="1"/>
-                <ComboBox x:Name="Dis_CmbChoix3" HorizontalAlignment="Left" Margin="10,216.734,0,0" VerticalAlignment="Top" Width="141" Grid.Row="1"/>
-                <DatePicker x:Name="Dis_DtpDateReser" HorizontalAlignment="Left" Margin="10,0,0,193.4" VerticalAlignment="Bottom" Grid.Row="1"/>
-            </Grid>
-        </GroupBox>
-        <Button x:Name="Dis_BtnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="544,703,0,0" VerticalAlignment="Top" Width="137" Height="59"/>
-        <Button x:Name="Dis_BtnRéserver" Content="Réserver" HorizontalAlignment="Left" Margin="823,703,0,0" VerticalAlignment="Top" Width="137" RenderTransformOrigin="2.16,1.416" Height="59"/>
-        <DataGrid x:Name="Dis_GrtChambre" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="729" Width="488" Loaded="Dis_GrtChambre_Loaded" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="No chambre" Binding="{Binding CodeChambre}"/>
-                <DataGridTextColumn Header="  Statut  " Binding="{Binding StatutChambre}"/>
-                <DataGridTextColumn Header="type de chambre" Binding="{Binding NomTypeChambre}"/>
-                <DataGridTextColumn Header="nombre de lit" Binding="{Binding NbLit}"/>
-                <DataGridTextColumn Header="type de lit" Binding="{Binding TypeLit}"/>
-                <DataGridTextColumn Header="Description" Binding="{Binding DescChambre}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Label Content="Date:" HorizontalAlignment="Left" Margin="544,80,0,0" VerticalAlignment="Top" Width="129"/>
-        <Label Content="Type de Chambre:" HorizontalAlignment="Left" Margin="544,181,0,0" VerticalAlignment="Top" Height="24" Width="129"/>
-        <Label Content="Étage:" HorizontalAlignment="Left" Margin="544,226,0,0" VerticalAlignment="Top" Width="129"/>
-        <Label Content="nombre de lit:" HorizontalAlignment="Left" Margin="544,272,0,0" VerticalAlignment="Top"/>
-    </Grid>
+            <GroupBox x:Name="Dis_GrbFiltre" Header="Filtre" HorizontalAlignment="Left" Height="319" Margin="536,22,0,0" VerticalAlignment="Top" Width="424">
+                <Grid x:Name="Dis_GrdChoix" HorizontalAlignment="Left" Height="254" Margin="198,10,0,0" VerticalAlignment="Top" Width="161">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="249*"/>
+                    </Grid.RowDefinitions>
+                    <CheckBox x:Name="Dis_ChkReserver" Content="Réserver" HorizontalAlignment="Left" Margin="93,90.734,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                    <CheckBox x:Name="Dis_ChkDisponible" Content="Disponible" HorizontalAlignment="Left" Margin="10,90.734,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.976,0.918" Grid.Row="1"/>
+                    <ComboBox x:Name="Dis_CmbChoix1" HorizontalAlignment="Left" Margin="10,175.2,0,0" VerticalAlignment="Top" Width="141" Grid.Row="1"/>
+                    <ComboBox x:Name="Dis_CmbChoix2" HorizontalAlignment="Left" Margin="10,133.2,0,95.4" Width="141" Grid.Row="1"/>
+                    <ComboBox x:Name="Dis_CmbChoix3" HorizontalAlignment="Left" Margin="10,216.734,0,0" VerticalAlignment="Top" Width="141" Grid.Row="1"/>
+                    <DatePicker x:Name="Dis_DtpDateReser" HorizontalAlignment="Left" Margin="10,0,0,193.4" VerticalAlignment="Bottom" Grid.Row="1"/>
+                </Grid>
+            </GroupBox>
+            <Button x:Name="Dis_BtnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="544,703,0,0" VerticalAlignment="Top" Width="137" Height="59"/>
+            <Button x:Name="Dis_BtnRéserver" Content="Réserver" HorizontalAlignment="Left" Margin="823,703,0,0" VerticalAlignment="Top" Width="137" RenderTransformOrigin="2.16,1.416" Height="59"/>
+            <DataGrid x:Name="Dis_GrtChambre" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="729" Width="488" Loaded="Dis_GrtChambre_Loaded" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="No chambre" Binding="{Binding CodeChambre}"/>
+                    <DataGridTextColumn Header="  Statut  " Binding="{Binding StatutChambre}"/>
+                    <DataGridTextColumn Header="type de chambre" Binding="{Binding NomTypeChambre}"/>
+                    <DataGridTextColumn Header="nombre de lit" Binding="{Binding NbLit}"/>
+                    <DataGridTextColumn Header="type de lit" Binding="{Binding TypeLit}"/>
+                    <DataGridTextColumn Header="Description" Binding="{Binding DescChambre}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Label Content="Date:" HorizontalAlignment="Left" Margin="544,80,0,0" VerticalAlignment="Top" Width="129"/>
+            <Label Content="Type de Chambre:" HorizontalAlignment="Left" Margin="544,181,0,0" VerticalAlignment="Top" Height="24" Width="129"/>
+            <Label Content="Étage:" HorizontalAlignment="Left" Margin="544,226,0,0" VerticalAlignment="Top" Width="129"/>
+            <Label Content="nombre de lit:" HorizontalAlignment="Left" Margin="544,272,0,0" VerticalAlignment="Top"/>
+        </Grid>
+    </Viewbox>
 </Window>

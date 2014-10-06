@@ -17,8 +17,6 @@
 
     Private Sub Res_btnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Res_btnAnnuler.Click
 
-        Dim Menu_ As New Menu(MaBD)
-        Menu_.Show()
         Me.Close()
 
     End Sub
