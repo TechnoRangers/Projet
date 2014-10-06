@@ -4,8 +4,8 @@
     Dim _monHotel As tblHotel
     Dim _macategorie As tblCategorieFourniture
 
-    Sub New()
-        MaBD = New P2014_BDTestFrancoisEntities
+    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
+        MaBD = _MaBD
         _monHotel = New tblHotel
         _macategorie = New tblCategorieFourniture
         InitializeComponent()
@@ -101,10 +101,6 @@
         End Try
 
         FiltrerDatagrid()
-
-    End Sub
-
-    Private Sub Inv_BtnRechercheCode_Click(sender As Object, e As RoutedEventArgs) Handles Inv_BtnRechercheCode.Click
 
     End Sub
 

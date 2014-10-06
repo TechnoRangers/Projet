@@ -1,6 +1,12 @@
 ﻿Public Class ReservationSalle
     Dim MaBd As P2014_BDTestFrancoisEntities
 
+    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
+        InitializeComponent()
+        MaBd = _MaBD
+    End Sub
+
+
     Function Validation()
         'validation shit avant d'envoyer le formulaire
         'Debut de validation pour les champs qui sont obligatoirement des chiffres 
@@ -31,7 +37,6 @@
     End Function
 
     Private Sub LocationSalles_Loaded(sender As Object, e As RoutedEventArgs) Handles MyBase.Loaded
-        MaBd = New P2014_BDTestFrancoisEntities
         ' Ajoute les salles dans le comboBox Salle
         Dim rep = From it In MaBd.tblSalle Select it.NomSalle
         For Each Nom In rep.ToList

@@ -5,6 +5,11 @@
     Dim _Chambre As tblChambre
     Dim _Chambre2 As tblChambre
 
+    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
+        InitializeComponent()
+        BD = _MaBD
+    End Sub
+
     Private Sub Dis_BtnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Dis_BtnAnnuler.Click
 
         Me.Close()
@@ -73,8 +78,6 @@
     End Sub
 
     Private Sub Dis_GrdDispo_Loaded(sender As Object, e As RoutedEventArgs) Handles Dis_GrdDispo.Loaded
-
-        BD = New P2014_BDTestFrancoisEntities
 
         Dim res1 = From Ch In BD.tblChambre Select Ch
 

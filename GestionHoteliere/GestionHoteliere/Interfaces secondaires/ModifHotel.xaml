@@ -2,26 +2,35 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="ModifHotel" Height="207.435" Width="548.699">
-    <Grid Margin="0,0,3.4,-0.8">
-        <GroupBox Header="Hôtel" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="160" Width="519">
-            <Grid HorizontalAlignment="Left" Height="143" Margin="2,0,-1.8,-5.4" VerticalAlignment="Top" Width="507">
-                <Label Content="Code Hôtel : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <Label Content="Nom Hôtel : " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-                <Label Content="Nombre Chambres : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                <Label Content="Adresse Hôtel : " HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
-                <Label Content="Nombre d'étoiles : " HorizontalAlignment="Left" Margin="262,10,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="hot_txtCodeHotel" Text="{Binding CodeHotel}" HorizontalAlignment="Left" Height="23" Margin="137,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="hot_txtNomHotel" Text="{Binding NomHotel}" HorizontalAlignment="Left" Height="23" Margin="137,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="hot_txtNbChambre" Text="{Binding NbChambre}" HorizontalAlignment="Left" Height="23" Margin="137,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="hot_txtAdresseHotel" Text="{Binding AdresseHotel}" HorizontalAlignment="Left" Height="23" Margin="137,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Label Content="Type de services : " HorizontalAlignment="Left" Margin="262,41,0,0" VerticalAlignment="Top"/>
-                <Label Content="Code Ville : " HorizontalAlignment="Left" Margin="262,72,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="hot_txtNbEtoiles" Text="{Binding NbEtoiles}" HorizontalAlignment="Left" Height="23" Margin="377,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="hot_txtTypeService" Text="{Binding TypeService}" HorizontalAlignment="Left" Height="23" Margin="377,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Button x:Name="hot_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="377,107,0,0" VerticalAlignment="Top" Width="120"/>
-                <ComboBox x:Name="hot_cmbCodeVille" HorizontalAlignment="Left" Margin="377,74,0,0" VerticalAlignment="Top" Width="120"/>
-            </Grid>
-        </GroupBox>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF437E87" Offset="1"/>
+            <GradientStop Color="White"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Viewbox Stretch="Uniform">
+        <Grid Margin="0,0,3.4,-0.8">
+            <GroupBox Header="Hôtel" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="160" Width="519">
+                <Grid HorizontalAlignment="Left" Height="143" Margin="2,0,-1.8,-5.4" VerticalAlignment="Top" Width="507">
+                    <Label Content="Code Hôtel : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Nom Hôtel : " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Nombre Chambres : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Adresse Hôtel : " HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Nombre d'étoiles : " HorizontalAlignment="Left" Margin="262,10,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="hot_txtCodeHotel" Text="{Binding CodeHotel}" HorizontalAlignment="Left" Height="23" Margin="137,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="hot_txtNomHotel" Text="{Binding NomHotel}" HorizontalAlignment="Left" Height="23" Margin="137,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="hot_txtNbChambre" Text="{Binding NbChambre}" HorizontalAlignment="Left" Height="23" Margin="137,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="hot_txtAdresseHotel" Text="{Binding AdresseHotel}" HorizontalAlignment="Left" Height="23" Margin="137,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Type de services : " HorizontalAlignment="Left" Margin="262,41,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Code Ville : " HorizontalAlignment="Left" Margin="262,72,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="hot_txtNbEtoiles" Text="{Binding NbEtoiles}" HorizontalAlignment="Left" Height="23" Margin="377,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="hot_txtTypeService" Text="{Binding TypeService}" HorizontalAlignment="Left" Height="23" Margin="377,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="hot_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="377,107,0,0" VerticalAlignment="Top" Width="120"/>
+                    <ComboBox x:Name="hot_cmbCodeVille" HorizontalAlignment="Left" Margin="377,74,0,0" VerticalAlignment="Top" Width="120"/>
+                </Grid>
+            </GroupBox>
 
-    </Grid>
+        </Grid>
+    </Viewbox>
+    
 </Window>
