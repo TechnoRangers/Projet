@@ -104,9 +104,6 @@
 
     End Sub
 
-    Private Sub Inv_BtnRechercheCode_Click(sender As Object, e As RoutedEventArgs) Handles Inv_BtnRechercheCode.Click
-
-    End Sub
 
     Private Sub Inv_textBoxRechercheCode_TextChanged(sender As Object, e As TextChangedEventArgs) Handles Inv_textBoxRechercheCode.TextChanged
         FiltrerDatagrid()
