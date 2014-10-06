@@ -45,13 +45,13 @@
     Sub FiltrerDatagrid()
         If _macategorie.CodeCategorie IsNot Nothing And _monHotel.CodeHotel IsNot Nothing And _macategorie.CodeCategorie <> "TOU" Then
             Dim resInventaire = From vueinventaire In MaBD.VueInventaire
-                                Where vueinventaire.CodeCategorie = _macategorie.CodeCategorie And vueinventaire.CodeHotel = _monHotel.CodeHotel
+                                Where vueinventaire.CodeCategorie = _macategorie.CodeCategorie And vueinventaire.CodeHotel = _monHotel.CodeHotel And vueinventaire.CodeFourniture.StartsWith(Inv_textBoxRechercheCode.Text)
                                 Select vueinventaire
 
             DatagridInv.ItemsSource = resInventaire.ToList
         Else
             Dim resinventaire = From vueinventaire In MaBD.VueInventaire
-                                Where vueinventaire.CodeHotel = _monHotel.CodeHotel
+                                Where vueinventaire.CodeHotel = _monHotel.CodeHotel And vueinventaire.CodeFourniture.StartsWith(Inv_textBoxRechercheCode.Text)
                                 Select vueinventaire
 
             DatagridInv.ItemsSource = resinventaire.ToList
@@ -106,35 +106,9 @@
 
     Private Sub Inv_BtnRechercheCode_Click(sender As Object, e As RoutedEventArgs) Handles Inv_BtnRechercheCode.Click
 
-        'Dim Trouver As Boolean
-        'Trouver = False
-        'Dim i As Integer
-        'i = 0
-
-        'Dim res = From q1 In MaBD.tblFourniture
-        '          Select q1.CodeFourniture
-
-        'While i < res.Count And Trouver = False
-        '    If Inv_textBoxRechercheCode.Text = res.ToList(i) Then
-        '        Trouver = True
-        '    End If
-        '    i = i + 1
-        'End While
-
-        'If Trouver = True Then
-        '    Dim res2 = From t1 In MaBD.tblFournisseur Join t2 In MaBD.tblFournitureFournisseur On t1.CodeFournisseur Equals t2.CodeFournisseur Join t3 In MaBD.tblFournitureHotel On t3.NoSeqFourniture Equals t2.NoSeqFourniture
-        '                  Where t3.CodeHotel = _monHotel.CodeHotel And t3.NoSeqFourniture = Inv_textBoxRechercheCode.Text
-        '                 Select New With {.NomFournisseur = t1.NomFournisseur, .codeFourniture = t2.NoSeqFourniture, .DescFourniture = t2.tblFourniture.DescFourniture, .Prix = t2.PrixFournitureFournisseur, .QuantiteMin = t3.QuantiteMin, .QuantiteMax = t3.QuantiteMax, .Quantite = t3.QuantiteFournitureHotel}
-
-
-        '    DatagridInv.ItemsSource = res2.ToList()
-        'ElseIf Trouver = False Then
-        '    MessageBox.Show("Code inexistant")
-        'End If
-
     End Sub
 
     Private Sub Inv_textBoxRechercheCode_TextChanged(sender As Object, e As TextChangedEventArgs) Handles Inv_textBoxRechercheCode.TextChanged
-
+        FiltrerDatagrid()
     End Sub
 End Class

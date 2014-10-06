@@ -40,18 +40,22 @@
     End Sub
 
     Private Sub com_btnAjouterFourniture_Click(sender As Object, e As RoutedEventArgs) Handles com_btnAjouterFourniture.Click
-        Dim FournitureSelection As tblFourniture = CType(com_dtgFournitureCommande.SelectedItem, tblFourniture)
 
-        Dim FournitureFournisseur As tblFournitureFournisseur
+        If com_dtgFournitureCommande.SelectedItem IsNot Nothing Then
+            Dim FournitureSelection As tblFourniture = CType(com_dtgFournitureCommande.SelectedItem, tblFourniture)
 
-        FournitureFournisseur = (From tabFournitureFournisseur In MaBD.tblFournitureFournisseur
-                                    Where tabFournitureFournisseur.NoSeqFourniture = FournitureSelection.NoSeqFourniture And Fournisseur.CodeFournisseur = tabFournitureFournisseur.CodeFournisseur
-                                    Select tabFournitureFournisseur).ToList.First
+            Dim FournitureFournisseur As tblFournitureFournisseur
 
-        ItemCommande.Add(FournitureFournisseur)
+            FournitureFournisseur = (From tabFournitureFournisseur In MaBD.tblFournitureFournisseur
+                                        Where tabFournitureFournisseur.NoSeqFourniture = FournitureSelection.NoSeqFourniture And Fournisseur.CodeFournisseur = tabFournitureFournisseur.CodeFournisseur
+                                        Select tabFournitureFournisseur).ToList.First
 
-        CalculPrixTotal()
-        com_lbvCommande.ItemsSource = ItemCommande.ToList
+            ItemCommande.Add(FournitureFournisseur)
+
+            CalculPrixTotal()
+            com_lbvCommande.ItemsSource = ItemCommande.ToList
+        End If
+
     End Sub
 
     Private Sub com_btnRetirerFourniture_Click(sender As Object, e As RoutedEventArgs) Handles com_btnRetirerFourniture.Click

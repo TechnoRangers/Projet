@@ -318,6 +318,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <Key>
             <PropertyRef Name="CodeHotel" />
             <PropertyRef Name="NoSeqFourniture" />
+            <PropertyRef Name="CodeFourniture" />
             <PropertyRef Name="DescFourniture" />
             <PropertyRef Name="CodeCategorie" />
             <PropertyRef Name="NomCategorie" />
@@ -329,6 +330,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           </Key>
           <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="NoSeqFourniture" Type="int" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="DescFourniture" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CodeCategorie" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="NomCategorie" Type="varchar" MaxLength="20" Nullable="false" />
@@ -794,6 +796,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             <DefiningQuery>SELECT 
     [VueInventaire].[CodeHotel] AS [CodeHotel], 
     [VueInventaire].[NoSeqFourniture] AS [NoSeqFourniture], 
+    [VueInventaire].[CodeFourniture] AS [CodeFourniture], 
     [VueInventaire].[DescFourniture] AS [DescFourniture], 
     [VueInventaire].[CodeCategorie] AS [CodeCategorie], 
     [VueInventaire].[NomCategorie] AS [NomCategorie], 
@@ -1302,6 +1305,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <Key>
             <PropertyRef Name="CodeHotel" />
             <PropertyRef Name="NoSeqFourniture" />
+            <PropertyRef Name="CodeFourniture" />
             <PropertyRef Name="DescFourniture" />
             <PropertyRef Name="CodeCategorie" />
             <PropertyRef Name="NomCategorie" />
@@ -1313,6 +1317,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           </Key>
           <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="NoSeqFourniture" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DescFourniture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CodeCategorie" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="NomCategorie" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
@@ -2156,6 +2161,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
               <MappingFragment StoreEntitySet="VueInventaire">
                 <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
                 <ScalarProperty Name="NoSeqFourniture" ColumnName="NoSeqFourniture" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
                 <ScalarProperty Name="DescFourniture" ColumnName="DescFourniture" />
                 <ScalarProperty Name="CodeCategorie" ColumnName="CodeCategorie" />
                 <ScalarProperty Name="NomCategorie" ColumnName="NomCategorie" />

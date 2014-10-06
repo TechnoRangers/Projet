@@ -13,6 +13,7 @@ Imports System.Collections.Generic
 Partial Public Class VueInventaire
     Public Property CodeHotel As String
     Public Property NoSeqFourniture As Integer
+    Public Property CodeFourniture As String
     Public Property DescFourniture As String
     Public Property CodeCategorie As String
     Public Property NomCategorie As String
