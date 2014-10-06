@@ -21,7 +21,6 @@
 
     End Sub
 
-
     Private Sub Men_btnResChambre_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnResChambre.Click
 
         Dim Disponibilite_ As New ClientReservation(MaBD)
@@ -32,7 +31,7 @@
 
     Private Sub Men_btnInventaire_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnInventaire.Click
 
-        Dim Inventaire_ As New Inventaire
+        Dim Inventaire_ As New Inventaire(MaBD)
         Inventaire_.Show()
         'Me.Close()
 
@@ -40,7 +39,7 @@
 
     Private Sub Men_btnEquipement_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnEquipement.Click
 
-        Dim Equipement_ As New Equipement
+        Dim Equipement_ As New Equipement(MaBD)
         Equipement_.Show()
         'Me.Close()
 
@@ -48,19 +47,11 @@
 
     Private Sub Men_btnStatistique_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnStatistique.Click
 
-        Dim Statistique_ As New Statistique
+        Dim Statistique_ As New Statistique(MaBD)
         Statistique_.Show()
         'Me.Close()
 
     End Sub
-
-    '    Private Sub Men_btnAdmConsol_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnAdmConsol.Click
-
-    '        Dim DosEmploye_ As New DosEmploye
-    '        DosEmploye_.Show()
-    '        Me.Close()
-
-    '    End Sub
 
     Private Sub Men_btnQuitter_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnQuitter.Click
 
@@ -78,9 +69,14 @@
     End Sub
 
     Private Sub Men_btnResSalle_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnResSalle.Click
-        Dim Salle As New ReservationSalle
+        Dim Salle As New ReservationSalle(MaBD)
         Salle.Show()
         'Me.Close()
 
+    End Sub
+
+    Private Sub Men_BtnConsoleAdmin_Click(sender As Object, e As RoutedEventArgs) Handles Men_BtnConsoleAdmin.Click
+        Dim ConsoleAdmin As New ConsoleAdmin(MaBD)
+        ConsoleAdmin.Show()
     End Sub
 End Class

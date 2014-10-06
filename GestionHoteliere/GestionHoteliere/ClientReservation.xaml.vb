@@ -8,7 +8,7 @@
 
     Private Sub Cli_BtnContinuer_Click(sender As Object, e As RoutedEventArgs) Handles Cli_BtnContinuer.Click
 
-        Dim Dispo_ As New DispoChambre
+        Dim Dispo_ As New DispoChambre(BD)
         Dispo_.Show()
         Me.Close()
 
