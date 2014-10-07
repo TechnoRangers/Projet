@@ -1,9 +1,12 @@
 ﻿Public Class Reservation
     Dim MaBD As P2014_BDTestFrancoisEntities
 
-    'Dim ListeReservationChambre As New List(Of tblChambre)
-
     Dim ListeChambreReservation As New List(Of tblChambre)
+    Dim ListeReservationChambre As New List(Of tblChambreReservationChambre)
+
+    Dim ReservationChambre As tblReservationChambre
+
+    'Dim ListeReservationChambre As New List(Of tblChambre)
 
     'Dim ListeChambreSelection As ListCollectionView
 
@@ -11,6 +14,14 @@
         InitializeComponent()
         MaBD = _MaBD
         ListeChambreReservation = _ListeChambreReservation
+        ReservationChambre = New tblReservationChambre
+
+        For Each Chambre In ListeChambreReservation
+            Dim ChambReservChambre As New tblChambreReservationChambre
+            ChambReservChambre.NoSeqChambre = Chambre.NoSeqChambre
+            ChambReservChambre.NoSeqReservChambre = ReservationChambre.NoSeqReservChambre
+            ListeReservationChambre.Add(ChambReservChambre)
+        Next
     End Sub
 
     'Public WriteOnly Property LesChambres() As IList
@@ -28,13 +39,16 @@
 
     Private Sub Res_btnReserver_Click(sender As Object, e As RoutedEventArgs) Handles Res_btnReserver.Click
 
-        Me.Close()
+        ReservationChambre.ModePaiement = Res_ComboBoxMoyenPaiement.SelectedItem
+        ReservationChambre.PrixReservChambre = Res_TextBoxMontant.Text
 
+        Me.Close()
     End Sub
 
     Private Sub Res_frmReservation_Loaded(sender As Object, e As RoutedEventArgs) Handles Res_frmReservation.Loaded
 
         res_lbvChambres.ItemsSource = ListeChambreReservation.ToList
+
 
         'Res_TextBoxNoChambre.DataContext = ListeChambreSelection
         'Res_TextBoxTypeChambre.DataContext = ListeChambreSelection
@@ -53,7 +67,6 @@
         'Res_TextBoxNbChambre.Text = ListeChambreSelection.Count
 
     End Sub
-
 
     Private Sub Res_BtnSuivant_Click(sender As Object, e As RoutedEventArgs) Handles Res_BtnSuivant.Click
 
@@ -89,5 +102,47 @@
     '    Next
     'End Sub
 
+    Private Sub res_lbvChambres_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles res_lbvChambres.SelectionChanged
 
+        'Dim Chambre As tblChambre = CType(res_lbvChambres.SelectedItem, tblChambre)
+
+
+        For Each Chamb As tblChambre In ListeChambreReservation
+
+            For Each Reserv As tblChambreReservationChambre In ListeReservationChambre
+
+                If Chamb.NoSeqChambre = Reserv.NoSeqChambre Then
+
+                    'Stuff ici
+
+                End If
+
+            Next
+
+        Next
+
+        'For Each Chambre in ListeChambreReservation
+
+        'For Each ChambReservChamb In ListeReservationChambre
+
+        'Next
+
+        'Next
+
+
+        'Res_TextBoxMontant.DataContext = ListeChambreReservation.Item(Chambre)
+
+
+        'Dim ChambreReservation As New tblChambreReservationChambre
+
+        'ChambreReservation.NoSeqChambre = Chambre.NoSeqChambre
+
+
+        'ReservationChambre.tblChambreReservationChambre.Add(ChambreReservation)
+
+
+
+        'Res_TextBoxNoChambre.DataContext = Chambre
+        'Res_TextBoxTypeChambre.DataContext = Chambre
+    End Sub
 End Class

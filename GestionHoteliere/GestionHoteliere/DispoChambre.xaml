@@ -19,9 +19,9 @@
                     </Grid.RowDefinitions>
                     <CheckBox x:Name="Dis_ChkReserver" Content="Réserver" HorizontalAlignment="Left" Margin="93,90.734,0,0" VerticalAlignment="Top" Grid.Row="1"/>
                     <CheckBox x:Name="Dis_ChkDisponible" Content="Disponible" HorizontalAlignment="Left" Margin="10,90.734,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.976,0.918" Grid.Row="1"/>
-                    <ComboBox x:Name="Dis_CmbChoix1" HorizontalAlignment="Left" Margin="10,175.2,0,0" VerticalAlignment="Top" Width="141" Grid.Row="1"/>
-                    <ComboBox x:Name="Dis_CmbChoix2" HorizontalAlignment="Left" Margin="10,133.2,0,95.4" Width="141" Grid.Row="1"/>
-                    <ComboBox x:Name="Dis_CmbChoix3" HorizontalAlignment="Left" Margin="10,216.734,0,0" VerticalAlignment="Top" Width="141" Grid.Row="1"/>
+                    <ComboBox x:Name="Dis_CmbEtage" HorizontalAlignment="Left" Margin="10,175.2,0,0" VerticalAlignment="Top" Width="141" Grid.Row="1"/>
+                    <ComboBox x:Name="Dis_CmbTypeChambre" HorizontalAlignment="Left" Margin="10,133.2,0,95.4" Width="141" Grid.Row="1"/>
+                    <ComboBox x:Name="Dis_CmbNbLit" HorizontalAlignment="Left" Margin="10,216.734,0,0" VerticalAlignment="Top" Width="141" Grid.Row="1"/>
                     <DatePicker x:Name="Dis_DtpDateReser" HorizontalAlignment="Left" Margin="10,0,0,193.4" VerticalAlignment="Bottom" Grid.Row="1"/>
                 </Grid>
             </GroupBox>
@@ -40,7 +40,7 @@
             <Label Content="Date:" HorizontalAlignment="Left" Margin="544,80,0,0" VerticalAlignment="Top" Width="129"/>
             <Label Content="Type de Chambre:" HorizontalAlignment="Left" Margin="544,181,0,0" VerticalAlignment="Top" Height="24" Width="129"/>
             <Label Content="Étage:" HorizontalAlignment="Left" Margin="544,226,0,0" VerticalAlignment="Top" Width="129"/>
-            <Label Content="nombre de lit:" HorizontalAlignment="Left" Margin="544,272,0,0" VerticalAlignment="Top"/>
+            <Label Content="Nombre de lit:" HorizontalAlignment="Left" Margin="544,272,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Viewbox>
 </Window>
