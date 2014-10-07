@@ -15,6 +15,8 @@
 
         _TypeChambre = New tblTypeChambre()
 
+        Dis_DtpDateReser.SelectedDate = Date.Today
+
         Dis_CmbTypeChambre.ItemsSource = res.ToList
         Dis_CmbTypeChambre.SelectedValue = res.ToList.First
         Dis_CmbTypeChambre.DisplayMemberPath = "NomTypeChambre"
@@ -119,11 +121,17 @@
 
     Sub FiltrerDatagrid()
         If _TypeChambre IsNot Nothing And EtageSelection <> Nothing And NbLitSelection <> Nothing Then
-            Dim resChambres = From tabChambre In BD.tblChambre
-                              Where tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre And tabChambre.EtageChambre = EtageSelection And tabChambre.NbLit = NbLitSelection
+            Dim resChambres = From tabChambre In BD.tblChambre Join tabChaResCha In BD.tblChambreReservationChambre On tabChaResCha.NoSeqChambre Equals tabChambre.NoSeqChambre
+                              Where tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre And tabChambre.EtageChambre = EtageSelection And tabChambre.NbLit = NbLitSelection And Dis_DtpDateReser.SelectedDate < tabChaResCha.DateDebutReservation And Dis_DtpDateReser.SelectedDate > tabChaResCha.DateFinReservation
                               Select tabChambre
 
             Dis_GrtChambre.ItemsSource = resChambres.ToList
+
+            '
+            '
+            '
+            '
+            '
         End If
     End Sub
 

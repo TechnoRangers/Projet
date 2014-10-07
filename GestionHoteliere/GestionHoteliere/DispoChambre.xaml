@@ -17,8 +17,6 @@
                         <RowDefinition Height="5*"/>
                         <RowDefinition Height="249*"/>
                     </Grid.RowDefinitions>
-                    <CheckBox x:Name="Dis_ChkReserver" Content="Réserver" HorizontalAlignment="Left" Margin="93,90.734,0,0" VerticalAlignment="Top" Grid.Row="1"/>
-                    <CheckBox x:Name="Dis_ChkDisponible" Content="Disponible" HorizontalAlignment="Left" Margin="10,90.734,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.976,0.918" Grid.Row="1"/>
                     <ComboBox x:Name="Dis_CmbEtage" HorizontalAlignment="Left" Margin="10,175.2,0,0" VerticalAlignment="Top" Width="141" Grid.Row="1"/>
                     <ComboBox x:Name="Dis_CmbTypeChambre" HorizontalAlignment="Left" Margin="10,133.2,0,95.4" Width="141" Grid.Row="1"/>
                     <ComboBox x:Name="Dis_CmbNbLit" HorizontalAlignment="Left" Margin="10,216.734,0,0" VerticalAlignment="Top" Width="141" Grid.Row="1"/>
