@@ -143,7 +143,7 @@
 
 
     Private Sub LocSal_Equi_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_Equi.Click
-        Dim Locequ As New LocationEquipement
+        Dim Locequ As New LocationEquipement(MaBd)
         Locequ.Show()
     End Sub
 End Class
