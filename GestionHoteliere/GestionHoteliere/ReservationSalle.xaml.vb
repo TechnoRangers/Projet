@@ -1,5 +1,6 @@
 ﻿Public Class ReservationSalle
     Dim MaBd As P2014_BDTestFrancoisEntities
+    Dim NoRes As Int32
 
     Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
         InitializeComponent()
@@ -79,7 +80,9 @@
                 MaBd.tblReservationSalle.Add(NewEl)
                 MaBd.SaveChanges()
                 LocSal_TxtBoxNoRes.Text = NewEl.NoSeqReservSalle
+                NoRes = NewEl.NoSeqReservSalle
                 MessageBox.Show("La réservation a été ajouter")
+                LocSal_Equi.IsEnabled = True
             Catch ex As Exception
                 MessageBox.Show("Veuillez verifier tous les champs")
             End Try
@@ -143,7 +146,7 @@
 
 
     Private Sub LocSal_Equi_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_Equi.Click
-        Dim Locequ As New LocationEquipement(MaBd)
+        Dim Locequ As New LocationEquipement(MaBd, NoRes)
         Locequ.Show()
     End Sub
 End Class

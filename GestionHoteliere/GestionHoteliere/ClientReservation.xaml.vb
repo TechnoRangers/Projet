@@ -31,13 +31,13 @@
     Sub FiltrerDatagrid()
 
         Dim resChambre = From rc In BD.tblReservationChambre Join Rcr In BD.tblChambreReservationChambre On rc.NoSeqReservChambre Equals Rcr.NoSeqReservChambre Join Ch In BD.tblChambre On Rcr.NoSeqChambre Equals Ch.NoSeqChambre Join Cl In BD.tblClient On Cl.NoSeqClient Equals rc.NoSeqClient
-        Where Cl.PrenomClient = Res_TextBoxPren.Text And Cl.NomClient = Res_TextBoxNom.Text And Cl.codepostal = Res_TextBoxCodePostal
+        Where Cl.PrenomClient = Res_TextBoxPren.Text And Cl.NomClient = Res_TextBoxNom.Text And Cl.CodePostal = Res_TextBoxCodePostal.Text
         Select Ch.tblTypeChambre, Ch.TypeLit, Ch.NbLit, Ch.EtageChambre, Ch.StatutChambre, Ch.DescChambre
 
 
 
-        If resChambre.toList = Nothing Then
-
+        'If resChambre.ToList = Nothing Then
+        If IsNothing(resChambre.ToList) Then
             MessageBox.Show("Le client n'est jamais venu à l'hôtel avant")
 
         Else
