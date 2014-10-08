@@ -1,14 +1,11 @@
 ﻿Public Class Reservation
     Dim MaBD As P2014_BDTestFrancoisEntities
 
+    Dim Selection As tblChambre
     Dim ListeChambreReservation As New List(Of tblChambre)
     Dim ListeReservationChambre As New List(Of tblChambreReservationChambre)
-
     Dim ReservationChambre As tblReservationChambre
-
-    'Dim ListeReservationChambre As New List(Of tblChambre)
-
-    'Dim ListeChambreSelection As ListCollectionView
+    Dim PrixReservation As Double
 
     Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, ByRef _ListeChambreReservation As List(Of tblChambre))
         InitializeComponent()
@@ -21,128 +18,96 @@
             ChambReservChambre.NoSeqChambre = Chambre.NoSeqChambre
             ChambReservChambre.NoSeqReservChambre = ReservationChambre.NoSeqReservChambre
             ListeReservationChambre.Add(ChambReservChambre)
+
+            'PrixReservation += Chambre.PrixChambre
         Next
-    End Sub
 
-    'Public WriteOnly Property LesChambres() As IList
-
-    '    Set(ByVal value As IList)
-    '        ListeChambreSelection = New ListCollectionView(value)
-    '    End Set
-    'End Property
-
-    Private Sub Res_btnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Res_btnAnnuler.Click
-
-        Me.Close()
-
-    End Sub
-
-    Private Sub Res_btnReserver_Click(sender As Object, e As RoutedEventArgs) Handles Res_btnReserver.Click
-
-        ReservationChambre.ModePaiement = Res_ComboBoxMoyenPaiement.SelectedItem
-        ReservationChambre.PrixReservChambre = Res_TextBoxMontant.Text
-
-        Me.Close()
+        Res_DatePickerArr.SelectedDate = System.DateTime.Today
+        Res_DatePikerDep.SelectedDate = DateAdd("d", 1, Now)
+        Res_TextBoxNbChambre.Text = ListeReservationChambre.Count
     End Sub
 
     Private Sub Res_frmReservation_Loaded(sender As Object, e As RoutedEventArgs) Handles Res_frmReservation.Loaded
 
         res_lbvChambres.ItemsSource = ListeChambreReservation.ToList
 
-
-        'Res_TextBoxNoChambre.DataContext = ListeChambreSelection
-        'Res_TextBoxTypeChambre.DataContext = ListeChambreSelection
-
-        'For Each Chambre In ListeChambreSelection
-        '    Dim ReservChamb As New tblChambreReservationChambre
-
-        '    ReservChamb.NoSeqChambre = Chambre
-
-
-        'Next
-
-
-        'Res_TextBoxNbAdulte.DataContext = ListeChambreReservation
-
-        'Res_TextBoxNbChambre.Text = ListeChambreSelection.Count
-
     End Sub
-
-    Private Sub Res_BtnSuivant_Click(sender As Object, e As RoutedEventArgs) Handles Res_BtnSuivant.Click
-
-        'ListeChambreSelection.MoveCurrentToNext()
-        'SauvegardeDonneChambre()
-
-    End Sub
-
-    Private Sub Res_BtnPrecedent_Click(sender As Object, e As RoutedEventArgs) Handles Res_BtnPrecedent.Click
-
-        'ListeChambreSelection.MoveCurrentToPrevious()
-
-    End Sub
-
-    'Sub SauvegardeDonneChambre()
-    '    Dim Chambre As tblChambre
-
-    '    Chambre = CType(ListeChambreSelection.CurrentItem(), tblChambre)
-    'End Sub
-
-    'Sub InitialiserListeReservationChambre()
-    '    For Each Chambre In ListeChambreSelection
-
-    '        Dim ReservChambre As New tblChambreReservationChambre
-
-    '        ReservChambre.NoSeqChambre = Chambre
-    '        ReservChambre.NbPersonne = Res_TextBoxNbAdulte.Text
-    '        ReservChambre.NomLocataire = Res_TextBoxNomLocataire.Text
-    '        ReservChambre.PrenomLocataire = Res_TextBoxPrenomLocataire.Text
-    '        ReservChambre.DateDebutReservation = Res_DatePickerArr.SelectedDate
-    '        ReservChambre.DateFinReservation = Res_DatePikerDep.SelectedDate
-
-    '    Next
-    'End Sub
 
     Private Sub res_lbvChambres_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles res_lbvChambres.SelectionChanged
+        Dim Chambre As tblChambre = CType(res_lbvChambres.SelectedItem, tblChambre)
+        Dim Reservation_ As New tblChambreReservationChambre
 
-        'Dim Chambre As tblChambre = CType(res_lbvChambres.SelectedItem, tblChambre)
-
-
-        For Each Chamb As tblChambre In ListeChambreReservation
-
-            For Each Reserv As tblChambreReservationChambre In ListeReservationChambre
-
-                If Chamb.NoSeqChambre = Reserv.NoSeqChambre Then
-
-                    'Stuff ici
-
-                End If
-
-            Next
-
+        'Pogne la réservation de la chambre sélectionné
+        For Each Reserv As tblChambreReservationChambre In ListeReservationChambre
+            If Chambre.NoSeqChambre = Reserv.NoSeqChambre Then
+                Reservation_ = Reserv
+            End If
         Next
 
-        'For Each Chambre in ListeChambreReservation
+        'Sauvegarde les données de la réservation de la chambre sélectionnée.
+        If Selection IsNot Nothing Then
+            For Each Reserv As tblChambreReservationChambre In ListeReservationChambre
+                If Reserv.NoSeqChambre = Selection.NoSeqChambre Then
+                    Reserv.NomLocataire = Res_TextBoxNomLocataire.Text
+                    Reserv.PrenomLocataire = Res_TextBoxPrenomLocataire.Text
+                    Reserv.NbPersonne = Res_TextBoxNbAdulte.Text
+                    Reserv.DateDebutReservation = Res_DatePickerArr.SelectedDate
+                    Reserv.DateFinReservation = Res_DatePikerDep.SelectedDate
+                End If
+            Next
+        End If
 
-        'For Each ChambReservChamb In ListeReservationChambre
+        'Rempli les champs avec la réservation selectionnée
+        Res_TextBoxNoChambre.DataContext = Chambre
+        Res_TextBoxTypeChambre.DataContext = Chambre
+        Res_TextBoxNomLocataire.Text = Reservation_.NomLocataire
+        Res_TextBoxPrenomLocataire.Text = Reservation_.PrenomLocataire
+        Res_TextBoxNbAdulte.Text = Reservation_.NbPersonne
+        If Reservation_.DateDebutReservation <> Nothing And Reservation_.DateFinReservation <> Nothing Then
+            Res_DatePickerArr.SelectedDate = Reservation_.DateDebutReservation
+            Res_DatePikerDep.SelectedDate = Reservation_.DateFinReservation
+        End If
 
-        'Next
+        'Garde la sélection précédante
+        Selection = Chambre
+    End Sub
 
-        'Next
+    Private Sub Res_btnReserver_Click(sender As Object, e As RoutedEventArgs) Handles Res_btnReserver.Click
 
+        Try
+            ReservationChambre.ModePaiement = Res_ComboBoxMoyenPaiement.SelectionBoxItem.ToString
+            ReservationChambre.PrixReservChambre = CType(Res_TextBoxMontant.Text, Integer)
+            ReservationChambre.NoSeqClient = 1000
 
-        'Res_TextBoxMontant.DataContext = ListeChambreReservation.Item(Chambre)
+            ReservationChambre.NbPersonne = 0
+            For Each Reserv As tblChambreReservationChambre In ListeReservationChambre
+                ReservationChambre.NbPersonne += Reserv.NbPersonne
+            Next
 
+            MaBD.tblReservationChambre.Add(ReservationChambre)
+            MaBD.SaveChanges()
 
-        'Dim ChambreReservation As New tblChambreReservationChambre
+            Try
 
-        'ChambreReservation.NoSeqChambre = Chambre.NoSeqChambre
+                For Each Reserv As tblChambreReservationChambre In ListeReservationChambre
+                    Reserv.NoSeqReservChambre = ReservationChambre.NoSeqReservChambre
+                    MaBD.tblChambreReservationChambre.Add(Reserv)
+                Next
+                MaBD.SaveChanges()
+            Catch ex As Exception
+                MessageBox.Show("Erreur dans l'ajout des chambre dans la réservation")
+            End Try
+            MessageBox.Show("La réservation a été enregistrée.")
+        Catch ex As Exception
+            MessageBox.Show("Erreur dans l'ajout de la réservation.")
+        End Try
 
+        Me.Close()
+    End Sub
 
-        'ReservationChambre.tblChambreReservationChambre.Add(ChambreReservation)
+    Private Sub Res_btnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Res_btnAnnuler.Click
 
+        Me.Close()
 
-
-        'Res_TextBoxNoChambre.DataContext = Chambre
-        'Res_TextBoxTypeChambre.DataContext = Chambre
     End Sub
 End Class
