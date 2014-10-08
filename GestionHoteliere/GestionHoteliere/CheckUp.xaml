@@ -9,21 +9,20 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-        <Grid Margin="0,0,-6.4,0" Width="1022">
+        <Grid Margin="0,0,-6.4,0" Width="1045">
             <Label x:Name="Che_LblNoChambre" Content="No chambre :" HorizontalAlignment="Left" Margin="34,29,0,0" VerticalAlignment="Top" FontSize="16"/>
             <ComboBox x:Name="Che_ComboBoxNoChambre" HorizontalAlignment="Left" Margin="145,29,0,0" VerticalAlignment="Top" Width="126" Height="32"/>
-            <GroupBox x:Name="Che_GroupBoxListeFour" Header="Liste fourniture" HorizontalAlignment="Left" Margin="34,81,0,0" VerticalAlignment="Top" Height="553" Width="956" FontSize="20">
-                <Grid HorizontalAlignment="Left" Height="351" Margin="10,10,0,0" VerticalAlignment="Top" Width="925">
-                    <DataGrid x:Name="Che_Datagrid" HorizontalAlignment="Right" AutoGenerateColumns="False"  Margin="0,10,10,-153" VerticalAlignment="Top" Height="493" Width="913" FontSize="14">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Fourniture.DescFourniture}" Width="300" ClipboardContentBinding="{x:Null}" Header="Fourniture"/>
-                            <DataGridCheckBoxColumn Binding="{Binding EstCocher}" ClipboardContentBinding="{x:Null}" Width="300" Header="À remplacer"/>
-                        </DataGrid.Columns>
-
-                    </DataGrid>
-                </Grid>
-
-
+            <GroupBox x:Name="Che_GroupBoxListeFour" Header="Liste fourniture" HorizontalAlignment="Left" Margin="34,81,0,0" VerticalAlignment="Top" Height="400" Width="956" FontSize="20">
+                <DataGrid HorizontalAlignment="Right" Margin="0,21,11,0" VerticalAlignment="Top" Height="340" Width="923"/>
+            </GroupBox>
+            <GroupBox x:Name="Che_GroupeBoxCommentaire" Header="Commentaire" HorizontalAlignment="Left" Margin="34,495,0,0" VerticalAlignment="Top" Height="152" Width="956">
+                <RichTextBox HorizontalAlignment="Left" Height="108" Margin="10,10,0,0" VerticalAlignment="Top" Width="926">
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run Text=""/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
             </GroupBox>
             <Button x:Name="Che_BtnEnregistrer" Content="Enregistrer" HorizontalAlignment="Left" Margin="667,652,0,0" VerticalAlignment="Top" Width="159" Height="44" FontSize="16">
                 <Button.Background>

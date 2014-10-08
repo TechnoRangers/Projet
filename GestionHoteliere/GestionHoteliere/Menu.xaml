@@ -12,7 +12,7 @@
 
     <Viewbox Stretch="Uniform" Margin="0,0,-6.6,-0.4">
         <Grid Margin="0,0,3.6,-0.4" Width="1243">
-            <Grid Height="773" Margin="10,0,-1,0.2" RenderTransformOrigin="0.5,0.5">
+            <Grid Height="773" Margin="0,0,9,0.2" RenderTransformOrigin="0.5,0.5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="31.4"/>
                 </Grid.RowDefinitions>
@@ -45,43 +45,34 @@
                     </Grid>
                 </GroupBox>
                 <GroupBox x:Name="Men_GrbSta"   Header="Statistique"     HorizontalAlignment="Left" Margin="10,0,-178.6,-720"   VerticalAlignment="Bottom" Width="219" Height="106">
-                    <Button  x:Name="Men_btnStatistique"         Margin="10,10,7.4,4.2">
+                    <Button  x:Name="Men_btnStatistique"         Margin="10,10,11.2,4.2">
                         <StackPanel Orientation="Horizontal" Width="177" Height="70">
                             <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\statistiques.png" Width="105" Margin="0,0,0,0.4"/>
                             <TextBlock Text="Statistiques" Height="18" Margin="0,26,15,26.4"/>
                         </StackPanel>
                     </Button>
                 </GroupBox>
-                <GroupBox x:Name="Men_GrbGes"   Header="Gestion"         HorizontalAlignment="Left" Margin="10,0,-178.6,-435"   VerticalAlignment="Bottom" Width="219" Height="170"/>
+                <GroupBox x:Name="Men_GrbGes"   Header="Gestion"         HorizontalAlignment="Left" Margin="10,0,-178.6,-468"   VerticalAlignment="Bottom" Width="219" Height="189"/>
                 <Label x:Name="Men_LblNomEmploye" Content="Nom employé" HorizontalAlignment="Right" Height="32" Margin="0,100,-1151.6,-100" VerticalAlignment="Top" Width="218" FontSize="18"/>
                 <Label x:Name="Men_LbltypeEmploi" Content="Type employé" HorizontalAlignment="Right" Height="34" Margin="0,66,-1151.6,-68"  VerticalAlignment="Top" Width="218" FontSize="18"/>
                 <Label x:Name="Men_LblHotel"      Content="Nom hotel" HorizontalAlignment="Right" Height="34" Margin="0,32,-1151.6,-34"  VerticalAlignment="Top" Width="218" FontSize="18"/>
                 <Label Content="Bienvenue" HorizontalAlignment="Left" Height="100" Margin="482,236,-747.6,-304" VerticalAlignment="Top" Width="316" FontSize="65"/>
-                <GroupBox Header="Personnel" HorizontalAlignment="Left" Height="161" Margin="10,472,-178.6,-601" VerticalAlignment="Top" Width="219">
-                    <Grid HorizontalAlignment="Left" Height="131" VerticalAlignment="Top" Width="209" Margin="0,0,-2.6,-3">
-                        <Button x:Name="Men_BtnEntretien" HorizontalAlignment="Left" Height="61" Margin="10,10,0,0" VerticalAlignment="Top" Width="190" Click="Men_BtnEntretien_Click">
-                            <StackPanel Orientation="Horizontal" Width="177" Height="70">
-                                <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Entretien.gif" Width="97" Margin="0,0,0,10.4"/>
-                                <TextBlock Text="Entretien" Height="18" Margin="10,26,15,26.4"/>
-                            </StackPanel>
-                        </Button>
-                        <Button x:Name="Men_BtnHoraires" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="189" Height="55">
-                            <StackPanel Orientation="Horizontal" Width="177" Height="63">
-                                <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Horaires.jpg" Width="65" Margin="0,0,33,10.4"/>
-                                <TextBlock Text="Horaires" Height="18" Margin="10,5,15,16.4"/>
-                            </StackPanel>
-                        </Button>
-
-                    </Grid>
+                <GroupBox Header="Personnel" HorizontalAlignment="Left" Height="108" Margin="10,517,-178.6,-593" VerticalAlignment="Top" Width="219">
+                    <Button x:Name="Men_BtnEntretien" HorizontalAlignment="Left" Height="68" Margin="10,10,0,0" VerticalAlignment="Top" Width="190" Click="Men_BtnEntretien_Click">
+                        <StackPanel Orientation="Horizontal" Width="177" Height="70">
+                            <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Entretien.gif" Width="97" Margin="0,0,0,10.4"/>
+                            <TextBlock Text="Entretien" Height="18" Margin="10,26,15,26.4"/>
+                        </StackPanel>
+                    </Button>
                 </GroupBox>
-                <Grid HorizontalAlignment="Left" Height="143" Margin="20,324,-178.6,-435" VerticalAlignment="Top" Width="209">
-                    <Button  x:Name="Men_btnInventaire"    Margin="10,0,9,76">
+                <Grid HorizontalAlignment="Left" Height="176" Margin="20,324,-178.6,-468" VerticalAlignment="Top" Width="209">
+                    <Button  x:Name="Men_btnInventaire"    Margin="9,10,10,99">
                         <StackPanel Orientation="Horizontal" Width="177" Height="70">
                             <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Inventaire.jpg" Width="105" Margin="0,0,0,0.4"/>
                             <TextBlock Text="Inventaire" Height="18" Margin="15,26,15,26.4"/>
                         </StackPanel>
                     </Button>
-                    <Button x:Name="Men_BtnConsoleAdmin" HorizontalAlignment="Left" Height="59" Margin="10,72,0,0" VerticalAlignment="Top" Width="189">
+                    <Button x:Name="Men_BtnConsoleAdmin" HorizontalAlignment="Left" Height="59" Margin="10,98,0,0" VerticalAlignment="Top" Width="189">
                         <StackPanel Orientation="Horizontal" Width="177" Height="70">
                             <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Ajouter.jpg" Width="80" Margin="0,0,0,0.4"/>
                             <TextBlock Text="Console admin" Height="18" Margin="15,26,15,26.4"/>
