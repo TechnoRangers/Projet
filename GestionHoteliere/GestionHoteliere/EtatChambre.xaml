@@ -1,0 +1,33 @@
+﻿<Window x:Name="Eta_FrmEta" x:Class="EtatChambre"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="EtatChambre" Height="535.2" Width="738">
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="507" VerticalAlignment="Top" Width="731" Margin="10,10,-9.8,-9.8">
+            <Label x:Name="Eta_LblNoChambre" Content="NoChambre :" HorizontalAlignment="Left" Margin="23,34,0,0" VerticalAlignment="Top" FontSize="14"/>
+            <ComboBox x:Name="Eta_CmbBoxNoChambre" HorizontalAlignment="Left" Margin="119,34,0,0" VerticalAlignment="Top" Width="125" Height="29"/>
+            <GroupBox x:Name="Eta_GrpBoxFournitureRemplacer" Header="Liste des fournitures à remplacer" HorizontalAlignment="Left" Margin="23,85,0,0" VerticalAlignment="Top" Height="298" Width="348" FontSize="14">
+                <Grid HorizontalAlignment="Left" Height="277" Margin="4,0,-2,-4.2" VerticalAlignment="Top" Width="334">
+                    <DataGrid x:Name="eta_Datagrid" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="257" Width="314">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Fourniture"/>
+                            <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Etat fourniture"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </GroupBox>
+            <GroupBox x:Name="Eta_GrpBoxCommentaires" Header="Commentaires" HorizontalAlignment="Left" Margin="376,85,0,0" VerticalAlignment="Top" Height="298" Width="327">
+                <Grid HorizontalAlignment="Left" Height="288" VerticalAlignment="Top" Width="317" Margin="0,0,-2.6,-12">
+                    <RichTextBox x:Name="Eta_RichTexBoxCom" HorizontalAlignment="Left" Height="278" Margin="10,0,0,0" VerticalAlignment="Top" Width="297">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text=""/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+    </Grid>
+</Window>

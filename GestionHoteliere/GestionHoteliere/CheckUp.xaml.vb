@@ -69,4 +69,8 @@
         MessageBox.Show("L'enregistrement a bien été effectuer")
 
     End Sub
+
+    Private Sub Che_BtnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Che_BtnAnnuler.Click
+        Me.Close()
+    End Sub
 End Class

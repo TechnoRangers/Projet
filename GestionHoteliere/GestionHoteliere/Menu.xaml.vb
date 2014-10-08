@@ -79,4 +79,11 @@
         Dim ConsoleAdmin As New ConsoleAdmin(MaBD)
         ConsoleAdmin.Show()
     End Sub
+
+    Private Sub Men_BtnHoraires_Click(sender As Object, e As RoutedEventArgs) Handles Men_BtnHoraires.Click
+
+        Dim Horaire As New Horaire()
+        Horaire.Show()
+
+    End Sub
 End Class
