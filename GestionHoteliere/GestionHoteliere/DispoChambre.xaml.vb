@@ -15,6 +15,8 @@
 
         _TypeChambre = New tblTypeChambre()
 
+        Dis_DtpDateReser.SelectedDate = Date.Today
+
         Dis_CmbTypeChambre.ItemsSource = res.ToList
         Dis_CmbTypeChambre.SelectedValue = res.ToList.First
         Dis_CmbTypeChambre.DisplayMemberPath = "NomTypeChambre"
@@ -117,16 +119,6 @@
 
     End Sub
 
-    Sub FiltrerDatagrid()
-        If _TypeChambre IsNot Nothing And EtageSelection <> Nothing And NbLitSelection <> Nothing Then
-            Dim resChambres = From tabChambre In BD.tblChambre
-                              Where tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre And tabChambre.EtageChambre = EtageSelection And tabChambre.NbLit = NbLitSelection
-                              Select tabChambre
-
-            Dis_GrtChambre.ItemsSource = resChambres.ToList
-        End If
-    End Sub
-
 
     Private Sub Dis_CmbTypeChambre_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles Dis_CmbTypeChambre.SelectionChanged
         _TypeChambre = CType(Dis_CmbTypeChambre.SelectedItem, tblTypeChambre)
@@ -146,6 +138,44 @@
         FiltrerDatagrid()
     End Sub
 
+    Sub FiltrerDatagrid()
+        If _TypeChambre IsNot Nothing And EtageSelection <> Nothing And NbLitSelection <> Nothing Then
+            Dim resChambres = From tabChambre In BD.tblChambre
+            Where tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre And tabChambre.EtageChambre = EtageSelection And tabChambre.NbLit = NbLitSelection
+
+            Dis_GrtChambre.ItemsSource = resChambres.ToList
+
+        ElseIf _TypeChambre IsNot Nothing And EtageSelection <> Nothing And NbLitSelection = Nothing Then
+            Dim resChambres = From tabChambre In BD.tblChambre
+            Where tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre And tabChambre.EtageChambre = EtageSelection
+
+        ElseIf _TypeChambre IsNot Nothing And NbLitSelection <> Nothing And EtageSelection = Nothing Then
+            Dim resChambres = From tabChambre In BD.tblChambre
+            Where tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre And tabChambre.NbLit = NbLitSelection
+
+        ElseIf EtageSelection <> Nothing And NbLitSelection <> Nothing And _TypeChambre Is Nothing Then
+            Dim resChambres = From tabChambre In BD.tblChambre
+            Where tabChambre.EtageChambre = EtageSelection And tabChambre.NbLit = NbLitSelection
+
+        ElseIf _TypeChambre IsNot Nothing And NbLitSelection = Nothing And EtageSelection = Nothing Then
+            Dim resChambres = From tabChambre In BD.tblChambre
+            Where tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre
+
+        ElseIf EtageSelection <> Nothing And NbLitSelection = Nothing And _TypeChambre Is Nothing Then
+            Dim resChambres = From tabChambre In BD.tblChambre
+            Where tabChambre.EtageChambre = EtageSelection
+
+        ElseIf NbLitSelection <> Nothing And EtageSelection = Nothing And _TypeChambre Is Nothing Then
+            Dim resChambres = From tabChambre In BD.tblChambre
+            Where tabChambre.NbLit = NbLitSelection
+
+        Else : NbLitSelection = Nothing And EtageSelection = Nothing And _TypeChambre Is Nothing
+            Dim resChambres = From tabChambre In BD.tblChambre
+
+        End If
+        'Join tabChaResCha In BD.tblChambreReservationChambre On tabChambre.NoSeqChambre Equals tabChaResCha.NoSeqChambre
+        'And Dis_DtpDateReser.SelectedDate > tabChaResCha.DateDebutReservation Or tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre And tabChambre.EtageChambre = EtageSelection And tabChambre.NbLit = NbLitSelection And Dis_DtpDateReser.SelectedDate < tabChaResCha.DateFinReservation
+    End Sub
 End Class
 
 
