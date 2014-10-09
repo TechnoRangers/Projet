@@ -42,11 +42,15 @@
 
     Private Sub window_Loaded(sender As Object, e As RoutedEventArgs) Handles MyBase.Loaded
         'initialisation de la listbox equipement For some reason the where doesn't work :S 
+        
+        'Dim item As ListViewItem
+        'Dim str(2) As String
         Dim rep = (From it In MaBd.tblFourniture Select it.DescFourniture, it.NoSeqFourniture)
         For Each row In rep.ToList
-            LocEqui_ListBoxInventaire.Items.Add(row)
+            LocEqui_ListBoxInventaire.Items.Add(row.DescFourniture)
         Next
         'Doit trouver une moyen d'ajouter une 2column 
+
     End Sub
 End Class
 'Where it.NoSeqChambre.Equals(1000)

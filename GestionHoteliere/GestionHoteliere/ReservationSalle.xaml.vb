@@ -51,6 +51,7 @@
         LocSal_CmbBoxEtat.Items.Add("Payé")
         LocSal_CmbBoxEtat.Items.Add("Annulé")
 
+        LocSal_DatePicker.SelectedDate = Date.Today
 
     End Sub
 

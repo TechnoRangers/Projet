@@ -15,7 +15,6 @@
             <GroupBox Header="Client" HorizontalAlignment="Left" Margin="12,115,0,0" VerticalAlignment="Top" Height="131" Width="574">
 
             </GroupBox>
-            <CheckBox Name="LocSal_CheckBoxClient" Content="Nouveau Client" HorizontalAlignment="Left" Margin="23,85,0,0" VerticalAlignment="Top"/>
             <Label Name="LocSal_LblCredit" Content="Carte de Credit" HorizontalAlignment="Left" Margin="7,358,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.502,1.633"/>
             <TextBox Name="LocSal_TxtBoxCredit" HorizontalAlignment="Left" Height="23" Margin="102,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyDown="OnKeyDownHandler" />
             <TextBox Name="LocSal_TxtBoxExpi" HorizontalAlignment="Left" Height="23" Margin="136,388,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="54" KeyDown="OnKeyDownHandler" />
@@ -45,7 +44,7 @@
             <Label Name="LocSal_LblNbPers" Content="Nombre de personne" HorizontalAlignment="Left" Margin="241,267,0,0" VerticalAlignment="Top"/>
             <Label x:Name="LocSal_LblModePai" Content="Mode de Paiement" HorizontalAlignment="Left" Margin="129,330,0,0" VerticalAlignment="Top"/>
             <Label x:Name="LocSal_LblEtat" Content="État" HorizontalAlignment="Left" Margin="420,329,0,0" VerticalAlignment="Top"/>
-            <Button Name="LocSal_Equi" Content="LocationEquipement" HorizontalAlignment="Left" Margin="304,423,0,0" VerticalAlignment="Top" Width="117" IsEnabled="False"/>
+            <Button Name="LocSal_Equi" Content="LocationEquipement" HorizontalAlignment="Left" Margin="304,423,0,0" VerticalAlignment="Top" Width="117" IsEnabled="True"/>
             <Label x:Name="LocSal_Date" Content="Date " HorizontalAlignment="Left" Margin="383,19,0,0" VerticalAlignment="Top"/>
             <DatePicker Name="LocSal_DatePicker" HorizontalAlignment="Left" Margin="426,19,0,0" VerticalAlignment="Top"/>
             <TextBox Name="LocSal_TxtBoxNb" HorizontalAlignment="Left" Height="23" Margin="375,271,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="46" KeyDown="OnKeyDownHandler" />
