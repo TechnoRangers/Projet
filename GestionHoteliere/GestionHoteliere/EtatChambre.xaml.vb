@@ -24,16 +24,59 @@
 
         FiltrerDatagrid()
 
+        'Remplir ComboBoxFourniture
+        Dim Fourniture = From t1 In MaBD.tblEntretienFourniture Join t2 In MaBD.tblFourniture On t1.NoSeqFourniture Equals t2.NoSeqFourniture
+                        Where t1.NoSeqFourniture = t2.NoSeqFourniture And t2.NoSeqChambre = _maChambre.NoSeqChambre And t1.EtatFourniture <> "Bon"
+                     Select t2.DescFourniture
+
+        Eta_ComboBoxFourniture.ItemsSource = Fourniture.ToList
+
     End Sub
 
     Sub FiltrerDatagrid()
-        ''If _maChambre.NoSeqChambre <> 0 Then
-        ''    Dim res = From t1 In MaBD.tblFourniture
-        ''                        Where t1.NoSeqChambre = _maChambre.NoSeqChambre
-        ''                        Select New With {.Fourniture = t1, .EstCocher = False}
-        ''    Che_Datagrid.ItemsSource = res.ToList
+        If _maChambre.NoSeqChambre <> 0 Then
+            Dim res = From t1 In MaBD.tblEntretienFourniture Join t2 In MaBD.tblFourniture On t1.NoSeqFourniture Equals t2.NoSeqFourniture
+                                Where t1.NoSeqFourniture = t2.NoSeqFourniture And t2.NoSeqChambre = _maChambre.NoSeqChambre And t1.EtatFourniture <> "Bon"
+                                Select t2.DescFourniture, t1.EtatFourniture
+            eta_Datagrid.ItemsSource = res.ToList
 
-        'End If
+            Dim res2 = From t3 In MaBD.tblEntretienFourniture Join t4 In MaBD.tblFourniture On t3.NoSeqFourniture Equals t4.NoSeqFourniture
+                       Where t3.NoSeqFourniture = t4.NoSeqFourniture And t4.NoSeqChambre = _maChambre.NoSeqChambre And t3.EtatFourniture <> "Bon"
+                       Select t3.CommentaireFourniture
+
+            Dim Commentaires As New TextRange(Eta_RichTexBoxCom.Document.ContentStart, Eta_RichTexBoxCom.Document.ContentEnd)
+            Commentaires.Text = res2.ToList(0)
+
+        End If
     End Sub
 
+    Private Sub Eta_BtnInventaire_Click(sender As Object, e As RoutedEventArgs) Handles Eta_BtnInventaire.Click
+        Dim Inventaire As New Inventaire(MaBD)
+        Inventaire.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub Eta_BtnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Eta_BtnAnnuler.Click
+        Me.Close()
+    End Sub
+
+ 
+    Private Sub Eta_BtnValider_Click(sender As Object, e As RoutedEventArgs) Handles Eta_BtnValider.Click
+
+        Dim update = (From t1 In MaBD.tblEntretienFourniture Join t2 In MaBD.tblFourniture On t1.NoSeqFourniture Equals t2.NoSeqFourniture
+                  Where t2.DescFourniture = Eta_ComboBoxFourniture.Text And t2.NoSeqChambre = _maChambre.NoSeqChambre Select t1)
+
+
+        update.First().EtatFourniture = "Bon"
+
+        Try
+            MaBD.SaveChanges()
+            MessageBox.Show("La fourniture à été remplacé")
+        Catch
+            MessageBox.Show("Erreur")
+        End Try
+
+        FiltrerDatagrid()
+
+    End Sub
 End Class

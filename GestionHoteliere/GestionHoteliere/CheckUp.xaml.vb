@@ -36,8 +36,15 @@
         If _maChambre.NoSeqChambre <> 0 Then
             Dim res = From t1 In MaBD.tblFourniture
                                 Where t1.NoSeqChambre = _maChambre.NoSeqChambre
-                                Select New With {.Fourniture = t1, .EstCocher = False}
-            Che_Datagrid.ItemsSource = res.ToList
+                                Select t1
+
+            Dim res2 = From t1 In MaBD.tblEntretienFourniture, t2 In res
+                                Where t1.NoSeqFourniture = t2.NoSeqFourniture And t1.EtatFourniture = "A remplacer"
+                                Select t2
+
+            Dim aLaFin = From el In res.Except(res2) Select New With {.Fourniture = el, .EstCocher = False}
+
+            Che_Datagrid.ItemsSource = aLaFin.ToList
 
         End If
     End Sub
@@ -45,7 +52,7 @@
 
     Private Sub Che_BtnEnregistrer_Click(sender As Object, e As RoutedEventArgs) Handles Che_BtnEnregistrer.Click
 
-
+        Dim Commentaires As New TextRange(Che_RichTxtBoxCom.Document.ContentStart, Che_RichTxtBoxCom.Document.ContentEnd)
         Dim res = From el In Che_Datagrid.ItemsSource Where el.EstCocher = True Select el.Fourniture
 
         For Each f As tblFourniture In res
@@ -56,7 +63,7 @@
                 MonItem.NoSeqFourniture = f.NoSeqFourniture
                 MonItem.NoEmploye = 1009
                 MonItem.EtatFourniture = "A remplacer"
-                MonItem.CommentaireFourniture = "Thats it"
+                MonItem.CommentaireFourniture = Commentaires.Text
                 MaBD.tblEntretienFourniture.Add(MonItem)
                 MaBD.SaveChanges()
 
