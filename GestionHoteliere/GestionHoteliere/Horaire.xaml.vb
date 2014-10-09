@@ -88,8 +88,8 @@
             FenetreModifChiffreTravail = New ChangementHoraire(BD, ChiffreSelection)
             FenetreModifChiffreTravail.ShowDialog()
         Catch
-            MessageBox.Show("Aucune row selectionné")
+            MessageBox.Show("Aucun chiffre de travail sélectionné")
         End Try
     End Sub
 End Class
-'LOL LOL LOL TEST !
+

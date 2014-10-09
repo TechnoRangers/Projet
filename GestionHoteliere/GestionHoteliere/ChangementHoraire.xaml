@@ -4,7 +4,7 @@
     Title="ChangementHoraire" Height="347.49" Width="340.54">
     <Grid Margin="0,0,4,0.2">
         <Label x:Name="Cha_LblNoEmp" Content="Numéro de l'employé" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Cha_LblHreDeb" Content="Heure de commencement" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Cha_LblHreDeb" Content="Heure de commencement" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Cha_LblHreFin" Content="Heure de fin" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Hor_LblDate" Content="Date" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Cha_TxtNoEmp" HorizontalAlignment="Left" Height="23" Margin="182,30,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>       
