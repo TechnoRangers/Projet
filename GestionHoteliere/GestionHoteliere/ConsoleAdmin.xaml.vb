@@ -96,4 +96,8 @@
         FenetreProvince = New Province(MaBD)
         FenetreProvince.ShowDialog()
     End Sub
+
+    Private Sub consadm_btnRetour_Click(sender As Object, e As RoutedEventArgs) Handles consadm_btnRetour.Click
+        Me.Close()
+    End Sub
 End Class

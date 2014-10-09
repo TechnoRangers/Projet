@@ -35,6 +35,7 @@
             <GroupBox Header="Personnel" HorizontalAlignment="Left" Margin="377,10,0,0" VerticalAlignment="Top" Height="57" Width="117">
                 <Button x:Name="btn_Employe" Content="Employe" HorizontalAlignment="Left" Margin="16,9,0,0" VerticalAlignment="Top" Width="75"/>
             </GroupBox>
+            <Button x:Name="consadm_btnRetour" Content="Retour" HorizontalAlignment="Left" Margin="409,201,0,0" VerticalAlignment="Top" Width="75"/>
         </Grid>
     </Viewbox>
 </Window>

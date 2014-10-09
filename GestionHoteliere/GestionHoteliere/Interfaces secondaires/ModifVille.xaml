@@ -14,11 +14,11 @@
                 <Grid HorizontalAlignment="Left" Height="139" VerticalAlignment="Top" Width="214" Margin="0,0,0,-11.8">
                     <Label Content="Code Ville : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label Content="Nom Ville : " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="vil_txtCodeVille" Text="{Binding CodeVille}" HorizontalAlignment="Left" Height="23" Margin="87,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="vil_txtNomVille" Text="{Binding NomVille}" HorizontalAlignment="Left" Height="23" Margin="87,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="vil_txtCodeVille" MaxLength="3" Text="{Binding CodeVille}" HorizontalAlignment="Left" Height="23" Margin="87,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="vil_txtNomVille" MaxLength="50" Text="{Binding NomVille}" HorizontalAlignment="Left" Height="23" Margin="87,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <Button x:Name="vil_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="129,107,0,0" VerticalAlignment="Top" Width="75"/>
                     <Label Content="Code Province : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="vil_txtCodeProvince" Text="{Binding CodeProvince}" HorizontalAlignment="Left" Height="23" Margin="106,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98"/>
+                    <TextBox x:Name="vil_txtCodeProvince" MaxLength="3" Text="{Binding CodeProvince}" HorizontalAlignment="Left" Height="23" Margin="106,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101"/>
                 </Grid>
             </GroupBox>
 

@@ -14,8 +14,8 @@
                 <Grid HorizontalAlignment="Left" Height="111" VerticalAlignment="Top" Width="238" Margin="0,0,-2,-11.8">
                     <Label Content="Code Catégorie : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label Content="Nom Catégorie : " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="catfour_txtCodeCategorie" Text="{Binding CodeCategorie}" HorizontalAlignment="Left" Height="23" Margin="116,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="catfour_txtNomCategorie" Text="{Binding NomCategorie}" HorizontalAlignment="Left" Height="23" Margin="116,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="catfour_txtCodeCategorie" MaxLength="3" Text="{Binding CodeCategorie}" HorizontalAlignment="Left" Height="23" Margin="116,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="catfour_txtNomCategorie" MaxLength="20" Text="{Binding NomCategorie}" HorizontalAlignment="Left" Height="23" Margin="116,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                     <Button x:Name="catfour_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="153,79,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </GroupBox>

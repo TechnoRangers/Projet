@@ -169,7 +169,7 @@ CREATE TABLE Reservation.tblHotel
 	NbChambre			smallint		NOT NULL,
 	AdresseHotel		varchar(30)		NOT NULL,
 	NbEtoiles			tinyint			NOT NULL,
-	TypeService			varchar(20)		NOT NULL,
+	TypeService			varchar(50)		NOT NULL,
 	CodePostal			char(6)			NOT NULL,
 	NoTelephoneHotel	varchar(14)		NOT NULL,
 	NoTelecopieurHotel	varchar(14)		NOT NULL,
@@ -210,11 +210,13 @@ CREATE TABLE Reservation.tblReservationSalle
 CREATE TABLE Reservation.tblChambre
 (
 	NoSeqChambre	int			NOT NULL	IDENTITY(1000,1),
+	CodeChambre		char(3)		NOT NULL,
 	EtageChambre	smallint	NOT NULL,
 	StatutChambre	varchar(15)	NULL,
 	DescChambre		text		NULL,
 	TypeLit			varchar(30)	NOT NULL,
 	NbLit			tinyint		NOT NULL,
+	PrixChambre		money		NOT NULL,
 	CodeHotel		char(3)		NOT NULL,	
 	CodeTypeChambre	char(3)		NOT NULL	
 )

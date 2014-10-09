@@ -34,7 +34,7 @@
                     <Label Content="Nom locataire" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" FontSize="14"/>
                     <Label Content="Prénom locataire" HorizontalAlignment="Left" Margin="304,78,0,0" VerticalAlignment="Top" FontSize="14"/>
                     <TextBox x:Name="Res_TextBoxNomLocataire" MaxLength="20" HorizontalAlignment="Left" Height="23" Margin="137,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" FontSize="14"/>
-                    <TextBox x:Name="Res_TextBoxPrenomLocataire" MaxLength="20" HorizontalAlignment="Left" Height="23" Margin="424,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" FontSize="14"/>
+                    <TextBox x:Name="Res_TextBoxPrenomLocataire" MaxLength="20" HorizontalAlignment="Left" Height="23" Margin="424,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" FontSize="14"/>
                     <xctk:MaskedTextBox x:Name="Res_TextBoxNbAdulte" PromptChar=" " HorizontalAlignment="Left" Mask="000" Height="23" Margin="143,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" FontSize="14"/>
                 </Grid>
             </GroupBox>

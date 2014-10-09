@@ -10,7 +10,7 @@
     </Window.Background>
     <Grid>
         <Label Content="Commander des fournitures" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <DataGrid x:Name="com_dtgFournitureCommande" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Height="203" Width="362">
+        <DataGrid x:Name="com_dtgFournitureCommande" CanUserAddRows="False" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,106,0,0" VerticalAlignment="Top" Height="203" Width="362">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Code Fourniture" Binding="{Binding CodeFourniture, Mode=OneWay}" ClipboardContentBinding="{x:Null}" />
                 <DataGridTextColumn Header="Description" Binding="{Binding DescFourniture, Mode=OneWay}" ClipboardContentBinding="{x:Null}" />
@@ -30,7 +30,7 @@
         <ListView x:Name="com_lbvCommande" ItemsSource="{Binding}" Margin="437,106,10.2,25.4">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Code Fourniture" Width="Auto" DisplayMemberBinding="{Binding CodeFourniture}"/>
+                    <GridViewColumn Header="No.Fourniture" Width="Auto" DisplayMemberBinding="{Binding NoSeqFourniture}"/>
                     <GridViewColumn Header="Prix" Width="Auto" DisplayMemberBinding="{Binding PrixFournitureFournisseur, StringFormat={}{0:#.00}}"/>
                 </GridView>
             </ListView.View>
