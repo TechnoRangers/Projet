@@ -164,13 +164,19 @@ CREATE TABLE Reservation.tblVille
 
 CREATE TABLE Reservation.tblHotel
 (
-	CodeHotel		char(3)			NOT NULL,
-	NomHotel		varchar(30)		NOT NULL,
-	NbChambre		smallint		NOT NULL,
-	AdresseHotel	varchar(30)		NOT NULL,
-	NbEtoiles		tinyint			NOT NULL,
-	TypeService		varchar(20)		NOT NULL,
-	CodeVille		char(3)			NOT NULL
+	CodeHotel			char(3)			NOT NULL,
+	NomHotel			varchar(30)		NOT NULL,
+	NbChambre			smallint		NOT NULL,
+	AdresseHotel		varchar(30)		NOT NULL,
+	NbEtoiles			tinyint			NOT NULL,
+	TypeService			varchar(20)		NOT NULL,
+	CodePostal			char(6)			NOT NULL,
+	NoTelephoneHotel	varchar(14)		NOT NULL,
+	NoTelecopieurHotel	varchar(14)		NOT NULL,
+	NoTelReservation	char(14)		NOT NULL,
+	HeureLimiteDepart	char(3)			NOT NULL,
+	HeureLimiteArrive	char(3)			NOT NULL,		
+	CodeVille			char(3)			NOT NULL
 )
 
 

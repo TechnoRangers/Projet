@@ -49,55 +49,6 @@
 
     End Sub
 
-    'Private Sub Dis_CmbChoix1_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles Dis_CmbChoix1.SelectionChanged
-    '    If Dis_CmbChoix1.SelectedItem IsNot Nothing Then
-    '        _Chambre = CType(Dis_CmbChoix1.SelectedItem, tblChambre)
-
-
-    '        Dim _Chambre1 = From Ch In BD.tblChambre Join Tc In BD.tblTypeChambre On Ch.CodeTypeChambre Equals Tc.CodeTypeChambre
-    '        Where Ch.EtageChambre= _Chambre.EtageChambre
-    '        Select New With {.CodeChambre = Ch.EtageChambre, .StatutChambre = Ch.StatutChambre, .NomTypeChambre = Tc.NomTypeChambre, .NbLit = Ch.NbLit, .TypeLit = Ch.TypeLit, .DescChambre = Ch.DescChambre}
-
-    '        Dis_GrtChambre.DataContext = _Chambre1.ToList()
-    '        Dis_GrtChambre.ItemsSource = _Chambre1.ToList()
-
-    '    End If
-
-    'End Sub
-
-
-    'Private Sub Dis_CmbChoix2_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles Dis_CmbChoix2.SelectionChanged
-    '    If Dis_CmbChoix2.SelectedItem IsNot Nothing Then
-    '        _TypeChambre = CType(Dis_CmbChoix2.SelectedItem, tblTypeChambre)
-
-
-    '        Dim _Chambre2 = From Ch In BD.tblChambre Join Tc In BD.tblTypeChambre On Ch.CodeTypeChambre Equals Tc.CodeTypeChambre
-    '        Where Tc.CodeTypeChambre = _TypeChambre.CodeTypeChambre
-    '        Select New With {.CodeChambre = Ch.EtageChambre, .StatutChambre = Ch.StatutChambre, .NomTypeChambre = Tc.NomTypeChambre, .NbLit = Ch.NbLit, .TypeLit = Ch.TypeLit, .DescChambre = Ch.DescChambre}
-
-    '        Dis_GrtChambre.DataContext = _Chambre2.ToList()
-    '        Dis_GrtChambre.ItemsSource = _Chambre2.ToList()
-
-    '    End If
-
-    'End Sub
-
-    'Private Sub Dis_CmbChoix3_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles Dis_CmbChoix3.SelectionChanged
-    '    If Dis_CmbChoix3.SelectedItem IsNot Nothing Then
-    '        _Chambre2 = CType(Dis_CmbChoix3.SelectedItem, tblChambre)
-
-
-    '        Dim _Chambre3 = From Ch In BD.tblChambre Join Tc In BD.tblTypeChambre On Ch.CodeTypeChambre Equals Tc.CodeTypeChambre
-    '        Where Ch.NbLit = _Chambre2.NbLit
-    '        Select New With {.CodeChambre = Ch.EtageChambre, .StatutChambre = Ch.StatutChambre, .NomTypeChambre = Tc.NomTypeChambre, .NbLit = Ch.NbLit, .TypeLit = Ch.TypeLit, .DescChambre = Ch.DescChambre}
-
-    '        Dis_GrtChambre.DataContext = _Chambre3.ToList()
-    '        Dis_GrtChambre.ItemsSource = _Chambre3.ToList()
-
-    '    End If
-
-    'End Sub
-
     Private Sub Dis_GrtChambre_Loaded(sender As Object, e As RoutedEventArgs) Handles Dis_GrtChambre.Loaded
 
         'Dim Chambres = From tabChambre In BD.tblChambre

@@ -43,7 +43,7 @@
             MaBD.SaveChanges()
         Catch ex As Exception
             MaBD.tblEmploye.Remove(MonEmploye)
-            MessageBox.Show("Existe deja")
+            MessageBox.Show("Erreur d'ajout de l'employe")
         End Try
 
         Me.Close()

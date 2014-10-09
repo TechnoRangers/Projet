@@ -1,7 +1,8 @@
-﻿<Window x:Class="ModifFourniture"
+﻿<Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="ModifFourniture" Height="235.303" Width="300.1">
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="ModifFourniture"
+    Title="ModifFourniture" Height="279.303" Width="321.7">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF437E87" Offset="1"/>
@@ -10,21 +11,21 @@
     </Window.Background>
     <Viewbox Stretch="Uniform">
         <Grid>
-            <GroupBox x:Name="fournt_grbFourniture" Header="Fourniture" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="187" Width="274">
-                <Grid HorizontalAlignment="Left" Height="173" VerticalAlignment="Top" Width="266" Margin="0,0,-5.2,-13">
+            <GroupBox x:Name="fournt_grbFourniture" Header="Fourniture" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="226" Width="286">
+                <Grid HorizontalAlignment="Left" Height="210" VerticalAlignment="Top" Width="271" Margin="0,0,-2.2,-11.6">
                     <Label Content="Code Fourniture : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label Content="Description : " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Numéro Chambre : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                    <Label Content="Code Catégorie : " HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="fournt_txtCodeFourniture" Text="{Binding CodeFourniture}" HorizontalAlignment="Left" Height="23" Margin="135,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="fournt_txtDescFourniture" Text="{Binding DescFourniture}"  HorizontalAlignment="Left" Height="23" Margin="135,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="fournt_txtNoSeqChambre" Text="{Binding NoSeqChambre}" HorizontalAlignment="Left" Height="23" Margin="135,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="fournt_txtCodeCategorie" Text="{Binding CodeCategorie}" HorizontalAlignment="Left" Height="23" Margin="135,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="fournt_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="181,141,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Label Content="Numéro Chambre : " HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Code Catégorie : " HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="fournt_txtCodeFourniture" MaxLength="3" Text="{Binding CodeFourniture}" HorizontalAlignment="Left" Height="23" Margin="135,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="fournt_txtDescFourniture" MaxLength="50" Text="{Binding DescFourniture}"  HorizontalAlignment="Left" Height="62" Margin="135,41,0,0" TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="fournt_txtNoSeqChambre" Text="{Binding NoSeqChambre}" HorizontalAlignment="Left" Height="23" Margin="135,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="fournt_txtCodeCategorie" MaxLength="3" Text="{Binding CodeCategorie}" HorizontalAlignment="Left" Height="23" Margin="135,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Button x:Name="fournt_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="180,164,0,0" VerticalAlignment="Top" Width="75"/>
                 </Grid>
             </GroupBox>
 
         </Grid>
     </Viewbox>
-    
+
 </Window>

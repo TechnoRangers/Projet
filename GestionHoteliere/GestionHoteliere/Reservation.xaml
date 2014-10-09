@@ -1,6 +1,7 @@
-﻿<Window x:Name="Res_frmReservation" x:Class="Reservation"
+﻿<Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Name="Res_frmReservation" x:Class="Reservation"
     WindowStartupLocation="CenterScreen"
     Title="Techno Rangers Version 1.02 Reservation" WindowState="Maximized" Width="952" Height="530.4">
     <Window.Background>
@@ -26,15 +27,15 @@
                     <Label x:Name="Res_LblDateDep" Content="Date départ" HorizontalAlignment="Left" Margin="304,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.652,0.525" FontSize="14"/>
                     <DatePicker x:Name="Res_DatePikerDep" HorizontalAlignment="Left" Margin="405,44,0,0" VerticalAlignment="Top"/>
                     <Label x:Name="Res_LblNbAdulte" Content="Nombre personnes" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" FontSize="14"/>
-                    <TextBox x:Name="Res_TextBoxNbAdulte" HorizontalAlignment="Left" Height="23" Margin="137,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="131" FontSize="14"/>
                     <Label x:Name="Res_LblTypeChambre" Content="Type chambre" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" FontSize="14"/>
                     <Label x:Name="Res_LblNoChambre" Content="No chambre" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.508,-0.005" FontSize="14"/>
                     <TextBox x:Name="Res_TextBoxNoChambre" Text="{Binding NoSeqChambre}" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="137,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" FontSize="14"/>
                     <TextBox x:Name="Res_TextBoxTypeChambre" Text="{Binding CodeTypeChambre}" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="137,44,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="131" FontSize="14"/>
                     <Label Content="Nom locataire" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" FontSize="14"/>
                     <Label Content="Prénom locataire" HorizontalAlignment="Left" Margin="304,78,0,0" VerticalAlignment="Top" FontSize="14"/>
-                    <TextBox x:Name="Res_TextBoxNomLocataire" HorizontalAlignment="Left" Height="23" Margin="137,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" FontSize="14"/>
-                    <TextBox x:Name="Res_TextBoxPrenomLocataire" HorizontalAlignment="Left" Height="23" Margin="424,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" FontSize="14"/>
+                    <TextBox x:Name="Res_TextBoxNomLocataire" MaxLength="20" HorizontalAlignment="Left" Height="23" Margin="137,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" FontSize="14"/>
+                    <TextBox x:Name="Res_TextBoxPrenomLocataire" MaxLength="20" HorizontalAlignment="Left" Height="23" Margin="424,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" FontSize="14"/>
+                    <xctk:MaskedTextBox x:Name="Res_TextBoxNbAdulte" PromptChar=" " HorizontalAlignment="Left" Mask="000" Height="23" Margin="143,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" FontSize="14"/>
                 </Grid>
             </GroupBox>
             <GroupBox x:Name="Res_GroupBoxPaiement" Header="Paiement" HorizontalAlignment="Left" Margin="265,232,0,0" VerticalAlignment="Top" Height="64" Width="632" FontSize="16">

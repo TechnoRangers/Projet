@@ -18,19 +18,18 @@
             ChambReservChambre.NoSeqChambre = Chambre.NoSeqChambre
             ChambReservChambre.NoSeqReservChambre = ReservationChambre.NoSeqReservChambre
             ListeReservationChambre.Add(ChambReservChambre)
-
             'PrixReservation += Chambre.PrixChambre
         Next
 
         Res_DatePickerArr.SelectedDate = System.DateTime.Today
         Res_DatePikerDep.SelectedDate = DateAdd("d", 1, Now)
         Res_TextBoxNbChambre.Text = ListeReservationChambre.Count
+
+        res_lbvChambres.SelectedItem = ListeChambreReservation.ToList.First
     End Sub
 
     Private Sub Res_frmReservation_Loaded(sender As Object, e As RoutedEventArgs) Handles Res_frmReservation.Loaded
-
         res_lbvChambres.ItemsSource = ListeChambreReservation.ToList
-
     End Sub
 
     Private Sub res_lbvChambres_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles res_lbvChambres.SelectionChanged
@@ -74,6 +73,15 @@
 
     Private Sub Res_btnReserver_Click(sender As Object, e As RoutedEventArgs) Handles Res_btnReserver.Click
 
+        'Validation que tous les champs on été remplis
+        For Each Reserv As tblChambreReservationChambre In ListeReservationChambre
+            If Reserv.DateDebutReservation = Nothing Or Reserv.DateFinReservation = Nothing Or Reserv.NbPersonne = Nothing Or Reserv.NomLocataire = Nothing Or Reserv.PrenomLocataire = Nothing Or ReservationChambre.ModePaiement = Nothing Or ReservationChambre.PrixReservChambre = Nothing Then
+                MessageBox.Show("Certains champs de réservation n'ont pas été remplis.")
+                Exit Sub
+            End If
+        Next
+
+        'Enregistrement de la réservation
         Try
             ReservationChambre.ModePaiement = Res_ComboBoxMoyenPaiement.SelectionBoxItem.ToString
             ReservationChambre.PrixReservChambre = CType(Res_TextBoxMontant.Text, Integer)
@@ -88,7 +96,6 @@
             MaBD.SaveChanges()
 
             Try
-
                 For Each Reserv As tblChambreReservationChambre In ListeReservationChambre
                     Reserv.NoSeqReservChambre = ReservationChambre.NoSeqReservChambre
                     MaBD.tblChambreReservationChambre.Add(Reserv)
@@ -106,8 +113,6 @@
     End Sub
 
     Private Sub Res_btnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Res_btnAnnuler.Click
-
         Me.Close()
-
     End Sub
 End Class
