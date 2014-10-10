@@ -36,7 +36,7 @@
                                 <TextBlock Text="Salle" Height="18" Margin="15,26,15,26.4"/>
                             </StackPanel>
                         </Button>
-                        <Button  x:Name="Men_BtnEquipement"   Margin="12,174,10,31">
+                        <Button  x:Name="Men_BtnEquipement"   Margin="12,174,10,31" IsEnabled="False">
                             <StackPanel Orientation="Horizontal" Width="177" Height="70">
                                 <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Kayak.jpg" Width="105" Margin="0,0,0,0.4"/>
                                 <TextBlock Text="Equipement" Margin="6,25,15,23.4" Width="62"/>
@@ -45,7 +45,7 @@
                     </Grid>
                 </GroupBox>
                 <GroupBox x:Name="Men_GrbSta"   Header="Statistique"     HorizontalAlignment="Left" Margin="10,0,-178.6,-720"   VerticalAlignment="Bottom" Width="219" Height="106">
-                    <Button  x:Name="Men_btnStatistique"         Margin="10,10,7.4,4.2">
+                    <Button  x:Name="Men_btnStatistique"         Margin="10,10,7.4,4.2" IsEnabled="False">
                         <StackPanel Orientation="Horizontal" Width="177" Height="70">
                             <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\statistiques.png" Width="105" Margin="0,0,0,0.4"/>
                             <TextBlock Text="Statistiques" Height="18" Margin="0,26,15,26.4"/>
