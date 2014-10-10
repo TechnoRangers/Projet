@@ -335,6 +335,9 @@
     <Compile Include="tblVille.vb">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="VerificationDispo_Result.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
     <Compile Include="VueInventaire.vb">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>

@@ -23,6 +23,19 @@ GO
 --DELETE FROM Approvisionnement.tblFourniture
 --WHERE NoSeqFourniture = 'ZZZ'
 
+CREATE PROC Reservation.VerificationDispo(@DateDebut date, @DateFin date)
+AS
+SELECT *
+FROM Reservation.tblChambre
+WHERE NoSeqChambre NOT IN (SELECT CRC.NoSeqChambre
+							FROM Reservation.tblChambreReservationChambre AS CRC
+							WHERE ((DateDebutReservation BETWEEN @DateDebut AND @DateFin)
+								OR (DateFinReservation BETWEEN @DateDebut AND @DateFin)) 
+								OR ((@DateDebut BETWEEN DateDebutReservation AND DateFinReservation) 
+								OR (@DateFin BETWEEN DateDebutReservation AND DateFinReservation))
+						   )
+GO
+
 
 CREATE TRIGGER TestSupprimerFourniture 
 ON Approvisionnement.tblFourniture

@@ -10,6 +10,8 @@
 Imports System
 Imports System.Data.Entity
 Imports System.Data.Entity.Infrastructure
+Imports System.Data.Entity.Core.Objects
+Imports System.Linq
 
 Partial Public Class P2014_BDTestFrancoisEntities
     Inherits DbContext
@@ -50,5 +52,13 @@ Partial Public Class P2014_BDTestFrancoisEntities
     Public Overridable Property tblTypeChambre() As DbSet(Of tblTypeChambre)
     Public Overridable Property tblVille() As DbSet(Of tblVille)
     Public Overridable Property VueInventaire() As DbSet(Of VueInventaire)
+
+    Public Overridable Function VerificationDispo(dateDebut As Nullable(Of Date), dateFin As Nullable(Of Date)) As ObjectResult(Of VerificationDispo_Result)
+        Dim dateDebutParameter As ObjectParameter = If(dateDebut.HasValue, New ObjectParameter("DateDebut", dateDebut), New ObjectParameter("DateDebut", GetType(Date)))
+
+        Dim dateFinParameter As ObjectParameter = If(dateFin.HasValue, New ObjectParameter("DateFin", dateFin), New ObjectParameter("DateFin", GetType(Date)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of VerificationDispo_Result)("VerificationDispo", dateDebutParameter, dateFinParameter)
+    End Function
 
 End Class

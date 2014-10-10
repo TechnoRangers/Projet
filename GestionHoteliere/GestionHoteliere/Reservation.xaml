@@ -11,7 +11,7 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-        <Grid x:Name="Res_grdReservation" Margin="10,0,3.2,-3.8">
+        <Grid x:Name="Res_grdReservation" Margin="10,0,3.2,-3.8" Width="917">
             <GroupBox x:Name="Res_GroupBoxSejour" Header="Séjour" HorizontalAlignment="Left" Margin="266,46,0,0" VerticalAlignment="Top" Height="177" Width="625" FontSize="16" RenderTransformOrigin="0.5,0.5">
                 <GroupBox.RenderTransform>
                     <TransformGroup>
@@ -53,7 +53,7 @@
             </GroupBox>
             <Button Content="Reserver" x:Name="Res_btnReserver" HorizontalAlignment="Left" Margin="741,307,0,0" VerticalAlignment="Top" Width="156" Height="45" FontSize="20"/>
             <Button Content="Annuler" x:Name="Res_btnAnnuler" HorizontalAlignment="Left" Margin="580,307,0,0" VerticalAlignment="Top" Width="156" Height="45" FontSize="20"/>
-            <ListView x:Name="res_lbvChambres" ItemsSource="{Binding}" Margin="0,47,885.8,141.4">
+            <ListView x:Name="res_lbvChambres" ItemsSource="{Binding}" Margin="0,47,657,141.6">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Numéro chambre" Width="Auto" DisplayMemberBinding="{Binding NoSeqChambre}"/>
@@ -63,8 +63,8 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Label x:Name="Res_LblNbChambre" Content="Nombre chambre" HorizontalAlignment="Left" Margin="0,260,0,0" VerticalAlignment="Top" Width="122" FontSize="14"/>
-            <TextBox x:Name="Res_TextBoxNbChambre"  HorizontalAlignment="Left" Height="23" Margin="127,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" IsEnabled="False"/>
+            <Label x:Name="Res_LblNbChambre" Content="Nombre chambre" HorizontalAlignment="Left" Margin="20,329,0,0" VerticalAlignment="Top" Width="122" FontSize="14"/>
+            <TextBox x:Name="Res_TextBoxNbChambre"  HorizontalAlignment="Left" Height="23" Margin="142,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" IsEnabled="False"/>
             <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="1458,381,-424,0" VerticalAlignment="Top" Width="100"/>
             <Label Content="Chambres" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top"/>
         </Grid>
