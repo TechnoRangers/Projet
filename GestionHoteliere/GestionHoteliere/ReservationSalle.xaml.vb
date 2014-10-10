@@ -1,37 +1,57 @@
 ﻿Public Class ReservationSalle
     Dim MaBd As P2014_BDTestFrancoisEntities
     Dim NoRes As Int32
+    Dim Connexion As tblEmploye
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
+    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, ByRef _Connexion As tblEmploye)
         InitializeComponent()
         MaBd = _MaBD
+        Connexion = _Connexion
     End Sub
 
 
     Function Validation()
         'validation shit avant d'envoyer le formulaire
         'Debut de validation pour les champs qui sont obligatoirement des chiffres 
+        Dim message As String
+        message = "Une erreur est subvenue"
         Try
+            Dim Rep = (From it In MaBd.tblReservationSalle
+                       Where it.DateReservSalle = LocSal_DatePicker.SelectedDate
+                       Select it.CodeSalle)
+            Dim res = From it In MaBd.tblSalle Where it.NomSalle.Equals(LocSal_CmbBoxSalle.SelectedItem.ToString) Select it.CodeSalle
+            For Each resv In Rep.ToList()
+                If resv.Equals(res.First) Then
+                    message = "Il y a déja une réservation pour cette salle lors de cette journée"
+                    Throw New System.Exception
+                End If
+            Next
             If LocSal_TxtBoxClient.Text.Trim.Length = 0 Then
+                message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
             If LocSal_TxtBoxNb.Text.Trim.Length = 0 Then
+                message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
             If LocSal_TxtBoxCredit.Text.Trim.Length = 0 Then
+                message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
             If LocSal_TxtBoxPrix.Text.Trim.Length = 0 Then
+                message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
             If LocSal_CmbBoxSalle.SelectedIndex = 0 Then
+                message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
             If LocSal_CmbBoxPaiement.SelectedIndex = 0 Then
+                message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
         Catch ex As Exception
-            MessageBox.Show("La réservation n'a pu être ajouter, vérifier tous les champs")
+            MessageBox.Show(message)
             Return False
         End Try
         Return True
@@ -39,10 +59,17 @@
 
     Private Sub LocationSalles_Loaded(sender As Object, e As RoutedEventArgs) Handles MyBase.Loaded
         ' Ajoute les salles dans le comboBox Salle
-        Dim rep = From it In MaBd.tblSalle Select it.NomSalle
-        For Each Nom In rep.ToList
-            LocSal_CmbBoxSalle.Items.Add(Nom)
-        Next
+        If IsNothing(Connexion) Then
+            Dim rep = From it In MaBd.tblSalle Select it.NomSalle
+            For Each Nom In rep.ToList
+                LocSal_CmbBoxSalle.Items.Add(Nom)
+            Next
+        Else
+            Dim rep = From it In MaBd.tblSalle Where it.CodeHotel.Equals(Connexion.CodeHotel) Select it.NomSalle
+            For Each Nom In rep.ToList
+                LocSal_CmbBoxSalle.Items.Add(Nom)
+            Next
+        End If
         ' Ajoute les objets dans les comboBox
         LocSal_CmbBoxPaiement.Items.Add("Credit")
         LocSal_CmbBoxPaiement.Items.Add("Argent")
@@ -52,8 +79,8 @@
         LocSal_CmbBoxEtat.Items.Add("Annulé")
 
         LocSal_DatePicker.SelectedDate = Date.Today
-
     End Sub
+    'Or IsNothing(Connexion.CodeHotel)
 
     Private Sub LocSal_BtnValider_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnValider.Click
         Dim NewEl As tblReservationSalle

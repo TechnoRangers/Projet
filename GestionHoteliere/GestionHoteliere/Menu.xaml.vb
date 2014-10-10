@@ -69,7 +69,7 @@
     End Sub
 
     Private Sub Men_btnResSalle_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnResSalle.Click
-        Dim Salle As New ReservationSalle(MaBD)
+        Dim Salle As New ReservationSalle(MaBD, EmployeConnexion)
         Salle.Show()
         'Me.Close()
 

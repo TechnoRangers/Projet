@@ -6,12 +6,20 @@
         <ListView Name="LocEqui_ListBoxInventaire" HorizontalAlignment="Left" Height="218" Margin="23,80,0,0" VerticalAlignment="Top" Width="188">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Item " HeaderStringFormat="item"/>
-                    <GridViewColumn Header="nombre" HeaderStringFormat="nombre"/>
+                    <GridViewColumn Header="Item " HeaderStringFormat="Item" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Code" HeaderStringFormat="Code" DisplayMemberBinding="{Binding Nombre}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView Name="LocEqui_ListBoxReserv" HorizontalAlignment="Left" Height="218" Margin="296,80,0,0" VerticalAlignment="Top" Width="188"/>
+        <ListView Name="LocEqui_ListBoxReserv" HorizontalAlignment="Left" Height="218" Margin="296,80,0,0" VerticalAlignment="Top" Width="188">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Item" HeaderStringFormat="item" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Code" HeaderStringFormat="Code" DisplayMemberBinding="{Binding Nombre}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
         <Button Name="LocEqui_BtnAjout" Content="-->" HorizontalAlignment="Left" Margin="216,132,0,0" VerticalAlignment="Top" Width="75" />
         <Button Name="LocEqui_BtnEnl" Content="enlever" HorizontalAlignment="Left" Margin="216,181,0,0" VerticalAlignment="Top" Width="75" />
         <Button Name="LocEqui_BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="144,325,0,0" VerticalAlignment="Top" Width="106" Height="37" />
