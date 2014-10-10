@@ -53,27 +53,63 @@
     Private Sub Che_BtnEnregistrer_Click(sender As Object, e As RoutedEventArgs) Handles Che_BtnEnregistrer.Click
 
         Dim Commentaires As New TextRange(Che_RichTxtBoxCom.Document.ContentStart, Che_RichTxtBoxCom.Document.ContentEnd)
-        Dim res = From el In Che_Datagrid.ItemsSource Where el.EstCocher = True Select el.Fourniture
 
-        For Each f As tblFourniture In res
-            Dim MonItem As New tblEntretienFourniture()
-            Try
+        If Che_ComboBoxNoChambre.SelectedItem IsNot Nothing Then
+
+            Dim res = From el In Che_Datagrid.ItemsSource Where el.EstCocher = True Select el.Fourniture
+
+            For Each f As tblFourniture In res
+                Dim res2 = From t1 In MaBD.tblEntretienFourniture
+                           Where f.NoSeqFourniture = t1.NoSeqFourniture
+                           Select t1
+
+                If res2.Count <> 0 Then
+                    Dim update = (From t1 In MaBD.tblEntretienFourniture
+                 Where f.NoSeqFourniture = t1.NoSeqFourniture Select t1)
 
 
-                MonItem.NoSeqFourniture = f.NoSeqFourniture
-                MonItem.NoEmploye = 1009
-                MonItem.EtatFourniture = "A remplacer"
-                MonItem.CommentaireFourniture = Commentaires.Text
-                MaBD.tblEntretienFourniture.Add(MonItem)
-                MaBD.SaveChanges()
+                    update.First().EtatFourniture = "A remplacer"
+                    update.First().CommentaireFourniture = Commentaires.Text
 
-            Catch ex As Exception
-                MaBD.tblEntretienFourniture.Remove(MonItem)
-                MessageBox.Show("Erreur lors de l'ajout de l'item.")
-            End Try
-        Next
+                    Try
+                        MaBD.SaveChanges()
+                    Catch
+                        MessageBox.Show("Erreur")
+                    End Try
 
-        MessageBox.Show("L'enregistrement a bien été effectuer")
+                Else
+                    Dim MonItem As New tblEntretienFourniture()
+                    Try
+
+
+                        MonItem.NoSeqFourniture = f.NoSeqFourniture
+                        MonItem.NoEmploye = 1009
+                        MonItem.EtatFourniture = "A remplacer"
+                        MonItem.CommentaireFourniture = Commentaires.Text
+                        MaBD.tblEntretienFourniture.Add(MonItem)
+                        MaBD.SaveChanges()
+
+                    Catch ex As Exception
+                        MaBD.tblEntretienFourniture.Remove(MonItem)
+                        MessageBox.Show("Erreur lors de l'ajout de l'item.")
+                    End Try
+                End If
+            Next
+
+
+            If res.ToList.Count <> 0 Then
+
+                MessageBox.Show("L'enregistrement a bien été effectuer")
+            Else
+                MessageBox.Show("Aucune fourniture n'a été cochée")
+            End If
+
+        Else
+            MessageBox.Show("Veuillez sélectionner une chambre")
+        End If
+
+        Commentaires.Text = ""
+        FiltrerDatagrid()
 
     End Sub
 

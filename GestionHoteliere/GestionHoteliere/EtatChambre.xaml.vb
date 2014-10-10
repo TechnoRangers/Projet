@@ -24,6 +24,11 @@
 
         FiltrerDatagrid()
 
+     
+
+    End Sub
+
+    Sub FiltrerDatagrid()
         'Remplir ComboBoxFourniture
         Dim Fourniture = From t1 In MaBD.tblEntretienFourniture Join t2 In MaBD.tblFourniture On t1.NoSeqFourniture Equals t2.NoSeqFourniture
                         Where t1.NoSeqFourniture = t2.NoSeqFourniture And t2.NoSeqChambre = _maChambre.NoSeqChambre And t1.EtatFourniture <> "Bon"
@@ -31,9 +36,8 @@
 
         Eta_ComboBoxFourniture.ItemsSource = Fourniture.ToList
 
-    End Sub
 
-    Sub FiltrerDatagrid()
+        Dim Commentaires As New TextRange(Eta_RichTexBoxCom.Document.ContentStart, Eta_RichTexBoxCom.Document.ContentEnd)
         If _maChambre.NoSeqChambre <> 0 Then
             Dim res = From t1 In MaBD.tblEntretienFourniture Join t2 In MaBD.tblFourniture On t1.NoSeqFourniture Equals t2.NoSeqFourniture
                                 Where t1.NoSeqFourniture = t2.NoSeqFourniture And t2.NoSeqChambre = _maChambre.NoSeqChambre And t1.EtatFourniture <> "Bon"
@@ -44,8 +48,24 @@
                        Where t3.NoSeqFourniture = t4.NoSeqFourniture And t4.NoSeqChambre = _maChambre.NoSeqChambre And t3.EtatFourniture <> "Bon"
                        Select t3.CommentaireFourniture
 
-            Dim Commentaires As New TextRange(Eta_RichTexBoxCom.Document.ContentStart, Eta_RichTexBoxCom.Document.ContentEnd)
-            Commentaires.Text = res2.ToList(0)
+            Dim i As Integer
+
+            If res2.ToList.Count <> 0 Then
+                Dim com As String
+
+                com = res2.ToList(0)
+                For i = 0 To (res2.ToList.Count - 1)
+                    If i > 0 Then
+                        If res2.ToList(i) <> res2.ToList(i - 1) Then
+                            com += res2.ToList(i)
+                        End If
+                    End If
+                Next
+
+                Commentaires.Text = com
+            Else
+                Commentaires.Text = ""
+            End If
 
         End If
     End Sub
