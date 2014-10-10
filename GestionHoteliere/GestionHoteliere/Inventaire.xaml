@@ -28,7 +28,7 @@
                     <ComboBox x:Name="inv_cmbCategorie" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </GroupBox>
-            <DataGrid x:Name="DatagridInv" HorizontalAlignment="Left" CanUserAddRows="False" AutoGenerateColumns="False" Margin="10,117,0,0" VerticalAlignment="Top" Height="414" Width="792">
+            <DataGrid x:Name="DatagridInv" IsReadOnly="True" HorizontalAlignment="Left" CanUserAddRows="False" AutoGenerateColumns="False" Margin="10,117,0,0" VerticalAlignment="Top" Height="414" Width="792">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Numéro Fourniture" Binding="{Binding NoSeqFourniture}" ClipboardContentBinding="{x:Null}" />
                     <DataGridTextColumn Header="Code Fourniture" Binding="{Binding CodeFourniture}" ClipboardContentBinding="{x:Null}" />

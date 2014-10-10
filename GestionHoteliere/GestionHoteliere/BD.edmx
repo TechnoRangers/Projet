@@ -109,7 +109,7 @@
           <Property Name="NoSeqFourniture" Type="int" Nullable="false" />
           <Property Name="NoEmploye" Type="int" Nullable="false" />
           <Property Name="EtatFourniture" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="CommentaireFourniture" Type="text" />
+          <Property Name="CommentaireFourniture" Type="varchar" MaxLength="300" />
         </EntityType>
         <EntityType Name="tblChambre">
           <Key>
@@ -147,6 +147,7 @@
           <Property Name="NoTelephone" Type="varchar" MaxLength="14" Nullable="false" />
           <Property Name="AdresseClient" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="EmailClient" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="CodePostal" Type="char" MaxLength="6" />
         </EntityType>
         <EntityType Name="tblEquipementGeneriqueChambre">
           <Key>
@@ -761,6 +762,10 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="VerificationDispo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Reservation">
+          <Parameter Name="DateDebut" Type="date" Mode="In" />
+          <Parameter Name="DateFin" Type="date" Mode="In" />
+        </Function>
         <EntityContainer Name="P2014_BDTestFrancoisModelStoreContainer">
           <EntitySet Name="tblCategorieFourniture" EntityType="Self.tblCategorieFourniture" Schema="Approvisionnement" store:Type="Tables" />
           <EntitySet Name="tblCommande" EntityType="Self.tblCommande" Schema="Approvisionnement" store:Type="Tables" />
@@ -1081,7 +1086,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <Property Name="NoSeqFourniture" Type="Int32" Nullable="false" />
           <Property Name="NoEmploye" Type="Int32" Nullable="false" />
           <Property Name="EtatFourniture" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CommentaireFourniture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CommentaireFourniture" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Four_EntFour_NoSeqFour" FromRole="tblEntretienFourniture" ToRole="tblFourniture" />
           <NavigationProperty Name="tblEmploye" Relationship="Self.FK_Emp_EntFour_NoEmp" FromRole="tblEntretienFourniture" ToRole="tblEmploye" />
         </EntityType>
@@ -1127,6 +1132,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <Property Name="NoTelephone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AdresseClient" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EmailClient" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodePostal" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="tblReservationChambre" Relationship="Self.FK_Cli_ReservChamb_NoCli" FromRole="tblClient" ToRole="tblReservationChambre" />
           <NavigationProperty Name="tblReservationSalle" Relationship="Self.FK_Cli_ReservSalle_NoCli" FromRole="tblClient" ToRole="tblReservationSalle" />
         </EntityType>
@@ -1845,7 +1851,21 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             <End Role="tblForfait" EntitySet="tblForfait" />
             <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
           </AssociationSet>
+          <FunctionImport Name="VerificationDispo" ReturnType="Collection(P2014_BDTestFrancoisModel.VerificationDispo_Result)">
+            <Parameter Name="DateDebut" Mode="In" Type="DateTime" />
+            <Parameter Name="DateFin" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="VerificationDispo_Result">
+          <Property Type="Int32" Name="NoSeqChambre" Nullable="false" />
+          <Property Type="Int16" Name="EtageChambre" Nullable="false" />
+          <Property Type="String" Name="StatutChambre" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="DescChambre" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="TypeLit" Nullable="false" MaxLength="30" />
+          <Property Type="Byte" Name="NbLit" Nullable="false" />
+          <Property Type="String" Name="CodeHotel" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="CodeTypeChambre" Nullable="false" MaxLength="3" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2000,6 +2020,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
                 <ScalarProperty Name="NoTelephone" ColumnName="NoTelephone" />
                 <ScalarProperty Name="AdresseClient" ColumnName="AdresseClient" />
                 <ScalarProperty Name="EmailClient" ColumnName="EmailClient" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2198,6 +2219,20 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
               <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="VerificationDispo" FunctionName="P2014_BDTestFrancoisModel.Store.VerificationDispo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="P2014_BDTestFrancoisModel.VerificationDispo_Result">
+                <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+                <ScalarProperty Name="EtageChambre" ColumnName="EtageChambre" />
+                <ScalarProperty Name="StatutChambre" ColumnName="StatutChambre" />
+                <ScalarProperty Name="DescChambre" ColumnName="DescChambre" />
+                <ScalarProperty Name="TypeLit" ColumnName="TypeLit" />
+                <ScalarProperty Name="NbLit" ColumnName="NbLit" />
+                <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
+                <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
