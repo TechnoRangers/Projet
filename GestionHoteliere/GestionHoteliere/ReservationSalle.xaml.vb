@@ -4,11 +4,11 @@
     Dim Connexion As tblEmploye
 
     Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, ByRef _Connexion As tblEmploye)
+        'va cherche la base de donnée et la connection 
         InitializeComponent()
         MaBd = _MaBD
         Connexion = _Connexion
     End Sub
-
 
     Function Validation()
         'validation shit avant d'envoyer le formulaire
@@ -31,10 +31,6 @@
                 Throw New System.Exception
             End If
             If LocSal_TxtBoxNb.Text.Trim.Length = 0 Then
-                message = "Veuillez remplir le champs"
-                Throw New System.Exception
-            End If
-            If LocSal_TxtBoxCredit.Text.Trim.Length = 0 Then
                 message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
@@ -80,7 +76,6 @@
 
         LocSal_DatePicker.SelectedDate = Date.Today
     End Sub
-    'Or IsNothing(Connexion.CodeHotel)
 
     Private Sub LocSal_BtnValider_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnValider.Click
         Dim NewEl As tblReservationSalle
@@ -95,7 +90,9 @@
             NewEl.ModePaiement = LocSal_CmbBoxPaiement.SelectedItem
             NewEl.NbPersonne = Convert.ToInt32(LocSal_TxtBoxNb.Text)
             NewEl.PrixReservSalle = Convert.ToDecimal(LocSal_TxtBoxPrix.Text)
-            NewEl.NoCarteCredit = LocSal_TxtBoxCredit.Text
+            If Not IsNothing(LocSal_TxtBoxCredit.Text) Then
+                NewEl.NoCarteCredit = LocSal_TxtBoxCredit.Text
+            End If
             NewEl.StatutPaiement = LocSal_CmbBoxEtat.SelectedItem
 
             'Pour lier le code de salle au nom de la salle 
@@ -103,14 +100,14 @@
                         Where it.NomSalle.Equals(LocSal_CmbBoxSalle.SelectedItem.ToString)
                         Select it.CodeSalle)
             NewEl.CodeSalle = (res.First()).ToString
-
+            'Enregistrer le Nouvel Item 
             Try
                 MaBd.tblReservationSalle.Add(NewEl)
                 MaBd.SaveChanges()
                 LocSal_TxtBoxNoRes.Text = NewEl.NoSeqReservSalle
                 NoRes = NewEl.NoSeqReservSalle
                 MessageBox.Show("La réservation a été ajouter")
-                LocSal_Equi.IsEnabled = True
+                ' LocSal_Equi.IsEnabled = True
             Catch ex As Exception
                 MessageBox.Show("Veuillez verifier tous les champs")
             End Try
@@ -119,7 +116,7 @@
     End Sub
 
     Private Sub LocSal_BtnCancel_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnCancel.Click
-        'fermer la fenetre pour le moment pourrais eventuellement demander si l'utilisateur veut seulement effacer les données inscrit
+        'fermer la fenetre 
         Me.Close()
     End Sub
 
@@ -134,9 +131,6 @@
             LocSal_TxtBoxPre.Text = Res.First.PrenomClient
             LocSal_TxtBoxAdr.Text = Res.First.AdresseClient
             LocSal_TxtBoxEmail.Text = Res.First.EmailClient
-
-
-
         Catch ex As Exception
             MessageBox.Show("le client  n'existe pas")
         End Try
@@ -159,9 +153,8 @@
         LocSal_TxtBoxClient.Text = NewCl.NoSeqClient.ToString
     End Sub
 
-
-
     Private Sub OnKeyDownHandler(ByVal sender As Object, ByVal e As KeyEventArgs)
+        'Vérifier quel touche l'utilisateur press pour ne prendre que des chiffres 
         Select Case e.Key
             Case Key.D0 To Key.D9
                 e.Handled = False
@@ -172,10 +165,68 @@
         End Select
     End Sub
 
-
     Private Sub LocSal_Equi_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_Equi.Click
+        'pour montrer l'Équipement
         Dim Locequ As New LocationEquipement(MaBd, NoRes)
         Locequ.Show()
+    End Sub
+
+    Private Sub LocSal_RecSal_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_RecSal.Click
+        'recherche de réservation de Salle 
+        If Not IsNothing(LocSal_TxtBoxNoRes.Text) Then
+            Try
+                Dim X As Int16
+                Dim El As tblReservationSalle
+                Dim Rep = From It In MaBd.tblReservationSalle Where It.NoSeqReservSalle = LocSal_TxtBoxNoRes.Text Select It
+                El = Rep.First
+
+                LocSal_TxtBoxClient.Text = El.NoSeqClient
+                LocSal_TxtBoxNb.Text = El.NoCarteCredit
+                LocSal_CmbBoxEtat.SelectedItem = El.StatutPaiement
+                LocSal_CmbBoxPaiement.SelectedItem = El.ModePaiement
+                LocSal_TxtBoxPrix.Text = El.PrixReservSalle
+                LocSal_DatePicker.SelectedDate = El.DateReservSalle
+
+                Dim Res = (From Cl In MaBd.tblClient
+                            Where Cl.NoSeqClient = El.NoSeqClient
+                            Select Cl)
+                'Remplie les donnée client pour que le commis puisse voir si c'est le bon client 
+                LocSal_TxtBoxNom.Text = Res.First.NomClient
+                LocSal_TxtBoxPre.Text = Res.First.PrenomClient
+                LocSal_TxtBoxAdr.Text = Res.First.AdresseClient
+                LocSal_TxtBoxEmail.Text = Res.First.EmailClient
+                LocSal_TxtBoxTel.Text = Res.First.NoTelephone
+                'Pour mettre les bonne valeurs dans les combobox 
+                X = 0
+                For Each item In LocSal_CmbBoxSalle.Items
+                    If item.Equals(Rep.First.tblSalle.NomSalle) Then
+                        LocSal_CmbBoxSalle.SelectedIndex = X
+                    Else
+                        X += 1
+                    End If
+                Next
+
+                X = 0
+                For Each item In LocSal_CmbBoxEtat.Items
+                    If item.Equals(Rep.First.StatutPaiement) Then
+                        LocSal_CmbBoxEtat.SelectedIndex = X
+                    Else
+                        X += 1
+                    End If
+                Next
+                LocSal_BtnAjout.IsEnabled = False
+            Catch ex As Exception
+                'Si le responsable ne rentre pas de réservation existant
+                MessageBox.Show("La réservation N'existe pas")
+                LocSal_TxtBoxNoRes.Text = ""
+                LocSal_TxtBoxNoRes.Focus()
+            End Try
+        Else
+            'Si le champs est vide 
+            MessageBox.Show("Veuillez rentré un numéros de réservation pour la recherche")
+            LocSal_TxtBoxNoRes.Focus()
+        End If
+
     End Sub
 End Class
 
