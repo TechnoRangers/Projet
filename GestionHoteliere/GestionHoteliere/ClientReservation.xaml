@@ -37,6 +37,7 @@
             <Label x:Name="Res_LblEmail" Content="E-mail" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" FontSize="14"/>
             <TextBox x:Name="Res_TxtEmail" Text="{Binding EmailClient}" HorizontalAlignment="Left" Height="23" Margin="106,178,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="173" TabIndex="7"/>
             <TextBox x:Name="Res_NoTelephone" Text="{Binding NoTelephone}" HorizontalAlignment="Left" Height="23" Margin="106,98,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="173" TabIndex="5"/>
+            <Button x:Name="Res_BtnModifier" Content="Modifier Réservation" HorizontalAlignment="Left" Margin="704,287,0,-8" Width="153"/>
         </Grid>
     </Viewbox>
 </Window>

@@ -50,5 +50,12 @@
             Res_NoTelephone.DataContext = Client
         End If
     End Sub
+
+    Private Sub Res_BtnModifier_Click(sender As Object, e As RoutedEventArgs) Handles Res_BtnModifier.Click
+
+        Dim LstReservation As New ListeReservation(BD)
+        LstReservation.Show()
+
+    End Sub
 End Class
 

@@ -7,89 +7,89 @@
         <Label x:Name="Cha_LblHreDeb" Content="Heure de commencement" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Cha_LblHreFin" Content="Heure de fin" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Hor_LblDate" Content="Date" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Cha_TxtNoEmp" HorizontalAlignment="Left" Height="23" Margin="182,30,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>       
-        <DatePicker x:Name="Cha_DtpDate" HorizontalAlignment="Left" Margin="182,79,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="Cha_TxtNoEmp" HorizontalAlignment="Left" Text="{Binding NoEmploye}" Height="23" Margin="182,30,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <DatePicker x:Name="Cha_DtpDate" HorizontalAlignment="Left" Text="{Binding DateChiffre}" Margin="182,79,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="Cha_BtnAnnuler" Content="Quitter" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Width="115" Height="43"/>
         <Button x:Name="Cha_BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="187,266,0,0" VerticalAlignment="Top" Width="115" Height="43"/>
         <ComboBox x:Name="Cha_CmbHreDeb" HorizontalAlignment="Left" Height="23" Margin="182,125,0,0"  VerticalAlignment="Top" Width="41">
-            <ComboBoxItem>0</ComboBoxItem>
-            <ComboBoxItem>1</ComboBoxItem>
-            <ComboBoxItem>2</ComboBoxItem>
-            <ComboBoxItem>3</ComboBoxItem>
-            <ComboBoxItem>4</ComboBoxItem>
-            <ComboBoxItem>5</ComboBoxItem>
-            <ComboBoxItem>6</ComboBoxItem>
-            <ComboBoxItem>7</ComboBoxItem>
-            <ComboBoxItem>8</ComboBoxItem>
-            <ComboBoxItem>9</ComboBoxItem>
-            <ComboBoxItem>10</ComboBoxItem>
-            <ComboBoxItem>11</ComboBoxItem>
-            <ComboBoxItem>12</ComboBoxItem>
-            <ComboBoxItem>13</ComboBoxItem>
-            <ComboBoxItem>14</ComboBoxItem>
-            <ComboBoxItem>15</ComboBoxItem>
-            <ComboBoxItem>16</ComboBoxItem>
-            <ComboBoxItem>17</ComboBoxItem>
-            <ComboBoxItem>18</ComboBoxItem>
-            <ComboBoxItem>19</ComboBoxItem>
-            <ComboBoxItem>20</ComboBoxItem>
-            <ComboBoxItem>21</ComboBoxItem>
-            <ComboBoxItem>22</ComboBoxItem>
-            <ComboBoxItem>23</ComboBoxItem>
+            <ComboBoxItem Content="00"></ComboBoxItem>
+            <ComboBoxItem Content="01"></ComboBoxItem>
+            <ComboBoxItem Content="02"></ComboBoxItem>
+            <ComboBoxItem Content="03"></ComboBoxItem>
+            <ComboBoxItem Content="04"></ComboBoxItem>
+            <ComboBoxItem Content="05"></ComboBoxItem>
+            <ComboBoxItem Content="06"></ComboBoxItem>
+            <ComboBoxItem Content="07"></ComboBoxItem>
+            <ComboBoxItem Content="08"></ComboBoxItem>
+            <ComboBoxItem Content="09"></ComboBoxItem>
+            <ComboBoxItem Content="10"></ComboBoxItem>
+            <ComboBoxItem Content="11"></ComboBoxItem>
+            <ComboBoxItem Content="12"></ComboBoxItem>
+            <ComboBoxItem Content="13"></ComboBoxItem>
+            <ComboBoxItem Content="14"></ComboBoxItem>
+            <ComboBoxItem Content="15"></ComboBoxItem>
+            <ComboBoxItem Content="16"></ComboBoxItem>
+            <ComboBoxItem Content="17"></ComboBoxItem>
+            <ComboBoxItem Content="18"></ComboBoxItem>
+            <ComboBoxItem Content="19"></ComboBoxItem>
+            <ComboBoxItem Content="20"></ComboBoxItem>
+            <ComboBoxItem Content="21"></ComboBoxItem>
+            <ComboBoxItem Content="22"></ComboBoxItem>
+            <ComboBoxItem Content="23"></ComboBoxItem>
             </ComboBox>
         <ComboBox x:Name="Cha_CmbHrefin" HorizontalAlignment="Left" Height="23" Margin="182,165,0,0"  VerticalAlignment="Top" Width="41">
-            <ComboBoxItem>0</ComboBoxItem>
-            <ComboBoxItem>1</ComboBoxItem>
-            <ComboBoxItem>2</ComboBoxItem>
-            <ComboBoxItem>3</ComboBoxItem>
-            <ComboBoxItem>4</ComboBoxItem>
-            <ComboBoxItem>5</ComboBoxItem>
-            <ComboBoxItem>6</ComboBoxItem>
-            <ComboBoxItem>7</ComboBoxItem>
-            <ComboBoxItem>8</ComboBoxItem>
-            <ComboBoxItem>9</ComboBoxItem>
-            <ComboBoxItem>10</ComboBoxItem>
-            <ComboBoxItem>11</ComboBoxItem>
-            <ComboBoxItem>12</ComboBoxItem>
-            <ComboBoxItem>13</ComboBoxItem>
-            <ComboBoxItem>14</ComboBoxItem>
-            <ComboBoxItem>15</ComboBoxItem>
-            <ComboBoxItem>16</ComboBoxItem>
-            <ComboBoxItem>17</ComboBoxItem>
-            <ComboBoxItem>18</ComboBoxItem>
-            <ComboBoxItem>19</ComboBoxItem>
-            <ComboBoxItem>20</ComboBoxItem>
-            <ComboBoxItem>21</ComboBoxItem>
-            <ComboBoxItem>22</ComboBoxItem>
-            <ComboBoxItem>23</ComboBoxItem>
+            <ComboBoxItem Content="00"></ComboBoxItem>
+            <ComboBoxItem Content="01"></ComboBoxItem>
+            <ComboBoxItem Content="02"></ComboBoxItem>
+            <ComboBoxItem Content="03"></ComboBoxItem>
+            <ComboBoxItem Content="04"></ComboBoxItem>
+            <ComboBoxItem Content="05"></ComboBoxItem>
+            <ComboBoxItem Content="06"></ComboBoxItem>
+            <ComboBoxItem Content="07"></ComboBoxItem>
+            <ComboBoxItem Content="08"></ComboBoxItem>
+            <ComboBoxItem Content="09"></ComboBoxItem>
+            <ComboBoxItem Content="10"></ComboBoxItem>
+            <ComboBoxItem Content="11"></ComboBoxItem>
+            <ComboBoxItem Content="12"></ComboBoxItem>
+            <ComboBoxItem Content="13"></ComboBoxItem>
+            <ComboBoxItem Content="14"></ComboBoxItem>
+            <ComboBoxItem Content="15"></ComboBoxItem>
+            <ComboBoxItem Content="16"></ComboBoxItem>
+            <ComboBoxItem Content="17"></ComboBoxItem>
+            <ComboBoxItem Content="18"></ComboBoxItem>
+            <ComboBoxItem Content="19"></ComboBoxItem>
+            <ComboBoxItem Content="20"></ComboBoxItem>
+            <ComboBoxItem Content="21"></ComboBoxItem>
+            <ComboBoxItem Content="22"></ComboBoxItem>
+            <ComboBoxItem Content="23"></ComboBoxItem>
             </ComboBox>
         <ComboBox x:Name="Cha_CmbMinDeb" HorizontalAlignment="Left" Height="23" Margin="252,125,0,0"  VerticalAlignment="Top" Width="50">
-            <ComboBoxItem>00</ComboBoxItem>
-            <ComboBoxItem>05</ComboBoxItem>
-            <ComboBoxItem>10</ComboBoxItem>
-            <ComboBoxItem>15</ComboBoxItem>
-            <ComboBoxItem>20</ComboBoxItem>
-            <ComboBoxItem>25</ComboBoxItem>
-            <ComboBoxItem>30</ComboBoxItem>
-            <ComboBoxItem>35</ComboBoxItem>
-            <ComboBoxItem>40</ComboBoxItem>
-            <ComboBoxItem>45</ComboBoxItem>
-            <ComboBoxItem>50</ComboBoxItem>
-            <ComboBoxItem>55</ComboBoxItem>
+            <ComboBoxItem Content="00"></ComboBoxItem>
+            <ComboBoxItem Content="05"></ComboBoxItem>
+            <ComboBoxItem Content="10"></ComboBoxItem>
+            <ComboBoxItem Content="15"></ComboBoxItem>
+            <ComboBoxItem Content="20"></ComboBoxItem>
+            <ComboBoxItem Content="25"></ComboBoxItem>
+            <ComboBoxItem Content="30"></ComboBoxItem>
+            <ComboBoxItem Content="35"></ComboBoxItem>
+            <ComboBoxItem Content="40"></ComboBoxItem>
+            <ComboBoxItem Content="45"></ComboBoxItem>
+            <ComboBoxItem Content="50"></ComboBoxItem>
+            <ComboBoxItem Content="55"></ComboBoxItem>
         </ComboBox>
         <ComboBox x:Name="Cha_CmbMinfin" HorizontalAlignment="Left" Height="23" Margin="252,165,0,0"  VerticalAlignment="Top" Width="50">          
-            <ComboBoxItem>00</ComboBoxItem>
-            <ComboBoxItem>05</ComboBoxItem>
-            <ComboBoxItem>10</ComboBoxItem>
-            <ComboBoxItem>15</ComboBoxItem>
-            <ComboBoxItem>20</ComboBoxItem>
-            <ComboBoxItem>25</ComboBoxItem>
-            <ComboBoxItem>30</ComboBoxItem>
-            <ComboBoxItem>35</ComboBoxItem>
-            <ComboBoxItem>40</ComboBoxItem>
-            <ComboBoxItem>45</ComboBoxItem>
-            <ComboBoxItem>50</ComboBoxItem>
-        <ComboBoxItem>55</ComboBoxItem>
+            <ComboBoxItem Content="00"></ComboBoxItem>
+            <ComboBoxItem Content="05"></ComboBoxItem>
+            <ComboBoxItem Content="10"></ComboBoxItem>
+            <ComboBoxItem Content="15"></ComboBoxItem>
+            <ComboBoxItem Content="20"></ComboBoxItem>
+            <ComboBoxItem Content="25"></ComboBoxItem>
+            <ComboBoxItem Content="30"></ComboBoxItem>
+            <ComboBoxItem Content="35"></ComboBoxItem>
+            <ComboBoxItem Content="40"></ComboBoxItem>
+            <ComboBoxItem Content="45"></ComboBoxItem>
+            <ComboBoxItem Content="50"></ComboBoxItem>
+            <ComboBoxItem Content="55"></ComboBoxItem>
         </ComboBox>
     </Grid>
 </Window>
