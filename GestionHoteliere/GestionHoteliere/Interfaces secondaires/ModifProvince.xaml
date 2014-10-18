@@ -15,10 +15,10 @@
                     <Label Content="Code Province : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label Content="Nom Province : " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
                     <Label Content="Code Pays : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="pro_txtCodeProvince" MaxLength="3" Text="{Binding CodeProvince}" HorizontalAlignment="Left" Height="23" Margin="111,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="pro_txtNomProvince" MaxLength="50" Text="{Binding NomProvince}" HorizontalAlignment="Left" Height="23" Margin="111,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="pro_txtCodePays" MaxLength="3" Text="{Binding CodePays}" HorizontalAlignment="Left" Height="23" Margin="111,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="pro_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="156,112,0,0" VerticalAlignment="Top" Width="75"/>
+                    <TextBox x:Name="pro_txtCodeProvince" MaxLength="3" Text="{Binding CodeProvince}" HorizontalAlignment="Left" Height="23" Margin="111,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="1"/>
+                    <TextBox x:Name="pro_txtNomProvince" MaxLength="50" Text="{Binding NomProvince}" HorizontalAlignment="Left" Height="23" Margin="111,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="2"/>
+                    <TextBox x:Name="pro_txtCodePays" MaxLength="3" Text="{Binding CodePays}" HorizontalAlignment="Left" Height="23" Margin="111,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="3"/>
+                    <Button x:Name="pro_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="156,112,0,0" VerticalAlignment="Top" Width="75" TabIndex="4"/>
                 </Grid>
             </GroupBox>
 

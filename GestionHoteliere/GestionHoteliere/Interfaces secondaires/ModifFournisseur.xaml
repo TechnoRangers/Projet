@@ -15,14 +15,14 @@
                     <Label Content="Code Fournisseur : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label Content="Nom Fournisseur : " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
                     <Label Content="Adresse Fournisseur : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="four_txtCodeFournisseur" MaxLength="10" Text="{Binding CodeFournisseur}" HorizontalAlignment="Left" Height="23" Margin="140,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="four_txtNomFournisseur" MaxLength="20" Text="{Binding NomFournisseur}" HorizontalAlignment="Left" Height="23" Margin="140,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="four_txtAdresseFournisseur" MaxLength="40" Text="{Binding AdresseFournisseur}" HorizontalAlignment="Left" Height="23" Margin="140,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="four_txtCodeFournisseur" MaxLength="10" Text="{Binding CodeFournisseur}" HorizontalAlignment="Left" Height="23" Margin="140,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="1"/>
+                    <TextBox x:Name="four_txtNomFournisseur" MaxLength="20" Text="{Binding NomFournisseur}" HorizontalAlignment="Left" Height="23" Margin="140,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="2"/>
+                    <TextBox x:Name="four_txtAdresseFournisseur" MaxLength="40" Text="{Binding AdresseFournisseur}" HorizontalAlignment="Left" Height="23" Margin="140,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="3"/>
                     <Label Content="Nom Représentant : " HorizontalAlignment="Left" Margin="265,10,0,0" VerticalAlignment="Top"/>
                     <Label Content="Prénom Représentant : " HorizontalAlignment="Left" Margin="265,41,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="four_txtNomRepresentant" MaxLength="20" Text="{Binding NomRepresentant}" HorizontalAlignment="Left" Height="23" Margin="396,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="four_txtPrenomRepresentant" MaxLength="20" Text="{Binding PrenomRepresentant}" HorizontalAlignment="Left" Height="23" Margin="396,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <Button x:Name="four_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="441,76,0,0" VerticalAlignment="Top" Width="75"/>
+                    <TextBox x:Name="four_txtNomRepresentant" MaxLength="20" Text="{Binding NomRepresentant}" HorizontalAlignment="Left" Height="23" Margin="396,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="4"/>
+                    <TextBox x:Name="four_txtPrenomRepresentant" MaxLength="20" Text="{Binding PrenomRepresentant}" HorizontalAlignment="Left" Height="23" Margin="396,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="5"/>
+                    <Button x:Name="four_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="441,76,0,0" VerticalAlignment="Top" Width="75" TabIndex="6"/>
                 </Grid>
             </GroupBox>
 

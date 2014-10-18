@@ -15,14 +15,14 @@
                     <Label Content="Code Équipement : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label Content="Nom Équipement : " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
                     <Label Content="Catégorie Équipement : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="eqrec_txtCodeEquipementRecreatif" Text="{Binding CodeEquipementRecreatif}" HorizontalAlignment="Left" Height="23" Margin="151,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="eqrec_txtNomEquipement" Text="{Binding NomEquipement}" HorizontalAlignment="Left" Height="23" Margin="151,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="eqrec_txtCategorieEquipement" Text="{Binding CategorieEquipement}" HorizontalAlignment="Left" Height="23" Margin="148,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="eqrec_txtCodeEquipementRecreatif" Text="{Binding CodeEquipementRecreatif}" HorizontalAlignment="Left" Height="23" Margin="151,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="1"/>
+                    <TextBox x:Name="eqrec_txtNomEquipement" Text="{Binding NomEquipement}" HorizontalAlignment="Left" Height="23" Margin="151,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="2"/>
+                    <TextBox x:Name="eqrec_txtCategorieEquipement" Text="{Binding CategorieEquipement}" HorizontalAlignment="Left" Height="23" Margin="151,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="3"/>
                     <Label Content="Date Aquisition : " HorizontalAlignment="Left" Margin="276,10,0,0" VerticalAlignment="Top"/>
-                    <DatePicker x:Name="eqrec_dtpDateAquisition" SelectedDate="{Binding DateAquisition}" HorizontalAlignment="Left" Margin="382,10,0,0" VerticalAlignment="Top" Width="156"/>
+                    <DatePicker x:Name="eqrec_dtpDateAquisition" SelectedDate="{Binding DateAquisition}" HorizontalAlignment="Left" Margin="382,10,0,0" VerticalAlignment="Top" Width="156" TabIndex="4"/>
                     <Label Content="Date Fin Garantie : " HorizontalAlignment="Left" Margin="276,41,0,0" VerticalAlignment="Top"/>
-                    <DatePicker x:Name="eqrec_dtpDateFinGarantie" HorizontalAlignment="Left" SelectedDate="{Binding DateFinGarantie}" Margin="391,40,0,0" VerticalAlignment="Top" Width="147"/>
-                    <Button x:Name="eqrec_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="463,73,0,0" VerticalAlignment="Top" Width="75"/>
+                    <DatePicker x:Name="eqrec_dtpDateFinGarantie" HorizontalAlignment="Left" SelectedDate="{Binding DateFinGarantie}" Margin="391,40,0,0" VerticalAlignment="Top" Width="147" TabIndex="5"/>
+                    <Button x:Name="eqrec_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="463,73,0,0" VerticalAlignment="Top" Width="75" TabIndex="6"/>
                 </Grid>
             </GroupBox>
 

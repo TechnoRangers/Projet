@@ -16,14 +16,14 @@
                     <Label Content="Code Forfait : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                     <Label Content="Nom Forfait : " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
                     <Label Content="Prix Forfait : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="for_txtCodeForfait" MaxLength="10" Text="{Binding CodeForfait}" HorizontalAlignment="Left" Height="23" Margin="100,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="for_txtNomForfait" MaxLength="30" Text="{Binding NomForfait}" HorizontalAlignment="Left" Height="23" Margin="100,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                    <TextBox x:Name="for_txtPrixForfait" MaxLength="15" Text="{Binding PrixForfait}" HorizontalAlignment="Left" Height="23" Margin="100,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="for_txtCodeForfait" MaxLength="10" Text="{Binding CodeForfait}" HorizontalAlignment="Left" Height="23" Margin="100,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="1"/>
+                    <TextBox x:Name="for_txtNomForfait" MaxLength="30" Text="{Binding NomForfait}" HorizontalAlignment="Left" Height="23" Margin="100,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="2"/>
+                    <TextBox x:Name="for_txtPrixForfait" MaxLength="15" Text="{Binding PrixForfait}" HorizontalAlignment="Left" Height="23" Margin="100,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="3"/>
                     <Label Content="Description : " HorizontalAlignment="Left" Margin="225,10,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="for_txtDescForfait" MaxLength="400"  Text="{Binding DescForfait}" AcceptsReturn="True" HorizontalAlignment="Left" Height="85" Margin="225,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279"/>
+                    <TextBox x:Name="for_txtDescForfait" MaxLength="400"  Text="{Binding DescForfait}" AcceptsReturn="True" HorizontalAlignment="Left" Height="85" Margin="225,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" TabIndex="5"/>
                     <Label Content="Nombre de nuits : " HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="for_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="428,137,0,0" VerticalAlignment="Top" Width="75"/>
-                    <xctk:MaskedTextBox x:Name="for_txtNbNuit" PromptChar=" " Mask="000" Text="{Binding NbNuit}" HorizontalAlignment="Left" Margin="119,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101"/>
+                    <Button x:Name="for_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="428,137,0,0" VerticalAlignment="Top" Width="75" TabIndex="6"/>
+                    <xctk:MaskedTextBox x:Name="for_txtNbNuit" PromptChar=" " Mask="000" Text="{Binding NbNuit}" HorizontalAlignment="Left" Margin="119,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" TabIndex="4"/>
                 </Grid>
             </GroupBox>
 
