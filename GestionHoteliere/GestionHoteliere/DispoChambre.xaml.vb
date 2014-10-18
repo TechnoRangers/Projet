@@ -31,8 +31,6 @@
     Private Sub Dis_BtnRéserver_Click(sender As Object, e As RoutedEventArgs) Handles Dis_BtnRéserver.Click
         Dim ChambresSelection As New List(Of tblChambre)
 
-
-
         'Dim temp = From ch In BD.tblChambre, el In cv Where el.NoSeqChambre = ch.NoSeqChambre Select ch
 
         For Each Chambre In Dis_GrtChambre.SelectedItems
@@ -69,69 +67,42 @@
         If dis_dtpDateDebut.SelectedDate IsNot Nothing And dis_dtpDateFin.SelectedDate IsNot Nothing Then
             Dim DateDebut As Date = dis_dtpDateDebut.SelectedDate
             Dim DateFin As Date = dis_dtpDateFin.SelectedDate
-
+            Dim Etage As Integer
+            Dim NbLit As Integer
 
             DateDebut = DateDebut.Date
             DateFin = DateFin.Date
 
-
             Dim Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
                           Select tabChambre
 
-    
+            If dis_txtEtageChambre.Text <> "" And dis_txtNbLit.Text <> Nothing Then
+                Etage = CType(dis_txtEtageChambre.Text, Integer)
+                NbLit = CType(dis_txtNbLit.Text, Integer)
+
+                Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
+                              Where tabChambre.EtageChambre = Etage And tabChambre.NbLit = NbLit
+                              Select tabChambre
+
+            ElseIf dis_txtEtageChambre.Text <> "" Then
+                Etage = CType(dis_txtEtageChambre.Text, Integer)
+
+                Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
+                              Where tabChambre.EtageChambre = Etage
+                              Select tabChambre
+
+            ElseIf dis_txtNbLit.Text <> "" Then
+                NbLit = CType(dis_txtNbLit.Text, Integer)
+
+                Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
+                              Where tabChambre.NbLit = NbLit
+                              Select tabChambre
+            End If
 
             Dis_GrtChambre.ItemsSource = Chambre.ToList
         End If
 
-        
-
     End Sub
-
-    'Sub FiltrerDatagrid()
-    '    If _TypeChambre IsNot Nothing And EtageSelection <> Nothing And NbLitSelection <> Nothing Then
-    '        Dim resChambres = From tabChambre In BD.tblChambre
-    '        Where tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre And tabChambre.EtageChambre = EtageSelection And tabChambre.NbLit = NbLitSelection
-
-    '        Dis_GrtChambre.ItemsSource = resChambres.ToList
-
-    '    ElseIf _TypeChambre IsNot Nothing And EtageSelection <> Nothing And NbLitSelection = Nothing Then
-    '        Dim resChambres = From tabChambre In BD.tblChambre
-    '        Where tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre And tabChambre.EtageChambre = EtageSelection
-
-    '        Dis_GrtChambre.ItemsSource = resChambres.ToList
-    '    ElseIf _TypeChambre IsNot Nothing And NbLitSelection <> Nothing And EtageSelection = Nothing Then
-    '        Dim resChambres = From tabChambre In BD.tblChambre
-    '        Where tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre And tabChambre.NbLit = NbLitSelection
-
-    '        Dis_GrtChambre.ItemsSource = resChambres.ToList
-    '    ElseIf EtageSelection <> Nothing And NbLitSelection <> Nothing And _TypeChambre Is Nothing Then
-    '        Dim resChambres = From tabChambre In BD.tblChambre
-    '        Where tabChambre.EtageChambre = EtageSelection And tabChambre.NbLit = NbLitSelection
-
-    '        Dis_GrtChambre.ItemsSource = resChambres.ToList
-    '    ElseIf _TypeChambre IsNot Nothing And NbLitSelection = Nothing And EtageSelection = Nothing Then
-    '        Dim resChambres = From tabChambre In BD.tblChambre
-    '        Where tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre
-
-    '        Dis_GrtChambre.ItemsSource = resChambres.ToList
-    '    ElseIf EtageSelection <> Nothing And NbLitSelection = Nothing And _TypeChambre Is Nothing Then
-    '        Dim resChambres = From tabChambre In BD.tblChambre
-    '        Where tabChambre.EtageChambre = EtageSelection
-
-    '        Dis_GrtChambre.ItemsSource = resChambres.ToList
-    '    ElseIf NbLitSelection <> Nothing And EtageSelection = Nothing And _TypeChambre Is Nothing Then
-    '        Dim resChambres = From tabChambre In BD.tblChambre
-    '        Where tabChambre.NbLit = NbLitSelection
-
-    '        Dis_GrtChambre.ItemsSource = resChambres.ToList
-    '    Else : NbLitSelection = Nothing And EtageSelection = Nothing And _TypeChambre Is Nothing
-    '        Dim resChambres = From tabChambre In BD.tblChambre
-
-    '        Dis_GrtChambre.ItemsSource = resChambres.ToList
-    '    End If
-    '    'Join tabChaResCha In BD.tblChambreReservationChambre On tabChambre.NoSeqChambre Equals tabChaResCha.NoSeqChambre
-    '    'And Dis_DtpDateReser.SelectedDate > tabChaResCha.DateDebutReservation Or tabChambre.CodeTypeChambre = _TypeChambre.CodeTypeChambre And tabChambre.EtageChambre = EtageSelection And tabChambre.NbLit = NbLitSelection And Dis_DtpDateReser.SelectedDate < tabChaResCha.DateFinReservation
-    'End Sub
 
     Private Sub dis_dtpDateDebut_SelectedDateChanged(sender As Object, e As SelectionChangedEventArgs) Handles dis_dtpDateDebut.SelectedDateChanged
         FiltrerDatagrid()
