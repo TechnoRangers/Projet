@@ -1,4 +1,4 @@
-﻿<Window x:Class="Horaire"
+﻿<Window x:Name="Hor_frmChiffreTravail" x:Class="Horaire"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Horaire" Height="413.612" Width="846.667">
@@ -12,14 +12,12 @@
         <Label x:Name="Hor_LblTypeEmploi" Content="Département" FontSize="20" HorizontalAlignment="Left" Margin="31,34,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="Hor_CmbTypeEmploi" HorizontalAlignment="Left" Margin="160,37,0,0" VerticalAlignment="Top" Width="176" Height="28"/>
         <Calendar x:Name="Hor_Calendrier" HorizontalAlignment="Left" Margin="49,88,0,0" VerticalAlignment="Top" Width="287" Height="235" />
-        <DataGrid x:Name="Hor_DtgChiffreTravail" HorizontalAlignment="Left" Margin="363,37,0,0" VerticalAlignment="Top" Height="323" Width="422" AutoGenerateColumns="False">
+        <DataGrid x:Name="Hor_DtgChiffreTravail" CanUserAddRows="False" HorizontalAlignment="Left" Margin="363,37,0,0" VerticalAlignment="Top" Height="323" Width="422" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="No Employé" Binding="{Binding NoEmploye}"/>
-                <DataGridTextColumn Header="Prénom Employé" Binding="{Binding PrenomEmploye}"/>
-                <DataGridTextColumn Header="Nom Employé" Binding="{Binding NomEmploye}"/>
                 <DataGridTextColumn Header="Heure Début" Binding="{Binding HeureDebut}"/>
                 <DataGridTextColumn Header="Heure Fin" Binding="{Binding HeureFin}"/>
-                <DataGridTextColumn x:Name="Hor_DtgClmNoChiffre" Header="No Chiffre" Binding="{Binding NoChiffreTravail}"/>
+                <DataGridTextColumn Header="No Chiffre" Binding="{Binding NoChiffreTravail}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="Hor_BtnQuitter" Content="Quitter" HorizontalAlignment="Left" Margin="10,323,0,0" VerticalAlignment="Top" Width="101" Height="37" />

@@ -20,15 +20,16 @@
 
     End Sub
 
-    Private Sub Cha_BtnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Cha_BtnAnnuler.Click
+    Private Sub cha_frmChangementHoraire_Loaded(sender As Object, e As RoutedEventArgs) Handles cha_frmChangementHoraire.Loaded
+        Dim heure As String = ChiffreTravail.HeureDebut.Substring(0, 2)
+        Cha_CmbHreDeb.SelectedValue = heure
+    End Sub
 
-        Dim Horaire_ As New Horaire
-        Horaire_.Show()
+    Private Sub Cha_BtnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Cha_BtnAnnuler.Click
         Me.Close()
     End Sub
 
     Private Sub Cha_BtnValider_Click(sender As Object, e As RoutedEventArgs) Handles Cha_BtnValider.Click
-
 
         HreD = DirectCast(Cha_CmbHreDeb.SelectedItem, ComboBoxItem).Content.ToString()
         HreF = DirectCast(Cha_CmbHrefin.SelectedItem, ComboBoxItem).Content.ToString()
