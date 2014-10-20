@@ -1,0 +1,41 @@
+﻿<Window x:Class="ConsoleAdmin"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="MainWindow" WindowState="Maximized" WindowStartupLocation="CenterScreen" Height="648.633" Width="970.985">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF437E87" Offset="1"/>
+            <GradientStop Color="White"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Viewbox Stretch="Uniform">
+        <Grid>
+            <GroupBox Header="Réservation" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="223" Width="185">
+                <Grid HorizontalAlignment="Left" Height="203" VerticalAlignment="Top" Width="175" Margin="0,10,-2.2,-13">
+                    <Button x:Name="btn_Pays" Content="Pays" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btn_Province" Content="Province" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btn_Ville" Content="Ville" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btn_EquipementRecreatif" Content="EquipementRecreatif" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top" Width="155"/>
+                    <Button x:Name="btn_Hotel" Content="Hotel" HorizontalAlignment="Left" Margin="90,2,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btn_Salle" Content="Salle" HorizontalAlignment="Left" Margin="90,29,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btn_Chambre" Content="Chambre" HorizontalAlignment="Left" Margin="90,56,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btn_Facture" Content="Facture" HorizontalAlignment="Left" Margin="90,82,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btn_TypeChambre" Content="TypeChambre" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Width="155"/>
+                    <Button x:Name="btn_EquipementGeneriqueChambre" Content="EquipementGeneriqueChambre" HorizontalAlignment="Left" Margin="10,163,0,0" VerticalAlignment="Top" Width="155"/>
+                    <Button x:Name="btn_Forfait" Content="Forfait" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" Width="75"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Approvisionnement" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" Height="223" Width="172">
+                <Grid HorizontalAlignment="Left" Height="213" VerticalAlignment="Top" Width="162" Margin="0,0,-2.8,-13">
+                    <Button x:Name="btn_Fournisseur" Content="Fournisseur" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="139"/>
+                    <Button x:Name="btn_Fourniture" Content="Fourniture" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="139"/>
+                    <Button x:Name="btn_CategorieFourniture" Content="CategorieFourniture" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Width="139"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Personnel" HorizontalAlignment="Left" Margin="377,10,0,0" VerticalAlignment="Top" Height="57" Width="117">
+                <Button x:Name="btn_Employe" Content="Employe" HorizontalAlignment="Left" Margin="16,9,0,0" VerticalAlignment="Top" Width="75"/>
+            </GroupBox>
+            <Button x:Name="consadm_btnRetour" Content="Retour" HorizontalAlignment="Left" Margin="409,201,0,0" VerticalAlignment="Top" Width="75"/>
+        </Grid>
+    </Viewbox>
+</Window>

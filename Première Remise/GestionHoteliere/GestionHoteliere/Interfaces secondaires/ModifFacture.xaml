@@ -1,0 +1,33 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Name="fac_frmModifFacture" x:Class="ModifFacture"
+    Title="ModifFacture" Height="179.787" Width="543.618">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF437E87" Offset="1"/>
+            <GradientStop Color="White"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Viewbox Stretch="Uniform">
+        <Grid>
+            <GroupBox x:Name="fac_grbFacture" Header="Facture" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="132" Width="518">
+                <Grid HorizontalAlignment="Left" Height="122" VerticalAlignment="Top" Width="509" Margin="0,0,-1.8,-12.4">
+                    <Label Content="Numéro Facture : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Montant Facture : " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Type Facture : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="fac_txtNoSeqFacture" IsEnabled="False" Text="{Binding NoSeqFacture}" HorizontalAlignment="Left" Height="23" Margin="121,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="1"/>
+                    <TextBox x:Name="fac_txtTypeFacture" Text="{Binding TypeFacture}" HorizontalAlignment="Left" Height="23" Margin="121,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="3"/>
+                    <Label Content="Numéro Réservation : " HorizontalAlignment="Left" Margin="247,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Numéro Employé : " HorizontalAlignment="Left" Margin="247,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.813,2.058"/>
+                    <TextBox x:Name="fac_txtNoSeqReservChambre" Text="{Binding NoSeqReservChambre}" HorizontalAlignment="Left" Height="23" Margin="375,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="4"/>
+                    <TextBox x:Name="fac_txtNoEmploye" Text="{Binding NoEmploye}" HorizontalAlignment="Left" Height="23" Margin="375,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="5"/>
+                    <Button x:Name="fac_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="420,82,0,0" VerticalAlignment="Top" Width="75" TabIndex="6"/>
+                    <xctk:MaskedTextBox x:Name="fac_txtMontantFacture" Text="{Binding MontantFacture}" HorizontalAlignment="Left" Margin="122,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" TabIndex="2"/>
+                </Grid>
+            </GroupBox>
+
+        </Grid>
+    </Viewbox>
+
+</Window>
