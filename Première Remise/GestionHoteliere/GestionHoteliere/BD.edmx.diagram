@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1b07f717add54a6db1ea5eed8752be14" Name="Diagram1">
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblCategorieFourniture" Width="1.5" PointX="12.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblCommande" Width="1.5" PointX="12" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblFournisseur" Width="1.5" PointX="18" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblFourniture" Width="1.5" PointX="15" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblFournitureCommande" Width="1.5" PointX="17.25" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblFournitureFournisseur" Width="1.5" PointX="20.25" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblFournitureHotel" Width="1.5" PointX="9.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblChiffreTravail" Width="1.5" PointX="12" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblEmploye" Width="1.5" PointX="9.75" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblEntretienFourniture" Width="1.5" PointX="15" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblChambre" Width="1.5" PointX="12.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblChambreReservationChambre" Width="1.5" PointX="18" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblClient" Width="1.5" PointX="13.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblEquipementGeneriqueChambre" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblEquipementRecreatif" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblEquipementRecreatifHotel" Width="1.5" PointX="14.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblFacture" Width="1.5" PointX="18" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblForfait" Width="1.5" PointX="8.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblHotel" Width="1.5" PointX="7.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblPays" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblProvince" Width="1.5" PointX="3" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblRabais" Width="1.5" PointX="13.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblReservationChambre" Width="1.5" PointX="15.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblReservationSalle" Width="1.5" PointX="12" PointY="26.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblSalle" Width="1.5" PointX="9.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblTypeChambre" Width="1.5" PointX="10.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.tblVille" Width="1.5" PointX="5.25" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="P2014_BDTestFrancoisModel.VueInventaire" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_Categ_CodeCateg" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Com_FourCom_NoCom" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Emp_Com_NoEmp" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_Com_NoSeqFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_CourCom_NoSeqFournisseur" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_Chamb_NoSeqChamb" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_EntFour_NoSeqFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_FourCom_NoSeqFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_FourFour_NoSeqFourniture" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Four_FourHot_NoSeqFour" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Hot_FourHot_CodHot" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Emp_ChifHor_NoEmp" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Emp_EntFour_NoEmp" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Hot_Emp_CodHot" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Chamb_ChambReservChamb_NoSeqReservChamb" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Hot_Chamb_CodHot" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Hot_TypChamb_CodTypeChamb" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_ReservChamb_ChambReservChamb_NoSeqReservChamb" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Cli_ReservChamb_NoCli" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Cli_ReservSalle_NoCli" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_EqRec_EqHot_CodEqRec" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Hot_EqHot_CodHot" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_ReservChamb_Fact_NoSeqChamb" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Hot_Salle_CodHot" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Vill_Hot_CodVill" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Pays_Prov_CodPays" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Prov_Vill_CodProv" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Rab_ReservChamb_NoRab" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.FK_Salle_ReservSalle_CodSalle" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.tblEquipementGeneriqueTypeChambre" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.tblEquipementRecreatifForfait" ManuallyRouted="false" />
+        <AssociationConnector Association="P2014_BDTestFrancoisModel.tblForfaitTypeChambre" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

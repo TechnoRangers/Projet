@@ -2,6 +2,7 @@
     Dim MaBD As P2014_BDTestFrancoisEntities
     Dim Fournisseur As tblFournisseur
     Dim ItemCommande As New List(Of tblFournitureFournisseur)
+    Dim FournitureCommande As New List(Of tblFournitureCommande)
     Dim PrixCommande As Double
 
     Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
@@ -51,6 +52,9 @@
                                         Select tabFournitureFournisseur).ToList.First
 
             ItemCommande.Add(FournitureFournisseur)
+
+            Dim FournitureCommande As tblFournitureCommande
+            FournitureCommande.NoSeqFourniture = 
 
             CalculPrixTotal()
             com_lbvCommande.ItemsSource = ItemCommande.ToList
