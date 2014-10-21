@@ -121,8 +121,8 @@
     End Sub
 
     Private Sub LocSal_BtnRec_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnRec.Click
+        'Recher du client par le nom de famille et le Tel 
         Try
-            'Recher du client par le nom de famille et le Tel 
             Dim Res = (From Cl In MaBd.tblClient
                         Where Cl.NoTelephone.Equals(LocSal_TxtBoxTel.Text) And Cl.NomClient.Equals(LocSal_TxtBoxNom.Text)
                         Select Cl)
@@ -132,7 +132,7 @@
             LocSal_TxtBoxAdr.Text = Res.First.AdresseClient
             LocSal_TxtBoxEmail.Text = Res.First.EmailClient
         Catch ex As Exception
-            MessageBox.Show("le client  n'existe pas")
+            MessageBox.Show("Ce client n'existe pas")
         End Try
     End Sub
 
@@ -181,7 +181,7 @@
                 El = Rep.First
 
                 LocSal_TxtBoxClient.Text = El.NoSeqClient
-                LocSal_TxtBoxNb.Text = El.NoCarteCredit
+                LocSal_TxtBoxNb.Text = El.NbPersonne
                 LocSal_CmbBoxEtat.SelectedItem = El.StatutPaiement
                 LocSal_CmbBoxPaiement.SelectedItem = El.ModePaiement
                 LocSal_TxtBoxPrix.Text = El.PrixReservSalle
@@ -215,17 +215,78 @@
                     End If
                 Next
                 LocSal_BtnAjout.IsEnabled = False
+                LocSal_BtnSuppSalle.IsEnabled = True
+                LocSal_BtnModiSalle.IsEnabled = True
+
             Catch ex As Exception
-                'Si le responsable ne rentre pas de réservation existant
-                MessageBox.Show("La réservation N'existe pas")
-                LocSal_TxtBoxNoRes.Text = ""
-                LocSal_TxtBoxNoRes.Focus()
+                MessageBox.Show("Cette réservation n'existe pas ")
             End Try
         Else
-            'Si le champs est vide 
-            MessageBox.Show("Veuillez rentré un numéros de réservation pour la recherche")
+            MessageBox.Show("Cette réservation n'existe pas")
             LocSal_TxtBoxNoRes.Focus()
         End If
+    End Sub
+
+    Private Sub LocSal_BtnSuppSalle_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnSuppSalle.Click
+        Dim Reservation As tblReservationSalle
+        Dim Resp As Boolean = MessageBox.Show("Êtes-vous sûr de supprimer cette réservation", "caption", MessageBoxButton.YesNo)
+
+        If Resp Then
+            Reservation = (From It In MaBd.tblReservationSalle
+                          Where It.NoSeqReservSalle = LocSal_TxtBoxNoRes.Text
+                          Select It).Single()
+            MaBd.tblReservationSalle.Remove(Reservation)
+            MaBd.SaveChanges()
+
+            LocSal_TxtBoxNoRes.Text = ""
+            LocSal_TxtBoxCredit.Text = ""
+            LocSal_TxtBoxNb.Text = ""
+            LocSal_TxtBoxPrix.Text = ""
+
+            LocSal_TxtBoxTel.Text = ""
+            LocSal_TxtBoxAdr.Text = ""
+            LocSal_TxtBoxClient.Text = ""
+            LocSal_TxtBoxEmail.Text = ""
+            LocSal_TxtBoxNom.Text = ""
+            LocSal_TxtBoxPre.Text = ""
+
+            LocSal_CmbBoxEtat.SelectedIndex = -1
+            LocSal_CmbBoxPaiement.SelectedIndex = -1
+            LocSal_CmbBoxSalle.SelectedIndex = -1
+
+            MessageBox.Show("La réservation a été supprimer")
+
+        Else
+            MessageBox.Show("la réservation n'a pas été supprimer")
+        End If
+
+
+    End Sub
+
+    Private Sub LocSal_BtnModiSalle_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnModiSalle.Click
+        Dim ResChange = (From it In MaBd.tblReservationSalle
+                         Where it.NoSeqReservSalle = LocSal_TxtBoxNoRes.Text
+                         Select it).Single()
+
+        ResChange.NbPersonne = LocSal_TxtBoxNb.Text
+        If Not IsNothing(LocSal_TxtBoxCredit.Text) Then
+            ResChange.NoCarteCredit = LocSal_TxtBoxCredit.Text
+        End If
+        ResChange.ModePaiement = LocSal_CmbBoxPaiement.SelectedItem
+        ResChange.PrixReservSalle = LocSal_TxtBoxPrix.Text
+
+        Dim res = (From it In MaBd.tblSalle
+            Where it.NomSalle.Equals(LocSal_CmbBoxSalle.SelectedItem.ToString)
+            Select it.CodeSalle).Single()
+        ResChange.CodeSalle = res
+
+        ResChange.DateReservSalle = LocSal_DatePicker.SelectedDate
+        Try
+            MaBd.SaveChanges()
+            MessageBox.Show("La modification a été faite")
+        Catch ex As Exception
+            MessageBox.Show("Erreur")
+        End Try
 
     End Sub
 End Class
