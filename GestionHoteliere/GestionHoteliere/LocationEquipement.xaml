@@ -1,7 +1,7 @@
 ﻿<Window x:Class="LocationEquipement"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Location d'equipement" Height="400" Width="516" Loaded="Window_Loaded">
+    Title="Location d'equipement" Height="400" Width="516" Loaded="Window_Loaded" Icon="icone_Hotel.ico">
     <Grid>
         <ListView Name="LocEqui_ListBoxInventaire" HorizontalAlignment="Left" Height="218" Margin="23,80,0,0" VerticalAlignment="Top" Width="188">
             <ListView.View>

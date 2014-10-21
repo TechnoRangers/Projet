@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Name="Res_frmReservation" x:Class="Reservation"
     WindowStartupLocation="CenterScreen"
-    Title="Techno Rangers Version 1.02 Reservation" WindowState="Maximized" Width="952" Height="530.4">
+    Title="Techno Rangers Version 1.02 Reservation" WindowState="Maximized" Width="952" Height="530.4" Icon="icone_Hotel.ico">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF437E87" Offset="1"/>
