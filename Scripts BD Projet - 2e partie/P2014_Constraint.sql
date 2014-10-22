@@ -16,6 +16,7 @@ ALTER TABLE Approvisionnement.tblFournitureFournisseur ADD CONSTRAINT PK_FourFou
 ALTER TABLE Approvisionnement.tblFournitureHotel ADD CONSTRAINT PK_HotFour_CodHotNoSeqFour PRIMARY KEY(CodeHotel,CodeFourniture)
 ALTER TABLE Approvisionnement.tblFourniture ADD CONSTRAINT PK_Fourniture_NoSeqFourniture PRIMARY KEY(CodeFourniture)
 ALTER TABLE Approvisionnement.tblCategorieFourniture ADD CONSTRAINT PK_CategFour_CodeCateg PRIMARY KEY (CodeCategorie)
+ALTER TABLE Approvisionnement.tblFournitureChambre ADD CONSTRAINT PK_NoChamb_CodFour PRIMARY KEY (NoSeqChambre, CodeFourniture)
 GO
 
 
@@ -53,7 +54,9 @@ ALTER TABLE Approvisionnement.tblFournitureFournisseur ADD CONSTRAINT FK_Four_Fo
 ALTER TABLE Approvisionnement.tblFournitureFournisseur ADD CONSTRAINT FK_Four_CourCom_NoSeqFournisseur FOREIGN KEY(CodeFournisseur) REFERENCES Approvisionnement.tblFournisseur(CodeFournisseur) 
 ALTER TABLE Approvisionnement.tblFournitureHotel ADD CONSTRAINT FK_Hot_FourHot_CodHot FOREIGN KEY(CodeHotel) REFERENCES Reservation.tblHotel(CodeHotel) 
 ALTER TABLE Approvisionnement.tblFournitureHotel ADD CONSTRAINT FK_Four_FourHot_NoSeqFour FOREIGN KEY(CodeFourniture) REFERENCES Approvisionnement.tblFourniture(CodeFourniture) 
-ALTER TABLE Approvisionnement.tblFourniture ADD CONSTRAINT FK_Four_Categ_CodeCateg FOREIGN KEY(CodeCategorie) REFERENCES Approvisionnement.tblCategorieFourniture(CodeCategorie) 
+ALTER TABLE Approvisionnement.tblFourniture ADD CONSTRAINT FK_Four_Categ_CodeCateg FOREIGN KEY(CodeCategorie) REFERENCES Approvisionnement.tblCategorieFourniture(CodeCategorie)
+ALTER TABLE Approvisionnement.tblFournitureChambre ADD CONSTRAINT FK_Chamb_Four_NoSeqChamb FOREIGN KEY(NoSeqChambre) REFERENCES Reservation.tblChambre(NoSeqChambre) 
+ALTER TABLE Approvisionnement.tblFournitureChambre ADD CONSTRAINT FK_Chamb_Four_CodFour FOREIGN KEY(CodeFourniture) REFERENCES Approvisionnement.tblFourniture(CodeFourniture) 
 GO
 
 
