@@ -1,0 +1,31 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Name="ajoutitemhot_frmAjoutItemHotel" x:Class="AjoutItemHotel"
+    Title="AjoutItemHotel" Height="195.982" Width="457.393">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF437E87" Offset="1"/>
+            <GradientStop Color="White"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <ListView x:Name="ajoutitemhot_lbvFourniture" HorizontalAlignment="Left" Height="112" Margin="10,41,0,0" VerticalAlignment="Top" Width="223">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Code Fourniture" Width="Auto" DisplayMemberBinding="{Binding CodeFourniture}"/>
+                    <GridViewColumn Header="Description" Width="Auto" DisplayMemberBinding="{Binding DescFourniture}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <ComboBox x:Name="ajoutitemhot_cmbFournisseur" HorizontalAlignment="Left" Margin="85,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Fournisseur" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Quantité Min" HorizontalAlignment="Left" Margin="238,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="Quantité Max" HorizontalAlignment="Left" Margin="238,72,0,0" VerticalAlignment="Top"/>
+        <Label Content="Quantité" HorizontalAlignment="Left" Margin="238,100,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ajoutitemhot_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="366,131,0,0" VerticalAlignment="Top" Width="75"/>
+        <xctk:MaskedTextBox x:Name="ajoutitemhot_txtQuantiteMin" InsertKeyMode="Insert" PromptChar=" " Mask="000000" HorizontalAlignment="Left" Margin="322,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"/>
+        <xctk:MaskedTextBox x:Name="ajoutitemhot_txtQuantiteMax" PromptChar=" " Mask="000000" HorizontalAlignment="Left" Margin="322,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119"/>
+        <xctk:MaskedTextBox x:Name="ajoutitemhot_txtQuantite" PromptChar=" " Mask="000000" HorizontalAlignment="Left" Margin="322,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118"/>
+    </Grid>
+</Window>

@@ -49,17 +49,31 @@
             Try
                 'Ajouter les liens dans les tables d'intersection
                 'tblFournitureHotel
-                MonItemHotel.CodeHotel = MonHotel.CodeHotel
-                MonItemHotel.NoSeqFourniture = MonItem.NoSeqFourniture
-                MonItemHotel.QuantiteMin = ajoutinv_txtQuantiteMin.Text
-                MonItemHotel.QuantiteMax = ajoutinv_txtQuantiteMax.Text
-                MonItemHotel.QuantiteFournitureHotel = ajoutinv_txtQuantiteFourniture.Text
-                MaBD.tblFournitureHotel.Add(MonItemHotel)
-                MaBD.SaveChanges()
+
+                'Vérifier si l'item existe déjà dans cet hotel
+                'Si il existe déjà, juste augmenter la quantité
+
+                Dim VerifExist = (From tabFourHot In MaBD.tblFournitureHotel
+                                 Where tabFourHot.CodeHotel = MonHotel.CodeHotel And tabFourHot.CodeFourniture = MonItemHotel.CodeFourniture
+                                 Select tabFourHot).ToList.First
+
+                If VerifExist IsNot Nothing Then
+
+                    MessageBox.Show("L'item existe déjà")
+                Else
+                    MonItemHotel.CodeHotel = MonHotel.CodeHotel
+                    MonItemHotel.CodeFourniture = MonItem.CodeFourniture
+                    MonItemHotel.QuantiteMin = ajoutinv_txtQuantiteMin.Text
+                    MonItemHotel.QuantiteMax = ajoutinv_txtQuantiteMax.Text
+                    MonItemHotel.QuantiteFournitureHotel = ajoutinv_txtQuantiteFourniture.Text
+                    MaBD.tblFournitureHotel.Add(MonItemHotel)
+                    MaBD.SaveChanges()
+                End If
+
 
                 Try
                     'tblFournitureFournisseur
-                    MonItemFournisseur.NoSeqFourniture = MonItem.NoSeqFourniture
+                    MonItemFournisseur.CodeFourniture = MonItem.CodeFourniture
                     MonItemFournisseur.CodeFournisseur = FournisseurSelection.CodeFournisseur
                     MonItemFournisseur.PrixFournitureFournisseur = ajoutinv_txtPrixFournitureFournisseur.Text
                     MaBD.tblFournitureFournisseur.Add(MonItemFournisseur)
@@ -86,4 +100,5 @@
         MessageBox.Show("L'item a été ajouté correctement.")
         Me.Close()
     End Sub
+
 End Class

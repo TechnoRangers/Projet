@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="P2014_BDTestFrancoisModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="P2014_BD_GestionHotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblCategorieFourniture">
           <Key>
             <PropertyRef Name="CodeCategorie" />
@@ -36,39 +36,49 @@
         </EntityType>
         <EntityType Name="tblFourniture">
           <Key>
-            <PropertyRef Name="NoSeqFourniture" />
+            <PropertyRef Name="CodeFourniture" />
           </Key>
-          <Property Name="NoSeqFourniture" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="DescFourniture" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="NoSeqChambre" Type="int" />
           <Property Name="CodeCategorie" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <!--Erreurs détectées durant la génération :
+avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.tblFournitureChambre' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+        <EntityType Name="tblFournitureChambre">
+          <Key>
+            <PropertyRef Name="NoSeqChambre" />
+            <PropertyRef Name="CodeFourniture" />
+            <PropertyRef Name="QuantiteChambre" />
+          </Key>
+          <Property Name="NoSeqChambre" Type="int" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="QuantiteChambre" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="tblFournitureCommande">
           <Key>
             <PropertyRef Name="NoCommande" />
-            <PropertyRef Name="NoSeqFourniture" />
+            <PropertyRef Name="CodeFourniture" />
           </Key>
           <Property Name="NoCommande" Type="int" Nullable="false" />
-          <Property Name="NoSeqFourniture" Type="int" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="QuantiteCommande" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblFournitureFournisseur">
           <Key>
-            <PropertyRef Name="NoSeqFourniture" />
+            <PropertyRef Name="CodeFourniture" />
             <PropertyRef Name="CodeFournisseur" />
           </Key>
-          <Property Name="NoSeqFourniture" Type="int" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="CodeFournisseur" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="PrixFournitureFournisseur" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="tblFournitureHotel">
           <Key>
             <PropertyRef Name="CodeHotel" />
-            <PropertyRef Name="NoSeqFourniture" />
+            <PropertyRef Name="CodeFourniture" />
           </Key>
           <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
-          <Property Name="NoSeqFourniture" Type="int" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="QuantiteMin" Type="smallint" Nullable="false" />
           <Property Name="QuantiteMax" Type="int" Nullable="false" />
           <Property Name="QuantiteFournitureHotel" Type="int" />
@@ -103,10 +113,10 @@
         </EntityType>
         <EntityType Name="tblEntretienFourniture">
           <Key>
-            <PropertyRef Name="NoSeqFourniture" />
+            <PropertyRef Name="CodeFourniture" />
             <PropertyRef Name="NoEmploye" />
           </Key>
-          <Property Name="NoSeqFourniture" Type="int" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="NoEmploye" Type="int" Nullable="false" />
           <Property Name="EtatFourniture" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="CommentaireFourniture" Type="varchar" MaxLength="300" />
@@ -116,11 +126,13 @@
             <PropertyRef Name="NoSeqChambre" />
           </Key>
           <Property Name="NoSeqChambre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodeChambre" Type="char" MaxLength="4" Nullable="false" />
           <Property Name="EtageChambre" Type="smallint" Nullable="false" />
           <Property Name="StatutChambre" Type="varchar" MaxLength="15" />
           <Property Name="DescChambre" Type="text" />
           <Property Name="TypeLit" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="NbLit" Type="tinyint" Nullable="false" />
+          <Property Name="PrixChambre" Type="money" Nullable="false" />
           <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="CodeTypeChambre" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
@@ -225,11 +237,17 @@
             <PropertyRef Name="CodeHotel" />
           </Key>
           <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
-          <Property Name="NomHotel" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="NomHotel" Type="varchar" MaxLength="80" />
           <Property Name="NbChambre" Type="smallint" Nullable="false" />
-          <Property Name="AdresseHotel" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="AdresseHotel" Type="varchar" MaxLength="50" />
           <Property Name="NbEtoiles" Type="tinyint" Nullable="false" />
-          <Property Name="TypeService" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TypeService" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CodePostal" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="NoTelephoneHotel" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="NoTelecopieurHotel" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="NoTelReservation" Type="char" MaxLength="14" Nullable="false" />
+          <Property Name="HeureLimiteDepart" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="HeureLimiteArrive" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="CodeVille" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
         <EntityType Name="tblPays">
@@ -314,11 +332,10 @@
           <Property Name="CodeProvince" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
         <!--Erreurs détectées durant la génération :
-avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInventaire' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
+avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInventaire' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
         <EntityType Name="VueInventaire">
           <Key>
             <PropertyRef Name="CodeHotel" />
-            <PropertyRef Name="NoSeqFourniture" />
             <PropertyRef Name="CodeFourniture" />
             <PropertyRef Name="DescFourniture" />
             <PropertyRef Name="CodeCategorie" />
@@ -330,7 +347,6 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             <PropertyRef Name="NomFournisseur" />
           </Key>
           <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
-          <Property Name="NoSeqFourniture" Type="int" Nullable="false" />
           <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="DescFourniture" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CodeCategorie" Type="char" MaxLength="3" Nullable="false" />
@@ -498,18 +514,6 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Four_Chamb_NoSeqChamb">
-          <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="0..1" />
-          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblChambre">
-              <PropertyRef Name="NoSeqChambre" />
-            </Principal>
-            <Dependent Role="tblFourniture">
-              <PropertyRef Name="NoSeqChambre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Four_Com_NoSeqFour">
           <End Role="tblFournisseur" Type="Self.tblFournisseur" Multiplicity="1" />
           <End Role="tblCommande" Type="Self.tblCommande" Multiplicity="*" />
@@ -539,10 +543,10 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <End Role="tblEntretienFourniture" Type="Self.tblEntretienFourniture" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFourniture">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Principal>
             <Dependent Role="tblEntretienFourniture">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -551,10 +555,10 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <End Role="tblFournitureCommande" Type="Self.tblFournitureCommande" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFourniture">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Principal>
             <Dependent Role="tblFournitureCommande">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -563,10 +567,10 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <End Role="tblFournitureFournisseur" Type="Self.tblFournitureFournisseur" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFourniture">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Principal>
             <Dependent Role="tblFournitureFournisseur">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -575,10 +579,10 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <End Role="tblFournitureHotel" Type="Self.tblFournitureHotel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFourniture">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Principal>
             <Dependent Role="tblFournitureHotel">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -766,7 +770,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <Parameter Name="DateDebut" Type="date" Mode="In" />
           <Parameter Name="DateFin" Type="date" Mode="In" />
         </Function>
-        <EntityContainer Name="P2014_BDTestFrancoisModelStoreContainer">
+        <EntityContainer Name="P2014_BD_GestionHotelModelStoreContainer">
           <EntitySet Name="tblCategorieFourniture" EntityType="Self.tblCategorieFourniture" Schema="Approvisionnement" store:Type="Tables" />
           <EntitySet Name="tblCommande" EntityType="Self.tblCommande" Schema="Approvisionnement" store:Type="Tables" />
           <EntitySet Name="tblFournisseur" EntityType="Self.tblFournisseur" Schema="Approvisionnement" store:Type="Tables" />
@@ -797,10 +801,16 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <EntitySet Name="tblSalle" EntityType="Self.tblSalle" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblTypeChambre" EntityType="Self.tblTypeChambre" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblVille" EntityType="Self.tblVille" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblFournitureChambre" EntityType="Self.tblFournitureChambre" store:Type="Tables" store:Schema="Approvisionnement">
+            <DefiningQuery>SELECT 
+    [tblFournitureChambre].[NoSeqChambre] AS [NoSeqChambre], 
+    [tblFournitureChambre].[CodeFourniture] AS [CodeFourniture], 
+    [tblFournitureChambre].[QuantiteChambre] AS [QuantiteChambre]
+    FROM [Approvisionnement].[tblFournitureChambre] AS [tblFournitureChambre]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="VueInventaire" EntityType="Self.VueInventaire" store:Type="Views" store:Schema="Approvisionnement">
             <DefiningQuery>SELECT 
     [VueInventaire].[CodeHotel] AS [CodeHotel], 
-    [VueInventaire].[NoSeqFourniture] AS [NoSeqFourniture], 
     [VueInventaire].[CodeFourniture] AS [CodeFourniture], 
     [VueInventaire].[DescFourniture] AS [DescFourniture], 
     [VueInventaire].[CodeCategorie] AS [CodeCategorie], 
@@ -863,10 +873,6 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           </AssociationSet>
           <AssociationSet Name="FK_Four_Categ_CodeCateg" Association="Self.FK_Four_Categ_CodeCateg">
             <End Role="tblCategorieFourniture" EntitySet="tblCategorieFourniture" />
-            <End Role="tblFourniture" EntitySet="tblFourniture" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Four_Chamb_NoSeqChamb" Association="Self.FK_Four_Chamb_NoSeqChamb">
-            <End Role="tblChambre" EntitySet="tblChambre" />
             <End Role="tblFourniture" EntitySet="tblFourniture" />
           </AssociationSet>
           <AssociationSet Name="FK_Four_Com_NoSeqFour" Association="Self.FK_Four_Com_NoSeqFour">
@@ -958,7 +964,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="P2014_BDTestFrancoisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="P2014_BD_GestionHotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="tblCategorieFourniture">
           <Key>
             <PropertyRef Name="CodeCategorie" />
@@ -996,15 +1002,12 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
         </EntityType>
         <EntityType Name="tblFourniture">
           <Key>
-            <PropertyRef Name="NoSeqFourniture" />
+            <PropertyRef Name="CodeFourniture" />
           </Key>
-          <Property Name="NoSeqFourniture" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DescFourniture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NoSeqChambre" Type="Int32" />
           <Property Name="CodeCategorie" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblCategorieFourniture" Relationship="Self.FK_Four_Categ_CodeCateg" FromRole="tblFourniture" ToRole="tblCategorieFourniture" />
-          <NavigationProperty Name="tblChambre" Relationship="Self.FK_Four_Chamb_NoSeqChamb" FromRole="tblFourniture" ToRole="tblChambre" />
           <NavigationProperty Name="tblEntretienFourniture" Relationship="Self.FK_Four_EntFour_NoSeqFour" FromRole="tblFourniture" ToRole="tblEntretienFourniture" />
           <NavigationProperty Name="tblFournitureCommande" Relationship="Self.FK_Four_FourCom_NoSeqFour" FromRole="tblFourniture" ToRole="tblFournitureCommande" />
           <NavigationProperty Name="tblFournitureFournisseur" Relationship="Self.FK_Four_FourFour_NoSeqFourniture" FromRole="tblFourniture" ToRole="tblFournitureFournisseur" />
@@ -1013,20 +1016,20 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
         <EntityType Name="tblFournitureCommande">
           <Key>
             <PropertyRef Name="NoCommande" />
-            <PropertyRef Name="NoSeqFourniture" />
+            <PropertyRef Name="CodeFourniture" />
           </Key>
           <Property Name="NoCommande" Type="Int32" Nullable="false" />
-          <Property Name="NoSeqFourniture" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="QuantiteCommande" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tblCommande" Relationship="Self.FK_Com_FourCom_NoCom" FromRole="tblFournitureCommande" ToRole="tblCommande" />
           <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Four_FourCom_NoSeqFour" FromRole="tblFournitureCommande" ToRole="tblFourniture" />
         </EntityType>
         <EntityType Name="tblFournitureFournisseur">
           <Key>
-            <PropertyRef Name="NoSeqFourniture" />
+            <PropertyRef Name="CodeFourniture" />
             <PropertyRef Name="CodeFournisseur" />
           </Key>
-          <Property Name="NoSeqFourniture" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CodeFournisseur" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PrixFournitureFournisseur" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="tblFournisseur" Relationship="Self.FK_Four_CourCom_NoSeqFournisseur" FromRole="tblFournitureFournisseur" ToRole="tblFournisseur" />
@@ -1035,10 +1038,10 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
         <EntityType Name="tblFournitureHotel">
           <Key>
             <PropertyRef Name="CodeHotel" />
-            <PropertyRef Name="NoSeqFourniture" />
+            <PropertyRef Name="CodeFourniture" />
           </Key>
           <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="NoSeqFourniture" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="QuantiteMin" Type="Int16" Nullable="false" />
           <Property Name="QuantiteMax" Type="Int32" Nullable="false" />
           <Property Name="QuantiteFournitureHotel" Type="Int32" />
@@ -1080,10 +1083,10 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
         </EntityType>
         <EntityType Name="tblEntretienFourniture">
           <Key>
-            <PropertyRef Name="NoSeqFourniture" />
+            <PropertyRef Name="CodeFourniture" />
             <PropertyRef Name="NoEmploye" />
           </Key>
-          <Property Name="NoSeqFourniture" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NoEmploye" Type="Int32" Nullable="false" />
           <Property Name="EtatFourniture" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CommentaireFourniture" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
@@ -1095,14 +1098,15 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             <PropertyRef Name="NoSeqChambre" />
           </Key>
           <Property Name="NoSeqChambre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeChambre" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="EtageChambre" Type="Int16" Nullable="false" />
           <Property Name="StatutChambre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="DescChambre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TypeLit" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NbLit" Type="Byte" Nullable="false" />
+          <Property Name="PrixChambre" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="CodeTypeChambre" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Four_Chamb_NoSeqChamb" FromRole="tblChambre" ToRole="tblFourniture" />
           <NavigationProperty Name="tblChambreReservationChambre" Relationship="Self.FK_Chamb_ChambReservChamb_NoSeqReservChamb" FromRole="tblChambre" ToRole="tblChambreReservationChambre" />
           <NavigationProperty Name="tblHotel" Relationship="Self.FK_Hot_Chamb_CodHot" FromRole="tblChambre" ToRole="tblHotel" />
           <NavigationProperty Name="tblTypeChambre" Relationship="Self.FK_Hot_TypChamb_CodTypeChamb" FromRole="tblChambre" ToRole="tblTypeChambre" />
@@ -1196,11 +1200,17 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             <PropertyRef Name="CodeHotel" />
           </Key>
           <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="NomHotel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NomHotel" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="NbChambre" Type="Int16" Nullable="false" />
-          <Property Name="AdresseHotel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdresseHotel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NbEtoiles" Type="Byte" Nullable="false" />
-          <Property Name="TypeService" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TypeService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodePostal" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NoTelephoneHotel" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoTelecopieurHotel" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoTelReservation" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HeureLimiteDepart" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="HeureLimiteArrive" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="CodeVille" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblFournitureHotel" Relationship="Self.FK_Hot_FourHot_CodHot" FromRole="tblHotel" ToRole="tblFournitureHotel" />
           <NavigationProperty Name="tblEmploye" Relationship="Self.FK_Hot_Emp_CodHot" FromRole="tblHotel" ToRole="tblEmploye" />
@@ -1307,10 +1317,19 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <NavigationProperty Name="tblHotel" Relationship="Self.FK_Vill_Hot_CodVill" FromRole="tblVille" ToRole="tblHotel" />
           <NavigationProperty Name="tblProvince" Relationship="Self.FK_Prov_Vill_CodProv" FromRole="tblVille" ToRole="tblProvince" />
         </EntityType>
+        <EntityType Name="tblFournitureChambre">
+          <Key>
+            <PropertyRef Name="NoSeqChambre" />
+            <PropertyRef Name="CodeFourniture" />
+            <PropertyRef Name="QuantiteChambre" />
+          </Key>
+          <Property Name="NoSeqChambre" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuantiteChambre" Type="Int16" Nullable="false" />
+        </EntityType>
         <EntityType Name="VueInventaire">
           <Key>
             <PropertyRef Name="CodeHotel" />
-            <PropertyRef Name="NoSeqFourniture" />
             <PropertyRef Name="CodeFourniture" />
             <PropertyRef Name="DescFourniture" />
             <PropertyRef Name="CodeCategorie" />
@@ -1322,7 +1341,6 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             <PropertyRef Name="NomFournisseur" />
           </Key>
           <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="NoSeqFourniture" Type="Int32" Nullable="false" />
           <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DescFourniture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CodeCategorie" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
@@ -1394,27 +1412,15 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Four_Chamb_NoSeqChamb">
-          <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="0..1" />
-          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblChambre">
-              <PropertyRef Name="NoSeqChambre" />
-            </Principal>
-            <Dependent Role="tblFourniture">
-              <PropertyRef Name="NoSeqChambre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Four_EntFour_NoSeqFour">
           <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
           <End Role="tblEntretienFourniture" Type="Self.tblEntretienFourniture" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFourniture">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Principal>
             <Dependent Role="tblEntretienFourniture">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1423,10 +1429,10 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <End Role="tblFournitureCommande" Type="Self.tblFournitureCommande" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFourniture">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Principal>
             <Dependent Role="tblFournitureCommande">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1435,10 +1441,10 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <End Role="tblFournitureFournisseur" Type="Self.tblFournitureFournisseur" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFourniture">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Principal>
             <Dependent Role="tblFournitureFournisseur">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1447,10 +1453,10 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <End Role="tblFournitureHotel" Type="Self.tblFournitureHotel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFourniture">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Principal>
             <Dependent Role="tblFournitureHotel">
-              <PropertyRef Name="NoSeqFourniture" />
+              <PropertyRef Name="CodeFourniture" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1722,6 +1728,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <EntitySet Name="tblSalle" EntityType="Self.tblSalle" />
           <EntitySet Name="tblTypeChambre" EntityType="Self.tblTypeChambre" />
           <EntitySet Name="tblVille" EntityType="Self.tblVille" />
+          <EntitySet Name="tblFournitureChambre" EntityType="Self.tblFournitureChambre" />
           <EntitySet Name="VueInventaire" EntityType="Self.VueInventaire" />
           <AssociationSet Name="FK_Four_Categ_CodeCateg" Association="Self.FK_Four_Categ_CodeCateg">
             <End Role="tblCategorieFourniture" EntitySet="tblCategorieFourniture" />
@@ -1742,10 +1749,6 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
           <AssociationSet Name="FK_Four_CourCom_NoSeqFournisseur" Association="Self.FK_Four_CourCom_NoSeqFournisseur">
             <End Role="tblFournisseur" EntitySet="tblFournisseur" />
             <End Role="tblFournitureFournisseur" EntitySet="tblFournitureFournisseur" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Four_Chamb_NoSeqChamb" Association="Self.FK_Four_Chamb_NoSeqChamb">
-            <End Role="tblChambre" EntitySet="tblChambre" />
-            <End Role="tblFourniture" EntitySet="tblFourniture" />
           </AssociationSet>
           <AssociationSet Name="FK_Four_EntFour_NoSeqFour" Association="Self.FK_Four_EntFour_NoSeqFour">
             <End Role="tblFourniture" EntitySet="tblFourniture" />
@@ -1851,18 +1854,20 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             <End Role="tblForfait" EntitySet="tblForfait" />
             <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
           </AssociationSet>
-          <FunctionImport Name="VerificationDispo" ReturnType="Collection(P2014_BDTestFrancoisModel.VerificationDispo_Result)">
+          <FunctionImport Name="VerificationDispo" ReturnType="Collection(P2014_BD_GestionHotelModel.VerificationDispo_Result)">
             <Parameter Name="DateDebut" Mode="In" Type="DateTime" />
             <Parameter Name="DateFin" Mode="In" Type="DateTime" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="VerificationDispo_Result">
           <Property Type="Int32" Name="NoSeqChambre" Nullable="false" />
+          <Property Type="String" Name="CodeChambre" Nullable="false" MaxLength="4" />
           <Property Type="Int16" Name="EtageChambre" Nullable="false" />
           <Property Type="String" Name="StatutChambre" Nullable="true" MaxLength="15" />
           <Property Type="String" Name="DescChambre" Nullable="true" MaxLength="Max" />
           <Property Type="String" Name="TypeLit" Nullable="false" MaxLength="30" />
           <Property Type="Byte" Name="NbLit" Nullable="false" />
+          <Property Type="Decimal" Name="PrixChambre" Nullable="false" Precision="19" />
           <Property Type="String" Name="CodeHotel" Nullable="false" MaxLength="3" />
           <Property Type="String" Name="CodeTypeChambre" Nullable="false" MaxLength="3" />
         </ComplexType>
@@ -1871,9 +1876,9 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="P2014_BDTestFrancoisModelStoreContainer" CdmEntityContainer="P2014_BDTestFrancoisEntities">
+        <EntityContainerMapping StorageEntityContainer="P2014_BD_GestionHotelModelStoreContainer" CdmEntityContainer="P2014_BDTestFrancoisEntities">
           <EntitySetMapping Name="tblCategorieFourniture">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblCategorieFourniture">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblCategorieFourniture">
               <MappingFragment StoreEntitySet="tblCategorieFourniture">
                 <ScalarProperty Name="CodeCategorie" ColumnName="CodeCategorie" />
                 <ScalarProperty Name="NomCategorie" ColumnName="NomCategorie" />
@@ -1881,7 +1886,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblCommande">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblCommande">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblCommande">
               <MappingFragment StoreEntitySet="tblCommande">
                 <ScalarProperty Name="NoCommande" ColumnName="NoCommande" />
                 <ScalarProperty Name="DateCommande" ColumnName="DateCommande" />
@@ -1894,7 +1899,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFournisseur">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblFournisseur">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournisseur">
               <MappingFragment StoreEntitySet="tblFournisseur">
                 <ScalarProperty Name="CodeFournisseur" ColumnName="CodeFournisseur" />
                 <ScalarProperty Name="NomFournisseur" ColumnName="NomFournisseur" />
@@ -1905,39 +1910,37 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFourniture">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblFourniture">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFourniture">
               <MappingFragment StoreEntitySet="tblFourniture">
-                <ScalarProperty Name="NoSeqFourniture" ColumnName="NoSeqFourniture" />
                 <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
                 <ScalarProperty Name="DescFourniture" ColumnName="DescFourniture" />
-                <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
                 <ScalarProperty Name="CodeCategorie" ColumnName="CodeCategorie" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFournitureCommande">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblFournitureCommande">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureCommande">
               <MappingFragment StoreEntitySet="tblFournitureCommande">
                 <ScalarProperty Name="NoCommande" ColumnName="NoCommande" />
-                <ScalarProperty Name="NoSeqFourniture" ColumnName="NoSeqFourniture" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
                 <ScalarProperty Name="QuantiteCommande" ColumnName="QuantiteCommande" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFournitureFournisseur">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblFournitureFournisseur">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureFournisseur">
               <MappingFragment StoreEntitySet="tblFournitureFournisseur">
-                <ScalarProperty Name="NoSeqFourniture" ColumnName="NoSeqFourniture" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
                 <ScalarProperty Name="CodeFournisseur" ColumnName="CodeFournisseur" />
                 <ScalarProperty Name="PrixFournitureFournisseur" ColumnName="PrixFournitureFournisseur" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFournitureHotel">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblFournitureHotel">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureHotel">
               <MappingFragment StoreEntitySet="tblFournitureHotel">
                 <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
-                <ScalarProperty Name="NoSeqFourniture" ColumnName="NoSeqFourniture" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
                 <ScalarProperty Name="QuantiteMin" ColumnName="QuantiteMin" />
                 <ScalarProperty Name="QuantiteMax" ColumnName="QuantiteMax" />
                 <ScalarProperty Name="QuantiteFournitureHotel" ColumnName="QuantiteFournitureHotel" />
@@ -1945,7 +1948,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblChiffreTravail">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblChiffreTravail">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblChiffreTravail">
               <MappingFragment StoreEntitySet="tblChiffreTravail">
                 <ScalarProperty Name="NoChiffreTravail" ColumnName="NoChiffreTravail" />
                 <ScalarProperty Name="DateChiffre" ColumnName="DateChiffre" />
@@ -1956,7 +1959,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblEmploye">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblEmploye">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEmploye">
               <MappingFragment StoreEntitySet="tblEmploye">
                 <ScalarProperty Name="NoEmploye" ColumnName="NoEmploye" />
                 <ScalarProperty Name="NomEmploye" ColumnName="NomEmploye" />
@@ -1975,9 +1978,9 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblEntretienFourniture">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblEntretienFourniture">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEntretienFourniture">
               <MappingFragment StoreEntitySet="tblEntretienFourniture">
-                <ScalarProperty Name="NoSeqFourniture" ColumnName="NoSeqFourniture" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
                 <ScalarProperty Name="NoEmploye" ColumnName="NoEmploye" />
                 <ScalarProperty Name="EtatFourniture" ColumnName="EtatFourniture" />
                 <ScalarProperty Name="CommentaireFourniture" ColumnName="CommentaireFourniture" />
@@ -1985,21 +1988,23 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblChambre">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblChambre">
               <MappingFragment StoreEntitySet="tblChambre">
                 <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+                <ScalarProperty Name="CodeChambre" ColumnName="CodeChambre" />
                 <ScalarProperty Name="EtageChambre" ColumnName="EtageChambre" />
                 <ScalarProperty Name="StatutChambre" ColumnName="StatutChambre" />
                 <ScalarProperty Name="DescChambre" ColumnName="DescChambre" />
                 <ScalarProperty Name="TypeLit" ColumnName="TypeLit" />
                 <ScalarProperty Name="NbLit" ColumnName="NbLit" />
+                <ScalarProperty Name="PrixChambre" ColumnName="PrixChambre" />
                 <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
                 <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblChambreReservationChambre">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblChambreReservationChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblChambreReservationChambre">
               <MappingFragment StoreEntitySet="tblChambreReservationChambre">
                 <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
                 <ScalarProperty Name="NoSeqReservChambre" ColumnName="NoSeqReservChambre" />
@@ -2012,7 +2017,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblClient">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblClient">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblClient">
               <MappingFragment StoreEntitySet="tblClient">
                 <ScalarProperty Name="NoSeqClient" ColumnName="NoSeqClient" />
                 <ScalarProperty Name="NomClient" ColumnName="NomClient" />
@@ -2025,7 +2030,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblEquipementGeneriqueChambre">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblEquipementGeneriqueChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEquipementGeneriqueChambre">
               <MappingFragment StoreEntitySet="tblEquipementGeneriqueChambre">
                 <ScalarProperty Name="CodeEquipementGenChambre" ColumnName="CodeEquipementGenChambre" />
                 <ScalarProperty Name="NomEquipementGenChambre" ColumnName="NomEquipementGenChambre" />
@@ -2033,7 +2038,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblEquipementRecreatif">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblEquipementRecreatif">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEquipementRecreatif">
               <MappingFragment StoreEntitySet="tblEquipementRecreatif">
                 <ScalarProperty Name="CodeEquipementRecreatif" ColumnName="CodeEquipementRecreatif" />
                 <ScalarProperty Name="NomEquipement" ColumnName="NomEquipement" />
@@ -2045,7 +2050,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblEquipementRecreatifHotel">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblEquipementRecreatifHotel">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEquipementRecreatifHotel">
               <MappingFragment StoreEntitySet="tblEquipementRecreatifHotel">
                 <ScalarProperty Name="CodeEquipementRecreatif" ColumnName="CodeEquipementRecreatif" />
                 <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
@@ -2054,7 +2059,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblFacture">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblFacture">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFacture">
               <MappingFragment StoreEntitySet="tblFacture">
                 <ScalarProperty Name="NoSeqFacture" ColumnName="NoSeqFacture" />
                 <ScalarProperty Name="MontantFacture" ColumnName="MontantFacture" />
@@ -2065,7 +2070,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblForfait">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblForfait">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblForfait">
               <MappingFragment StoreEntitySet="tblForfait">
                 <ScalarProperty Name="CodeForfait" ColumnName="CodeForfait" />
                 <ScalarProperty Name="NomForfait" ColumnName="NomForfait" />
@@ -2076,7 +2081,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblHotel">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblHotel">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblHotel">
               <MappingFragment StoreEntitySet="tblHotel">
                 <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
                 <ScalarProperty Name="NomHotel" ColumnName="NomHotel" />
@@ -2084,12 +2089,18 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
                 <ScalarProperty Name="AdresseHotel" ColumnName="AdresseHotel" />
                 <ScalarProperty Name="NbEtoiles" ColumnName="NbEtoiles" />
                 <ScalarProperty Name="TypeService" ColumnName="TypeService" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="NoTelephoneHotel" ColumnName="NoTelephoneHotel" />
+                <ScalarProperty Name="NoTelecopieurHotel" ColumnName="NoTelecopieurHotel" />
+                <ScalarProperty Name="NoTelReservation" ColumnName="NoTelReservation" />
+                <ScalarProperty Name="HeureLimiteDepart" ColumnName="HeureLimiteDepart" />
+                <ScalarProperty Name="HeureLimiteArrive" ColumnName="HeureLimiteArrive" />
                 <ScalarProperty Name="CodeVille" ColumnName="CodeVille" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblPays">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblPays">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblPays">
               <MappingFragment StoreEntitySet="tblPays">
                 <ScalarProperty Name="CodePays" ColumnName="CodePays" />
                 <ScalarProperty Name="NomPays" ColumnName="NomPays" />
@@ -2097,7 +2108,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblProvince">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblProvince">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblProvince">
               <MappingFragment StoreEntitySet="tblProvince">
                 <ScalarProperty Name="CodeProvince" ColumnName="CodeProvince" />
                 <ScalarProperty Name="NomProvince" ColumnName="NomProvince" />
@@ -2106,7 +2117,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblRabais">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblRabais">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblRabais">
               <MappingFragment StoreEntitySet="tblRabais">
                 <ScalarProperty Name="NoSeqRabais" ColumnName="NoSeqRabais" />
                 <ScalarProperty Name="DescRabais" ColumnName="DescRabais" />
@@ -2117,7 +2128,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblReservationChambre">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblReservationChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblReservationChambre">
               <MappingFragment StoreEntitySet="tblReservationChambre">
                 <ScalarProperty Name="NoSeqReservChambre" ColumnName="NoSeqReservChambre" />
                 <ScalarProperty Name="PrixReservChambre" ColumnName="PrixReservChambre" />
@@ -2131,7 +2142,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblReservationSalle">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblReservationSalle">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblReservationSalle">
               <MappingFragment StoreEntitySet="tblReservationSalle">
                 <ScalarProperty Name="NoSeqReservSalle" ColumnName="NoSeqReservSalle" />
                 <ScalarProperty Name="DateReservSalle" ColumnName="DateReservSalle" />
@@ -2146,7 +2157,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblSalle">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblSalle">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblSalle">
               <MappingFragment StoreEntitySet="tblSalle">
                 <ScalarProperty Name="CodeSalle" ColumnName="CodeSalle" />
                 <ScalarProperty Name="NomSalle" ColumnName="NomSalle" />
@@ -2160,7 +2171,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblTypeChambre">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblTypeChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblTypeChambre">
               <MappingFragment StoreEntitySet="tblTypeChambre">
                 <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
                 <ScalarProperty Name="NomTypeChambre" ColumnName="NomTypeChambre" />
@@ -2169,7 +2180,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblVille">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.tblVille">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblVille">
               <MappingFragment StoreEntitySet="tblVille">
                 <ScalarProperty Name="CodeVille" ColumnName="CodeVille" />
                 <ScalarProperty Name="NomVille" ColumnName="NomVille" />
@@ -2177,11 +2188,19 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblFournitureChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureChambre">
+              <MappingFragment StoreEntitySet="tblFournitureChambre">
+                <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="QuantiteChambre" ColumnName="QuantiteChambre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="VueInventaire">
-            <EntityTypeMapping TypeName="P2014_BDTestFrancoisModel.VueInventaire">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.VueInventaire">
               <MappingFragment StoreEntitySet="VueInventaire">
                 <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
-                <ScalarProperty Name="NoSeqFourniture" ColumnName="NoSeqFourniture" />
                 <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
                 <ScalarProperty Name="DescFourniture" ColumnName="DescFourniture" />
                 <ScalarProperty Name="CodeCategorie" ColumnName="CodeCategorie" />
@@ -2195,7 +2214,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="tblEquipementGeneriqueTypeChambre" TypeName="P2014_BDTestFrancoisModel.tblEquipementGeneriqueTypeChambre" StoreEntitySet="tblEquipementGeneriqueTypeChambre">
+          <AssociationSetMapping Name="tblEquipementGeneriqueTypeChambre" TypeName="P2014_BD_GestionHotelModel.tblEquipementGeneriqueTypeChambre" StoreEntitySet="tblEquipementGeneriqueTypeChambre">
             <EndProperty Name="tblEquipementGeneriqueChambre">
               <ScalarProperty Name="CodeEquipementGenChambre" ColumnName="CodeEquipementGenChambre" />
             </EndProperty>
@@ -2203,7 +2222,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
               <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="tblEquipementRecreatifForfait" TypeName="P2014_BDTestFrancoisModel.tblEquipementRecreatifForfait" StoreEntitySet="tblEquipementRecreatifForfait">
+          <AssociationSetMapping Name="tblEquipementRecreatifForfait" TypeName="P2014_BD_GestionHotelModel.tblEquipementRecreatifForfait" StoreEntitySet="tblEquipementRecreatifForfait">
             <EndProperty Name="tblEquipementRecreatif">
               <ScalarProperty Name="CodeEquipementRecreatif" ColumnName="CodeEquipementRecreatif" />
             </EndProperty>
@@ -2211,7 +2230,7 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
               <ScalarProperty Name="CodeForfait" ColumnName="CodeForfait" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="tblForfaitTypeChambre" TypeName="P2014_BDTestFrancoisModel.tblForfaitTypeChambre" StoreEntitySet="tblForfaitTypeChambre">
+          <AssociationSetMapping Name="tblForfaitTypeChambre" TypeName="P2014_BD_GestionHotelModel.tblForfaitTypeChambre" StoreEntitySet="tblForfaitTypeChambre">
             <EndProperty Name="tblForfait">
               <ScalarProperty Name="CodeForfait" ColumnName="CodeForfait" />
             </EndProperty>
@@ -2219,15 +2238,17 @@ avertissement 6002: La table/vue 'P2014_BDTestFrancois.Approvisionnement.VueInve
               <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="VerificationDispo" FunctionName="P2014_BDTestFrancoisModel.Store.VerificationDispo">
+          <FunctionImportMapping FunctionImportName="VerificationDispo" FunctionName="P2014_BD_GestionHotelModel.Store.VerificationDispo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="P2014_BDTestFrancoisModel.VerificationDispo_Result">
+              <ComplexTypeMapping TypeName="P2014_BD_GestionHotelModel.VerificationDispo_Result">
                 <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+                <ScalarProperty Name="CodeChambre" ColumnName="CodeChambre" />
                 <ScalarProperty Name="EtageChambre" ColumnName="EtageChambre" />
                 <ScalarProperty Name="StatutChambre" ColumnName="StatutChambre" />
                 <ScalarProperty Name="DescChambre" ColumnName="DescChambre" />
                 <ScalarProperty Name="TypeLit" ColumnName="TypeLit" />
                 <ScalarProperty Name="NbLit" ColumnName="NbLit" />
+                <ScalarProperty Name="PrixChambre" ColumnName="PrixChambre" />
                 <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
                 <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
               </ComplexTypeMapping>

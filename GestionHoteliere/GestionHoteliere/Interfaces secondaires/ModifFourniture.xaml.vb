@@ -25,7 +25,7 @@
                 MaFourniture = New tblFourniture()
                 MaFourniture.CodeFourniture = fournt_txtCodeFourniture.Text
                 MaFourniture.DescFourniture = fournt_txtDescFourniture.Text
-                MaFourniture.NoSeqChambre = fournt_txtNoSeqChambre.Text
+                'MaFourniture.NoSeqChambre = fournt_txtNoSeqChambre.Text
                 MaFourniture.CodeCategorie = fournt_txtCodeCategorie.Text
 
                 MaBD.tblFourniture.Add(MaFourniture)

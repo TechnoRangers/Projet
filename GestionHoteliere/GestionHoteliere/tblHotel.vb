@@ -17,6 +17,12 @@ Partial Public Class tblHotel
     Public Property AdresseHotel As String
     Public Property NbEtoiles As Byte
     Public Property TypeService As String
+    Public Property CodePostal As String
+    Public Property NoTelephoneHotel As String
+    Public Property NoTelecopieurHotel As String
+    Public Property NoTelReservation As String
+    Public Property HeureLimiteDepart As String
+    Public Property HeureLimiteArrive As String
     Public Property CodeVille As String
 
     Public Overridable Property tblFournitureHotel As ICollection(Of tblFournitureHotel) = New HashSet(Of tblFournitureHotel)
