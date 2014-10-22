@@ -38,11 +38,11 @@
                 message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
-            If LocSal_CmbBoxSalle.SelectedIndex = 0 Then
+            If LocSal_CmbBoxSalle.SelectedIndex = -1 Then
                 message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
-            If LocSal_CmbBoxPaiement.SelectedIndex = 0 Then
+            If LocSal_CmbBoxPaiement.SelectedIndex = -1 Then
                 message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
@@ -178,7 +178,7 @@
                 Dim X As Int16
                 Dim El As tblReservationSalle
                 Dim Rep = From It In MaBd.tblReservationSalle Where It.NoSeqReservSalle = LocSal_TxtBoxNoRes.Text Select It
-                El = Rep.First
+                El = Rep.Single
 
                 LocSal_TxtBoxClient.Text = El.NoSeqClient
                 LocSal_TxtBoxNb.Text = El.NbPersonne
@@ -199,7 +199,7 @@
                 'Pour mettre les bonne valeurs dans les combobox 
                 X = 0
                 For Each item In LocSal_CmbBoxSalle.Items
-                    If item.Equals(Rep.First.tblSalle.NomSalle) Then
+                    If item.Equals(From it In MaBd.tblSalle Where it.CodeSalle = Rep.Single.CodeSalle Select it.NomSalle) Then
                         LocSal_CmbBoxSalle.SelectedIndex = X
                     Else
                         X += 1
@@ -208,7 +208,7 @@
 
                 X = 0
                 For Each item In LocSal_CmbBoxEtat.Items
-                    If item.Equals(Rep.First.StatutPaiement) Then
+                    If item.Equals(Rep.Single.StatutPaiement) Then
                         LocSal_CmbBoxEtat.SelectedIndex = X
                     Else
                         X += 1
