@@ -4,7 +4,7 @@ GO
 /**************************************** Primary key Personnel ****************************************/ 
 ALTER TABLE Personnel.tblEmploye ADD CONSTRAINT PK_Emp_NoEmp PRIMARY KEY(NoEmploye)
 ALTER TABLE Personnel.tblChiffreTravail ADD CONSTRAINT PK_ChHo_NoChHo PRIMARY KEY(NoChiffreTravail)
-ALTER TABLE Personnel.tblEntretienFourniture ADD CONSTRAINT PK_EmpFour_NoSeqFourNoEmp PRIMARY KEY(CodeFourniture,NoEmploye)
+ALTER TABLE Personnel.tblEntretienFourniture ADD CONSTRAINT PK_EntFour_NoSeqEnt PRIMARY KEY(NoSeqEntretien)
 GO
 
 
@@ -63,7 +63,8 @@ GO
 /**************************************** Foreign key Personnel ****************************************/ 
 ALTER TABLE Personnel.tblEmploye ADD CONSTRAINT FK_Hot_Emp_CodHot FOREIGN KEY(CodeHotel) REFERENCES Reservation.tblHotel(CodeHotel) 
 ALTER TABLE Personnel.tblChiffreTravail ADD CONSTRAINT FK_Emp_ChifHor_NoEmp FOREIGN KEY(NoEmploye) REFERENCES Personnel.tblEmploye(NoEmploye) 
-ALTER TABLE Personnel.tblEntretienFourniture ADD CONSTRAINT FK_Four_EntFour_NoSeqFour FOREIGN KEY(CodeFourniture) REFERENCES Approvisionnement.tblFourniture(CodeFourniture) 
+ALTER TABLE Personnel.tblEntretienFourniture ADD CONSTRAINT FK_Four_EntFour_NoSeqFour FOREIGN KEY(CodeFourniture) REFERENCES Approvisionnement.tblFournitureChambre(CodeFourniture)
+ALTER TABLE Personnel.tblEntretienFourniture ADD CONSTRAINT FK_Four_EntFour_NoSeqChamb FOREIGN KEY(NoSeqChambre) REFERENCES Approvisionnement.tblFournitureChambre(NoSeqChambre) 
 ALTER TABLE Personnel.tblEntretienFourniture ADD CONSTRAINT FK_Emp_EntFour_NoEmp FOREIGN KEY(NoEmploye) REFERENCES Personnel.tblEmploye(NoEmploye) 
 GO
 
