@@ -13,16 +13,7 @@
         lres_dtgreservation.ItemsSource = res.ToList
     End Sub
 
-    Private Sub lres_btnAjouter_Click(sender As Object, e As RoutedEventArgs) Handles lres_btnAjouter.Click
-        Dim FenetreModifReservation As ModifReservation
-        FenetreModifReservation = New ModifReservation(MaBD)
-        FenetreModifReservation.ShowDialog()
 
-        Dim res = From tabReserv In MaBD.tblReservationChambre
-                  Select tabReserv
-
-        lres_dtgreservation.ItemsSource = res.ToList
-    End Sub
 
     Private Sub lres_btnModifier_Click(sender As Object, e As RoutedEventArgs) Handles lres_btnModifier.Click
         Try
@@ -34,6 +25,21 @@
         Catch
             MessageBox.Show("Aucune row selectionné")
         End Try
+    End Sub
+    Private Sub lres_btnSupprimer_Click(sender As Object, e As RoutedEventArgs) Handles lres_btnSupprimer.Click
+        Try
+            Dim ReservSelection As tblReservationChambre = lres_dtgreservation.SelectedItem
+
+            MaBD.tblReservationChambre.Remove(ReservSelection)
+            MaBD.SaveChanges()
+        Catch
+            MessageBox.Show("Aucune row selectionné")
+        End Try
+
+        Dim res = From tabReservationChambre In MaBD.tblReservationChambre
+                  Select tabReservationChambre
+
+        lres_dtgreservation.ItemsSource = res.ToList
     End Sub
 
     Private Sub lres_btnQuitter_Click(sender As Object, e As RoutedEventArgs) Handles lres_btnQuitter.Click
