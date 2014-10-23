@@ -193,7 +193,7 @@
                 'Pour mettre les bonne valeurs dans les combobox 
                 X = 0
                 For Each item In LocSal_CmbBoxSalle.Items
-                    If item.Equals(From it In MaBd.tblSalle Where it.CodeSalle.Equals(Rep.Single.CodeSalle) Select it.NomSalle) Then
+                    If item.Equals(Rep.Single.tblSalle.NomSalle) Then
                         LocSal_CmbBoxSalle.SelectedIndex = X
                     Else
                         X += 1
