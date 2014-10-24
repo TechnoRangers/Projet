@@ -30,22 +30,22 @@
 
     Sub FiltrerDatagrid()
         'Remplir ComboBoxFourniture
-        Dim Fourniture = From t1 In MaBD.tblEntretienFourniture Join t2 In MaBD.tblFourniture On t1.NoSeqFourniture Equals t2.NoSeqFourniture
-                        Where t1.NoSeqFourniture = t2.NoSeqFourniture And t2.NoSeqChambre = _maChambre.NoSeqChambre And t1.EtatFourniture <> "Bon"
-                     Select t2.DescFourniture
+        Dim Fourniture = From t1 In MaBD.tblFourniture Join t2 In MaBD.tblEntretienFourniture On t1.CodeFourniture Equals t2.CodeFourniture
+                        Where t1.CodeFourniture = t2.CodeFourniture And t2.NoSeqChambre = _maChambre.NoSeqChambre And t2.EtatFourniture <> "Bon"
+                     Select t1.DescFourniture
 
         Eta_ComboBoxFourniture.ItemsSource = Fourniture.ToList
 
 
         Dim Commentaires As New TextRange(Eta_RichTexBoxCom.Document.ContentStart, Eta_RichTexBoxCom.Document.ContentEnd)
         If _maChambre.NoSeqChambre <> 0 Then
-            Dim res = From t1 In MaBD.tblEntretienFourniture Join t2 In MaBD.tblFourniture On t1.NoSeqFourniture Equals t2.NoSeqFourniture
-                                Where t1.NoSeqFourniture = t2.NoSeqFourniture And t2.NoSeqChambre = _maChambre.NoSeqChambre And t1.EtatFourniture <> "Bon"
+            Dim res = From t1 In MaBD.tblEntretienFourniture Join t2 In MaBD.tblFourniture On t1.CodeFourniture Equals t2.CodeFourniture
+                                Where t1.CodeFourniture = t2.CodeFourniture And t1.NoSeqChambre = _maChambre.NoSeqChambre And t1.EtatFourniture <> "Bon"
                                 Select t2.DescFourniture, t1.EtatFourniture
             eta_Datagrid.ItemsSource = res.ToList
 
-            Dim res2 = From t3 In MaBD.tblEntretienFourniture Join t4 In MaBD.tblFourniture On t3.NoSeqFourniture Equals t4.NoSeqFourniture
-                       Where t3.NoSeqFourniture = t4.NoSeqFourniture And t4.NoSeqChambre = _maChambre.NoSeqChambre And t3.EtatFourniture <> "Bon"
+            Dim res2 = From t3 In MaBD.tblEntretienFourniture Join t4 In MaBD.tblFourniture On t3.CodeFourniture Equals t4.CodeFourniture
+                       Where t3.CodeFourniture = t4.CodeFourniture And t3.NoSeqChambre = _maChambre.NoSeqChambre And t3.EtatFourniture <> "Bon"
                        Select t3.CommentaireFourniture
 
             Dim i As Integer
@@ -83,11 +83,13 @@
  
     Private Sub Eta_BtnValider_Click(sender As Object, e As RoutedEventArgs) Handles Eta_BtnValider.Click
 
-        Dim update = (From t1 In MaBD.tblEntretienFourniture Join t2 In MaBD.tblFourniture On t1.NoSeqFourniture Equals t2.NoSeqFourniture
-                  Where t2.DescFourniture = Eta_ComboBoxFourniture.Text And t2.NoSeqChambre = _maChambre.NoSeqChambre Select t1)
+        Dim update = (From t1 In MaBD.tblEntretienFourniture Join t2 In MaBD.tblFourniture On t1.CodeFourniture Equals t2.CodeFourniture
+                  Where t2.DescFourniture = Eta_ComboBoxFourniture.Text And t1.NoSeqChambre = _maChambre.NoSeqChambre Select t1)
 
 
         update.First().EtatFourniture = "Bon"
+        update.First().DateEffectue = Date.Today
+        update.First().StatutEntretien = "Terminé"
 
         Try
             MaBD.SaveChanges()
