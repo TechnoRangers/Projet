@@ -44,13 +44,12 @@
             <Label Name="LocSal_LblNbPers" Content="Nombre de personne" HorizontalAlignment="Left" Margin="241,267,0,0" VerticalAlignment="Top"/>
             <Label x:Name="LocSal_LblModePai" Content="Mode de Paiement" HorizontalAlignment="Left" Margin="129,330,0,0" VerticalAlignment="Top"/>
             <Label x:Name="LocSal_LblEtat" Content="État" HorizontalAlignment="Left" Margin="420,329,0,0" VerticalAlignment="Top"/>
-            <Button Name="LocSal_Equi" Content="LocationEquipement" HorizontalAlignment="Left" Margin="84,424,0,0" VerticalAlignment="Top" Width="117" IsEnabled="False" IsDefault="True"/>
             <Label x:Name="LocSal_Date" Content="Date " HorizontalAlignment="Left" Margin="383,19,0,0" VerticalAlignment="Top"/>
             <DatePicker Name="LocSal_DatePicker" HorizontalAlignment="Left" Margin="426,19,0,0" VerticalAlignment="Top"/>
             <TextBox Name="LocSal_TxtBoxNb" HorizontalAlignment="Left" Height="23" Margin="375,271,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="46" KeyDown="OnKeyDownHandler" />
-            <Button x:Name="LocSal_RecSal" Content="Recherche Réservation" HorizontalAlignment="Left" Margin="206,424,0,27" Width="144" IsDefault="True"/>
-            <Button Name="LocSal_BtnSuppSalle" Content="Supprimer la réservation" HorizontalAlignment="Left" Margin="84,446,0,0" VerticalAlignment="Top" Width="155" IsEnabled="False" />
-            <Button Name="LocSal_BtnModiSalle" Content="Modifier la réservation" HorizontalAlignment="Left" Margin="244,446,0,0" VerticalAlignment="Top" Width="138" IsEnabled="False"/>
+            <Button x:Name="LocSal_RecSal" Content="Recherche Réservation" HorizontalAlignment="Left" Margin="-60,446,0,5" Width="144" IsDefault="True"/>
+            <Button Name="LocSal_BtnSuppSalle" Content="Supprimer la réservation" HorizontalAlignment="Left" Margin="89,446,0,0" VerticalAlignment="Top" Width="155" IsEnabled="False" />
+            <Button Name="LocSal_BtnModiSalle" Content="Modifier la réservation" HorizontalAlignment="Left" Margin="249,446,0,0" VerticalAlignment="Top" Width="138" IsEnabled="False"/>
 
         </Grid>
     </Viewbox>

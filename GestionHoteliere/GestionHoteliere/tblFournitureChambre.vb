@@ -15,4 +15,8 @@ Partial Public Class tblFournitureChambre
     Public Property CodeFourniture As String
     Public Property QuantiteChambre As Short
 
+    Public Overridable Property tblFourniture As tblFourniture
+    Public Overridable Property tblChambre As tblChambre
+    Public Overridable Property tblEntretienFourniture As ICollection(Of tblEntretienFourniture) = New HashSet(Of tblEntretienFourniture)
+
 End Class

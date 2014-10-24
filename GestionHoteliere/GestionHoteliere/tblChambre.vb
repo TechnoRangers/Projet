@@ -22,6 +22,7 @@ Partial Public Class tblChambre
     Public Property CodeHotel As String
     Public Property CodeTypeChambre As String
 
+    Public Overridable Property tblFournitureChambre As ICollection(Of tblFournitureChambre) = New HashSet(Of tblFournitureChambre)
     Public Overridable Property tblChambreReservationChambre As ICollection(Of tblChambreReservationChambre) = New HashSet(Of tblChambreReservationChambre)
     Public Overridable Property tblHotel As tblHotel
     Public Overridable Property tblTypeChambre As tblTypeChambre
