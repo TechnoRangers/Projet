@@ -31,9 +31,9 @@ CREATE TABLE Personnel.tblChiffreTravail
 )
 
 
-CREATE TABLE Personnel.tblEntretienFourniture
+CREATE TABLE Personnel.tblEntretienFournitureChambre
 (
-	NoSeqEntretien			int				NOT NULL	IDENTITY(1000,1),
+	NoSeqEntretienChambre	int				NOT NULL	IDENTITY(1000,1),
 	EtatFourniture			varchar(15)		NOT NULL,
 	CommentaireFourniture	varchar(300)	NULL,
 	DateDemande				date			NOT NULL,
@@ -44,6 +44,19 @@ CREATE TABLE Personnel.tblEntretienFourniture
 	NoEmploye				int				NOT NULL
 )
 
+
+CREATE TABLE Personnel.tblEntretienFournitureSalle
+(
+	NoSeqEntretienSalle		int				NOT NULL	IDENTITY(1000,1),
+	EtatFourniture			varchar(15)		NOT NULL,
+	CommentaireFourniture	varchar(300)	NULL,
+	DateDemande				date			NOT NULL,
+	DateEffectue			date			NULL,
+	StatutEntretien			varchar(20)		NULL,
+	CodeFourniture			varchar(10)		NOT NULL,
+	CodeSalle				char(3)			NOT NULL,
+	NoEmploye				int				NOT NULL
+)
 
 
 
@@ -123,32 +136,6 @@ CREATE TABLE Approvisionnement.tblFournitureChambre
 
 /******************** Reservation **************************/
 
-CREATE TABLE Reservation.tblEquipementRecreatifHotel
-(
-	CodeEquipementRecreatif		varchar(10)		NOT NULL,
-	CodeHotel					char(3)			NOT NULL,
-	QuantiteEquipement			smallint		NOT NULL
-)
-
-
-CREATE TABLE Reservation.tblEquipementRecreatif
-(
-	CodeEquipementRecreatif		varchar(10)		NOT NULL,
-	NomEquipement				varchar(20)		NOT NULL,
-	StatutEquipement			varchar(20)		NULL,
-	CategorieEquipement			varchar(20)		NOT NULL,
-	DateAquisition				date			NOT NULL,
-	DateFinGarantie				date			NOT NULL
-)
-
-
-CREATE TABLE Reservation.tblEquipementRecreatifForfait
-(
-	CodeForfait				varchar(10)		NOT NULL,
-	CodeEquipementRecreatif	varchar(10)		NOT NULL	
-)
-
-
 CREATE TABLE Reservation.tblPays
 (
 	CodePays	char(3)		NOT NULL,
@@ -226,7 +213,6 @@ CREATE TABLE Reservation.tblChambre
 	DescChambre		text		NULL,
 	TypeLit			varchar(30)	NOT NULL,
 	NbLit			tinyint		NOT NULL,
-	PrixChambre		money		NOT NULL,
 	CodeHotel		char(3)		NOT NULL,	
 	CodeTypeChambre	char(3)		NOT NULL	
 )
@@ -234,27 +220,30 @@ CREATE TABLE Reservation.tblChambre
 
 CREATE TABLE Reservation.tblChambreReservationChambre
 (
-	NoSeqChambre			int			NOT NULL,
-	NoSeqReservChambre		int			NOT NULL,
-	NbPersonne				smallint	NOT NULL,
-	NomLocataire			varchar(20)	NOT NULL,
-	PrenomLocataire			varchar(20)	NOT NULL,
-	DateDebutReservation	date		NOT NULL,
-	DateFinReservation		date		NOT NULL
-	
+	NoSeqChambre				int			NOT NULL,
+	NoSeqReservChambre			int			NOT NULL,
+	NbPersonne					smallint	NOT NULL,
+	NomLocataire				varchar(20)	NOT NULL,
+	PrenomLocataire				varchar(20)	NOT NULL,
+	DateDebutReservation		date		NOT NULL,
+	DateFinReservation			date		NOT NULL,
+	StatutChambreReservChambre	varchar(15)	NOT NULL
 )
 
 
 CREATE TABLE Reservation.tblReservationChambre
 (
-	NoSeqReservChambre	int			NOT NULL	IDENTITY(1000,1),
-	PrixReservChambre	money		NOT NULL,
-	ModePaiement		varchar(20)	NOT NULL,
-	StatutPaiement		varchar(10)	NULL,
-	NbPersonne			int			NULL,
-	NoCarteCredit		varchar(16)	NULL,
-	NoSeqClient			int			NOT NULL,
-	NoSeqRabais			int			NULL
+	NoSeqReservChambre			int			NOT NULL	IDENTITY(1000,1),
+	PrixReservChambre			money		NOT NULL,
+	ModePaiement				varchar(20)	NOT NULL,
+	StatutPaiement				varchar(10)	NULL,
+	NbPersonne					int			NULL,
+	NoCarteCredit				varchar(16)	NULL,
+	DateExpirationCarteCredit	char(4)		NULL,
+	TypeCarteCredit				varchar(20)	NULL,
+	NomCarteCredit				varchar(40)	NULL,				
+	NoSeqClient					int			NOT NULL,
+	NoSeqRabais					int			NULL
 )
 
 
@@ -298,34 +287,33 @@ CREATE TABLE Reservation.tblTypeChambre
 )
 
 
-CREATE TABLE Reservation.tblEquipementGeneriqueTypeChambre
-(
-	CodeTypeChambre			char(3)		NOT NULL,
-	CodeEquipementGenChambre	char(3)		NOT NULL
-)
-
-
-CREATE TABLE Reservation.tblEquipementGeneriqueChambre
-(
-	CodeEquipementGenChambre	char(3)		NOT NULL,
-	NomEquipementGenChambre		varchar(20)	NOT NULL,
-)
-
-
-CREATE TABLE Reservation.tblForfaitTypeChambre
-(
-	CodeTypeChambre	char(3)		NOT NULL,
-	CodeForfait		varchar(10)	NOT NULL
-)
-
-
 CREATE TABLE Reservation.tblForfait
 (
-	CodeForfait	varchar(10)		NOT NULL,
-	NomForfait	varchar(30)		NOT NULL,
-	PrixForfait	money			NOT NULL,
-	DescForfait	text			NOT NULL,
-	NbNuit		tinyint			NOT NULL
+	CodeForfait		varchar(10)		NOT NULL,
+	NomForfait		varchar(30)		NOT NULL,
+	PrixForfait		money			NOT NULL,
+	DescForfait		text			NOT NULL,
+	NbNuit			tinyint			NOT NULL,
+	CodeTypeChambre	char(3)			NOT NULL
 )
 
+
+CREATE TABLE Reservation.tblPrixTableChambre
+(
+	NoSeqPrixTypeChambre	int				NOT NULL	IDENTITY(1000,1),
+	DescPrixTypeChambre		varchar(200)	NOT NULL,
+	PrixTypeChambre			money			NOT NULL,
+	DateDebutPrix			date			NOT NULL,
+	DateFinPrix				date			NOT NULL,
+	CodeTypeChambre			char(3)			NOT NULL,
+	CodeHotel				char(3)			NOT NULL
+)
+
+
+CREATE TABLE Reservation.tblForfaitReservationChambre
+(
+	NoSeqChambre		int			NOT NULL,
+	NoSeqReservChambre	int			NOT NULL,
+	CodeForfait			varchar(10)	NOT NULL	
+)
 
