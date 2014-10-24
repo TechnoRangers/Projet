@@ -11,12 +11,17 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class tblEntretienFourniture
-    Public Property CodeFourniture As String
-    Public Property NoEmploye As Integer
+    Public Property NoSeqEntretien As Integer
     Public Property EtatFourniture As String
     Public Property CommentaireFourniture As String
+    Public Property DateDemande As Date
+    Public Property DateEffectue As Nullable(Of Date)
+    Public Property StatutEntretien As String
+    Public Property CodeFourniture As String
+    Public Property NoSeqChambre As Integer
+    Public Property NoEmploye As Integer
 
-    Public Overridable Property tblFourniture As tblFourniture
+    Public Overridable Property tblFournitureChambre As tblFournitureChambre
     Public Overridable Property tblEmploye As tblEmploye
 
 End Class

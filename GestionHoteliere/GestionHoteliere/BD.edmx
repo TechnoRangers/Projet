@@ -42,13 +42,10 @@
           <Property Name="DescFourniture" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CodeCategorie" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
-        <!--Erreurs détectées durant la génération :
-avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.tblFournitureChambre' n'a pas de clé primaire définie. La clé a été déduite et la définition a été créée en tant que table/vue en lecture seule.-->
         <EntityType Name="tblFournitureChambre">
           <Key>
             <PropertyRef Name="NoSeqChambre" />
             <PropertyRef Name="CodeFourniture" />
-            <PropertyRef Name="QuantiteChambre" />
           </Key>
           <Property Name="NoSeqChambre" Type="int" Nullable="false" />
           <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
@@ -113,13 +110,17 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.tblFou
         </EntityType>
         <EntityType Name="tblEntretienFourniture">
           <Key>
-            <PropertyRef Name="CodeFourniture" />
-            <PropertyRef Name="NoEmploye" />
+            <PropertyRef Name="NoSeqEntretien" />
           </Key>
-          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="NoEmploye" Type="int" Nullable="false" />
+          <Property Name="NoSeqEntretien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EtatFourniture" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="CommentaireFourniture" Type="varchar" MaxLength="300" />
+          <Property Name="DateDemande" Type="date" Nullable="false" />
+          <Property Name="DateEffectue" Type="date" />
+          <Property Name="StatutEntretien" Type="varchar" MaxLength="20" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NoSeqChambre" Type="int" Nullable="false" />
+          <Property Name="NoEmploye" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblChambre">
           <Key>
@@ -237,9 +238,9 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.tblFou
             <PropertyRef Name="CodeHotel" />
           </Key>
           <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
-          <Property Name="NomHotel" Type="varchar" MaxLength="80" />
+          <Property Name="NomHotel" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="NbChambre" Type="smallint" Nullable="false" />
-          <Property Name="AdresseHotel" Type="varchar" MaxLength="50" />
+          <Property Name="AdresseHotel" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="NbEtoiles" Type="tinyint" Nullable="false" />
           <Property Name="TypeService" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CodePostal" Type="char" MaxLength="6" Nullable="false" />
@@ -366,6 +367,30 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
               <PropertyRef Name="NoSeqChambre" />
             </Principal>
             <Dependent Role="tblChambreReservationChambre">
+              <PropertyRef Name="NoSeqChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chamb_Four_CodFour">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureChambre">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chamb_Four_NoSeqChamb">
+          <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="1" />
+          <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblChambre">
+              <PropertyRef Name="NoSeqChambre" />
+            </Principal>
+            <Dependent Role="tblFournitureChambre">
               <PropertyRef Name="NoSeqChambre" />
             </Dependent>
           </ReferentialConstraint>
@@ -539,13 +564,15 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Four_EntFour_NoSeqFour">
-          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="1" />
           <End Role="tblEntretienFourniture" Type="Self.tblEntretienFourniture" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tblFourniture">
+            <Principal Role="tblFournitureChambre">
+              <PropertyRef Name="NoSeqChambre" />
               <PropertyRef Name="CodeFourniture" />
             </Principal>
             <Dependent Role="tblEntretienFourniture">
+              <PropertyRef Name="NoSeqChambre" />
               <PropertyRef Name="CodeFourniture" />
             </Dependent>
           </ReferentialConstraint>
@@ -775,6 +802,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <EntitySet Name="tblCommande" EntityType="Self.tblCommande" Schema="Approvisionnement" store:Type="Tables" />
           <EntitySet Name="tblFournisseur" EntityType="Self.tblFournisseur" Schema="Approvisionnement" store:Type="Tables" />
           <EntitySet Name="tblFourniture" EntityType="Self.tblFourniture" Schema="Approvisionnement" store:Type="Tables" />
+          <EntitySet Name="tblFournitureChambre" EntityType="Self.tblFournitureChambre" Schema="Approvisionnement" store:Type="Tables" />
           <EntitySet Name="tblFournitureCommande" EntityType="Self.tblFournitureCommande" Schema="Approvisionnement" store:Type="Tables" />
           <EntitySet Name="tblFournitureFournisseur" EntityType="Self.tblFournitureFournisseur" Schema="Approvisionnement" store:Type="Tables" />
           <EntitySet Name="tblFournitureHotel" EntityType="Self.tblFournitureHotel" Schema="Approvisionnement" store:Type="Tables" />
@@ -801,13 +829,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <EntitySet Name="tblSalle" EntityType="Self.tblSalle" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblTypeChambre" EntityType="Self.tblTypeChambre" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblVille" EntityType="Self.tblVille" Schema="Reservation" store:Type="Tables" />
-          <EntitySet Name="tblFournitureChambre" EntityType="Self.tblFournitureChambre" store:Type="Tables" store:Schema="Approvisionnement">
-            <DefiningQuery>SELECT 
-    [tblFournitureChambre].[NoSeqChambre] AS [NoSeqChambre], 
-    [tblFournitureChambre].[CodeFourniture] AS [CodeFourniture], 
-    [tblFournitureChambre].[QuantiteChambre] AS [QuantiteChambre]
-    FROM [Approvisionnement].[tblFournitureChambre] AS [tblFournitureChambre]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="VueInventaire" EntityType="Self.VueInventaire" store:Type="Views" store:Schema="Approvisionnement">
             <DefiningQuery>SELECT 
     [VueInventaire].[CodeHotel] AS [CodeHotel], 
@@ -826,6 +847,14 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <AssociationSet Name="FK_Chamb_ChambReservChamb_NoSeqReservChamb" Association="Self.FK_Chamb_ChambReservChamb_NoSeqReservChamb">
             <End Role="tblChambre" EntitySet="tblChambre" />
             <End Role="tblChambreReservationChambre" EntitySet="tblChambreReservationChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chamb_Four_CodFour" Association="Self.FK_Chamb_Four_CodFour">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chamb_Four_NoSeqChamb" Association="Self.FK_Chamb_Four_NoSeqChamb">
+            <End Role="tblChambre" EntitySet="tblChambre" />
+            <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
           </AssociationSet>
           <AssociationSet Name="FK_Cli_ReservChamb_NoCli" Association="Self.FK_Cli_ReservChamb_NoCli">
             <End Role="tblClient" EntitySet="tblClient" />
@@ -884,7 +913,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblFournitureFournisseur" EntitySet="tblFournitureFournisseur" />
           </AssociationSet>
           <AssociationSet Name="FK_Four_EntFour_NoSeqFour" Association="Self.FK_Four_EntFour_NoSeqFour">
-            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
             <End Role="tblEntretienFourniture" EntitySet="tblEntretienFourniture" />
           </AssociationSet>
           <AssociationSet Name="FK_Four_FourCom_NoSeqFour" Association="Self.FK_Four_FourCom_NoSeqFour">
@@ -1008,10 +1037,22 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="DescFourniture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CodeCategorie" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblCategorieFourniture" Relationship="Self.FK_Four_Categ_CodeCateg" FromRole="tblFourniture" ToRole="tblCategorieFourniture" />
-          <NavigationProperty Name="tblEntretienFourniture" Relationship="Self.FK_Four_EntFour_NoSeqFour" FromRole="tblFourniture" ToRole="tblEntretienFourniture" />
+          <NavigationProperty Name="tblFournitureChambre" Relationship="Self.FK_Chamb_Four_CodFour" FromRole="tblFourniture" ToRole="tblFournitureChambre" />
           <NavigationProperty Name="tblFournitureCommande" Relationship="Self.FK_Four_FourCom_NoSeqFour" FromRole="tblFourniture" ToRole="tblFournitureCommande" />
           <NavigationProperty Name="tblFournitureFournisseur" Relationship="Self.FK_Four_FourFour_NoSeqFourniture" FromRole="tblFourniture" ToRole="tblFournitureFournisseur" />
           <NavigationProperty Name="tblFournitureHotel" Relationship="Self.FK_Four_FourHot_NoSeqFour" FromRole="tblFourniture" ToRole="tblFournitureHotel" />
+        </EntityType>
+        <EntityType Name="tblFournitureChambre">
+          <Key>
+            <PropertyRef Name="NoSeqChambre" />
+            <PropertyRef Name="CodeFourniture" />
+          </Key>
+          <Property Name="NoSeqChambre" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="QuantiteChambre" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Chamb_Four_CodFour" FromRole="tblFournitureChambre" ToRole="tblFourniture" />
+          <NavigationProperty Name="tblChambre" Relationship="Self.FK_Chamb_Four_NoSeqChamb" FromRole="tblFournitureChambre" ToRole="tblChambre" />
+          <NavigationProperty Name="tblEntretienFourniture" Relationship="Self.FK_Four_EntFour_NoSeqFour" FromRole="tblFournitureChambre" ToRole="tblEntretienFourniture" />
         </EntityType>
         <EntityType Name="tblFournitureCommande">
           <Key>
@@ -1083,14 +1124,18 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
         </EntityType>
         <EntityType Name="tblEntretienFourniture">
           <Key>
-            <PropertyRef Name="CodeFourniture" />
-            <PropertyRef Name="NoEmploye" />
+            <PropertyRef Name="NoSeqEntretien" />
           </Key>
-          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NoEmploye" Type="Int32" Nullable="false" />
+          <Property Name="NoSeqEntretien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EtatFourniture" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CommentaireFourniture" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Four_EntFour_NoSeqFour" FromRole="tblEntretienFourniture" ToRole="tblFourniture" />
+          <Property Name="DateDemande" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateEffectue" Type="DateTime" Precision="0" />
+          <Property Name="StatutEntretien" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoSeqChambre" Type="Int32" Nullable="false" />
+          <Property Name="NoEmploye" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblFournitureChambre" Relationship="Self.FK_Four_EntFour_NoSeqFour" FromRole="tblEntretienFourniture" ToRole="tblFournitureChambre" />
           <NavigationProperty Name="tblEmploye" Relationship="Self.FK_Emp_EntFour_NoEmp" FromRole="tblEntretienFourniture" ToRole="tblEmploye" />
         </EntityType>
         <EntityType Name="tblChambre">
@@ -1107,6 +1152,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="PrixChambre" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="CodeTypeChambre" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblFournitureChambre" Relationship="Self.FK_Chamb_Four_NoSeqChamb" FromRole="tblChambre" ToRole="tblFournitureChambre" />
           <NavigationProperty Name="tblChambreReservationChambre" Relationship="Self.FK_Chamb_ChambReservChamb_NoSeqReservChamb" FromRole="tblChambre" ToRole="tblChambreReservationChambre" />
           <NavigationProperty Name="tblHotel" Relationship="Self.FK_Hot_Chamb_CodHot" FromRole="tblChambre" ToRole="tblHotel" />
           <NavigationProperty Name="tblTypeChambre" Relationship="Self.FK_Hot_TypChamb_CodTypeChamb" FromRole="tblChambre" ToRole="tblTypeChambre" />
@@ -1200,9 +1246,9 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <PropertyRef Name="CodeHotel" />
           </Key>
           <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="NomHotel" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="NomHotel" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NbChambre" Type="Int16" Nullable="false" />
-          <Property Name="AdresseHotel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AdresseHotel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NbEtoiles" Type="Byte" Nullable="false" />
           <Property Name="TypeService" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CodePostal" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
@@ -1317,16 +1363,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <NavigationProperty Name="tblHotel" Relationship="Self.FK_Vill_Hot_CodVill" FromRole="tblVille" ToRole="tblHotel" />
           <NavigationProperty Name="tblProvince" Relationship="Self.FK_Prov_Vill_CodProv" FromRole="tblVille" ToRole="tblProvince" />
         </EntityType>
-        <EntityType Name="tblFournitureChambre">
-          <Key>
-            <PropertyRef Name="NoSeqChambre" />
-            <PropertyRef Name="CodeFourniture" />
-            <PropertyRef Name="QuantiteChambre" />
-          </Key>
-          <Property Name="NoSeqChambre" Type="Int32" Nullable="false" />
-          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="QuantiteChambre" Type="Int16" Nullable="false" />
-        </EntityType>
         <EntityType Name="VueInventaire">
           <Key>
             <PropertyRef Name="CodeHotel" />
@@ -1412,14 +1448,14 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Four_EntFour_NoSeqFour">
+        <Association Name="FK_Chamb_Four_CodFour">
           <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
-          <End Role="tblEntretienFourniture" Type="Self.tblEntretienFourniture" Multiplicity="*" />
+          <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFourniture">
               <PropertyRef Name="CodeFourniture" />
             </Principal>
-            <Dependent Role="tblEntretienFourniture">
+            <Dependent Role="tblFournitureChambre">
               <PropertyRef Name="CodeFourniture" />
             </Dependent>
           </ReferentialConstraint>
@@ -1456,6 +1492,32 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
               <PropertyRef Name="CodeFourniture" />
             </Principal>
             <Dependent Role="tblFournitureHotel">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chamb_Four_NoSeqChamb">
+          <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="1" />
+          <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblChambre">
+              <PropertyRef Name="NoSeqChambre" />
+            </Principal>
+            <Dependent Role="tblFournitureChambre">
+              <PropertyRef Name="NoSeqChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_EntFour_NoSeqFour">
+          <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="1" />
+          <End Role="tblEntretienFourniture" Type="Self.tblEntretienFourniture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFournitureChambre">
+              <PropertyRef Name="NoSeqChambre" />
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblEntretienFourniture">
+              <PropertyRef Name="NoSeqChambre" />
               <PropertyRef Name="CodeFourniture" />
             </Dependent>
           </ReferentialConstraint>
@@ -1705,6 +1767,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <EntitySet Name="tblCommande" EntityType="Self.tblCommande" />
           <EntitySet Name="tblFournisseur" EntityType="Self.tblFournisseur" />
           <EntitySet Name="tblFourniture" EntityType="Self.tblFourniture" />
+          <EntitySet Name="tblFournitureChambre" EntityType="Self.tblFournitureChambre" />
           <EntitySet Name="tblFournitureCommande" EntityType="Self.tblFournitureCommande" />
           <EntitySet Name="tblFournitureFournisseur" EntityType="Self.tblFournitureFournisseur" />
           <EntitySet Name="tblFournitureHotel" EntityType="Self.tblFournitureHotel" />
@@ -1728,7 +1791,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <EntitySet Name="tblSalle" EntityType="Self.tblSalle" />
           <EntitySet Name="tblTypeChambre" EntityType="Self.tblTypeChambre" />
           <EntitySet Name="tblVille" EntityType="Self.tblVille" />
-          <EntitySet Name="tblFournitureChambre" EntityType="Self.tblFournitureChambre" />
           <EntitySet Name="VueInventaire" EntityType="Self.VueInventaire" />
           <AssociationSet Name="FK_Four_Categ_CodeCateg" Association="Self.FK_Four_Categ_CodeCateg">
             <End Role="tblCategorieFourniture" EntitySet="tblCategorieFourniture" />
@@ -1750,9 +1812,9 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblFournisseur" EntitySet="tblFournisseur" />
             <End Role="tblFournitureFournisseur" EntitySet="tblFournitureFournisseur" />
           </AssociationSet>
-          <AssociationSet Name="FK_Four_EntFour_NoSeqFour" Association="Self.FK_Four_EntFour_NoSeqFour">
+          <AssociationSet Name="FK_Chamb_Four_CodFour" Association="Self.FK_Chamb_Four_CodFour">
             <End Role="tblFourniture" EntitySet="tblFourniture" />
-            <End Role="tblEntretienFourniture" EntitySet="tblEntretienFourniture" />
+            <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
           </AssociationSet>
           <AssociationSet Name="FK_Four_FourCom_NoSeqFour" Association="Self.FK_Four_FourCom_NoSeqFour">
             <End Role="tblFourniture" EntitySet="tblFourniture" />
@@ -1765,6 +1827,14 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <AssociationSet Name="FK_Four_FourHot_NoSeqFour" Association="Self.FK_Four_FourHot_NoSeqFour">
             <End Role="tblFourniture" EntitySet="tblFourniture" />
             <End Role="tblFournitureHotel" EntitySet="tblFournitureHotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chamb_Four_NoSeqChamb" Association="Self.FK_Chamb_Four_NoSeqChamb">
+            <End Role="tblChambre" EntitySet="tblChambre" />
+            <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_EntFour_NoSeqFour" Association="Self.FK_Four_EntFour_NoSeqFour">
+            <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
+            <End Role="tblEntretienFourniture" EntitySet="tblEntretienFourniture" />
           </AssociationSet>
           <AssociationSet Name="FK_Hot_FourHot_CodHot" Association="Self.FK_Hot_FourHot_CodHot">
             <End Role="tblHotel" EntitySet="tblHotel" />
@@ -1918,6 +1988,15 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblFournitureChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureChambre">
+              <MappingFragment StoreEntitySet="tblFournitureChambre">
+                <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="QuantiteChambre" ColumnName="QuantiteChambre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblFournitureCommande">
             <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureCommande">
               <MappingFragment StoreEntitySet="tblFournitureCommande">
@@ -1980,10 +2059,15 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <EntitySetMapping Name="tblEntretienFourniture">
             <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEntretienFourniture">
               <MappingFragment StoreEntitySet="tblEntretienFourniture">
-                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
-                <ScalarProperty Name="NoEmploye" ColumnName="NoEmploye" />
+                <ScalarProperty Name="NoSeqEntretien" ColumnName="NoSeqEntretien" />
                 <ScalarProperty Name="EtatFourniture" ColumnName="EtatFourniture" />
                 <ScalarProperty Name="CommentaireFourniture" ColumnName="CommentaireFourniture" />
+                <ScalarProperty Name="DateDemande" ColumnName="DateDemande" />
+                <ScalarProperty Name="DateEffectue" ColumnName="DateEffectue" />
+                <ScalarProperty Name="StatutEntretien" ColumnName="StatutEntretien" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+                <ScalarProperty Name="NoEmploye" ColumnName="NoEmploye" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2185,15 +2269,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
                 <ScalarProperty Name="CodeVille" ColumnName="CodeVille" />
                 <ScalarProperty Name="NomVille" ColumnName="NomVille" />
                 <ScalarProperty Name="CodeProvince" ColumnName="CodeProvince" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblFournitureChambre">
-            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureChambre">
-              <MappingFragment StoreEntitySet="tblFournitureChambre">
-                <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
-                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
-                <ScalarProperty Name="QuantiteChambre" ColumnName="QuantiteChambre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

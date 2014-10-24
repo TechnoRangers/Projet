@@ -28,6 +28,7 @@ Partial Public Class P2014_BDTestFrancoisEntities
     Public Overridable Property tblCommande() As DbSet(Of tblCommande)
     Public Overridable Property tblFournisseur() As DbSet(Of tblFournisseur)
     Public Overridable Property tblFourniture() As DbSet(Of tblFourniture)
+    Public Overridable Property tblFournitureChambre() As DbSet(Of tblFournitureChambre)
     Public Overridable Property tblFournitureCommande() As DbSet(Of tblFournitureCommande)
     Public Overridable Property tblFournitureFournisseur() As DbSet(Of tblFournitureFournisseur)
     Public Overridable Property tblFournitureHotel() As DbSet(Of tblFournitureHotel)
@@ -51,7 +52,6 @@ Partial Public Class P2014_BDTestFrancoisEntities
     Public Overridable Property tblSalle() As DbSet(Of tblSalle)
     Public Overridable Property tblTypeChambre() As DbSet(Of tblTypeChambre)
     Public Overridable Property tblVille() As DbSet(Of tblVille)
-    Public Overridable Property tblFournitureChambre() As DbSet(Of tblFournitureChambre)
     Public Overridable Property VueInventaire() As DbSet(Of VueInventaire)
 
     Public Overridable Function VerificationDispo(dateDebut As Nullable(Of Date), dateFin As Nullable(Of Date)) As ObjectResult(Of VerificationDispo_Result)
