@@ -33,7 +33,7 @@ CREATE TABLE Personnel.tblChiffreTravail
 
 CREATE TABLE Personnel.tblEntretienFourniture
 (
-	NoSeqEntretien			int				NOT NULL	IDENTITY(1000,1),<
+	NoSeqEntretien			int				NOT NULL	IDENTITY(1000,1),
 	EtatFourniture			varchar(15)		NOT NULL,
 	CommentaireFourniture	varchar(300)	NULL,
 	DateDemande				date			NOT NULL,
