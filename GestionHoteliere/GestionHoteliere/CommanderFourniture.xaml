@@ -30,7 +30,7 @@
         <ListView x:Name="com_lbvCommande" ItemsSource="{Binding}" Margin="437,106,10.2,25.4">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="No.Fourniture" Width="Auto" DisplayMemberBinding="{Binding NoSeqFourniture}"/>
+                    <GridViewColumn Header="Code Fourniture" Width="Auto" DisplayMemberBinding="{Binding CodeFourniture}"/>
                     <GridViewColumn Header="Prix" Width="Auto" DisplayMemberBinding="{Binding PrixFournitureFournisseur, StringFormat={}{0:#.00}}"/>
                 </GridView>
             </ListView.View>

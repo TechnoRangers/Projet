@@ -58,11 +58,8 @@
         End If
     End Sub
 
-
     Private Sub Inv_btnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Inv_btnAnnuler.Click
-
         Me.Close()
-
     End Sub
 
     Private Sub Inv_btnCommander_Click(sender As Object, e As RoutedEventArgs) Handles Inv_btnCommander.Click
@@ -75,9 +72,13 @@
 
     Private Sub Inv_btnAjouter_Click(sender As Object, e As RoutedEventArgs) Handles Inv_btnAjouter.Click
 
-        Dim FenetreAjouter As AjoutItemInventaire
-        FenetreAjouter = New AjoutItemInventaire(MaBD, _monHotel)
-        FenetreAjouter.ShowDialog()
+        Dim FenetreAjout As AjoutItemInventaire2
+        FenetreAjout = New AjoutItemInventaire2(MaBD)
+        FenetreAjout.ShowDialog()
+
+        'Dim FenetreAjouter As AjoutItemInventaire
+        'FenetreAjouter = New AjoutItemInventaire(MaBD, _monHotel)
+        'FenetreAjouter.ShowDialog()
 
         FiltrerDatagrid()
 
@@ -87,15 +88,15 @@
 
         Try
             Dim FournitureSelection As VueInventaire = CType(DatagridInv.SelectedItem, VueInventaire)
-            Dim Fourniture As tblFourniture
+            Dim FournitureHotel As tblFournitureHotel
 
-            Fourniture = (From tabFourniture In MaBD.tblFourniture
-                         Where tabFourniture.NoSeqFourniture = FournitureSelection.NoSeqFourniture
-                         Select tabFourniture).ToList.First
+            FournitureHotel = (From tabFournitureHotel In MaBD.tblFournitureHotel
+                         Where tabFournitureHotel.CodeFourniture = FournitureSelection.CodeFourniture
+                         Select tabFournitureHotel).ToList.First
 
-            MaBD.tblFourniture.Remove(Fourniture)
+            MaBD.tblFournitureHotel.Remove(FournitureHotel)
             MaBD.SaveChanges()
-            MessageBox.Show("L'item " + FournitureSelection.NoSeqFourniture + " a été supprimé.")
+            MessageBox.Show("L'item " + FournitureSelection.CodeFourniture + " a été supprimé.")
         Catch ex As Exception
             MessageBox.Show("Erreur lors de la suppression.")
         End Try
@@ -106,6 +107,13 @@
 
 
     Private Sub Inv_textBoxRechercheCode_TextChanged(sender As Object, e As TextChangedEventArgs) Handles Inv_textBoxRechercheCode.TextChanged
+        FiltrerDatagrid()
+    End Sub
+
+    Private Sub Inv_btnAjoutHotel_Click(sender As Object, e As RoutedEventArgs) Handles Inv_btnAjoutHotel.Click
+        Dim FenetreAjoutItemHotel As AjoutItemHotel
+        FenetreAjoutItemHotel = New AjoutItemHotel(MaBD, _monHotel)
+        FenetreAjoutItemHotel.ShowDialog()
         FiltrerDatagrid()
     End Sub
 End Class

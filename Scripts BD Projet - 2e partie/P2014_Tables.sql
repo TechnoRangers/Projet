@@ -33,10 +33,15 @@ CREATE TABLE Personnel.tblChiffreTravail
 
 CREATE TABLE Personnel.tblEntretienFourniture
 (
-	NoSeqFourniture			int				NOT NULL,
-	NoEmploye				int				NOT NULL,
+	NoSeqEntretien			int				NOT NULL	IDENTITY(1000,1),<
 	EtatFourniture			varchar(15)		NOT NULL,
-	CommentaireFourniture	varchar(300)	NULL
+	CommentaireFourniture	varchar(300)	NULL,
+	DateDemande				date			NOT NULL,
+	DateEffectue			date			NULL,
+	StatutEntretien			varchar(20)		NULL,
+	CodeFourniture			varchar(10)		NOT NULL,
+	NoSeqChambre			int				NOT NULL,
+	NoEmploye				int				NOT NULL
 )
 
 
@@ -68,7 +73,7 @@ CREATE TABLE Approvisionnement.tblFournisseur
 
 CREATE TABLE Approvisionnement.tblFournitureFournisseur
 (
-	NoSeqFourniture				int				NOT NULL,
+	CodeFourniture				varchar(10)		NOT NULL,
 	CodeFournisseur				varchar(10)		NOT NULL,
 	PrixFournitureFournisseur	money			NOT NULL
 )
@@ -76,10 +81,8 @@ CREATE TABLE Approvisionnement.tblFournitureFournisseur
 
 CREATE TABLE Approvisionnement.tblFourniture
 (
-	NoSeqFourniture		int				NOT NULL	IDENTITY(1000,1),
 	CodeFourniture		varchar(10)		NOT NULL,
 	DescFourniture		varchar(50)		NOT NULL,
-	NoSeqChambre		int				NULL	DEFAULT NULL,
 	CodeCategorie		char(3)			NOT NULL
 )
 
@@ -94,7 +97,7 @@ CREATE TABLE Approvisionnement.tblCategorieFourniture
 CREATE TABLE Approvisionnement.tblFournitureCommande
 (
 	NoCommande			int			NOT NULL,
-	NoSeqFourniture		int			NOT NULL,
+	CodeFourniture		varchar(10)	NOT NULL,
 	QuantiteCommande	int			NOT NULL
 )
 
@@ -102,12 +105,19 @@ CREATE TABLE Approvisionnement.tblFournitureCommande
 CREATE TABLE Approvisionnement.tblFournitureHotel
 (
 	CodeHotel				char(3)			NOT NULL,
-	NoSeqFourniture			int				NOT NULL,
+	CodeFourniture			varchar(10)		NOT NULL,
 	QuantiteMin				smallint		NOT NULL,
 	QuantiteMax				int				NOT NULL,
 	QuantiteFournitureHotel	int				NULL
 )
 
+
+CREATE TABLE Approvisionnement.tblFournitureChambre
+(
+	NoSeqChambre		int				NOT NULL,
+	CodeFourniture		varchar(10)		NOT NULL,
+	QuantiteChambre		smallint		NOT NULL
+)
 
 
 
@@ -165,9 +175,9 @@ CREATE TABLE Reservation.tblVille
 CREATE TABLE Reservation.tblHotel
 (
 	CodeHotel			char(3)			NOT NULL,
-	NomHotel			varchar(30)		NOT NULL,
+	NomHotel			varchar(80)		NOT NULL,
 	NbChambre			smallint		NOT NULL,
-	AdresseHotel		varchar(30)		NOT NULL,
+	AdresseHotel		varchar(50)		NOT NULL,
 	NbEtoiles			tinyint			NOT NULL,
 	TypeService			varchar(50)		NOT NULL,
 	CodePostal			char(6)			NOT NULL,
@@ -210,7 +220,7 @@ CREATE TABLE Reservation.tblReservationSalle
 CREATE TABLE Reservation.tblChambre
 (
 	NoSeqChambre	int			NOT NULL	IDENTITY(1000,1),
-	CodeChambre		char(3)		NOT NULL,
+	CodeChambre		char(4)		NOT NULL,
 	EtageChambre	smallint	NOT NULL,
 	StatutChambre	varchar(15)	NULL,
 	DescChambre		text		NULL,

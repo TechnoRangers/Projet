@@ -11,7 +11,7 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class tblEntretienFourniture
-    Public Property NoSeqFourniture As Integer
+    Public Property CodeFourniture As String
     Public Property NoEmploye As Integer
     Public Property EtatFourniture As String
     Public Property CommentaireFourniture As String

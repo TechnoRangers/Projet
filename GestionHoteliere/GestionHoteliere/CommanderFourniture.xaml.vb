@@ -27,7 +27,7 @@
             Fournisseur = CType(com_cmbFournisseur.SelectedValue, tblFournisseur)
 
             Dim Fournitures = From tabFourniture In MaBD.tblFourniture
-                              Join tabFournitureFournisseur In MaBD.tblFournitureFournisseur On tabFourniture.NoSeqFourniture Equals tabFournitureFournisseur.NoSeqFourniture
+                              Join tabFournitureFournisseur In MaBD.tblFournitureFournisseur On tabFourniture.CodeFourniture Equals tabFournitureFournisseur.CodeFourniture
                               Join tabFournisseur In MaBD.tblFournisseur On tabFournisseur.CodeFournisseur Equals tabFournitureFournisseur.CodeFournisseur
                               Where tabFournisseur.CodeFournisseur = Fournisseur.CodeFournisseur
                               Select tabFourniture
@@ -48,13 +48,13 @@
             Dim FournitureFournisseur As tblFournitureFournisseur
 
             FournitureFournisseur = (From tabFournitureFournisseur In MaBD.tblFournitureFournisseur
-                                        Where tabFournitureFournisseur.NoSeqFourniture = FournitureSelection.NoSeqFourniture And Fournisseur.CodeFournisseur = tabFournitureFournisseur.CodeFournisseur
+                                        Where tabFournitureFournisseur.CodeFourniture = FournitureSelection.CodeFourniture And Fournisseur.CodeFournisseur = tabFournitureFournisseur.CodeFournisseur
                                         Select tabFournitureFournisseur).ToList.First
 
             ItemCommande.Add(FournitureFournisseur)
 
-            Dim FournitureCommande As tblFournitureCommande
-            FournitureCommande.NoSeqFourniture = 
+            'Dim FournitureCommande As tblFournitureCommande
+            'FournitureCommande.CodeFourniture = 
 
             CalculPrixTotal()
             com_lbvCommande.ItemsSource = ItemCommande.ToList
@@ -97,7 +97,7 @@
                     Dim FournitureCommande As New tblFournitureCommande
 
                     FournitureCommande.NoCommande = Commande.NoCommande
-                    FournitureCommande.NoSeqFourniture = Fourniture.NoSeqFourniture
+                    FournitureCommande.CodeFourniture = Fourniture.CodeFourniture
                     FournitureCommande.QuantiteCommande = 1
 
                     MaBD.tblFournitureCommande.Add(FournitureCommande)

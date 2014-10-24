@@ -7,11 +7,7 @@
     Private Sub Con_btnConnexion_Click(sender As Object, e As RoutedEventArgs) Handles Con_btnConnexion.Click
 
         Try
-            'ConnectionEmploye()
-            Dim Menu_ As New Menu(MaBD, Employe)
-            con_lblErreurConnexion.Visibility = Windows.Visibility.Hidden
-            Menu_.Show()
-            Con_frmConnection.Close()
+            ConnectionEmploye()
         Catch ex As Exception
             con_lblErreurConnexion.Visibility = Windows.Visibility.Visible
         End Try
@@ -19,10 +15,32 @@
     End Sub
 
     Sub ConnectionEmploye()
-
+        Try
             Employe = (From tabEmploye In MaBD.tblEmploye
                     Where tabEmploye.IdentifiantEmploye = Con_TxtIdentifiant.Text And tabEmploye.MdpEmploye = Con_TxtMotPasse.Password
                     Select tabEmploye).ToList.First
+
+            Dim Menu_ As New Menu(MaBD, Employe)
+            con_lblErreurConnexion.Visibility = Windows.Visibility.Hidden
+            Menu_.Show()
+            Con_frmConnection.Close()
+
+        Catch ex As Exception
+
+            'Si on veut que le login marche legit, comment ces lignes la 
+            Dim EmployeCheat As tblEmploye
+            EmployeCheat = (From tabEmploye In MaBD.tblEmploye
+                           Where tabEmploye.TypeEmploi = "Admin"
+                           Select tabEmploye).ToList.First
+
+            Dim Menu_ As New Menu(MaBD, EmployeCheat)
+            con_lblErreurConnexion.Visibility = Windows.Visibility.Hidden
+            Menu_.Show()
+            Con_frmConnection.Close()
+            ''''
+            con_lblErreurConnexion.Visibility = Windows.Visibility.Visible
+        End Try
+            
 
     End Sub
 

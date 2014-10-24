@@ -113,8 +113,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AjoutItemHotel.xaml.vb">
+      <DependentUpon>AjoutItemHotel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AjoutItemInventaire.xaml.vb">
       <DependentUpon>AjoutItemInventaire.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AjoutItemInventaire2.xaml.vb">
+      <DependentUpon>AjoutItemInventaire2.xaml</DependentUpon>
     </Compile>
     <Compile Include="BD.Context.vb">
       <AutoGen>True</AutoGen>
@@ -320,6 +326,9 @@
     <Compile Include="tblFourniture.vb">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblFournitureChambre.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
     <Compile Include="tblFournitureCommande.vb">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
@@ -362,6 +371,14 @@
     <Compile Include="VueInventaire.vb">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
+    <Page Include="AjoutItemHotel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AjoutItemInventaire2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CheckUp.xaml">
     </Page>
     <Page Include="AjoutItemInventaire.xaml">

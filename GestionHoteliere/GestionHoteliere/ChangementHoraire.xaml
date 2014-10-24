@@ -1,4 +1,4 @@
-﻿<Window x:Class="ChangementHoraire"
+﻿<Window x:Name="Cha_FrmChangementHoraire" x:Class="ChangementHoraire"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="ChangementHoraire" Height="347.49" Width="346.14" Icon="icone_Hotel.ico">

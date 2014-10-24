@@ -12,7 +12,7 @@ Imports System.Collections.Generic
 
 Partial Public Class tblFournitureHotel
     Public Property CodeHotel As String
-    Public Property NoSeqFourniture As Integer
+    Public Property CodeFourniture As String
     Public Property QuantiteMin As Short
     Public Property QuantiteMax As Integer
     Public Property QuantiteFournitureHotel As Nullable(Of Integer)

@@ -12,11 +12,13 @@ Imports System.Collections.Generic
 
 Partial Public Class VerificationDispo_Result
     Public Property NoSeqChambre As Integer
+    Public Property CodeChambre As String
     Public Property EtageChambre As Short
     Public Property StatutChambre As String
     Public Property DescChambre As String
     Public Property TypeLit As String
     Public Property NbLit As Byte
+    Public Property PrixChambre As Decimal
     Public Property CodeHotel As String
     Public Property CodeTypeChambre As String
 

@@ -16,6 +16,19 @@
         Else
             Men_LblNomEmploye.Content = _EmployeConnexion.NomEmploye
             Men_LbltypeEmploi.Content = _EmployeConnexion.TypeEmploi
+
+            If _EmployeConnexion.TypeEmploi = "Gestion" Then
+                Men_btnResChambre.IsEnabled = False
+                Men_btnResSalle.IsEnabled = False
+                Men_BtnConsoleAdmin.IsEnabled = False
+                Men_BtnEntretien.IsEnabled = False
+            ElseIf _EmployeConnexion.TypeEmploi = "Reception" Then
+                Men_BtnConsoleAdmin.IsEnabled = False
+                Men_btnInventaire.IsEnabled = False
+                Men_BtnEntretien.IsEnabled = False
+            End If
+
+
         End If
 
 

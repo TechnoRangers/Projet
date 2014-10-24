@@ -12,7 +12,7 @@ Imports System.Collections.Generic
 
 Partial Public Class tblFournitureCommande
     Public Property NoCommande As Integer
-    Public Property NoSeqFourniture As Integer
+    Public Property CodeFourniture As String
     Public Property QuantiteCommande As Integer
 
     Public Overridable Property tblCommande As tblCommande

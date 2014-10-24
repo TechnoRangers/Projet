@@ -11,14 +11,11 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class tblFourniture
-    Public Property NoSeqFourniture As Integer
     Public Property CodeFourniture As String
     Public Property DescFourniture As String
-    Public Property NoSeqChambre As Nullable(Of Integer)
     Public Property CodeCategorie As String
 
     Public Overridable Property tblCategorieFourniture As tblCategorieFourniture
-    Public Overridable Property tblChambre As tblChambre
     Public Overridable Property tblEntretienFourniture As ICollection(Of tblEntretienFourniture) = New HashSet(Of tblEntretienFourniture)
     Public Overridable Property tblFournitureCommande As ICollection(Of tblFournitureCommande) = New HashSet(Of tblFournitureCommande)
     Public Overridable Property tblFournitureFournisseur As ICollection(Of tblFournitureFournisseur) = New HashSet(Of tblFournitureFournisseur)

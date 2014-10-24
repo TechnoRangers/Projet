@@ -16,21 +16,20 @@
                     <Label x:Name="Inv_LblCodeFourniture" Content="Code fourniture" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="16"/>
                 </Grid>
             </GroupBox>
-            <Button Content="Ajouter un produit" Name="Inv_btnAjouter" HorizontalAlignment="Left" Margin="809,242,0,0" VerticalAlignment="Top" Width="178" Height="40" FontSize="18" TabIndex="4"/>
-            <Button Content="Supprimer un produit" Name="Inv_btnSupprimer" HorizontalAlignment="Left" Margin="809,287,0,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.038,0.038" Height="40" FontSize="18" TabIndex="5"/>
+            <Button Content="Ajouter un produit" Name="Inv_btnAjouter" HorizontalAlignment="Left" Margin="809,191,0,0" VerticalAlignment="Top" Width="178" Height="40" FontSize="18" TabIndex="4"/>
+            <Button Content="Supprimer un produit de l'hôtel" Name="Inv_btnSupprimer" HorizontalAlignment="Left" Margin="810,236,-1,0" VerticalAlignment="Top" Width="178" Height="40" TabIndex="5"/>
             <Label x:Name="Inv_Hotel" Content="Selection Hôtel " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="110" FontSize="14"/>
             <ComboBox x:Name="Inv_ComboBoxHotel" HorizontalAlignment="Left" Margin="125,65,0,0" VerticalAlignment="Top" Width="183" Height="22" IsReadOnly="True" TabIndex="1"/>
             <Button Content="Commander un produit" Name="Inv_btnCommander" HorizontalAlignment="Left" Margin="808,332,0,0" VerticalAlignment="Top" Width="178" Height="40" FontSize="16" TabIndex="6"/>
             <Button Content="Annuler" Name="Inv_btnAnnuler" HorizontalAlignment="Left" Margin="809,432,0,0" VerticalAlignment="Top" Width="177" Height="50" FontSize="16" TabIndex="8">
             </Button>
-            <GroupBox x:Name="Inv_GroupBoxFiltre" Header="Catégories" HorizontalAlignment="Left" Margin="809,146,0,0" VerticalAlignment="Top" Height="91" Width="177" FontSize="16">
+            <GroupBox x:Name="Inv_GroupBoxFiltre" Header="Catégories" HorizontalAlignment="Left" Margin="810,117,0,0" VerticalAlignment="Top" Height="69" Width="177" FontSize="16">
                 <Grid HorizontalAlignment="Left" Height="51" Margin="10,0,0,0" VerticalAlignment="Top" Width="147">
                     <ComboBox x:Name="inv_cmbCategorie" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120" TabIndex="3"/>
                 </Grid>
             </GroupBox>
             <DataGrid x:Name="DatagridInv" IsReadOnly="True" HorizontalAlignment="Left" CanUserAddRows="False" AutoGenerateColumns="False" Margin="10,117,0,0" VerticalAlignment="Top" Height="414" Width="792">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Numéro Fourniture" Binding="{Binding NoSeqFourniture}" ClipboardContentBinding="{x:Null}" />
                     <DataGridTextColumn Header="Code Fourniture" Binding="{Binding CodeFourniture}" ClipboardContentBinding="{x:Null}" />
                     <DataGridTextColumn Header="Description" Binding="{Binding DescFourniture}" ClipboardContentBinding="{x:Null}" />
                     <DataGridTextColumn Header="Quantité" Binding="{Binding QuantiteFournitureHotel}" ClipboardContentBinding="{x:Null}" />
@@ -43,6 +42,7 @@
             </DataGrid>
             <Button x:Name="Inv_BtnImprimer" IsEnabled="False" Content="Imprimer" HorizontalAlignment="Left" Margin="809,377,0,0" VerticalAlignment="Top" Width="177" Height="50" FontSize="16">
             </Button>
+            <Button Content="Assigner un produit à l'hôtel" x:Name="Inv_btnAjoutHotel" HorizontalAlignment="Left" Margin="810,284,-1,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.038,0.038" Height="40" TabIndex="5"/>
 
         </Grid>
     </Viewbox>

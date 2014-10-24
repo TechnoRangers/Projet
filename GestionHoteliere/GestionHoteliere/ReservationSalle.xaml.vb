@@ -38,11 +38,11 @@
                 message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
-            If LocSal_CmbBoxSalle.SelectedIndex = 0 Then
+            If LocSal_CmbBoxSalle.SelectedIndex = -1 Then
                 message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
-            If LocSal_CmbBoxPaiement.SelectedIndex = 0 Then
+            If LocSal_CmbBoxPaiement.SelectedIndex = -1 Then
                 message = "Veuillez remplir le champs"
                 Throw New System.Exception
             End If
@@ -165,12 +165,6 @@
         End Select
     End Sub
 
-    Private Sub LocSal_Equi_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_Equi.Click
-        'pour montrer l'Équipement
-        Dim Locequ As New LocationEquipement(MaBd, NoRes)
-        Locequ.Show()
-    End Sub
-
     Private Sub LocSal_RecSal_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_RecSal.Click
         'recherche de réservation de Salle 
         If Not IsNothing(LocSal_TxtBoxNoRes.Text) Then
@@ -178,7 +172,7 @@
                 Dim X As Int16
                 Dim El As tblReservationSalle
                 Dim Rep = From It In MaBd.tblReservationSalle Where It.NoSeqReservSalle = LocSal_TxtBoxNoRes.Text Select It
-                El = Rep.First
+                El = Rep.Single
 
                 LocSal_TxtBoxClient.Text = El.NoSeqClient
                 LocSal_TxtBoxNb.Text = El.NbPersonne
@@ -199,7 +193,7 @@
                 'Pour mettre les bonne valeurs dans les combobox 
                 X = 0
                 For Each item In LocSal_CmbBoxSalle.Items
-                    If item.Equals(Rep.First.tblSalle.NomSalle) Then
+                    If item.Equals(Rep.Single.tblSalle.NomSalle) Then
                         LocSal_CmbBoxSalle.SelectedIndex = X
                     Else
                         X += 1
@@ -208,7 +202,7 @@
 
                 X = 0
                 For Each item In LocSal_CmbBoxEtat.Items
-                    If item.Equals(Rep.First.StatutPaiement) Then
+                    If item.Equals(Rep.Single.StatutPaiement) Then
                         LocSal_CmbBoxEtat.SelectedIndex = X
                     Else
                         X += 1

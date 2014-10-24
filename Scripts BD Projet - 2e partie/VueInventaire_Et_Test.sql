@@ -43,34 +43,34 @@ INSTEAD OF DELETE
 AS
 BEGIN
 
-DECLARE @NoSeqFourniture varchar(10)
+DECLARE @CodeFourniture varchar(10)
 
-SELECT @NoSeqFourniture = NoSeqFourniture
+SELECT @CodeFourniture = CodeFourniture
 FROM deleted
 
 DELETE FROM Approvisionnement.tblFournitureCommande
-WHERE NoSeqFourniture = @NoSeqFourniture
+WHERE CodeFourniture = @CodeFourniture
 
 DELETE FROM Approvisionnement.tblFournitureFournisseur
-WHERE NoSeqFourniture = @NoSeqFourniture
+WHERE CodeFourniture = @CodeFourniture
 
 DELETE FROM Approvisionnement.tblFournitureHotel
-WHERE NoSeqFourniture = @NoSeqFourniture
+WHERE CodeFourniture = @CodeFourniture
 
 DELETE FROM Approvisionnement.tblFourniture
-WHERE NoSeqFourniture = @NoSeqFourniture
+WHERE CodeFourniture = @CodeFourniture
 
 END
 GO
 
 
 CREATE VIEW Approvisionnement.VueInventaire AS
-SELECT FH.CodeHotel, F.NoSeqFourniture, CodeFourniture, DescFourniture, F.CodeCategorie, NomCategorie, QuantiteFournitureHotel, PrixFournitureFournisseur , QuantiteMin, QuantiteMax , Four.CodeFournisseur, NomFournisseur
+SELECT FH.CodeHotel, F.CodeFourniture, DescFourniture, F.CodeCategorie, NomCategorie, QuantiteFournitureHotel, PrixFournitureFournisseur , QuantiteMin, QuantiteMax , Four.CodeFournisseur, NomFournisseur
 FROM Approvisionnement.tblFourniture AS F
 JOIN Approvisionnement.tblFournitureHotel AS FH
-	ON F.NoSeqFourniture = FH.NoSeqFourniture
+	ON F.CodeFourniture = FH.CodeFourniture
 JOIN Approvisionnement.tblFournitureFournisseur AS FF
-	ON F.NoSeqFourniture = FF.NoSeqFourniture
+	ON F.CodeFourniture = FF.CodeFourniture
 JOIN Approvisionnement.tblFournisseur AS Four
 	ON FF.CodeFournisseur = Four.CodeFournisseur
 JOIN Approvisionnement.tblCategorieFourniture AS CF
