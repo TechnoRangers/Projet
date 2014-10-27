@@ -53,6 +53,7 @@ CREATE TABLE Personnel.tblEntretienFournitureSalle
 	DateDemande				date			NOT NULL,
 	DateEffectue			date			NULL,
 	StatutEntretien			varchar(20)		NULL,
+	NoSeqReservSalle		int				NOT NULL,
 	CodeFourniture			varchar(10)		NOT NULL,
 	CodeSalle				char(3)			NOT NULL,
 	NoEmploye				int				NOT NULL
@@ -234,10 +235,9 @@ CREATE TABLE Reservation.tblChambreReservationChambre
 CREATE TABLE Reservation.tblReservationChambre
 (
 	NoSeqReservChambre			int			NOT NULL	IDENTITY(1000,1),
-	PrixReservChambre			money		NOT NULL,
+	PrixReservChambre			money		NULL,
 	ModePaiement				varchar(20)	NOT NULL,
 	StatutPaiement				varchar(10)	NULL,
-	NbPersonne					int			NULL,
 	NoCarteCredit				varchar(16)	NULL,
 	DateExpirationCarteCredit	char(4)		NULL,
 	TypeCarteCredit				varchar(20)	NULL,
@@ -298,7 +298,7 @@ CREATE TABLE Reservation.tblForfait
 )
 
 
-CREATE TABLE Reservation.tblPrixTableChambre
+CREATE TABLE Reservation.tblPrixTypeChambre
 (
 	NoSeqPrixTypeChambre	int				NOT NULL	IDENTITY(1000,1),
 	DescPrixTypeChambre		varchar(200)	NOT NULL,
@@ -317,3 +317,11 @@ CREATE TABLE Reservation.tblForfaitReservationChambre
 	CodeForfait			varchar(10)	NOT NULL	
 )
 
+
+CREATE TABLE Reservation.tblFournitureReservationSalle
+(
+	NoSeqReservSalle		int			NOT NULL,
+	CodeFourniture			varchar(10)	NOT NULL,
+	CodeSalle				char(3)		NOT NULL,
+	QuantiteFourniture		smallint	NOT NULL
+)

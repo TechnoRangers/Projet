@@ -27,7 +27,7 @@ ALTER TABLE Reservation.tblProvince ADD CONSTRAINT PK_Prov_CodProv PRIMARY KEY(C
 ALTER TABLE Reservation.tblVille ADD CONSTRAINT PK_Vill_CodVill PRIMARY KEY(CodeVille)
 ALTER TABLE Reservation.tblHotel ADD CONSTRAINT PK_Hot_CodHot PRIMARY KEY(CodeHotel)
 ALTER TABLE Reservation.tblSalle ADD CONSTRAINT PK_Salle_CodSalle PRIMARY KEY(CodeSalle)
-ALTER TABLE Reservation.tblReservationSalle ADD CONSTRAINT PK_ReservSalle_NoReservSalle PRIMARY KEY(NoSeqReservSalle)
+ALTER TABLE Reservation.tblReservationSalle ADD CONSTRAINT PK_ReservSalle_NoReservSalle PRIMARY KEY(NoSeqReservSalle,CodeSalle)
 ALTER TABLE Reservation.tblChambre ADD CONSTRAINT PK_Chambre_NoSeqChamb PRIMARY KEY(NoSeqChambre)
 ALTER TABLE Reservation.tblReservationChambre ADD CONSTRAINT PK_ReservChamb_NoSeqReservCham PRIMARY KEY(NoSeqReservChambre)
 ALTER TABLE Reservation.tblClient ADD CONSTRAINT PK_Cli_NoCli PRIMARY KEY(NoSeqClient)
@@ -36,8 +36,7 @@ ALTER TABLE Reservation.tblFacture ADD CONSTRAINT PK_Fact_NoSeqFact PRIMARY KEY(
 ALTER TABLE Reservation.tblForfait ADD CONSTRAINT PK_Forf_CodForf PRIMARY KEY(CodeForfait)
 ALTER TABLE Reservation.tblChambreReservationChambre ADD CONSTRAINT PK_ChambReservChamb_NoChamb_NoReserv PRIMARY KEY (NoSeqChambre,NoSeqReservChambre)
 ALTER TABLE Reservation.tblRabais ADD CONSTRAINT PK_Rab_NoSeqRab PRIMARY KEY (NoSeqRabais)
-
-ALTER TABLE Reservation.tblFournitureReservationSalle ADD CONSTRAINT PK_FourResSal_NoSalCodFourCodSal PRIMARY KEY (NoSeqSalle,CodeFourniture,CodeSalle)
+ALTER TABLE Reservation.tblFournitureReservationSalle ADD CONSTRAINT PK_FourResSal_NoSalCodFourCodSal PRIMARY KEY (NoSeqReservSalle,CodeFourniture,CodeSalle)
 ALTER TABLE Reservation.tblPrixTypeChambre ADD CONSTRAINT PK_PrixTypChamb_NoSeqPrixTypChamb PRIMARY KEY (NoSeqPrixTypeChambre)
 ALTER TABLE Reservation.tblForfaitReservationChambre ADD CONSTRAINT PK_ForResChamb_Ayyy PRIMARY KEY (NoSeqChambre,NoSeqReservChambre,CodeForfait)
 GO
@@ -62,17 +61,15 @@ GO
 /**************************************** Foreign key Personnel ****************************************/ 
 ALTER TABLE Personnel.tblEmploye ADD CONSTRAINT FK_Hot_Emp_CodHot FOREIGN KEY(CodeHotel) REFERENCES Reservation.tblHotel(CodeHotel) 
 ALTER TABLE Personnel.tblChiffreTravail ADD CONSTRAINT FK_Emp_ChifHor_NoEmp FOREIGN KEY(NoEmploye) REFERENCES Personnel.tblEmploye(NoEmploye) 
-ALTER TABLE Personnel.tblEntretienFourniture ADD CONSTRAINT FK_Four_EntFour_NoSeqFour FOREIGN KEY(NoSeqChambre,CodeFourniture) REFERENCES Approvisionnement.tblFournitureChambre(NoSeqChambre,CodeFourniture)
---ALTER TABLE Personnel.tblEntretienFourniture ADD CONSTRAINT FK_Four_EntFour_NoSeqChamb FOREIGN KEY(NoSeqChambre) REFERENCES Approvisionnement.tblFournitureChambre(NoSeqChambre) 
-ALTER TABLE Personnel.tblEntretienFourniture ADD CONSTRAINT FK_Emp_EntFour_NoEmp FOREIGN KEY(NoEmploye) REFERENCES Personnel.tblEmploye(NoEmploye) 
-
-ALTER TABLE Personnel.tblEntretienFournitureSalle ADD CONSTRAINT FK_FourResSal_AYyylmao FOREIGN KEY(NoSeqReservSalle,CodeFourniture,CodeSalle) REFERENCES Reservation.tblFournitureReservationSalle(NoSeqReserSalle,CodeFourniture,CodeSalle)
+ALTER TABLE Personnel.tblEntretienFournitureChambre ADD CONSTRAINT FK_Four_EntFour_NoSeqFour FOREIGN KEY(NoSeqChambre,CodeFourniture) REFERENCES Approvisionnement.tblFournitureChambre(NoSeqChambre,CodeFourniture)
+ALTER TABLE Personnel.tblEntretienFournitureChambre ADD CONSTRAINT FK_Emp_EntFour_NoEmp FOREIGN KEY(NoEmploye) REFERENCES Personnel.tblEmploye(NoEmploye) 
 ALTER TABLE Personnel.tblEntretienFournitureSalle ADD CONSTRAINT FK_FourResSal_NoEmp FOREIGN KEY (NoEmploye) REFERENCES Personnel.tblEmploye(NoEmploye)
+ALTER TABLE Personnel.tblEntretienFournitureSalle ADD CONSTRAINT FK_FourResSal_AYyylmao FOREIGN KEY(NoSeqReservSalle,CodeFourniture,CodeSalle) REFERENCES Reservation.tblFournitureReservationSalle(NoSeqReservSalle,CodeFourniture,CodeSalle)
 GO
 
 
 /**************************************** Foreign key Reservation ****************************************/ 
-
+GO
 ALTER TABLE Reservation.tblProvince ADD CONSTRAINT FK_Pays_Prov_CodPays FOREIGN KEY(CodePays) REFERENCES Reservation.tblPays(CodePays) 
 ALTER TABLE Reservation.tblVille ADD CONSTRAINT FK_Prov_Vill_CodProv FOREIGN KEY(CodeProvince) REFERENCES Reservation.tblProvince(CodeProvince) 
 ALTER TABLE Reservation.tblHotel ADD CONSTRAINT FK_Vill_Hot_CodVill FOREIGN KEY(CodeVille) REFERENCES Reservation.tblVille(CodeVille) 
@@ -86,8 +83,14 @@ ALTER TABLE Reservation.tblReservationChambre ADD CONSTRAINT FK_Rab_ReservChamb_
 ALTER TABLE Reservation.tblChambreReservationChambre ADD CONSTRAINT FK_Chamb_ChambReservChamb_NoSeqReservChamb FOREIGN KEY(NoSeqChambre) REFERENCES Reservation.tblChambre(NoSeqChambre) 
 ALTER TABLE Reservation.tblChambreReservationChambre ADD CONSTRAINT FK_ReservChamb_ChambReservChamb_NoSeqReservChamb FOREIGN KEY(NoSeqReservChambre) REFERENCES Reservation.tblReservationChambre(NoSeqReservChambre) 
 ALTER TABLE Reservation.tblFacture ADD CONSTRAINT FK_ReservChamb_Fact_NoSeqChamb FOREIGN KEY(NoSeqReservChambre) REFERENCES Reservation.tblReservationChambre(NoSeqReservChambre) 
-
-
+ALTER TABLE Reservation.tblForfait ADD CONSTRAINT FK_TypChamb_CodTypChamb FOREIGN KEY (CodeTypeChambre) REFERENCES Reservation.tblTypeChambre(CodeTypeChambre)
+ALTER TABLE Reservation.tblForfaitReservationChambre ADD CONSTRAINT FK_ChambResChamb_NoChambNoRes FOREIGN KEY (NoSeqChambre,NoSeqReservChambre) REFERENCES Reservation.tblChambreReservationChambre(NoSeqChambre,NoSeqReservChambre)
+ALTER TABLE Reservation.tblForfaitReservationChambre ADD CONSTRAINT FK_For_CodFor FOREIGN KEY (CodeForfait) REFERENCES Reservation.tblForfait(CodeForfait)
+ALTER TABLE Reservation.tblPrixTypeChambre ADD CONSTRAINT FK_TypChamb_CodTypChamb2 FOREIGN KEY (CodeTypeChambre) REFERENCES Reservation.tblTypeChambre(CodeTypeChambre)
+ALTER TABlE Reservation.tblPrixTypeChambre ADD CONSTRAINT FK_Hot_PrTypChamb_CodHot FOREIGN KEY (CodeHotel) REFERENCES Reservation.tblHotel(CodeHotel)
+ALTER TABLE Reservation.tblFournitureReservationSalle ADD CONSTRAINT FK_Four_CodFour FOREIGN KEY (CodeFourniture) REFERENCES Approvisionnement.tblFourniture(CodeFourniture)
+ALTER TABLE Reservation.tblFournitureReservationSalle ADD CONSTRAINT FK_ResSall_NoReservNoSall FOREIGN KEY (NoSeqReservSalle,CodeSalle) REFERENCES Reservation.tblReservationSalle (NoSeqReservSalle,CodeSalle)
+GO
 
 --ALTER TABLE Reservation.tblProvinceVille
 --DROP CONSTRAINT FK_Prov_ProvVil_CodProv
