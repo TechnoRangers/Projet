@@ -1,8 +1,8 @@
 ﻿Public Class ModifFacture
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
     Dim MaFacture As tblFacture
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, Optional ByRef _MaFacture As tblFacture = Nothing)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, Optional ByRef _MaFacture As tblFacture = Nothing)
         InitializeComponent()
         MaBD = _MaBD
         MaFacture = _MaFacture

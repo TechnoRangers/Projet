@@ -13,11 +13,11 @@ Imports System.Data.Entity.Infrastructure
 Imports System.Data.Entity.Core.Objects
 Imports System.Linq
 
-Partial Public Class P2014_BDTestFrancoisEntities
+Partial Public Class P2014_BD_GestionHotelEntities
     Inherits DbContext
 
     Public Sub New()
-        MyBase.New("name=P2014_BDTestFrancoisEntities")
+        MyBase.New("name=P2014_BD_GestionHotelEntities")
     End Sub
 
     Protected Overrides Sub OnModelCreating(modelBuilder As DbModelBuilder)
@@ -34,17 +34,17 @@ Partial Public Class P2014_BDTestFrancoisEntities
     Public Overridable Property tblFournitureHotel() As DbSet(Of tblFournitureHotel)
     Public Overridable Property tblChiffreTravail() As DbSet(Of tblChiffreTravail)
     Public Overridable Property tblEmploye() As DbSet(Of tblEmploye)
-    Public Overridable Property tblEntretienFourniture() As DbSet(Of tblEntretienFourniture)
+    Public Overridable Property tblEntretienFournitureChambre() As DbSet(Of tblEntretienFournitureChambre)
+    Public Overridable Property tblEntretienFournitureSalle() As DbSet(Of tblEntretienFournitureSalle)
     Public Overridable Property tblChambre() As DbSet(Of tblChambre)
     Public Overridable Property tblChambreReservationChambre() As DbSet(Of tblChambreReservationChambre)
     Public Overridable Property tblClient() As DbSet(Of tblClient)
-    Public Overridable Property tblEquipementGeneriqueChambre() As DbSet(Of tblEquipementGeneriqueChambre)
-    Public Overridable Property tblEquipementRecreatif() As DbSet(Of tblEquipementRecreatif)
-    Public Overridable Property tblEquipementRecreatifHotel() As DbSet(Of tblEquipementRecreatifHotel)
     Public Overridable Property tblFacture() As DbSet(Of tblFacture)
     Public Overridable Property tblForfait() As DbSet(Of tblForfait)
+    Public Overridable Property tblFournitureReservationSalle() As DbSet(Of tblFournitureReservationSalle)
     Public Overridable Property tblHotel() As DbSet(Of tblHotel)
     Public Overridable Property tblPays() As DbSet(Of tblPays)
+    Public Overridable Property tblPrixTypeChambre() As DbSet(Of tblPrixTypeChambre)
     Public Overridable Property tblProvince() As DbSet(Of tblProvince)
     Public Overridable Property tblRabais() As DbSet(Of tblRabais)
     Public Overridable Property tblReservationChambre() As DbSet(Of tblReservationChambre)

@@ -1,11 +1,11 @@
 ﻿Public Class CommanderFourniture
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
     Dim Fournisseur As tblFournisseur
     Dim ItemCommande As New List(Of tblFournitureFournisseur)
     Dim FournitureCommande As New List(Of tblFournitureCommande)
     Dim PrixCommande As Double
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities)
         InitializeComponent()
         com_lblPrixTotal.Content = "0.00 $"
         MaBD = _MaBD

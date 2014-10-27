@@ -1,11 +1,11 @@
 ﻿Public Class Inventaire
 
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
     Dim _monHotel As tblHotel
     Dim _macategorie As tblCategorieFourniture
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
-        MaBD = New P2014_BDTestFrancoisEntities
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities)
+        MaBD = New P2014_BD_GestionHotelEntities
         _monHotel = New tblHotel
         _macategorie = New tblCategorieFourniture
         InitializeComponent()

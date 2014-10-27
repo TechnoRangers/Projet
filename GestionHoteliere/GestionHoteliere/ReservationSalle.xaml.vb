@@ -1,9 +1,9 @@
 ﻿Public Class ReservationSalle
-    Dim MaBd As P2014_BDTestFrancoisEntities
+    Dim MaBd As P2014_BD_GestionHotelEntities
     Dim NoRes As Int32
     Dim Connexion As tblEmploye
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, ByRef _Connexion As tblEmploye)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _Connexion As tblEmploye)
         'va cherche la base de donnée et la connection 
         InitializeComponent()
         MaBd = _MaBD

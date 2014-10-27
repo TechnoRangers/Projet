@@ -108,11 +108,11 @@
           <Property Name="NombreHeuresSemaines" Type="smallint" />
           <Property Name="CodeHotel" Type="char" MaxLength="3" />
         </EntityType>
-        <EntityType Name="tblEntretienFourniture">
+        <EntityType Name="tblEntretienFournitureChambre">
           <Key>
-            <PropertyRef Name="NoSeqEntretien" />
+            <PropertyRef Name="NoSeqEntretienChambre" />
           </Key>
-          <Property Name="NoSeqEntretien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoSeqEntretienChambre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EtatFourniture" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="CommentaireFourniture" Type="varchar" MaxLength="300" />
           <Property Name="DateDemande" Type="date" Nullable="false" />
@@ -120,6 +120,21 @@
           <Property Name="StatutEntretien" Type="varchar" MaxLength="20" />
           <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="NoSeqChambre" Type="int" Nullable="false" />
+          <Property Name="NoEmploye" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblEntretienFournitureSalle">
+          <Key>
+            <PropertyRef Name="NoSeqEntretienSalle" />
+          </Key>
+          <Property Name="NoSeqEntretienSalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EtatFourniture" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CommentaireFourniture" Type="varchar" MaxLength="300" />
+          <Property Name="DateDemande" Type="date" Nullable="false" />
+          <Property Name="DateEffectue" Type="date" />
+          <Property Name="StatutEntretien" Type="varchar" MaxLength="20" />
+          <Property Name="NoSeqReservSalle" Type="int" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CodeSalle" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="NoEmploye" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblChambre">
@@ -133,7 +148,6 @@
           <Property Name="DescChambre" Type="text" />
           <Property Name="TypeLit" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="NbLit" Type="tinyint" Nullable="false" />
-          <Property Name="PrixChambre" Type="money" Nullable="false" />
           <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="CodeTypeChambre" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
@@ -149,6 +163,7 @@
           <Property Name="PrenomLocataire" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="DateDebutReservation" Type="date" Nullable="false" />
           <Property Name="DateFinReservation" Type="date" Nullable="false" />
+          <Property Name="StatutChambreReservChambre" Type="varchar" MaxLength="15" Nullable="false" />
         </EntityType>
         <EntityType Name="tblClient">
           <Key>
@@ -161,49 +176,6 @@
           <Property Name="AdresseClient" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="EmailClient" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="CodePostal" Type="char" MaxLength="6" />
-        </EntityType>
-        <EntityType Name="tblEquipementGeneriqueChambre">
-          <Key>
-            <PropertyRef Name="CodeEquipementGenChambre" />
-          </Key>
-          <Property Name="CodeEquipementGenChambre" Type="char" MaxLength="3" Nullable="false" />
-          <Property Name="NomEquipementGenChambre" Type="varchar" MaxLength="20" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblEquipementGeneriqueTypeChambre">
-          <Key>
-            <PropertyRef Name="CodeTypeChambre" />
-            <PropertyRef Name="CodeEquipementGenChambre" />
-          </Key>
-          <Property Name="CodeTypeChambre" Type="char" MaxLength="3" Nullable="false" />
-          <Property Name="CodeEquipementGenChambre" Type="char" MaxLength="3" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblEquipementRecreatif">
-          <Key>
-            <PropertyRef Name="CodeEquipementRecreatif" />
-          </Key>
-          <Property Name="CodeEquipementRecreatif" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="NomEquipement" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="StatutEquipement" Type="varchar" MaxLength="20" />
-          <Property Name="CategorieEquipement" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="DateAquisition" Type="date" Nullable="false" />
-          <Property Name="DateFinGarantie" Type="date" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblEquipementRecreatifForfait">
-          <Key>
-            <PropertyRef Name="CodeForfait" />
-            <PropertyRef Name="CodeEquipementRecreatif" />
-          </Key>
-          <Property Name="CodeForfait" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="CodeEquipementRecreatif" Type="varchar" MaxLength="10" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tblEquipementRecreatifHotel">
-          <Key>
-            <PropertyRef Name="CodeEquipementRecreatif" />
-            <PropertyRef Name="CodeHotel" />
-          </Key>
-          <Property Name="CodeEquipementRecreatif" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
-          <Property Name="QuantiteEquipement" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="tblFacture">
           <Key>
@@ -224,14 +196,28 @@
           <Property Name="PrixForfait" Type="money" Nullable="false" />
           <Property Name="DescForfait" Type="text" Nullable="false" />
           <Property Name="NbNuit" Type="tinyint" Nullable="false" />
+          <Property Name="CodeTypeChambre" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
-        <EntityType Name="tblForfaitTypeChambre">
+        <EntityType Name="tblForfaitReservationChambre">
           <Key>
-            <PropertyRef Name="CodeTypeChambre" />
+            <PropertyRef Name="NoSeqChambre" />
+            <PropertyRef Name="NoSeqReservChambre" />
             <PropertyRef Name="CodeForfait" />
           </Key>
-          <Property Name="CodeTypeChambre" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="NoSeqChambre" Type="int" Nullable="false" />
+          <Property Name="NoSeqReservChambre" Type="int" Nullable="false" />
           <Property Name="CodeForfait" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblFournitureReservationSalle">
+          <Key>
+            <PropertyRef Name="NoSeqReservSalle" />
+            <PropertyRef Name="CodeFourniture" />
+            <PropertyRef Name="CodeSalle" />
+          </Key>
+          <Property Name="NoSeqReservSalle" Type="int" Nullable="false" />
+          <Property Name="CodeFourniture" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CodeSalle" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="QuantiteFourniture" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="tblHotel">
           <Key>
@@ -258,6 +244,18 @@
           <Property Name="CodePays" Type="char" MaxLength="3" Nullable="false" />
           <Property Name="NomPays" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="tblPrixTypeChambre">
+          <Key>
+            <PropertyRef Name="NoSeqPrixTypeChambre" />
+          </Key>
+          <Property Name="NoSeqPrixTypeChambre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescPrixTypeChambre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="PrixTypeChambre" Type="money" Nullable="false" />
+          <Property Name="DateDebutPrix" Type="date" Nullable="false" />
+          <Property Name="DateFinPrix" Type="date" Nullable="false" />
+          <Property Name="CodeTypeChambre" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="CodeHotel" Type="char" MaxLength="3" Nullable="false" />
+        </EntityType>
         <EntityType Name="tblProvince">
           <Key>
             <PropertyRef Name="CodeProvince" />
@@ -281,17 +279,20 @@
             <PropertyRef Name="NoSeqReservChambre" />
           </Key>
           <Property Name="NoSeqReservChambre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PrixReservChambre" Type="money" Nullable="false" />
+          <Property Name="PrixReservChambre" Type="money" />
           <Property Name="ModePaiement" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="StatutPaiement" Type="varchar" MaxLength="10" />
-          <Property Name="NbPersonne" Type="int" />
           <Property Name="NoCarteCredit" Type="varchar" MaxLength="16" />
+          <Property Name="DateExpirationCarteCredit" Type="char" MaxLength="4" />
+          <Property Name="TypeCarteCredit" Type="varchar" MaxLength="20" />
+          <Property Name="NomCarteCredit" Type="varchar" MaxLength="40" />
           <Property Name="NoSeqClient" Type="int" Nullable="false" />
           <Property Name="NoSeqRabais" Type="int" />
         </EntityType>
         <EntityType Name="tblReservationSalle">
           <Key>
             <PropertyRef Name="NoSeqReservSalle" />
+            <PropertyRef Name="CodeSalle" />
           </Key>
           <Property Name="NoSeqReservSalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DateReservSalle" Type="date" Nullable="false" />
@@ -395,6 +396,20 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ChambResChamb_NoChambNoRes">
+          <End Role="tblChambreReservationChambre" Type="Self.tblChambreReservationChambre" Multiplicity="1" />
+          <End Role="tblForfaitReservationChambre" Type="Self.tblForfaitReservationChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblChambreReservationChambre">
+              <PropertyRef Name="NoSeqChambre" />
+              <PropertyRef Name="NoSeqReservChambre" />
+            </Principal>
+            <Dependent Role="tblForfaitReservationChambre">
+              <PropertyRef Name="NoSeqChambre" />
+              <PropertyRef Name="NoSeqReservChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Cli_ReservChamb_NoCli">
           <End Role="tblClient" Type="Self.tblClient" Multiplicity="1" />
           <End Role="tblReservationChambre" Type="Self.tblReservationChambre" Multiplicity="*" />
@@ -457,72 +472,24 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
         </Association>
         <Association Name="FK_Emp_EntFour_NoEmp">
           <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
-          <End Role="tblEntretienFourniture" Type="Self.tblEntretienFourniture" Multiplicity="*" />
+          <End Role="tblEntretienFournitureChambre" Type="Self.tblEntretienFournitureChambre" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblEmploye">
               <PropertyRef Name="NoEmploye" />
             </Principal>
-            <Dependent Role="tblEntretienFourniture">
+            <Dependent Role="tblEntretienFournitureChambre">
               <PropertyRef Name="NoEmploye" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EqChamb_EqTypChamb_CodEqChamb">
-          <End Role="tblEquipementGeneriqueChambre" Type="Self.tblEquipementGeneriqueChambre" Multiplicity="1" />
-          <End Role="tblEquipementGeneriqueTypeChambre" Type="Self.tblEquipementGeneriqueTypeChambre" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblEquipementGeneriqueChambre">
-              <PropertyRef Name="CodeEquipementGenChambre" />
-            </Principal>
-            <Dependent Role="tblEquipementGeneriqueTypeChambre">
-              <PropertyRef Name="CodeEquipementGenChambre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EqRec_EqHot_CodEqRec">
-          <End Role="tblEquipementRecreatif" Type="Self.tblEquipementRecreatif" Multiplicity="1" />
-          <End Role="tblEquipementRecreatifHotel" Type="Self.tblEquipementRecreatifHotel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblEquipementRecreatif">
-              <PropertyRef Name="CodeEquipementRecreatif" />
-            </Principal>
-            <Dependent Role="tblEquipementRecreatifHotel">
-              <PropertyRef Name="CodeEquipementRecreatif" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_EqRecre_EqRecFor_CodEqRecre">
-          <End Role="tblEquipementRecreatif" Type="Self.tblEquipementRecreatif" Multiplicity="1" />
-          <End Role="tblEquipementRecreatifForfait" Type="Self.tblEquipementRecreatifForfait" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblEquipementRecreatif">
-              <PropertyRef Name="CodeEquipementRecreatif" />
-            </Principal>
-            <Dependent Role="tblEquipementRecreatifForfait">
-              <PropertyRef Name="CodeEquipementRecreatif" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Forf_EqRecFor_CodForf">
+        <Association Name="FK_For_CodFor">
           <End Role="tblForfait" Type="Self.tblForfait" Multiplicity="1" />
-          <End Role="tblEquipementRecreatifForfait" Type="Self.tblEquipementRecreatifForfait" Multiplicity="*" />
+          <End Role="tblForfaitReservationChambre" Type="Self.tblForfaitReservationChambre" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblForfait">
               <PropertyRef Name="CodeForfait" />
             </Principal>
-            <Dependent Role="tblEquipementRecreatifForfait">
-              <PropertyRef Name="CodeForfait" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Forf_ForTypChamb_CodForf">
-          <End Role="tblForfait" Type="Self.tblForfait" Multiplicity="1" />
-          <End Role="tblForfaitTypeChambre" Type="Self.tblForfaitTypeChambre" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblForfait">
-              <PropertyRef Name="CodeForfait" />
-            </Principal>
-            <Dependent Role="tblForfaitTypeChambre">
+            <Dependent Role="tblForfaitReservationChambre">
               <PropertyRef Name="CodeForfait" />
             </Dependent>
           </ReferentialConstraint>
@@ -536,6 +503,18 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Principal>
             <Dependent Role="tblFourniture">
               <PropertyRef Name="CodeCategorie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Four_CodFour">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureReservationSalle" Type="Self.tblFournitureReservationSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureReservationSalle">
+              <PropertyRef Name="CodeFourniture" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -565,13 +544,13 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
         </Association>
         <Association Name="FK_Four_EntFour_NoSeqFour">
           <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="1" />
-          <End Role="tblEntretienFourniture" Type="Self.tblEntretienFourniture" Multiplicity="*" />
+          <End Role="tblEntretienFournitureChambre" Type="Self.tblEntretienFournitureChambre" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFournitureChambre">
               <PropertyRef Name="NoSeqChambre" />
               <PropertyRef Name="CodeFourniture" />
             </Principal>
-            <Dependent Role="tblEntretienFourniture">
+            <Dependent Role="tblEntretienFournitureChambre">
               <PropertyRef Name="NoSeqChambre" />
               <PropertyRef Name="CodeFourniture" />
             </Dependent>
@@ -613,6 +592,34 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FourResSal_AYyylmao">
+          <End Role="tblFournitureReservationSalle" Type="Self.tblFournitureReservationSalle" Multiplicity="1" />
+          <End Role="tblEntretienFournitureSalle" Type="Self.tblEntretienFournitureSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFournitureReservationSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeFourniture" />
+              <PropertyRef Name="CodeSalle" />
+            </Principal>
+            <Dependent Role="tblEntretienFournitureSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeFourniture" />
+              <PropertyRef Name="CodeSalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FourResSal_NoEmp">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblEntretienFournitureSalle" Type="Self.tblEntretienFournitureSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="NoEmploye" />
+            </Principal>
+            <Dependent Role="tblEntretienFournitureSalle">
+              <PropertyRef Name="NoEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Hot_Chamb_CodHot">
           <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
           <End Role="tblChambre" Type="Self.tblChambre" Multiplicity="*" />
@@ -637,18 +644,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Hot_EqHot_CodHot">
-          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
-          <End Role="tblEquipementRecreatifHotel" Type="Self.tblEquipementRecreatifHotel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblHotel">
-              <PropertyRef Name="CodeHotel" />
-            </Principal>
-            <Dependent Role="tblEquipementRecreatifHotel">
-              <PropertyRef Name="CodeHotel" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Hot_FourHot_CodHot">
           <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
           <End Role="tblFournitureHotel" Type="Self.tblFournitureHotel" Multiplicity="*" />
@@ -657,6 +652,18 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
               <PropertyRef Name="CodeHotel" />
             </Principal>
             <Dependent Role="tblFournitureHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_PrTypChamb_CodHot">
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
+          <End Role="tblPrixTypeChambre" Type="Self.tblPrixTypeChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Principal>
+            <Dependent Role="tblPrixTypeChambre">
               <PropertyRef Name="CodeHotel" />
             </Dependent>
           </ReferentialConstraint>
@@ -745,6 +752,20 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ResSall_NoReservNoSall">
+          <End Role="tblReservationSalle" Type="Self.tblReservationSalle" Multiplicity="1" />
+          <End Role="tblFournitureReservationSalle" Type="Self.tblFournitureReservationSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReservationSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeSalle" />
+            </Principal>
+            <Dependent Role="tblFournitureReservationSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeSalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Salle_ReservSalle_CodSalle">
           <End Role="tblSalle" Type="Self.tblSalle" Multiplicity="1" />
           <End Role="tblReservationSalle" Type="Self.tblReservationSalle" Multiplicity="*" />
@@ -757,26 +778,26 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TypChamb_EqTypChamb_CodTypChamb">
+        <Association Name="FK_TypChamb_CodTypChamb">
           <End Role="tblTypeChambre" Type="Self.tblTypeChambre" Multiplicity="1" />
-          <End Role="tblEquipementGeneriqueTypeChambre" Type="Self.tblEquipementGeneriqueTypeChambre" Multiplicity="*" />
+          <End Role="tblForfait" Type="Self.tblForfait" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblTypeChambre">
               <PropertyRef Name="CodeTypeChambre" />
             </Principal>
-            <Dependent Role="tblEquipementGeneriqueTypeChambre">
+            <Dependent Role="tblForfait">
               <PropertyRef Name="CodeTypeChambre" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TypChamb_ForTypChamb_CodTypChamb">
+        <Association Name="FK_TypChamb_CodTypChamb2">
           <End Role="tblTypeChambre" Type="Self.tblTypeChambre" Multiplicity="1" />
-          <End Role="tblForfaitTypeChambre" Type="Self.tblForfaitTypeChambre" Multiplicity="*" />
+          <End Role="tblPrixTypeChambre" Type="Self.tblPrixTypeChambre" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblTypeChambre">
               <PropertyRef Name="CodeTypeChambre" />
             </Principal>
-            <Dependent Role="tblForfaitTypeChambre">
+            <Dependent Role="tblPrixTypeChambre">
               <PropertyRef Name="CodeTypeChambre" />
             </Dependent>
           </ReferentialConstraint>
@@ -808,20 +829,18 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <EntitySet Name="tblFournitureHotel" EntityType="Self.tblFournitureHotel" Schema="Approvisionnement" store:Type="Tables" />
           <EntitySet Name="tblChiffreTravail" EntityType="Self.tblChiffreTravail" Schema="Personnel" store:Type="Tables" />
           <EntitySet Name="tblEmploye" EntityType="Self.tblEmploye" Schema="Personnel" store:Type="Tables" />
-          <EntitySet Name="tblEntretienFourniture" EntityType="Self.tblEntretienFourniture" Schema="Personnel" store:Type="Tables" />
+          <EntitySet Name="tblEntretienFournitureChambre" EntityType="Self.tblEntretienFournitureChambre" Schema="Personnel" store:Type="Tables" />
+          <EntitySet Name="tblEntretienFournitureSalle" EntityType="Self.tblEntretienFournitureSalle" Schema="Personnel" store:Type="Tables" />
           <EntitySet Name="tblChambre" EntityType="Self.tblChambre" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblChambreReservationChambre" EntityType="Self.tblChambreReservationChambre" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblClient" EntityType="Self.tblClient" Schema="Reservation" store:Type="Tables" />
-          <EntitySet Name="tblEquipementGeneriqueChambre" EntityType="Self.tblEquipementGeneriqueChambre" Schema="Reservation" store:Type="Tables" />
-          <EntitySet Name="tblEquipementGeneriqueTypeChambre" EntityType="Self.tblEquipementGeneriqueTypeChambre" Schema="Reservation" store:Type="Tables" />
-          <EntitySet Name="tblEquipementRecreatif" EntityType="Self.tblEquipementRecreatif" Schema="Reservation" store:Type="Tables" />
-          <EntitySet Name="tblEquipementRecreatifForfait" EntityType="Self.tblEquipementRecreatifForfait" Schema="Reservation" store:Type="Tables" />
-          <EntitySet Name="tblEquipementRecreatifHotel" EntityType="Self.tblEquipementRecreatifHotel" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblFacture" EntityType="Self.tblFacture" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblForfait" EntityType="Self.tblForfait" Schema="Reservation" store:Type="Tables" />
-          <EntitySet Name="tblForfaitTypeChambre" EntityType="Self.tblForfaitTypeChambre" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblForfaitReservationChambre" EntityType="Self.tblForfaitReservationChambre" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblFournitureReservationSalle" EntityType="Self.tblFournitureReservationSalle" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblHotel" EntityType="Self.tblHotel" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblPays" EntityType="Self.tblPays" Schema="Reservation" store:Type="Tables" />
+          <EntitySet Name="tblPrixTypeChambre" EntityType="Self.tblPrixTypeChambre" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblProvince" EntityType="Self.tblProvince" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblRabais" EntityType="Self.tblRabais" Schema="Reservation" store:Type="Tables" />
           <EntitySet Name="tblReservationChambre" EntityType="Self.tblReservationChambre" Schema="Reservation" store:Type="Tables" />
@@ -856,6 +875,10 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblChambre" EntitySet="tblChambre" />
             <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
           </AssociationSet>
+          <AssociationSet Name="FK_ChambResChamb_NoChambNoRes" Association="Self.FK_ChambResChamb_NoChambNoRes">
+            <End Role="tblChambreReservationChambre" EntitySet="tblChambreReservationChambre" />
+            <End Role="tblForfaitReservationChambre" EntitySet="tblForfaitReservationChambre" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cli_ReservChamb_NoCli" Association="Self.FK_Cli_ReservChamb_NoCli">
             <End Role="tblClient" EntitySet="tblClient" />
             <End Role="tblReservationChambre" EntitySet="tblReservationChambre" />
@@ -878,31 +901,19 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           </AssociationSet>
           <AssociationSet Name="FK_Emp_EntFour_NoEmp" Association="Self.FK_Emp_EntFour_NoEmp">
             <End Role="tblEmploye" EntitySet="tblEmploye" />
-            <End Role="tblEntretienFourniture" EntitySet="tblEntretienFourniture" />
+            <End Role="tblEntretienFournitureChambre" EntitySet="tblEntretienFournitureChambre" />
           </AssociationSet>
-          <AssociationSet Name="FK_EqChamb_EqTypChamb_CodEqChamb" Association="Self.FK_EqChamb_EqTypChamb_CodEqChamb">
-            <End Role="tblEquipementGeneriqueChambre" EntitySet="tblEquipementGeneriqueChambre" />
-            <End Role="tblEquipementGeneriqueTypeChambre" EntitySet="tblEquipementGeneriqueTypeChambre" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EqRec_EqHot_CodEqRec" Association="Self.FK_EqRec_EqHot_CodEqRec">
-            <End Role="tblEquipementRecreatif" EntitySet="tblEquipementRecreatif" />
-            <End Role="tblEquipementRecreatifHotel" EntitySet="tblEquipementRecreatifHotel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_EqRecre_EqRecFor_CodEqRecre" Association="Self.FK_EqRecre_EqRecFor_CodEqRecre">
-            <End Role="tblEquipementRecreatif" EntitySet="tblEquipementRecreatif" />
-            <End Role="tblEquipementRecreatifForfait" EntitySet="tblEquipementRecreatifForfait" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Forf_EqRecFor_CodForf" Association="Self.FK_Forf_EqRecFor_CodForf">
+          <AssociationSet Name="FK_For_CodFor" Association="Self.FK_For_CodFor">
             <End Role="tblForfait" EntitySet="tblForfait" />
-            <End Role="tblEquipementRecreatifForfait" EntitySet="tblEquipementRecreatifForfait" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Forf_ForTypChamb_CodForf" Association="Self.FK_Forf_ForTypChamb_CodForf">
-            <End Role="tblForfait" EntitySet="tblForfait" />
-            <End Role="tblForfaitTypeChambre" EntitySet="tblForfaitTypeChambre" />
+            <End Role="tblForfaitReservationChambre" EntitySet="tblForfaitReservationChambre" />
           </AssociationSet>
           <AssociationSet Name="FK_Four_Categ_CodeCateg" Association="Self.FK_Four_Categ_CodeCateg">
             <End Role="tblCategorieFourniture" EntitySet="tblCategorieFourniture" />
             <End Role="tblFourniture" EntitySet="tblFourniture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Four_CodFour" Association="Self.FK_Four_CodFour">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureReservationSalle" EntitySet="tblFournitureReservationSalle" />
           </AssociationSet>
           <AssociationSet Name="FK_Four_Com_NoSeqFour" Association="Self.FK_Four_Com_NoSeqFour">
             <End Role="tblFournisseur" EntitySet="tblFournisseur" />
@@ -914,7 +925,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           </AssociationSet>
           <AssociationSet Name="FK_Four_EntFour_NoSeqFour" Association="Self.FK_Four_EntFour_NoSeqFour">
             <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
-            <End Role="tblEntretienFourniture" EntitySet="tblEntretienFourniture" />
+            <End Role="tblEntretienFournitureChambre" EntitySet="tblEntretienFournitureChambre" />
           </AssociationSet>
           <AssociationSet Name="FK_Four_FourCom_NoSeqFour" Association="Self.FK_Four_FourCom_NoSeqFour">
             <End Role="tblFourniture" EntitySet="tblFourniture" />
@@ -928,6 +939,14 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblFourniture" EntitySet="tblFourniture" />
             <End Role="tblFournitureHotel" EntitySet="tblFournitureHotel" />
           </AssociationSet>
+          <AssociationSet Name="FK_FourResSal_AYyylmao" Association="Self.FK_FourResSal_AYyylmao">
+            <End Role="tblFournitureReservationSalle" EntitySet="tblFournitureReservationSalle" />
+            <End Role="tblEntretienFournitureSalle" EntitySet="tblEntretienFournitureSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FourResSal_NoEmp" Association="Self.FK_FourResSal_NoEmp">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblEntretienFournitureSalle" EntitySet="tblEntretienFournitureSalle" />
+          </AssociationSet>
           <AssociationSet Name="FK_Hot_Chamb_CodHot" Association="Self.FK_Hot_Chamb_CodHot">
             <End Role="tblHotel" EntitySet="tblHotel" />
             <End Role="tblChambre" EntitySet="tblChambre" />
@@ -936,13 +955,13 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblHotel" EntitySet="tblHotel" />
             <End Role="tblEmploye" EntitySet="tblEmploye" />
           </AssociationSet>
-          <AssociationSet Name="FK_Hot_EqHot_CodHot" Association="Self.FK_Hot_EqHot_CodHot">
-            <End Role="tblHotel" EntitySet="tblHotel" />
-            <End Role="tblEquipementRecreatifHotel" EntitySet="tblEquipementRecreatifHotel" />
-          </AssociationSet>
           <AssociationSet Name="FK_Hot_FourHot_CodHot" Association="Self.FK_Hot_FourHot_CodHot">
             <End Role="tblHotel" EntitySet="tblHotel" />
             <End Role="tblFournitureHotel" EntitySet="tblFournitureHotel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_PrTypChamb_CodHot" Association="Self.FK_Hot_PrTypChamb_CodHot">
+            <End Role="tblHotel" EntitySet="tblHotel" />
+            <End Role="tblPrixTypeChambre" EntitySet="tblPrixTypeChambre" />
           </AssociationSet>
           <AssociationSet Name="FK_Hot_Salle_CodHot" Association="Self.FK_Hot_Salle_CodHot">
             <End Role="tblHotel" EntitySet="tblHotel" />
@@ -972,17 +991,21 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblReservationChambre" EntitySet="tblReservationChambre" />
             <End Role="tblFacture" EntitySet="tblFacture" />
           </AssociationSet>
+          <AssociationSet Name="FK_ResSall_NoReservNoSall" Association="Self.FK_ResSall_NoReservNoSall">
+            <End Role="tblReservationSalle" EntitySet="tblReservationSalle" />
+            <End Role="tblFournitureReservationSalle" EntitySet="tblFournitureReservationSalle" />
+          </AssociationSet>
           <AssociationSet Name="FK_Salle_ReservSalle_CodSalle" Association="Self.FK_Salle_ReservSalle_CodSalle">
             <End Role="tblSalle" EntitySet="tblSalle" />
             <End Role="tblReservationSalle" EntitySet="tblReservationSalle" />
           </AssociationSet>
-          <AssociationSet Name="FK_TypChamb_EqTypChamb_CodTypChamb" Association="Self.FK_TypChamb_EqTypChamb_CodTypChamb">
+          <AssociationSet Name="FK_TypChamb_CodTypChamb" Association="Self.FK_TypChamb_CodTypChamb">
             <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
-            <End Role="tblEquipementGeneriqueTypeChambre" EntitySet="tblEquipementGeneriqueTypeChambre" />
+            <End Role="tblForfait" EntitySet="tblForfait" />
           </AssociationSet>
-          <AssociationSet Name="FK_TypChamb_ForTypChamb_CodTypChamb" Association="Self.FK_TypChamb_ForTypChamb_CodTypChamb">
+          <AssociationSet Name="FK_TypChamb_CodTypChamb2" Association="Self.FK_TypChamb_CodTypChamb2">
             <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
-            <End Role="tblForfaitTypeChambre" EntitySet="tblForfaitTypeChambre" />
+            <End Role="tblPrixTypeChambre" EntitySet="tblPrixTypeChambre" />
           </AssociationSet>
           <AssociationSet Name="FK_Vill_Hot_CodVill" Association="Self.FK_Vill_Hot_CodVill">
             <End Role="tblVille" EntitySet="tblVille" />
@@ -1038,6 +1061,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="CodeCategorie" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblCategorieFourniture" Relationship="Self.FK_Four_Categ_CodeCateg" FromRole="tblFourniture" ToRole="tblCategorieFourniture" />
           <NavigationProperty Name="tblFournitureChambre" Relationship="Self.FK_Chamb_Four_CodFour" FromRole="tblFourniture" ToRole="tblFournitureChambre" />
+          <NavigationProperty Name="tblFournitureReservationSalle" Relationship="Self.FK_Four_CodFour" FromRole="tblFourniture" ToRole="tblFournitureReservationSalle" />
           <NavigationProperty Name="tblFournitureCommande" Relationship="Self.FK_Four_FourCom_NoSeqFour" FromRole="tblFourniture" ToRole="tblFournitureCommande" />
           <NavigationProperty Name="tblFournitureFournisseur" Relationship="Self.FK_Four_FourFour_NoSeqFourniture" FromRole="tblFourniture" ToRole="tblFournitureFournisseur" />
           <NavigationProperty Name="tblFournitureHotel" Relationship="Self.FK_Four_FourHot_NoSeqFour" FromRole="tblFourniture" ToRole="tblFournitureHotel" />
@@ -1052,7 +1076,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="QuantiteChambre" Type="Int16" Nullable="false" />
           <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Chamb_Four_CodFour" FromRole="tblFournitureChambre" ToRole="tblFourniture" />
           <NavigationProperty Name="tblChambre" Relationship="Self.FK_Chamb_Four_NoSeqChamb" FromRole="tblFournitureChambre" ToRole="tblChambre" />
-          <NavigationProperty Name="tblEntretienFourniture" Relationship="Self.FK_Four_EntFour_NoSeqFour" FromRole="tblFournitureChambre" ToRole="tblEntretienFourniture" />
+          <NavigationProperty Name="tblEntretienFournitureChambre" Relationship="Self.FK_Four_EntFour_NoSeqFour" FromRole="tblFournitureChambre" ToRole="tblEntretienFournitureChambre" />
         </EntityType>
         <EntityType Name="tblFournitureCommande">
           <Key>
@@ -1119,14 +1143,15 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="tblCommande" Relationship="Self.FK_Emp_Com_NoEmp" FromRole="tblEmploye" ToRole="tblCommande" />
           <NavigationProperty Name="tblChiffreTravail" Relationship="Self.FK_Emp_ChifHor_NoEmp" FromRole="tblEmploye" ToRole="tblChiffreTravail" />
-          <NavigationProperty Name="tblEntretienFourniture" Relationship="Self.FK_Emp_EntFour_NoEmp" FromRole="tblEmploye" ToRole="tblEntretienFourniture" />
+          <NavigationProperty Name="tblEntretienFournitureChambre" Relationship="Self.FK_Emp_EntFour_NoEmp" FromRole="tblEmploye" ToRole="tblEntretienFournitureChambre" />
+          <NavigationProperty Name="tblEntretienFournitureSalle" Relationship="Self.FK_FourResSal_NoEmp" FromRole="tblEmploye" ToRole="tblEntretienFournitureSalle" />
           <NavigationProperty Name="tblHotel" Relationship="Self.FK_Hot_Emp_CodHot" FromRole="tblEmploye" ToRole="tblHotel" />
         </EntityType>
-        <EntityType Name="tblEntretienFourniture">
+        <EntityType Name="tblEntretienFournitureChambre">
           <Key>
-            <PropertyRef Name="NoSeqEntretien" />
+            <PropertyRef Name="NoSeqEntretienChambre" />
           </Key>
-          <Property Name="NoSeqEntretien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoSeqEntretienChambre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EtatFourniture" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CommentaireFourniture" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="DateDemande" Type="DateTime" Nullable="false" Precision="0" />
@@ -1135,8 +1160,25 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NoSeqChambre" Type="Int32" Nullable="false" />
           <Property Name="NoEmploye" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblFournitureChambre" Relationship="Self.FK_Four_EntFour_NoSeqFour" FromRole="tblEntretienFourniture" ToRole="tblFournitureChambre" />
-          <NavigationProperty Name="tblEmploye" Relationship="Self.FK_Emp_EntFour_NoEmp" FromRole="tblEntretienFourniture" ToRole="tblEmploye" />
+          <NavigationProperty Name="tblFournitureChambre" Relationship="Self.FK_Four_EntFour_NoSeqFour" FromRole="tblEntretienFournitureChambre" ToRole="tblFournitureChambre" />
+          <NavigationProperty Name="tblEmploye" Relationship="Self.FK_Emp_EntFour_NoEmp" FromRole="tblEntretienFournitureChambre" ToRole="tblEmploye" />
+        </EntityType>
+        <EntityType Name="tblEntretienFournitureSalle">
+          <Key>
+            <PropertyRef Name="NoSeqEntretienSalle" />
+          </Key>
+          <Property Name="NoSeqEntretienSalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EtatFourniture" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CommentaireFourniture" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="DateDemande" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateEffectue" Type="DateTime" Precision="0" />
+          <Property Name="StatutEntretien" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NoSeqReservSalle" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodeSalle" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NoEmploye" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblEmploye" Relationship="Self.FK_FourResSal_NoEmp" FromRole="tblEntretienFournitureSalle" ToRole="tblEmploye" />
+          <NavigationProperty Name="tblFournitureReservationSalle" Relationship="Self.FK_FourResSal_AYyylmao" FromRole="tblEntretienFournitureSalle" ToRole="tblFournitureReservationSalle" />
         </EntityType>
         <EntityType Name="tblChambre">
           <Key>
@@ -1149,7 +1191,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="DescChambre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="TypeLit" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NbLit" Type="Byte" Nullable="false" />
-          <Property Name="PrixChambre" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="CodeTypeChambre" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblFournitureChambre" Relationship="Self.FK_Chamb_Four_NoSeqChamb" FromRole="tblChambre" ToRole="tblFournitureChambre" />
@@ -1169,8 +1210,10 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="PrenomLocataire" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DateDebutReservation" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="DateFinReservation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StatutChambreReservChambre" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblChambre" Relationship="Self.FK_Chamb_ChambReservChamb_NoSeqReservChamb" FromRole="tblChambreReservationChambre" ToRole="tblChambre" />
           <NavigationProperty Name="tblReservationChambre" Relationship="Self.FK_ReservChamb_ChambReservChamb_NoSeqReservChamb" FromRole="tblChambreReservationChambre" ToRole="tblReservationChambre" />
+          <NavigationProperty Name="tblForfait" Relationship="Self.tblForfaitReservationChambre" FromRole="tblChambreReservationChambre" ToRole="tblForfait" />
         </EntityType>
         <EntityType Name="tblClient">
           <Key>
@@ -1185,38 +1228,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="CodePostal" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="tblReservationChambre" Relationship="Self.FK_Cli_ReservChamb_NoCli" FromRole="tblClient" ToRole="tblReservationChambre" />
           <NavigationProperty Name="tblReservationSalle" Relationship="Self.FK_Cli_ReservSalle_NoCli" FromRole="tblClient" ToRole="tblReservationSalle" />
-        </EntityType>
-        <EntityType Name="tblEquipementGeneriqueChambre">
-          <Key>
-            <PropertyRef Name="CodeEquipementGenChambre" />
-          </Key>
-          <Property Name="CodeEquipementGenChambre" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="NomEquipementGenChambre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tblTypeChambre" Relationship="Self.tblEquipementGeneriqueTypeChambre" FromRole="tblEquipementGeneriqueChambre" ToRole="tblTypeChambre" />
-        </EntityType>
-        <EntityType Name="tblEquipementRecreatif">
-          <Key>
-            <PropertyRef Name="CodeEquipementRecreatif" />
-          </Key>
-          <Property Name="CodeEquipementRecreatif" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NomEquipement" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="StatutEquipement" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="CategorieEquipement" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DateAquisition" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DateFinGarantie" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="tblEquipementRecreatifHotel" Relationship="Self.FK_EqRec_EqHot_CodEqRec" FromRole="tblEquipementRecreatif" ToRole="tblEquipementRecreatifHotel" />
-          <NavigationProperty Name="tblForfait" Relationship="Self.tblEquipementRecreatifForfait" FromRole="tblEquipementRecreatif" ToRole="tblForfait" />
-        </EntityType>
-        <EntityType Name="tblEquipementRecreatifHotel">
-          <Key>
-            <PropertyRef Name="CodeEquipementRecreatif" />
-            <PropertyRef Name="CodeHotel" />
-          </Key>
-          <Property Name="CodeEquipementRecreatif" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="QuantiteEquipement" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="tblEquipementRecreatif" Relationship="Self.FK_EqRec_EqHot_CodEqRec" FromRole="tblEquipementRecreatifHotel" ToRole="tblEquipementRecreatif" />
-          <NavigationProperty Name="tblHotel" Relationship="Self.FK_Hot_EqHot_CodHot" FromRole="tblEquipementRecreatifHotel" ToRole="tblHotel" />
         </EntityType>
         <EntityType Name="tblFacture">
           <Key>
@@ -1238,8 +1249,23 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="PrixForfait" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="DescForfait" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NbNuit" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="tblEquipementRecreatif" Relationship="Self.tblEquipementRecreatifForfait" FromRole="tblForfait" ToRole="tblEquipementRecreatif" />
-          <NavigationProperty Name="tblTypeChambre" Relationship="Self.tblForfaitTypeChambre" FromRole="tblForfait" ToRole="tblTypeChambre" />
+          <Property Name="CodeTypeChambre" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblTypeChambre" Relationship="Self.FK_TypChamb_CodTypChamb" FromRole="tblForfait" ToRole="tblTypeChambre" />
+          <NavigationProperty Name="tblChambreReservationChambre" Relationship="Self.tblForfaitReservationChambre" FromRole="tblForfait" ToRole="tblChambreReservationChambre" />
+        </EntityType>
+        <EntityType Name="tblFournitureReservationSalle">
+          <Key>
+            <PropertyRef Name="NoSeqReservSalle" />
+            <PropertyRef Name="CodeFourniture" />
+            <PropertyRef Name="CodeSalle" />
+          </Key>
+          <Property Name="NoSeqReservSalle" Type="Int32" Nullable="false" />
+          <Property Name="CodeFourniture" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodeSalle" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="QuantiteFourniture" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="tblFourniture" Relationship="Self.FK_Four_CodFour" FromRole="tblFournitureReservationSalle" ToRole="tblFourniture" />
+          <NavigationProperty Name="tblEntretienFournitureSalle" Relationship="Self.FK_FourResSal_AYyylmao" FromRole="tblFournitureReservationSalle" ToRole="tblEntretienFournitureSalle" />
+          <NavigationProperty Name="tblReservationSalle" Relationship="Self.FK_ResSall_NoReservNoSall" FromRole="tblFournitureReservationSalle" ToRole="tblReservationSalle" />
         </EntityType>
         <EntityType Name="tblHotel">
           <Key>
@@ -1261,7 +1287,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <NavigationProperty Name="tblFournitureHotel" Relationship="Self.FK_Hot_FourHot_CodHot" FromRole="tblHotel" ToRole="tblFournitureHotel" />
           <NavigationProperty Name="tblEmploye" Relationship="Self.FK_Hot_Emp_CodHot" FromRole="tblHotel" ToRole="tblEmploye" />
           <NavigationProperty Name="tblChambre" Relationship="Self.FK_Hot_Chamb_CodHot" FromRole="tblHotel" ToRole="tblChambre" />
-          <NavigationProperty Name="tblEquipementRecreatifHotel" Relationship="Self.FK_Hot_EqHot_CodHot" FromRole="tblHotel" ToRole="tblEquipementRecreatifHotel" />
+          <NavigationProperty Name="tblPrixTypeChambre" Relationship="Self.FK_Hot_PrTypChamb_CodHot" FromRole="tblHotel" ToRole="tblPrixTypeChambre" />
           <NavigationProperty Name="tblSalle" Relationship="Self.FK_Hot_Salle_CodHot" FromRole="tblHotel" ToRole="tblSalle" />
           <NavigationProperty Name="tblVille" Relationship="Self.FK_Vill_Hot_CodVill" FromRole="tblHotel" ToRole="tblVille" />
         </EntityType>
@@ -1272,6 +1298,20 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="CodePays" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="NomPays" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblProvince" Relationship="Self.FK_Pays_Prov_CodPays" FromRole="tblPays" ToRole="tblProvince" />
+        </EntityType>
+        <EntityType Name="tblPrixTypeChambre">
+          <Key>
+            <PropertyRef Name="NoSeqPrixTypeChambre" />
+          </Key>
+          <Property Name="NoSeqPrixTypeChambre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescPrixTypeChambre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrixTypeChambre" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DateDebutPrix" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateFinPrix" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CodeTypeChambre" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CodeHotel" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblHotel" Relationship="Self.FK_Hot_PrTypChamb_CodHot" FromRole="tblPrixTypeChambre" ToRole="tblHotel" />
+          <NavigationProperty Name="tblTypeChambre" Relationship="Self.FK_TypChamb_CodTypChamb2" FromRole="tblPrixTypeChambre" ToRole="tblTypeChambre" />
         </EntityType>
         <EntityType Name="tblProvince">
           <Key>
@@ -1299,11 +1339,13 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <PropertyRef Name="NoSeqReservChambre" />
           </Key>
           <Property Name="NoSeqReservChambre" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PrixReservChambre" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="PrixReservChambre" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="ModePaiement" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="StatutPaiement" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="NbPersonne" Type="Int32" />
           <Property Name="NoCarteCredit" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="DateExpirationCarteCredit" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="TypeCarteCredit" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NomCarteCredit" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="NoSeqClient" Type="Int32" Nullable="false" />
           <Property Name="NoSeqRabais" Type="Int32" />
           <NavigationProperty Name="tblChambreReservationChambre" Relationship="Self.FK_ReservChamb_ChambReservChamb_NoSeqReservChamb" FromRole="tblReservationChambre" ToRole="tblChambreReservationChambre" />
@@ -1314,6 +1356,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
         <EntityType Name="tblReservationSalle">
           <Key>
             <PropertyRef Name="NoSeqReservSalle" />
+            <PropertyRef Name="CodeSalle" />
           </Key>
           <Property Name="NoSeqReservSalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DateReservSalle" Type="DateTime" Nullable="false" Precision="0" />
@@ -1325,6 +1368,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="CodeSalle" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="NoSeqClient" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tblClient" Relationship="Self.FK_Cli_ReservSalle_NoCli" FromRole="tblReservationSalle" ToRole="tblClient" />
+          <NavigationProperty Name="tblFournitureReservationSalle" Relationship="Self.FK_ResSall_NoReservNoSall" FromRole="tblReservationSalle" ToRole="tblFournitureReservationSalle" />
           <NavigationProperty Name="tblSalle" Relationship="Self.FK_Salle_ReservSalle_CodSalle" FromRole="tblReservationSalle" ToRole="tblSalle" />
         </EntityType>
         <EntityType Name="tblSalle">
@@ -1350,8 +1394,8 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="NomTypeChambre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DescTypeChambre" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblChambre" Relationship="Self.FK_Hot_TypChamb_CodTypeChamb" FromRole="tblTypeChambre" ToRole="tblChambre" />
-          <NavigationProperty Name="tblEquipementGeneriqueChambre" Relationship="Self.tblEquipementGeneriqueTypeChambre" FromRole="tblTypeChambre" ToRole="tblEquipementGeneriqueChambre" />
-          <NavigationProperty Name="tblForfait" Relationship="Self.tblForfaitTypeChambre" FromRole="tblTypeChambre" ToRole="tblForfait" />
+          <NavigationProperty Name="tblForfait" Relationship="Self.FK_TypChamb_CodTypChamb" FromRole="tblTypeChambre" ToRole="tblForfait" />
+          <NavigationProperty Name="tblPrixTypeChambre" Relationship="Self.FK_TypChamb_CodTypChamb2" FromRole="tblTypeChambre" ToRole="tblPrixTypeChambre" />
         </EntityType>
         <EntityType Name="tblVille">
           <Key>
@@ -1460,6 +1504,18 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Four_CodFour">
+          <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
+          <End Role="tblFournitureReservationSalle" Type="Self.tblFournitureReservationSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFourniture">
+              <PropertyRef Name="CodeFourniture" />
+            </Principal>
+            <Dependent Role="tblFournitureReservationSalle">
+              <PropertyRef Name="CodeFourniture" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Four_FourCom_NoSeqFour">
           <End Role="tblFourniture" Type="Self.tblFourniture" Multiplicity="1" />
           <End Role="tblFournitureCommande" Type="Self.tblFournitureCommande" Multiplicity="*" />
@@ -1510,13 +1566,13 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
         </Association>
         <Association Name="FK_Four_EntFour_NoSeqFour">
           <End Role="tblFournitureChambre" Type="Self.tblFournitureChambre" Multiplicity="1" />
-          <End Role="tblEntretienFourniture" Type="Self.tblEntretienFourniture" Multiplicity="*" />
+          <End Role="tblEntretienFournitureChambre" Type="Self.tblEntretienFournitureChambre" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblFournitureChambre">
               <PropertyRef Name="NoSeqChambre" />
               <PropertyRef Name="CodeFourniture" />
             </Principal>
-            <Dependent Role="tblEntretienFourniture">
+            <Dependent Role="tblEntretienFournitureChambre">
               <PropertyRef Name="NoSeqChambre" />
               <PropertyRef Name="CodeFourniture" />
             </Dependent>
@@ -1548,12 +1604,24 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
         </Association>
         <Association Name="FK_Emp_EntFour_NoEmp">
           <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
-          <End Role="tblEntretienFourniture" Type="Self.tblEntretienFourniture" Multiplicity="*" />
+          <End Role="tblEntretienFournitureChambre" Type="Self.tblEntretienFournitureChambre" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tblEmploye">
               <PropertyRef Name="NoEmploye" />
             </Principal>
-            <Dependent Role="tblEntretienFourniture">
+            <Dependent Role="tblEntretienFournitureChambre">
+              <PropertyRef Name="NoEmploye" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FourResSal_NoEmp">
+          <End Role="tblEmploye" Type="Self.tblEmploye" Multiplicity="1" />
+          <End Role="tblEntretienFournitureSalle" Type="Self.tblEntretienFournitureSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblEmploye">
+              <PropertyRef Name="NoEmploye" />
+            </Principal>
+            <Dependent Role="tblEntretienFournitureSalle">
               <PropertyRef Name="NoEmploye" />
             </Dependent>
           </ReferentialConstraint>
@@ -1567,6 +1635,22 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Principal>
             <Dependent Role="tblEmploye">
               <PropertyRef Name="CodeHotel" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FourResSal_AYyylmao">
+          <End Role="tblFournitureReservationSalle" Type="Self.tblFournitureReservationSalle" Multiplicity="1" />
+          <End Role="tblEntretienFournitureSalle" Type="Self.tblEntretienFournitureSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblFournitureReservationSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeFourniture" />
+              <PropertyRef Name="CodeSalle" />
+            </Principal>
+            <Dependent Role="tblEntretienFournitureSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeFourniture" />
+              <PropertyRef Name="CodeSalle" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1642,30 +1726,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_EqRec_EqHot_CodEqRec">
-          <End Role="tblEquipementRecreatif" Type="Self.tblEquipementRecreatif" Multiplicity="1" />
-          <End Role="tblEquipementRecreatifHotel" Type="Self.tblEquipementRecreatifHotel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblEquipementRecreatif">
-              <PropertyRef Name="CodeEquipementRecreatif" />
-            </Principal>
-            <Dependent Role="tblEquipementRecreatifHotel">
-              <PropertyRef Name="CodeEquipementRecreatif" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Hot_EqHot_CodHot">
-          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
-          <End Role="tblEquipementRecreatifHotel" Type="Self.tblEquipementRecreatifHotel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tblHotel">
-              <PropertyRef Name="CodeHotel" />
-            </Principal>
-            <Dependent Role="tblEquipementRecreatifHotel">
-              <PropertyRef Name="CodeHotel" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ReservChamb_Fact_NoSeqChamb">
           <End Role="tblReservationChambre" Type="Self.tblReservationChambre" Multiplicity="1" />
           <End Role="tblFacture" Type="Self.tblFacture" Multiplicity="*" />
@@ -1675,6 +1735,44 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Principal>
             <Dependent Role="tblFacture">
               <PropertyRef Name="NoSeqReservChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TypChamb_CodTypChamb">
+          <End Role="tblTypeChambre" Type="Self.tblTypeChambre" Multiplicity="1" />
+          <End Role="tblForfait" Type="Self.tblForfait" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTypeChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Principal>
+            <Dependent Role="tblForfait">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ResSall_NoReservNoSall">
+          <End Role="tblReservationSalle" Type="Self.tblReservationSalle" Multiplicity="1" />
+          <End Role="tblFournitureReservationSalle" Type="Self.tblFournitureReservationSalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblReservationSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeSalle" />
+            </Principal>
+            <Dependent Role="tblFournitureReservationSalle">
+              <PropertyRef Name="NoSeqReservSalle" />
+              <PropertyRef Name="CodeSalle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hot_PrTypChamb_CodHot">
+          <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="1" />
+          <End Role="tblPrixTypeChambre" Type="Self.tblPrixTypeChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblHotel">
+              <PropertyRef Name="CodeHotel" />
+            </Principal>
+            <Dependent Role="tblPrixTypeChambre">
+              <PropertyRef Name="CodeHotel" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1714,6 +1812,18 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TypChamb_CodTypChamb2">
+          <End Role="tblTypeChambre" Type="Self.tblTypeChambre" Multiplicity="1" />
+          <End Role="tblPrixTypeChambre" Type="Self.tblPrixTypeChambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTypeChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Principal>
+            <Dependent Role="tblPrixTypeChambre">
+              <PropertyRef Name="CodeTypeChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Prov_Vill_CodProv">
           <End Role="tblProvince" Type="Self.tblProvince" Multiplicity="1" />
           <End Role="tblVille" Type="Self.tblVille" Multiplicity="*" />
@@ -1750,19 +1860,11 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="tblEquipementGeneriqueTypeChambre">
-          <End Role="tblEquipementGeneriqueChambre" Type="Self.tblEquipementGeneriqueChambre" Multiplicity="*" />
-          <End Role="tblTypeChambre" Type="Self.tblTypeChambre" Multiplicity="*" />
-        </Association>
-        <Association Name="tblEquipementRecreatifForfait">
-          <End Role="tblEquipementRecreatif" Type="Self.tblEquipementRecreatif" Multiplicity="*" />
+        <Association Name="tblForfaitReservationChambre">
+          <End Role="tblChambreReservationChambre" Type="Self.tblChambreReservationChambre" Multiplicity="*" />
           <End Role="tblForfait" Type="Self.tblForfait" Multiplicity="*" />
         </Association>
-        <Association Name="tblForfaitTypeChambre">
-          <End Role="tblForfait" Type="Self.tblForfait" Multiplicity="*" />
-          <End Role="tblTypeChambre" Type="Self.tblTypeChambre" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="P2014_BDTestFrancoisEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="P2014_BD_GestionHotelEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblCategorieFourniture" EntityType="Self.tblCategorieFourniture" />
           <EntitySet Name="tblCommande" EntityType="Self.tblCommande" />
           <EntitySet Name="tblFournisseur" EntityType="Self.tblFournisseur" />
@@ -1773,17 +1875,17 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <EntitySet Name="tblFournitureHotel" EntityType="Self.tblFournitureHotel" />
           <EntitySet Name="tblChiffreTravail" EntityType="Self.tblChiffreTravail" />
           <EntitySet Name="tblEmploye" EntityType="Self.tblEmploye" />
-          <EntitySet Name="tblEntretienFourniture" EntityType="Self.tblEntretienFourniture" />
+          <EntitySet Name="tblEntretienFournitureChambre" EntityType="Self.tblEntretienFournitureChambre" />
+          <EntitySet Name="tblEntretienFournitureSalle" EntityType="Self.tblEntretienFournitureSalle" />
           <EntitySet Name="tblChambre" EntityType="Self.tblChambre" />
           <EntitySet Name="tblChambreReservationChambre" EntityType="Self.tblChambreReservationChambre" />
           <EntitySet Name="tblClient" EntityType="Self.tblClient" />
-          <EntitySet Name="tblEquipementGeneriqueChambre" EntityType="Self.tblEquipementGeneriqueChambre" />
-          <EntitySet Name="tblEquipementRecreatif" EntityType="Self.tblEquipementRecreatif" />
-          <EntitySet Name="tblEquipementRecreatifHotel" EntityType="Self.tblEquipementRecreatifHotel" />
           <EntitySet Name="tblFacture" EntityType="Self.tblFacture" />
           <EntitySet Name="tblForfait" EntityType="Self.tblForfait" />
+          <EntitySet Name="tblFournitureReservationSalle" EntityType="Self.tblFournitureReservationSalle" />
           <EntitySet Name="tblHotel" EntityType="Self.tblHotel" />
           <EntitySet Name="tblPays" EntityType="Self.tblPays" />
+          <EntitySet Name="tblPrixTypeChambre" EntityType="Self.tblPrixTypeChambre" />
           <EntitySet Name="tblProvince" EntityType="Self.tblProvince" />
           <EntitySet Name="tblRabais" EntityType="Self.tblRabais" />
           <EntitySet Name="tblReservationChambre" EntityType="Self.tblReservationChambre" />
@@ -1816,6 +1918,10 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblFourniture" EntitySet="tblFourniture" />
             <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
           </AssociationSet>
+          <AssociationSet Name="FK_Four_CodFour" Association="Self.FK_Four_CodFour">
+            <End Role="tblFourniture" EntitySet="tblFourniture" />
+            <End Role="tblFournitureReservationSalle" EntitySet="tblFournitureReservationSalle" />
+          </AssociationSet>
           <AssociationSet Name="FK_Four_FourCom_NoSeqFour" Association="Self.FK_Four_FourCom_NoSeqFour">
             <End Role="tblFourniture" EntitySet="tblFourniture" />
             <End Role="tblFournitureCommande" EntitySet="tblFournitureCommande" />
@@ -1834,7 +1940,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           </AssociationSet>
           <AssociationSet Name="FK_Four_EntFour_NoSeqFour" Association="Self.FK_Four_EntFour_NoSeqFour">
             <End Role="tblFournitureChambre" EntitySet="tblFournitureChambre" />
-            <End Role="tblEntretienFourniture" EntitySet="tblEntretienFourniture" />
+            <End Role="tblEntretienFournitureChambre" EntitySet="tblEntretienFournitureChambre" />
           </AssociationSet>
           <AssociationSet Name="FK_Hot_FourHot_CodHot" Association="Self.FK_Hot_FourHot_CodHot">
             <End Role="tblHotel" EntitySet="tblHotel" />
@@ -1846,11 +1952,19 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           </AssociationSet>
           <AssociationSet Name="FK_Emp_EntFour_NoEmp" Association="Self.FK_Emp_EntFour_NoEmp">
             <End Role="tblEmploye" EntitySet="tblEmploye" />
-            <End Role="tblEntretienFourniture" EntitySet="tblEntretienFourniture" />
+            <End Role="tblEntretienFournitureChambre" EntitySet="tblEntretienFournitureChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FourResSal_NoEmp" Association="Self.FK_FourResSal_NoEmp">
+            <End Role="tblEmploye" EntitySet="tblEmploye" />
+            <End Role="tblEntretienFournitureSalle" EntitySet="tblEntretienFournitureSalle" />
           </AssociationSet>
           <AssociationSet Name="FK_Hot_Emp_CodHot" Association="Self.FK_Hot_Emp_CodHot">
             <End Role="tblHotel" EntitySet="tblHotel" />
             <End Role="tblEmploye" EntitySet="tblEmploye" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FourResSal_AYyylmao" Association="Self.FK_FourResSal_AYyylmao">
+            <End Role="tblFournitureReservationSalle" EntitySet="tblFournitureReservationSalle" />
+            <End Role="tblEntretienFournitureSalle" EntitySet="tblEntretienFournitureSalle" />
           </AssociationSet>
           <AssociationSet Name="FK_Chamb_ChambReservChamb_NoSeqReservChamb" Association="Self.FK_Chamb_ChambReservChamb_NoSeqReservChamb">
             <End Role="tblChambre" EntitySet="tblChambre" />
@@ -1876,17 +1990,21 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblClient" EntitySet="tblClient" />
             <End Role="tblReservationSalle" EntitySet="tblReservationSalle" />
           </AssociationSet>
-          <AssociationSet Name="FK_EqRec_EqHot_CodEqRec" Association="Self.FK_EqRec_EqHot_CodEqRec">
-            <End Role="tblEquipementRecreatif" EntitySet="tblEquipementRecreatif" />
-            <End Role="tblEquipementRecreatifHotel" EntitySet="tblEquipementRecreatifHotel" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Hot_EqHot_CodHot" Association="Self.FK_Hot_EqHot_CodHot">
-            <End Role="tblHotel" EntitySet="tblHotel" />
-            <End Role="tblEquipementRecreatifHotel" EntitySet="tblEquipementRecreatifHotel" />
-          </AssociationSet>
           <AssociationSet Name="FK_ReservChamb_Fact_NoSeqChamb" Association="Self.FK_ReservChamb_Fact_NoSeqChamb">
             <End Role="tblReservationChambre" EntitySet="tblReservationChambre" />
             <End Role="tblFacture" EntitySet="tblFacture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TypChamb_CodTypChamb" Association="Self.FK_TypChamb_CodTypChamb">
+            <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
+            <End Role="tblForfait" EntitySet="tblForfait" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ResSall_NoReservNoSall" Association="Self.FK_ResSall_NoReservNoSall">
+            <End Role="tblReservationSalle" EntitySet="tblReservationSalle" />
+            <End Role="tblFournitureReservationSalle" EntitySet="tblFournitureReservationSalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hot_PrTypChamb_CodHot" Association="Self.FK_Hot_PrTypChamb_CodHot">
+            <End Role="tblHotel" EntitySet="tblHotel" />
+            <End Role="tblPrixTypeChambre" EntitySet="tblPrixTypeChambre" />
           </AssociationSet>
           <AssociationSet Name="FK_Hot_Salle_CodHot" Association="Self.FK_Hot_Salle_CodHot">
             <End Role="tblHotel" EntitySet="tblHotel" />
@@ -1900,6 +2018,10 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblPays" EntitySet="tblPays" />
             <End Role="tblProvince" EntitySet="tblProvince" />
           </AssociationSet>
+          <AssociationSet Name="FK_TypChamb_CodTypChamb2" Association="Self.FK_TypChamb_CodTypChamb2">
+            <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
+            <End Role="tblPrixTypeChambre" EntitySet="tblPrixTypeChambre" />
+          </AssociationSet>
           <AssociationSet Name="FK_Prov_Vill_CodProv" Association="Self.FK_Prov_Vill_CodProv">
             <End Role="tblProvince" EntitySet="tblProvince" />
             <End Role="tblVille" EntitySet="tblVille" />
@@ -1912,17 +2034,9 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblSalle" EntitySet="tblSalle" />
             <End Role="tblReservationSalle" EntitySet="tblReservationSalle" />
           </AssociationSet>
-          <AssociationSet Name="tblEquipementGeneriqueTypeChambre" Association="Self.tblEquipementGeneriqueTypeChambre">
-            <End Role="tblEquipementGeneriqueChambre" EntitySet="tblEquipementGeneriqueChambre" />
-            <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
-          </AssociationSet>
-          <AssociationSet Name="tblEquipementRecreatifForfait" Association="Self.tblEquipementRecreatifForfait">
-            <End Role="tblEquipementRecreatif" EntitySet="tblEquipementRecreatif" />
+          <AssociationSet Name="tblForfaitReservationChambre" Association="Self.tblForfaitReservationChambre">
+            <End Role="tblChambreReservationChambre" EntitySet="tblChambreReservationChambre" />
             <End Role="tblForfait" EntitySet="tblForfait" />
-          </AssociationSet>
-          <AssociationSet Name="tblForfaitTypeChambre" Association="Self.tblForfaitTypeChambre">
-            <End Role="tblForfait" EntitySet="tblForfait" />
-            <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
           </AssociationSet>
           <FunctionImport Name="VerificationDispo" ReturnType="Collection(P2014_BD_GestionHotelModel.VerificationDispo_Result)">
             <Parameter Name="DateDebut" Mode="In" Type="DateTime" />
@@ -1937,7 +2051,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Type="String" Name="DescChambre" Nullable="true" MaxLength="Max" />
           <Property Type="String" Name="TypeLit" Nullable="false" MaxLength="30" />
           <Property Type="Byte" Name="NbLit" Nullable="false" />
-          <Property Type="Decimal" Name="PrixChambre" Nullable="false" Precision="19" />
           <Property Type="String" Name="CodeHotel" Nullable="false" MaxLength="3" />
           <Property Type="String" Name="CodeTypeChambre" Nullable="false" MaxLength="3" />
         </ComplexType>
@@ -1946,7 +2059,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="P2014_BD_GestionHotelModelStoreContainer" CdmEntityContainer="P2014_BDTestFrancoisEntities">
+        <EntityContainerMapping StorageEntityContainer="P2014_BD_GestionHotelModelStoreContainer" CdmEntityContainer="P2014_BD_GestionHotelEntities">
           <EntitySetMapping Name="tblCategorieFourniture">
             <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblCategorieFourniture">
               <MappingFragment StoreEntitySet="tblCategorieFourniture">
@@ -2056,10 +2169,10 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblEntretienFourniture">
-            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEntretienFourniture">
-              <MappingFragment StoreEntitySet="tblEntretienFourniture">
-                <ScalarProperty Name="NoSeqEntretien" ColumnName="NoSeqEntretien" />
+          <EntitySetMapping Name="tblEntretienFournitureChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEntretienFournitureChambre">
+              <MappingFragment StoreEntitySet="tblEntretienFournitureChambre">
+                <ScalarProperty Name="NoSeqEntretienChambre" ColumnName="NoSeqEntretienChambre" />
                 <ScalarProperty Name="EtatFourniture" ColumnName="EtatFourniture" />
                 <ScalarProperty Name="CommentaireFourniture" ColumnName="CommentaireFourniture" />
                 <ScalarProperty Name="DateDemande" ColumnName="DateDemande" />
@@ -2067,6 +2180,22 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
                 <ScalarProperty Name="StatutEntretien" ColumnName="StatutEntretien" />
                 <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
                 <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+                <ScalarProperty Name="NoEmploye" ColumnName="NoEmploye" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEntretienFournitureSalle">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEntretienFournitureSalle">
+              <MappingFragment StoreEntitySet="tblEntretienFournitureSalle">
+                <ScalarProperty Name="NoSeqEntretienSalle" ColumnName="NoSeqEntretienSalle" />
+                <ScalarProperty Name="EtatFourniture" ColumnName="EtatFourniture" />
+                <ScalarProperty Name="CommentaireFourniture" ColumnName="CommentaireFourniture" />
+                <ScalarProperty Name="DateDemande" ColumnName="DateDemande" />
+                <ScalarProperty Name="DateEffectue" ColumnName="DateEffectue" />
+                <ScalarProperty Name="StatutEntretien" ColumnName="StatutEntretien" />
+                <ScalarProperty Name="NoSeqReservSalle" ColumnName="NoSeqReservSalle" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="CodeSalle" ColumnName="CodeSalle" />
                 <ScalarProperty Name="NoEmploye" ColumnName="NoEmploye" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2081,7 +2210,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
                 <ScalarProperty Name="DescChambre" ColumnName="DescChambre" />
                 <ScalarProperty Name="TypeLit" ColumnName="TypeLit" />
                 <ScalarProperty Name="NbLit" ColumnName="NbLit" />
-                <ScalarProperty Name="PrixChambre" ColumnName="PrixChambre" />
                 <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
                 <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
               </MappingFragment>
@@ -2097,6 +2225,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
                 <ScalarProperty Name="PrenomLocataire" ColumnName="PrenomLocataire" />
                 <ScalarProperty Name="DateDebutReservation" ColumnName="DateDebutReservation" />
                 <ScalarProperty Name="DateFinReservation" ColumnName="DateFinReservation" />
+                <ScalarProperty Name="StatutChambreReservChambre" ColumnName="StatutChambreReservChambre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2110,35 +2239,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
                 <ScalarProperty Name="AdresseClient" ColumnName="AdresseClient" />
                 <ScalarProperty Name="EmailClient" ColumnName="EmailClient" />
                 <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblEquipementGeneriqueChambre">
-            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEquipementGeneriqueChambre">
-              <MappingFragment StoreEntitySet="tblEquipementGeneriqueChambre">
-                <ScalarProperty Name="CodeEquipementGenChambre" ColumnName="CodeEquipementGenChambre" />
-                <ScalarProperty Name="NomEquipementGenChambre" ColumnName="NomEquipementGenChambre" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblEquipementRecreatif">
-            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEquipementRecreatif">
-              <MappingFragment StoreEntitySet="tblEquipementRecreatif">
-                <ScalarProperty Name="CodeEquipementRecreatif" ColumnName="CodeEquipementRecreatif" />
-                <ScalarProperty Name="NomEquipement" ColumnName="NomEquipement" />
-                <ScalarProperty Name="StatutEquipement" ColumnName="StatutEquipement" />
-                <ScalarProperty Name="CategorieEquipement" ColumnName="CategorieEquipement" />
-                <ScalarProperty Name="DateAquisition" ColumnName="DateAquisition" />
-                <ScalarProperty Name="DateFinGarantie" ColumnName="DateFinGarantie" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblEquipementRecreatifHotel">
-            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblEquipementRecreatifHotel">
-              <MappingFragment StoreEntitySet="tblEquipementRecreatifHotel">
-                <ScalarProperty Name="CodeEquipementRecreatif" ColumnName="CodeEquipementRecreatif" />
-                <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
-                <ScalarProperty Name="QuantiteEquipement" ColumnName="QuantiteEquipement" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2161,6 +2261,17 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
                 <ScalarProperty Name="PrixForfait" ColumnName="PrixForfait" />
                 <ScalarProperty Name="DescForfait" ColumnName="DescForfait" />
                 <ScalarProperty Name="NbNuit" ColumnName="NbNuit" />
+                <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFournitureReservationSalle">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblFournitureReservationSalle">
+              <MappingFragment StoreEntitySet="tblFournitureReservationSalle">
+                <ScalarProperty Name="NoSeqReservSalle" ColumnName="NoSeqReservSalle" />
+                <ScalarProperty Name="CodeFourniture" ColumnName="CodeFourniture" />
+                <ScalarProperty Name="CodeSalle" ColumnName="CodeSalle" />
+                <ScalarProperty Name="QuantiteFourniture" ColumnName="QuantiteFourniture" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2191,6 +2302,19 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblPrixTypeChambre">
+            <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblPrixTypeChambre">
+              <MappingFragment StoreEntitySet="tblPrixTypeChambre">
+                <ScalarProperty Name="NoSeqPrixTypeChambre" ColumnName="NoSeqPrixTypeChambre" />
+                <ScalarProperty Name="DescPrixTypeChambre" ColumnName="DescPrixTypeChambre" />
+                <ScalarProperty Name="PrixTypeChambre" ColumnName="PrixTypeChambre" />
+                <ScalarProperty Name="DateDebutPrix" ColumnName="DateDebutPrix" />
+                <ScalarProperty Name="DateFinPrix" ColumnName="DateFinPrix" />
+                <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
+                <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tblProvince">
             <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblProvince">
               <MappingFragment StoreEntitySet="tblProvince">
@@ -2218,8 +2342,10 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
                 <ScalarProperty Name="PrixReservChambre" ColumnName="PrixReservChambre" />
                 <ScalarProperty Name="ModePaiement" ColumnName="ModePaiement" />
                 <ScalarProperty Name="StatutPaiement" ColumnName="StatutPaiement" />
-                <ScalarProperty Name="NbPersonne" ColumnName="NbPersonne" />
                 <ScalarProperty Name="NoCarteCredit" ColumnName="NoCarteCredit" />
+                <ScalarProperty Name="DateExpirationCarteCredit" ColumnName="DateExpirationCarteCredit" />
+                <ScalarProperty Name="TypeCarteCredit" ColumnName="TypeCarteCredit" />
+                <ScalarProperty Name="NomCarteCredit" ColumnName="NomCarteCredit" />
                 <ScalarProperty Name="NoSeqClient" ColumnName="NoSeqClient" />
                 <ScalarProperty Name="NoSeqRabais" ColumnName="NoSeqRabais" />
               </MappingFragment>
@@ -2289,28 +2415,13 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="tblEquipementGeneriqueTypeChambre" TypeName="P2014_BD_GestionHotelModel.tblEquipementGeneriqueTypeChambre" StoreEntitySet="tblEquipementGeneriqueTypeChambre">
-            <EndProperty Name="tblEquipementGeneriqueChambre">
-              <ScalarProperty Name="CodeEquipementGenChambre" ColumnName="CodeEquipementGenChambre" />
-            </EndProperty>
-            <EndProperty Name="tblTypeChambre">
-              <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="tblEquipementRecreatifForfait" TypeName="P2014_BD_GestionHotelModel.tblEquipementRecreatifForfait" StoreEntitySet="tblEquipementRecreatifForfait">
-            <EndProperty Name="tblEquipementRecreatif">
-              <ScalarProperty Name="CodeEquipementRecreatif" ColumnName="CodeEquipementRecreatif" />
+          <AssociationSetMapping Name="tblForfaitReservationChambre" TypeName="P2014_BD_GestionHotelModel.tblForfaitReservationChambre" StoreEntitySet="tblForfaitReservationChambre">
+            <EndProperty Name="tblChambreReservationChambre">
+              <ScalarProperty Name="NoSeqChambre" ColumnName="NoSeqChambre" />
+              <ScalarProperty Name="NoSeqReservChambre" ColumnName="NoSeqReservChambre" />
             </EndProperty>
             <EndProperty Name="tblForfait">
               <ScalarProperty Name="CodeForfait" ColumnName="CodeForfait" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="tblForfaitTypeChambre" TypeName="P2014_BD_GestionHotelModel.tblForfaitTypeChambre" StoreEntitySet="tblForfaitTypeChambre">
-            <EndProperty Name="tblForfait">
-              <ScalarProperty Name="CodeForfait" ColumnName="CodeForfait" />
-            </EndProperty>
-            <EndProperty Name="tblTypeChambre">
-              <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
             </EndProperty>
           </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="VerificationDispo" FunctionName="P2014_BD_GestionHotelModel.Store.VerificationDispo">
@@ -2323,7 +2434,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
                 <ScalarProperty Name="DescChambre" ColumnName="DescChambre" />
                 <ScalarProperty Name="TypeLit" ColumnName="TypeLit" />
                 <ScalarProperty Name="NbLit" ColumnName="NbLit" />
-                <ScalarProperty Name="PrixChambre" ColumnName="PrixChambre" />
                 <ScalarProperty Name="CodeHotel" ColumnName="CodeHotel" />
                 <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
               </ComplexTypeMapping>

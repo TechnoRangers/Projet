@@ -1,8 +1,8 @@
 ﻿Public Class ModifVille
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
     Dim MaVille As tblVille
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, Optional ByRef _MaVille As tblVille = Nothing)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, Optional ByRef _MaVille As tblVille = Nothing)
         InitializeComponent()
         MaBD = _MaBD
         MaVille = _MaVille

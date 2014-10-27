@@ -1,8 +1,8 @@
 ﻿Public Class ClientReservation
-    Dim BD As P2014_BDTestFrancoisEntities
+    Dim BD As P2014_BD_GestionHotelEntities
     Dim Client As tblClient
 
-    Sub New(ByRef _BD As P2014_BDTestFrancoisEntities)
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities)
         InitializeComponent()
         BD = _BD
     End Sub

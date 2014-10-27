@@ -1,6 +1,6 @@
 ﻿Public Class ChangementHoraire
 
-    Dim BD As P2014_BDTestFrancoisEntities
+    Dim BD As P2014_BD_GestionHotelEntities
     Dim ChiffreTravail As tblChiffreTravail
     Dim hreDebut As String
     Dim hreFin As String
@@ -10,7 +10,7 @@
     Dim MinF As String
     Dim Test As String
 
-    Sub New(ByRef _BD As P2014_BDTestFrancoisEntities, Optional ByRef _ChiffreTravail As tblChiffreTravail = Nothing)
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, Optional ByRef _ChiffreTravail As tblChiffreTravail = Nothing)
         InitializeComponent()
         BD = _BD
         ChiffreTravail = _ChiffreTravail

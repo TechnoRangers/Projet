@@ -1,8 +1,8 @@
 ﻿Public Class ModifCategorieFourniture
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
     Dim MaCategorieFourniture As tblCategorieFourniture
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, Optional ByRef _MaCategorieFourniture As tblCategorieFourniture = Nothing)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, Optional ByRef _MaCategorieFourniture As tblCategorieFourniture = Nothing)
         InitializeComponent()
         MaBD = _MaBD
         MaCategorieFourniture = _MaCategorieFourniture

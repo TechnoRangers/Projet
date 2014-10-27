@@ -1,9 +1,9 @@
 ﻿Public Class Menu
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
     Dim EmployeConnexion As tblEmploye
     Dim HotelConnexion As tblHotel
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, Optional ByRef _EmployeConnexion As tblEmploye = Nothing)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, Optional ByRef _EmployeConnexion As tblEmploye = Nothing)
         InitializeComponent()
         MaBD = _MaBD
         EmployeConnexion = _EmployeConnexion

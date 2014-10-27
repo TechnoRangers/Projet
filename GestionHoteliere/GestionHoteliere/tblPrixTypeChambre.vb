@@ -10,12 +10,16 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class tblEquipementRecreatifHotel
-    Public Property CodeEquipementRecreatif As String
+Partial Public Class tblPrixTypeChambre
+    Public Property NoSeqPrixTypeChambre As Integer
+    Public Property DescPrixTypeChambre As String
+    Public Property PrixTypeChambre As Decimal
+    Public Property DateDebutPrix As Date
+    Public Property DateFinPrix As Date
+    Public Property CodeTypeChambre As String
     Public Property CodeHotel As String
-    Public Property QuantiteEquipement As Short
 
-    Public Overridable Property tblEquipementRecreatif As tblEquipementRecreatif
     Public Overridable Property tblHotel As tblHotel
+    Public Overridable Property tblTypeChambre As tblTypeChambre
 
 End Class

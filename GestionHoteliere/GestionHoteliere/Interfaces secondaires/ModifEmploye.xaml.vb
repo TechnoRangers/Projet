@@ -1,9 +1,9 @@
 ﻿Public Class ModifEmploye
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
     Dim MonEmploye As tblEmploye
     Dim EnModif As Boolean
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, Optional ByRef _MonEmploye As tblEmploye = Nothing)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, Optional ByRef _MonEmploye As tblEmploye = Nothing)
         InitializeComponent()
         MaBD = _MaBD
         MonEmploye = _MonEmploye

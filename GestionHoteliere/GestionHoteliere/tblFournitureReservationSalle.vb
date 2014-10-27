@@ -10,10 +10,14 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class tblEquipementGeneriqueChambre
-    Public Property CodeEquipementGenChambre As String
-    Public Property NomEquipementGenChambre As String
+Partial Public Class tblFournitureReservationSalle
+    Public Property NoSeqReservSalle As Integer
+    Public Property CodeFourniture As String
+    Public Property CodeSalle As String
+    Public Property QuantiteFourniture As Short
 
-    Public Overridable Property tblTypeChambre As ICollection(Of tblTypeChambre) = New HashSet(Of tblTypeChambre)
+    Public Overridable Property tblFourniture As tblFourniture
+    Public Overridable Property tblEntretienFournitureSalle As ICollection(Of tblEntretienFournitureSalle) = New HashSet(Of tblEntretienFournitureSalle)
+    Public Overridable Property tblReservationSalle As tblReservationSalle
 
 End Class

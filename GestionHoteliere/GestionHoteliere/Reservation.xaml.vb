@@ -1,5 +1,5 @@
 ﻿Public Class Reservation
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
 
     Dim Selection As tblChambre
     Dim ListeChambreReservation As New List(Of tblChambre)
@@ -7,7 +7,7 @@
     Dim ReservationChambre As tblReservationChambre
     Dim PrixReservation As Double
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, ByRef _ListeChambreReservation As List(Of tblChambre))
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _ListeChambreReservation As List(Of tblChambre))
         InitializeComponent()
         MaBD = _MaBD
         ListeChambreReservation = _ListeChambreReservation

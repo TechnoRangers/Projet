@@ -1,13 +1,13 @@
 ﻿Public Class DispoChambre
 
-    Dim BD As P2014_BDTestFrancoisEntities
+    Dim BD As P2014_BD_GestionHotelEntities
 
     Dim TypeChambre As tblTypeChambre
     Dim Client As tblClient
 
     Dim ListeChambresDispo As New List(Of tblChambre)
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, ByRef _Client As tblClient)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _Client As tblClient)
         InitializeComponent()
         BD = _MaBD
         Client = _Client

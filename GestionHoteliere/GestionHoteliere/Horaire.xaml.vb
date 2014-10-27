@@ -1,11 +1,11 @@
 ﻿Public Class Horaire
 
-    Dim BD As P2014_BDTestFrancoisEntities
+    Dim BD As P2014_BD_GestionHotelEntities
     Dim _TypeEmploi As String
     Dim MonChiffreTravail As tblChiffreTravail
     Dim _ChiffreTravail As Date
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities)
         BD = _MaBD
         InitializeComponent()
         _ChiffreTravail = Date.Today

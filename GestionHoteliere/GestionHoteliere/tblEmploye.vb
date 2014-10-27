@@ -27,7 +27,8 @@ Partial Public Class tblEmploye
 
     Public Overridable Property tblCommande As ICollection(Of tblCommande) = New HashSet(Of tblCommande)
     Public Overridable Property tblChiffreTravail As ICollection(Of tblChiffreTravail) = New HashSet(Of tblChiffreTravail)
-    Public Overridable Property tblEntretienFourniture As ICollection(Of tblEntretienFourniture) = New HashSet(Of tblEntretienFourniture)
+    Public Overridable Property tblEntretienFournitureChambre As ICollection(Of tblEntretienFournitureChambre) = New HashSet(Of tblEntretienFournitureChambre)
+    Public Overridable Property tblEntretienFournitureSalle As ICollection(Of tblEntretienFournitureSalle) = New HashSet(Of tblEntretienFournitureSalle)
     Public Overridable Property tblHotel As tblHotel
 
 End Class

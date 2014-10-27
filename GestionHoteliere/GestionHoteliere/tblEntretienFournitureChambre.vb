@@ -10,8 +10,8 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class tblEntretienFourniture
-    Public Property NoSeqEntretien As Integer
+Partial Public Class tblEntretienFournitureChambre
+    Public Property NoSeqEntretienChambre As Integer
     Public Property EtatFourniture As String
     Public Property CommentaireFourniture As String
     Public Property DateDemande As Date

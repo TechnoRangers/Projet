@@ -1,10 +1,10 @@
 ﻿Public Class EtatChambre
 
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
     Dim _maChambre As tblChambre
 
     Sub New()
-        MaBD = New P2014_BDTestFrancoisEntities
+        MaBD = New P2014_BD_GestionHotelEntities
         _maChambre = New tblChambre
         InitializeComponent()
     End Sub

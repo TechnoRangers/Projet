@@ -18,7 +18,6 @@ Partial Public Class tblChambre
     Public Property DescChambre As String
     Public Property TypeLit As String
     Public Property NbLit As Byte
-    Public Property PrixChambre As Decimal
     Public Property CodeHotel As String
     Public Property CodeTypeChambre As String
 

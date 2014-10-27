@@ -1,7 +1,7 @@
 ﻿Public Class ModifEquipementGenChambre
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
     Dim MonEqGenChamb As tblEquipementGeneriqueChambre
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities, Optional ByRef _MonEqGenChamb As tblEquipementGeneriqueChambre = Nothing)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, Optional ByRef _MonEqGenChamb As tblEquipementGeneriqueChambre = Nothing)
         InitializeComponent()
         MaBD = _MaBD
         MonEqGenChamb = _MonEqGenChamb

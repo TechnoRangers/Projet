@@ -10,19 +10,19 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class tblReservationSalle
+Partial Public Class tblEntretienFournitureSalle
+    Public Property NoSeqEntretienSalle As Integer
+    Public Property EtatFourniture As String
+    Public Property CommentaireFourniture As String
+    Public Property DateDemande As Date
+    Public Property DateEffectue As Nullable(Of Date)
+    Public Property StatutEntretien As String
     Public Property NoSeqReservSalle As Integer
-    Public Property DateReservSalle As Date
-    Public Property PrixReservSalle As Nullable(Of Decimal)
-    Public Property ModePaiement As String
-    Public Property StatutPaiement As String
-    Public Property NbPersonne As Nullable(Of Short)
-    Public Property NoCarteCredit As String
+    Public Property CodeFourniture As String
     Public Property CodeSalle As String
-    Public Property NoSeqClient As Integer
+    Public Property NoEmploye As Integer
 
-    Public Overridable Property tblClient As tblClient
-    Public Overridable Property tblFournitureReservationSalle As ICollection(Of tblFournitureReservationSalle) = New HashSet(Of tblFournitureReservationSalle)
-    Public Overridable Property tblSalle As tblSalle
+    Public Overridable Property tblEmploye As tblEmploye
+    Public Overridable Property tblFournitureReservationSalle As tblFournitureReservationSalle
 
 End Class

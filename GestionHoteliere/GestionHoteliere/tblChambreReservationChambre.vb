@@ -18,8 +18,10 @@ Partial Public Class tblChambreReservationChambre
     Public Property PrenomLocataire As String
     Public Property DateDebutReservation As Date
     Public Property DateFinReservation As Date
+    Public Property StatutChambreReservChambre As String
 
     Public Overridable Property tblChambre As tblChambre
     Public Overridable Property tblReservationChambre As tblReservationChambre
+    Public Overridable Property tblForfait As ICollection(Of tblForfait) = New HashSet(Of tblForfait)
 
 End Class

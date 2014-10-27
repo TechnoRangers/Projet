@@ -1,6 +1,6 @@
 ﻿Class Connection
 
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
     Dim HotelSelection As tblHotel
     Dim Employe As tblEmploye
 
@@ -46,7 +46,7 @@
 
     Private Sub Con_frmConnection_Loaded(sender As Object, e As RoutedEventArgs) Handles Con_frmConnection.Loaded
         con_lblErreurConnexion.Visibility = Windows.Visibility.Hidden
-        MaBD = New P2014_BDTestFrancoisEntities
+        MaBD = New P2014_BD_GestionHotelEntities
 
         Dim Hotels = From tabHotel In MaBD.tblHotel
                      Select tabHotel

@@ -1,8 +1,8 @@
 ﻿Public Class ConsoleAdmin
 
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities)
         InitializeComponent()
         MaBD = _MaBD
     End Sub

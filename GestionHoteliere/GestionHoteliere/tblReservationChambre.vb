@@ -12,11 +12,13 @@ Imports System.Collections.Generic
 
 Partial Public Class tblReservationChambre
     Public Property NoSeqReservChambre As Integer
-    Public Property PrixReservChambre As Decimal
+    Public Property PrixReservChambre As Nullable(Of Decimal)
     Public Property ModePaiement As String
     Public Property StatutPaiement As String
-    Public Property NbPersonne As Nullable(Of Integer)
     Public Property NoCarteCredit As String
+    Public Property DateExpirationCarteCredit As String
+    Public Property TypeCarteCredit As String
+    Public Property NomCarteCredit As String
     Public Property NoSeqClient As Integer
     Public Property NoSeqRabais As Nullable(Of Integer)
 

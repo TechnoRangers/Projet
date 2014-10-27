@@ -17,6 +17,6 @@ Partial Public Class tblFournitureChambre
 
     Public Overridable Property tblFourniture As tblFourniture
     Public Overridable Property tblChambre As tblChambre
-    Public Overridable Property tblEntretienFourniture As ICollection(Of tblEntretienFourniture) = New HashSet(Of tblEntretienFourniture)
+    Public Overridable Property tblEntretienFournitureChambre As ICollection(Of tblEntretienFournitureChambre) = New HashSet(Of tblEntretienFournitureChambre)
 
 End Class

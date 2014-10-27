@@ -1,10 +1,10 @@
 ﻿Public Class AjoutItemInventaire2
-    Dim MaBD As P2014_BDTestFrancoisEntities
+    Dim MaBD As P2014_BD_GestionHotelEntities
     Dim MonItem As tblFourniture
     Dim MaCategorie As tblCategorieFourniture
     Dim MonFournisseur As tblFournisseur
 
-    Sub New(ByRef _MaBD As P2014_BDTestFrancoisEntities)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities)
         InitializeComponent()
         MaBD = _MaBD
 
