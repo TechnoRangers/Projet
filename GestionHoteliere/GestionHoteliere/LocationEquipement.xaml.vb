@@ -13,6 +13,8 @@
 
     Private Sub LocEqui_BtnAjout_Click(sender As Object, e As RoutedEventArgs) Handles LocEqui_BtnAjout.Click
         'affiche l'item dans la liste reserve
+        Dim value As Int32
+        value = InputBox("Quantité", "Quantité")
         LocEqui_ListBoxReserv.Items.Add(LocEqui_ListBoxInventaire.SelectedItem)
         LocEqui_ListBoxInventaire.Items.Remove(LocEqui_ListBoxInventaire.SelectedItem)
     End Sub
@@ -41,15 +43,13 @@
         'initialisation de la listbox equipement For some reason the where doesn't work :S 
         Dim produit
 
-        'Dim rep = (From it In MaBd.tblFourniture
-        '           Where it.NoSeqChambre.Equals(DBNull.Value)
-        '           Select it.DescFourniture, it.NoSeqFourniture)
-        ''Remplie la listview 
-        'For Each row In rep.ToList
-        '    produit = New With {Key .Name = row.DescFourniture, .Nombre = row.NoSeqFourniture}
-        '    LocEqui_ListBoxInventaire.Items.Add(produit)
-        'Next
-
+        Dim rep = (From it In MaBd.tblFourniture
+                   Select it.DescFourniture, it.CodeFourniture)
+        'Remplie la listview 
+        For Each row In rep.ToList
+            produit = New With {Key .Name = row.DescFourniture, .Nombre = row.CodeFourniture}
+            LocEqui_ListBoxInventaire.Items.Add(produit)
+        Next
 
     End Sub
 End Class
