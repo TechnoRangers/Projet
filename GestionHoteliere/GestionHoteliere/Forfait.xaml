@@ -1,0 +1,15 @@
+﻿<Window x:Name="For_FrmFor" x:Class="Forfait"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Forfait" Height="535" Width="1019">
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="497" Margin="10,10,-0.2,0" VerticalAlignment="Top" Width="1003">
+            <GroupBox x:Name="For_LstForfait" Header="Liste forfait" HorizontalAlignment="Left" Margin="22,26,0,0" VerticalAlignment="Top" Height="243" Width="883" FontSize="16">
+                <Grid HorizontalAlignment="Left" Height="217" Margin="10,0,-2.6,-2.6" VerticalAlignment="Top" Width="863">
+                    <DataGrid x:Name="For_DataGridLstForfait" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="197" Width="843"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
+
+    </Grid>
+</Window>

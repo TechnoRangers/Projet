@@ -149,6 +149,9 @@
     <Compile Include="EtatChambre.xaml.vb">
       <DependentUpon>EtatChambre.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Forfait.xaml.vb">
+      <DependentUpon>Forfait.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Horaire.xaml.vb">
       <DependentUpon>Horaire.xaml</DependentUpon>
     </Compile>
@@ -407,6 +410,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EtatChambre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forfait.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
