@@ -125,6 +125,21 @@
     <Compile Include="AjoutItemInventaire2.xaml.vb">
       <DependentUpon>AjoutItemInventaire2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BD.Context.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BD.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
     <Compile Include="CheckUp.xaml.vb">
       <DependentUpon>CheckUp.xaml</DependentUpon>
     </Compile>
@@ -242,21 +257,6 @@
     <Compile Include="ModifReservation.xaml.vb">
       <DependentUpon>ModifReservation.xaml</DependentUpon>
     </Compile>
-    <Compile Include="P2014_BD_GestionHotelEntities.Context.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>P2014_BD_GestionHotelEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="P2014_BD_GestionHotelEntities.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>P2014_BD_GestionHotelEntities.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="P2014_BD_GestionHotelEntities.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Reservation.xaml.vb">
       <DependentUpon>Reservation.xaml</DependentUpon>
     </Compile>
@@ -267,94 +267,94 @@
       <DependentUpon>Statistique.xaml</DependentUpon>
     </Compile>
     <Compile Include="tblCategorieFourniture.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblChambre.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblChambreReservationChambre.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblChiffreTravail.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblClient.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblCommande.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEmploye.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEntretienFournitureChambre.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblEntretienFournitureSalle.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFacture.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblForfait.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFournisseur.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFourniture.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFournitureChambre.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFournitureCommande.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFournitureFournisseur.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFournitureHotel.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblFournitureReservationSalle.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblHotel.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPays.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPrixTypeChambre.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblProvince.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblRabais.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblReservationChambre.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblReservationSalle.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblSalle.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblTypeChambre.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblVille.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="VerificationDispo_Result.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="VueInventaire.vb">
-      <DependentUpon>P2014_BD_GestionHotelEntities.tt</DependentUpon>
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Page Include="AjoutItemHotel.xaml">
       <SubType>Designer</SubType>
@@ -589,29 +589,29 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <EntityDeploy Include="BD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BD.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BD.edmx</DependentUpon>
+      <LastGenOutput>BD.Context.vb</LastGenOutput>
+    </None>
+    <None Include="BD.edmx.diagram">
+      <DependentUpon>BD.edmx</DependentUpon>
+    </None>
+    <None Include="BD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BD.edmx</DependentUpon>
+      <LastGenOutput>BD.vb</LastGenOutput>
+    </None>
     <None Include="Interfaces principales\App.Config" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <AppDesigner Include="My Project\" />
-    <EntityDeploy Include="P2014_BD_GestionHotelEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>P2014_BD_GestionHotelEntities.Designer.vb</LastGenOutput>
-    </EntityDeploy>
-    <None Include="P2014_BD_GestionHotelEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>P2014_BD_GestionHotelEntities.edmx</DependentUpon>
-      <LastGenOutput>P2014_BD_GestionHotelEntities.Context.vb</LastGenOutput>
-    </None>
-    <None Include="P2014_BD_GestionHotelEntities.edmx.diagram">
-      <DependentUpon>P2014_BD_GestionHotelEntities.edmx</DependentUpon>
-    </None>
-    <None Include="P2014_BD_GestionHotelEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>P2014_BD_GestionHotelEntities.edmx</DependentUpon>
-      <LastGenOutput>P2014_BD_GestionHotelEntities.vb</LastGenOutput>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

@@ -285,8 +285,8 @@
     End Sub
 
     Private Sub LocSal_BtnEqu_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnEqu.Click
-        Dim asd As New LocationEquipement(MaBd, LocSal_TxtBoxNoRes.Text)
-        asd.Show()
+        'Dim asd As New LocationEquipement(MaBd, LocSal_TxtBoxNoRes.Text)
+        'asd.Show()
     End Sub
 End Class
 
