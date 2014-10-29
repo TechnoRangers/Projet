@@ -164,9 +164,6 @@
     <Compile Include="EtatChambre.xaml.vb">
       <DependentUpon>EtatChambre.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Forfait.xaml.vb">
-      <DependentUpon>Forfait.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Horaire.xaml.vb">
       <DependentUpon>Horaire.xaml</DependentUpon>
     </Compile>
@@ -182,8 +179,8 @@
     <Compile Include="Interfaces principales\Facture.xaml.vb">
       <DependentUpon>Facture.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces principales\ForfaiCreationt.xaml.vb">
-      <DependentUpon>ForfaiCreationt.xaml</DependentUpon>
+    <Compile Include="Interfaces principales\Forfait.xaml.vb">
+      <DependentUpon>Forfait.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces principales\Fournisseur.xaml.vb">
       <DependentUpon>Fournisseur.xaml</DependentUpon>
@@ -413,10 +410,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Forfait.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Horaire.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -437,7 +430,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Interfaces principales\ForfaiCreationt.xaml">
+    <Page Include="Interfaces principales\Forfait.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
