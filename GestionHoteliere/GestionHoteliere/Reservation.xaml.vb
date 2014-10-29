@@ -75,7 +75,7 @@
 
         'Validation que tous les champs on été remplis
         For Each Reserv As tblChambreReservationChambre In ListeReservationChambre
-            If Reserv.DateDebutReservation = Nothing Or Reserv.DateFinReservation = Nothing Or Reserv.NbPersonne = Nothing Or Reserv.NomLocataire = Nothing Or Reserv.PrenomLocataire = Nothing Or ReservationChambre.ModePaiement = Nothing Or ReservationChambre.PrixReservChambre = Nothing Then
+            If Reserv.DateDebutReservation = Nothing Or Reserv.DateFinReservation = Nothing Or Reserv.NomLocataire = Nothing Or Reserv.PrenomLocataire = Nothing Then
                 MessageBox.Show("Certains champs de réservation n'ont pas été remplis.")
                 Exit Sub
             End If
@@ -87,10 +87,10 @@
             ReservationChambre.PrixReservChambre = CType(Res_TextBoxMontant.Text, Integer)
             ReservationChambre.NoSeqClient = 1000
 
-            ReservationChambre.NbPersonne = 0
-            For Each Reserv As tblChambreReservationChambre In ListeReservationChambre
-                ReservationChambre.NbPersonne += Reserv.NbPersonne
-            Next
+            'ReservationChambre.NbPersonne = 0
+            'For Each Reserv As tblChambreReservationChambre In ListeReservationChambre
+            '    ReservationChambre.NbPersonne += Reserv.NbPersonne
+            'Next
 
             MaBD.tblReservationChambre.Add(ReservationChambre)
             MaBD.SaveChanges()
@@ -98,6 +98,7 @@
             Try
                 For Each Reserv As tblChambreReservationChambre In ListeReservationChambre
                     Reserv.NoSeqReservChambre = ReservationChambre.NoSeqReservChambre
+                    Reserv.StatutChambreReservChambre = "Occupe"
                     MaBD.tblChambreReservationChambre.Add(Reserv)
                 Next
                 MaBD.SaveChanges()
