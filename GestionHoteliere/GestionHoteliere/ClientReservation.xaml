@@ -11,13 +11,13 @@
     <Viewbox Stretch="Uniform">
         <Grid HorizontalAlignment="Left" Height="306" VerticalAlignment="Top" Width="879" Margin="0,0,-2.4,-16">
             <Label x:Name="Res_LblNom" Content="*Nom" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" FontSize="14"/>
-            <TextBox x:Name="Res_TextBoxNom" HorizontalAlignment="Left" Height="23" Margin="106,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176" RenderTransformOrigin="0.504,0.356" TabIndex="2"/>
+            <TextBox x:Name="cli_txtNomClient" HorizontalAlignment="Left" Height="23" Margin="106,58,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176" RenderTransformOrigin="0.504,0.356" TabIndex="2"/>
             <Label x:Name="Res_LblPren" Content="*Prénom" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
-            <TextBox x:Name="Res_TextBoxPren" HorizontalAlignment="Left" Height="23" Margin="106,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173" TabIndex="1"/>
+            <TextBox x:Name="cli_txtPrenomClient" HorizontalAlignment="Left" Height="23" Margin="106,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173" TabIndex="1"/>
             <Label x:Name="Res_LblAdresse" Content="Adresse" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top" FontSize="14"/>
-            <TextBox x:Name="Res_TextBoxAdresse" Text="{Binding AdresseClient}" HorizontalAlignment="Right" Height="23" Margin="0,138,600,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" TabIndex="6"/>
+            <TextBox x:Name="cli_txtAdresseClient" Text="{Binding AdresseClient}" HorizontalAlignment="Right" Height="23" Margin="0,138,600,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" TabIndex="6"/>
             <Label x:Name="Res_LblCodePostal" Content="*Code postal" HorizontalAlignment="Left" FontSize="14" Margin="284,10,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="Res_TextBoxCodePostal" HorizontalAlignment="Left" Height="23" Margin="374,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="89" TabIndex="3"/>
+            <TextBox x:Name="cli_txtCodePostalClient" HorizontalAlignment="Left" Height="23" Margin="374,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="89" TabIndex="3"/>
             <Label x:Name="Res_NoTel" Content="No Tel" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="1.184,-2.778"/>
             <Button x:Name="Cli_BtnContinuer" Content="Continuer" HorizontalAlignment="Left" Margin="374,213,0,0" VerticalAlignment="Top" Width="89" Height="33" TabIndex="9"/>
             <Button x:Name="Cli_BtnRechercher" Content="Rechercher" HorizontalAlignment="Left" Margin="374,172,0,0" VerticalAlignment="Top" Width="89" Height="36" TabIndex="8"/>
@@ -35,9 +35,10 @@
             </DataGrid>
             <Label Content="Chambres réservées précédemment : " HorizontalAlignment="Left" Margin="473,0,0,0" VerticalAlignment="Top" FontSize="14"/>
             <Label x:Name="Res_LblEmail" Content="E-mail" HorizontalAlignment="Left" Margin="10,178,0,0" VerticalAlignment="Top" FontSize="14"/>
-            <TextBox x:Name="Res_TxtEmail" Text="{Binding EmailClient}" HorizontalAlignment="Left" Height="23" Margin="106,178,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="173" TabIndex="7"/>
-            <TextBox x:Name="Res_NoTelephone" Text="{Binding NoTelephone}" HorizontalAlignment="Left" Height="23" Margin="106,98,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="173" TabIndex="5"/>
+            <TextBox x:Name="cli_txtEmailClient" Text="{Binding EmailClient}" HorizontalAlignment="Left" Height="23" Margin="106,178,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="173" TabIndex="7"/>
+            <TextBox x:Name="cli_txtNoTelephoneClient" Text="{Binding NoTelephone}" HorizontalAlignment="Left" Height="23" Margin="106,98,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="173" TabIndex="5"/>
             <Button x:Name="Res_BtnModifier" Content="Modifier Réservation" HorizontalAlignment="Left" Margin="704,287,0,-8" Width="153"/>
+            <Button x:Name="cli_btnAjouterClient" Content="Créer client" HorizontalAlignment="Left" Margin="374,131,0,0" VerticalAlignment="Top" Width="89" Height="36"/>
         </Grid>
     </Viewbox>
 </Window>
