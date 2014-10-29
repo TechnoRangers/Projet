@@ -25,7 +25,7 @@
                 MaReserv.PrixReservChambre = mres_txtPrixReservChambre.Text
                 MaReserv.ModePaiement = mres_txtModePaiement.Text
                 MaReserv.StatutPaiement = mres_txtStatutPaiement.Text
-                MaReserv.NbPersonne = mres_txtNbPersonne.Text
+                ' = mres_txtNbPersonne.Text
                 MaReserv.NoCarteCredit = mres_txtNoCarteCredit.Text
                 MaReserv.NoSeqClient = mres_txtNoSeqClient.Text
                 MaReserv.NoSeqRabais = mres_txtNoSeqForfait.Text

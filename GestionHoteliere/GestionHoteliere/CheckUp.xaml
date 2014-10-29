@@ -57,7 +57,7 @@
                 <DataGrid x:Name="Che_Datagrid" HorizontalAlignment="Right" AutoGenerateColumns="False"  Margin="-1,10,10.4,0" VerticalAlignment="Top" Height="341" Width="541" FontSize="14" Grid.ColumnSpan="2">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Fourniture.DescFourniture}" Width="300" ClipboardContentBinding="{x:Null}" Header="Fourniture"/>
-                        <DataGridCheckBoxColumn Binding="{Binding EstCocher}" ClipboardContentBinding="{x:Null}" Width="300" Header="À remplacer"/>
+                        <DataGridCheckBoxColumn Binding="{Binding EstCocher}" ClipboardContentBinding="{x:Null}" Width="200" Header="À remplacer"/>
                     </DataGrid.Columns>
 
                 </DataGrid>

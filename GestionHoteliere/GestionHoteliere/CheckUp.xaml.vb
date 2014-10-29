@@ -58,7 +58,7 @@
 
             'Remplir DataGrid Liste entretien
 
-            Dim res3 = From t1 In MaBD.tblEntretienFourniture Join t2 In MaBD.tblFourniture On t2.CodeFourniture Equals t1.CodeFourniture
+            Dim res3 = From t1 In MaBD.tblEntretienFournitureChambre Join t2 In MaBD.tblFourniture On t2.CodeFourniture Equals t1.CodeFourniture
                       Where t1.CodeFourniture = t2.CodeFourniture And t1.NoSeqChambre = _maChambre.NoSeqChambre
                       Select t1.NoEmploye, t2.DescFourniture, t1.EtatFourniture, t1.DateDemande, t1.DateEffectue, t1.StatutEntretien
 
@@ -77,12 +77,12 @@
             Dim res = From el In Che_Datagrid.ItemsSource Where el.EstCocher = True Select el.Fourniture
 
             For Each f As tblFourniture In res
-                Dim res2 = From t1 In MaBD.tblEntretienFourniture
+                Dim res2 = From t1 In MaBD.tblEntretienFournitureChambre
                            Where f.CodeFourniture = t1.CodeFourniture And t1.NoSeqChambre = _maChambre.NoSeqChambre
                            Select t1
 
                 If res2.Count <> 0 Then
-                    Dim update = (From t1 In MaBD.tblEntretienFourniture
+                    Dim update = (From t1 In MaBD.tblEntretienFournitureChambre
                  Where f.CodeFourniture = t1.CodeFourniture Select t1)
 
 
@@ -98,7 +98,7 @@
                     End Try
 
                 Else
-                    Dim MonItem As New tblEntretienFourniture()
+                    Dim MonItem As New tblEntretienFournitureChambre()
                     Try
 
                         MonItem.EtatFourniture = "A remplacer"
@@ -110,11 +110,11 @@
                         MonItem.NoEmploye = 1009
 
 
-                        MaBD.tblEntretienFourniture.Add(MonItem)
+                        MaBD.tblEntretienFournitureChambre.Add(MonItem)
                         MaBD.SaveChanges()
 
                     Catch ex As Exception
-                        MaBD.tblEntretienFourniture.Remove(MonItem)
+                        MaBD.tblEntretienFournitureChambre.Remove(MonItem)
                         MessageBox.Show("Erreur lors de l'ajout de l'item.")
                     End Try
                 End If

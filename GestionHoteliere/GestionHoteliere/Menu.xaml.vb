@@ -7,7 +7,6 @@
         InitializeComponent()
         MaBD = _MaBD
         EmployeConnexion = _EmployeConnexion
-        Men_BtnEquipement.IsEnabled = False
 
         If _EmployeConnexion Is Nothing Then
             Men_LblHotel.Visibility = Windows.Visibility.Hidden
@@ -50,13 +49,6 @@
 
     End Sub
 
-    Private Sub Men_btnEquipement_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnEquipement.Click
-
-        Dim Equipement_ As New Equipement(MaBD)
-        Equipement_.Show()
-        'Me.Close()
-
-    End Sub
 
     Private Sub Men_btnStatistique_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnStatistique.Click
 

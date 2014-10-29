@@ -43,11 +43,6 @@
         FenetreForfait.ShowDialog()
     End Sub
 
-    Private Sub btn_EquipementRecreatif_Click(sender As Object, e As RoutedEventArgs) Handles btn_EquipementRecreatif.Click
-        Dim FenetreEquipementRecreatif As EquipementRecreatif
-        FenetreEquipementRecreatif = New EquipementRecreatif(MaBD)
-        FenetreEquipementRecreatif.ShowDialog()
-    End Sub
 
     Private Sub btn_TypeChambre_Click(sender As Object, e As RoutedEventArgs) Handles btn_TypeChambre.Click
         Dim FenetreTypeChambre As TypeChambre
@@ -55,11 +50,7 @@
         FenetreTypeChambre.ShowDialog()
     End Sub
 
-    Private Sub btn_EquipementGeneriqueChambre_Click(sender As Object, e As RoutedEventArgs) Handles btn_EquipementGeneriqueChambre.Click
-        Dim FenetreEquipementGeneriqueChambre As EquipementGeneriqueChambre
-        FenetreEquipementGeneriqueChambre = New EquipementGeneriqueChambre(MaBD)
-        FenetreEquipementGeneriqueChambre.ShowDialog()
-    End Sub
+ 
 
     Private Sub btn_Fournisseur_Click(sender As Object, e As RoutedEventArgs) Handles btn_Fournisseur.Click
         Dim FenetreFournisseur As Fournisseur
