@@ -167,8 +167,8 @@
     <Compile Include="Interfaces principales\Facture.xaml.vb">
       <DependentUpon>Facture.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces principales\Forfait.xaml.vb">
-      <DependentUpon>Forfait.xaml</DependentUpon>
+    <Compile Include="Interfaces principales\ForfaiCreationt.xaml.vb">
+      <DependentUpon>ForfaiCreationt.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces principales\Fournisseur.xaml.vb">
       <DependentUpon>Fournisseur.xaml</DependentUpon>
@@ -437,7 +437,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Interfaces principales\Forfait.xaml">
+    <Page Include="Interfaces principales\ForfaiCreationt.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
