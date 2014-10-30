@@ -259,13 +259,17 @@ CREATE TABLE Reservation.tblRabais
 
 CREATE TABLE Reservation.tblClient
 (
-	NoSeqClient		int			NOT NULL	IDENTITY(1000,1),	
-	NomClient		varchar(20)	NOT NULL,
-	PrenomClient	varchar(20)	NOT NULL,
-	NoTelephone		varchar(14)	NOT NULL,
-	AdresseClient	varchar(30)	NOT NULL,
-	EmailClient		varchar(30)	NOT NULL,
-	CodePostal		char(6)		NULL	
+	NoSeqClient				int			NOT NULL	IDENTITY(1000,1),	
+	NomClient				varchar(20)	NOT NULL,
+	PrenomClient			varchar(20)	NOT NULL,
+	NoTelephone				varchar(14)	NOT NULL,
+	NoCellulaire			varchar(14)	NULL,
+	AdresseClient			varchar(30)	NOT NULL,
+	AdresseSecondaireClient	varchar(30)	NULL,
+	EmailClient				varchar(30)	NOT NULL,
+	CodePostal				char(6)		NULL,
+	NomEntreprise			varchar(50)	NULL,
+	CodeVille				char(3)		NULL	
 )
 
 
@@ -294,6 +298,8 @@ CREATE TABLE Reservation.tblForfait
 	PrixForfait		money			NOT NULL,
 	DescForfait		text			NOT NULL,
 	NbNuit			tinyint			NOT NULL,
+	DateDebut		date			NOT NULL,
+	DateFin			date			NOT NULL,
 	CodeTypeChambre	char(3)			NOT NULL
 )
 

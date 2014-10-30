@@ -5,6 +5,11 @@
     Sub New(ByRef _BD As P2014_BD_GestionHotelEntities)
         InitializeComponent()
         BD = _BD
+
+        Dim res = From tabReserv In BD.tblReservationChambre
+                  Select tabReserv
+
+        cli_dtgReservationClient.ItemsSource = res.ToList
     End Sub
 
     Private Sub Cli_BtnContinuer_Click(sender As Object, e As RoutedEventArgs) Handles Cli_BtnContinuer.Click
@@ -18,11 +23,35 @@
     End Sub
 
     Private Sub Cli_BtnRechercher_Click(sender As Object, e As RoutedEventArgs) Handles Cli_BtnRechercher.Click
-        FiltrerDatagrid()
+        Dim Nom As String = cli_txtNomClient.Text
+        Dim Prenom As String = cli_txtPrenomClient.Text
+        Dim CodePostal As String = cli_txtCodePostalClient.Text
+
+        If Nom = "" Or Prenom = "" Or CodePostal = "" Then
+            MessageBox.Show("Informations insuffisantes pour la recherche.")
+        Else
+            Try
+                Client = (From tabClient In BD.tblClient
+                         Where Nom = tabClient.NomClient And Prenom = tabClient.PrenomClient And CodePostal = tabClient.CodePostal
+                         Select tabClient).ToList.First
+
+
+
+            Catch ex As Exception
+                MessageBox.Show("Ce client n'est jamais venu à l'hôtel avant.")
+            End Try
+        End If
+
+
+        
     End Sub
 
     Private Sub Cli_BtnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Cli_BtnAnnuler.Click
         Me.Close()
+    End Sub
+
+    Private Sub cli_btnAfficherReservClient_Click(sender As Object, e As RoutedEventArgs) Handles cli_btnAfficherReservClient.Click
+
     End Sub
 
     Sub FiltrerDatagrid()
@@ -36,13 +65,18 @@
                      Where tabClient.PrenomClient = Prenom And tabClient.NomClient = Nom And tabClient.CodePostal = CodePostal
                      Select tabClient).ToList.First
 
-            Dim res = From tabChambre In BD.tblChambre
-                      Join tabChambReservChamb In BD.tblChambreReservationChambre On tabChambReservChamb.NoSeqChambre Equals tabChambre.NoSeqChambre
-                      Join tabReservChambre In BD.tblReservationChambre On tabChambReservChamb.NoSeqReservChambre Equals tabReservChambre.NoSeqReservChambre
-                      Where tabReservChambre.NoSeqClient = Client.NoSeqClient
-                      Select tabChambre
+            'Dim res = From tabChambre In BD.tblChambre
+            '          Join tabChambReservChamb In BD.tblChambreReservationChambre On tabChambReservChamb.NoSeqChambre Equals tabChambre.NoSeqChambre
+            '          Join tabReservChambre In BD.tblReservationChambre On tabChambReservChamb.NoSeqReservChambre Equals tabReservChambre.NoSeqReservChambre
+            '          Where tabReservChambre.NoSeqClient = Client.NoSeqClient
+            '          Select tabChambre
 
-            Cli_DtgHistorique.ItemsSource = res.ToList
+            Dim res = From tabReserv In BD.tblReservationChambre
+                      Where tabReserv.NoSeqClient = Client.NoSeqClient
+
+            'Cli_DtgHistorique.ItemsSource = res.ToList
+            'cli_dtgReservationClient.ItemsSource = res.ToList
+
             cli_txtAdresseClient.DataContext = Client
             cli_txtEmailClient.DataContext = Client
             cli_txtNoTelephoneClient.DataContext = Client
@@ -115,6 +149,5 @@
         End If
 
     End Sub
-
 End Class
 

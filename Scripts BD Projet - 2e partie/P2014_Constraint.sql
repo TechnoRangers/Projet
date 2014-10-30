@@ -70,6 +70,7 @@ GO
 
 /**************************************** Foreign key Reservation ****************************************/ 
 GO
+ALTER TABLE Reservation.tblClient ADD CONSTRAINT FK_Vil_CodVil FOREIGN KEY (CodeVille) REFERENCES Reservation.tblClient(CodeVille)
 ALTER TABLE Reservation.tblProvince ADD CONSTRAINT FK_Pays_Prov_CodPays FOREIGN KEY(CodePays) REFERENCES Reservation.tblPays(CodePays) 
 ALTER TABLE Reservation.tblVille ADD CONSTRAINT FK_Prov_Vill_CodProv FOREIGN KEY(CodeProvince) REFERENCES Reservation.tblProvince(CodeProvince) 
 ALTER TABLE Reservation.tblHotel ADD CONSTRAINT FK_Vill_Hot_CodVill FOREIGN KEY(CodeVille) REFERENCES Reservation.tblVille(CodeVille) 
