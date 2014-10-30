@@ -111,6 +111,11 @@
     Private Sub dis_dtpDateFin_SelectedDateChanged(sender As Object, e As SelectionChangedEventArgs) Handles dis_dtpDateFin.SelectedDateChanged
         FiltrerDatagrid()
     End Sub
+
+    Private Sub Dis_BtnForfait_Click(sender As Object, e As RoutedEventArgs) Handles Dis_BtnForfait.Click
+        Dim ForfaitAppli_ As New ForfaitAppli(BD)
+        ForfaitAppli_.Show()
+    End Sub
 End Class
 
 

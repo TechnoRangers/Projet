@@ -36,6 +36,7 @@
                     <TextBox x:Name="dis_txtNbLit" HorizontalAlignment="Left" Height="23" Margin="120,134,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="47"/>
                 </Grid>
             </GroupBox>
+            <Button x:Name="Dis_BtnForfait" Content="Choisir forfait" HorizontalAlignment="Left" Margin="503,250,0,0" VerticalAlignment="Top" Width="97" Height="30"/>
         </Grid>
     </Viewbox>
 </Window>
