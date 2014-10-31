@@ -173,9 +173,13 @@
           <Property Name="NomClient" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="PrenomClient" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="NoTelephone" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="NoCellulaire" Type="varchar" MaxLength="14" />
           <Property Name="AdresseClient" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="AdresseSecondaireClient" Type="varchar" MaxLength="30" />
           <Property Name="EmailClient" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="CodePostal" Type="char" MaxLength="6" />
+          <Property Name="NomEntreprise" Type="varchar" MaxLength="50" />
+          <Property Name="CodeVille" Type="char" MaxLength="3" />
         </EntityType>
         <EntityType Name="tblFacture">
           <Key>
@@ -196,6 +200,8 @@
           <Property Name="PrixForfait" Type="money" Nullable="false" />
           <Property Name="DescForfait" Type="text" Nullable="false" />
           <Property Name="NbNuit" Type="tinyint" Nullable="false" />
+          <Property Name="DateDebut" Type="date" Nullable="false" />
+          <Property Name="DateFin" Type="date" Nullable="false" />
           <Property Name="CodeTypeChambre" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
         <EntityType Name="tblForfaitReservationChambre">
@@ -802,6 +808,18 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Vil_CodVil">
+          <End Role="tblVille" Type="Self.tblVille" Multiplicity="0..1" />
+          <End Role="tblClient" Type="Self.tblClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVille">
+              <PropertyRef Name="CodeVille" />
+            </Principal>
+            <Dependent Role="tblClient">
+              <PropertyRef Name="CodeVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Vill_Hot_CodVill">
           <End Role="tblVille" Type="Self.tblVille" Multiplicity="1" />
           <End Role="tblHotel" Type="Self.tblHotel" Multiplicity="*" />
@@ -1006,6 +1024,10 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <AssociationSet Name="FK_TypChamb_CodTypChamb2" Association="Self.FK_TypChamb_CodTypChamb2">
             <End Role="tblTypeChambre" EntitySet="tblTypeChambre" />
             <End Role="tblPrixTypeChambre" EntitySet="tblPrixTypeChambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vil_CodVil" Association="Self.FK_Vil_CodVil">
+            <End Role="tblVille" EntitySet="tblVille" />
+            <End Role="tblClient" EntitySet="tblClient" />
           </AssociationSet>
           <AssociationSet Name="FK_Vill_Hot_CodVill" Association="Self.FK_Vill_Hot_CodVill">
             <End Role="tblVille" EntitySet="tblVille" />
@@ -1223,11 +1245,16 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="NomClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PrenomClient" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NoTelephone" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NoCellulaire" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
           <Property Name="AdresseClient" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdresseSecondaireClient" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="EmailClient" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CodePostal" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+          <Property Name="NomEntreprise" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodeVille" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="tblReservationChambre" Relationship="Self.FK_Cli_ReservChamb_NoCli" FromRole="tblClient" ToRole="tblReservationChambre" />
           <NavigationProperty Name="tblReservationSalle" Relationship="Self.FK_Cli_ReservSalle_NoCli" FromRole="tblClient" ToRole="tblReservationSalle" />
+          <NavigationProperty Name="tblVille" Relationship="Self.FK_Vil_CodVil" FromRole="tblClient" ToRole="tblVille" />
         </EntityType>
         <EntityType Name="tblFacture">
           <Key>
@@ -1249,6 +1276,8 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="PrixForfait" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="DescForfait" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NbNuit" Type="Byte" Nullable="false" />
+          <Property Name="DateDebut" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateFin" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="CodeTypeChambre" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tblTypeChambre" Relationship="Self.FK_TypChamb_CodTypChamb" FromRole="tblForfait" ToRole="tblTypeChambre" />
           <NavigationProperty Name="tblChambreReservationChambre" Relationship="Self.tblForfaitReservationChambre" FromRole="tblForfait" ToRole="tblChambreReservationChambre" />
@@ -1404,6 +1433,7 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
           <Property Name="CodeVille" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="NomVille" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CodeProvince" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="tblClient" Relationship="Self.FK_Vil_CodVil" FromRole="tblVille" ToRole="tblClient" />
           <NavigationProperty Name="tblHotel" Relationship="Self.FK_Vill_Hot_CodVill" FromRole="tblVille" ToRole="tblHotel" />
           <NavigationProperty Name="tblProvince" Relationship="Self.FK_Prov_Vill_CodProv" FromRole="tblVille" ToRole="tblProvince" />
         </EntityType>
@@ -1726,6 +1756,18 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Vil_CodVil">
+          <End Role="tblVille" Type="Self.tblVille" Multiplicity="0..1" />
+          <End Role="tblClient" Type="Self.tblClient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblVille">
+              <PropertyRef Name="CodeVille" />
+            </Principal>
+            <Dependent Role="tblClient">
+              <PropertyRef Name="CodeVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ReservChamb_Fact_NoSeqChamb">
           <End Role="tblReservationChambre" Type="Self.tblReservationChambre" Multiplicity="1" />
           <End Role="tblFacture" Type="Self.tblFacture" Multiplicity="*" />
@@ -1990,6 +2032,10 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <End Role="tblClient" EntitySet="tblClient" />
             <End Role="tblReservationSalle" EntitySet="tblReservationSalle" />
           </AssociationSet>
+          <AssociationSet Name="FK_Vil_CodVil" Association="Self.FK_Vil_CodVil">
+            <End Role="tblVille" EntitySet="tblVille" />
+            <End Role="tblClient" EntitySet="tblClient" />
+          </AssociationSet>
           <AssociationSet Name="FK_ReservChamb_Fact_NoSeqChamb" Association="Self.FK_ReservChamb_Fact_NoSeqChamb">
             <End Role="tblReservationChambre" EntitySet="tblReservationChambre" />
             <End Role="tblFacture" EntitySet="tblFacture" />
@@ -2236,9 +2282,13 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
                 <ScalarProperty Name="NomClient" ColumnName="NomClient" />
                 <ScalarProperty Name="PrenomClient" ColumnName="PrenomClient" />
                 <ScalarProperty Name="NoTelephone" ColumnName="NoTelephone" />
+                <ScalarProperty Name="NoCellulaire" ColumnName="NoCellulaire" />
                 <ScalarProperty Name="AdresseClient" ColumnName="AdresseClient" />
+                <ScalarProperty Name="AdresseSecondaireClient" ColumnName="AdresseSecondaireClient" />
                 <ScalarProperty Name="EmailClient" ColumnName="EmailClient" />
                 <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="NomEntreprise" ColumnName="NomEntreprise" />
+                <ScalarProperty Name="CodeVille" ColumnName="CodeVille" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2261,6 +2311,8 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
                 <ScalarProperty Name="PrixForfait" ColumnName="PrixForfait" />
                 <ScalarProperty Name="DescForfait" ColumnName="DescForfait" />
                 <ScalarProperty Name="NbNuit" ColumnName="NbNuit" />
+                <ScalarProperty Name="DateDebut" ColumnName="DateDebut" />
+                <ScalarProperty Name="DateFin" ColumnName="DateFin" />
                 <ScalarProperty Name="CodeTypeChambre" ColumnName="CodeTypeChambre" />
               </MappingFragment>
             </EntityTypeMapping>

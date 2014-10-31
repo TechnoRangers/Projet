@@ -15,6 +15,7 @@ Partial Public Class tblVille
     Public Property NomVille As String
     Public Property CodeProvince As String
 
+    Public Overridable Property tblClient As ICollection(Of tblClient) = New HashSet(Of tblClient)
     Public Overridable Property tblHotel As ICollection(Of tblHotel) = New HashSet(Of tblHotel)
     Public Overridable Property tblProvince As tblProvince
 

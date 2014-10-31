@@ -1,8 +1,8 @@
-﻿<Window x:Class="ModifReservation"
+﻿<Window x:Name="mres_frmModifReservation" x:Class="ModifReservation"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" 
-    Title="Modifmresre" Height="349.386" Width="574.111" Icon="icone_Hotel.ico">
+    Title="Modifmresre" Height="615.655" Width="879.782" Icon="icone_Hotel.ico">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF437E87" Offset="1"/>
@@ -10,25 +10,66 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <GroupBox x:Name="mres_grbmresre" Header="mresre" HorizontalAlignment="Left" VerticalAlignment="Top" Height="312" Width="558">
-            <Grid HorizontalAlignment="Left" Height="302" VerticalAlignment="Top" Width="548" Margin="0,0,-2.4,-10.8">
-                <Label Content="Numéro réservation : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <Label Content="mode paiement : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                <Label Content="Statut paiement : " HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="mres_txtNoSeqReservChambre" IsEnabled="False" Text="{Binding NoSeqReserChambre}" HorizontalAlignment="Left" Height="23" Margin="129,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="mres_txtStatutPaiement" Text="{Binding StatutPaiement}" HorizontalAlignment="Left" Height="23" Margin="129,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Label Content="nombre de personne : " HorizontalAlignment="Left" Margin="254,10,0,0" VerticalAlignment="Top"/>
-                <Label Content="numéro carte de crédit :" HorizontalAlignment="Left" Margin="254,41,0,0" VerticalAlignment="Top"/>
-                <Label Content="numéro de client : " HorizontalAlignment="Left" Margin="254,72,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="mres_txtNbPersonne" MaxLength="30" Text="{Binding NbPersonne}" HorizontalAlignment="Left" Height="23" Margin="418,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="mres_txtNoSeqClient" Text="{Binding NoSeqClient}" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="418,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Button x:Name="mres_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="463,271,0,0" VerticalAlignment="Top" Width="75"/>
-                <Label Content="numéro de forfait : " HorizontalAlignment="Left" Margin="254,103,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="mres_txtNoSeqForfait" Text="{Binding NoSeqForfait}" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="418,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Label Content="prix réservation" HorizontalAlignment="Left" Margin="11,41,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="mres_txtPrixReservChambre" Text="{Binding PrixReservChambre}" HorizontalAlignment="Left" Height="23" Margin="129,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="mres_txtModePaiement" HorizontalAlignment="Left"  Text="{Binding ModePaiement}" Margin="129,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <TextBox x:Name="mres_txtNoCarteCredit" Text="{Binding NoCarteCredit}"  HorizontalAlignment="Left" Margin="418,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <GroupBox x:Name="mres_grbmresre" Header="Modifier réservation" HorizontalAlignment="Left" VerticalAlignment="Top" Height="545" Width="829">
+            <Grid HorizontalAlignment="Left" Height="513" VerticalAlignment="Top" Width="819" Margin="0,0,-3,0">
+                <Button x:Name="mres_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="585,461,0,0" VerticalAlignment="Top" Width="79" Height="27"/>
+                <GroupBox Header="Information réservation" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="216" Width="570">
+                    <Grid HorizontalAlignment="Left" Height="206" VerticalAlignment="Top" Width="560" Margin="0,0,-3.2,-12.4">
+                        <Label Content="Numéro réservation " HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="mres_txtNoSeqReservChambre" IsEnabled="False" Text="{Binding NoSeqReservChambre}" HorizontalAlignment="Left" Height="23" Margin="134,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="Prix réservation" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="mres_txtPrixReservChambre" Text="{Binding PrixReservChambre}" HorizontalAlignment="Left" Height="23" Margin="134,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <Label Content="Mode paiement " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                        <ComboBox x:Name="mres_cmbModePaiement" SelectedValuePath="Content" HorizontalAlignment="Left" Margin="134,72,0,0" VerticalAlignment="Top" Width="120">
+                            <ComboBoxItem Content="Carte crédit"/>
+                            <ComboBoxItem Content="Argent"/>
+                            <ComboBoxItem Content="Chèque"/>
+                        </ComboBox>
+                        <Label Content="Statut paiement : " HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="mres_txtStatutPaiement" Text="{Binding StatutPaiement}" HorizontalAlignment="Left" Height="23" Margin="134,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <Button x:Name="mres_btnSauvegarderReservation" Content="Sauvegarder" HorizontalAlignment="Left" Margin="169,160,0,0" VerticalAlignment="Top" Width="85" Height="27"/>
+                        <Label Content="No. client" HorizontalAlignment="Left" Margin="10,132,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="mres_txtNoSeqClient" Text="{Binding NoSeqClient}" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="134,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                        <GroupBox Header="Carte de crédit" HorizontalAlignment="Left" Margin="259,3,0,0" VerticalAlignment="Top" Height="155" Width="291">
+                            <Grid HorizontalAlignment="Left" Height="145" Margin="0,0,-2.6,-12.2" VerticalAlignment="Top" Width="281">
+                                <Label Content="Numéro" HorizontalAlignment="Left" Margin="10,12,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="mres_txtNoCarteCredit" Text="{Binding NoCarteCredit}"  HorizontalAlignment="Left" Margin="135,12,-20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                                <Label Content="Date expiration" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Type de carte" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="mres_txtTypeCarte" HorizontalAlignment="Left" Height="23" Margin="135,72,-20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                                <TextBox x:Name="mres_txtDateExpiration" HorizontalAlignment="Left" Height="23" Margin="135,42,-20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                                <Label Content="Nom détenteur" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="mres_txtNomDetenteur" HorizontalAlignment="Left" Height="23" Margin="135,102,-20,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </GroupBox>
+                <GroupBox Header="Informations chambres" HorizontalAlignment="Left" Margin="10,231,0,0" VerticalAlignment="Top" Height="257" Width="570">
+                    <Grid HorizontalAlignment="Left" Height="247" VerticalAlignment="Top" Width="560" Margin="0,0,-3.2,-12.6">
+                        <ListView x:Name="mres_lstChambre" HorizontalAlignment="Left" Height="200" Margin="10,10,0,0" VerticalAlignment="Top" Width="242">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="No. Chambre" Width="Auto" DisplayMemberBinding="{Binding NoSeqChambre}"/>
+                                    <GridViewColumn Header="Description" Width="Auto" DisplayMemberBinding="{Binding DescChambre}"/>
+                                    <GridViewColumn Header="Type Lit" Width="Auto" DisplayMemberBinding="{Binding TypeLit}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <Label Content="Date debut" HorizontalAlignment="Left" Margin="257,10,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Date fin" HorizontalAlignment="Left" Margin="257,41,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Nb. personnes" HorizontalAlignment="Left" Margin="257,72,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Prenom locataire" HorizontalAlignment="Left" Margin="257,103,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Nom locataire" HorizontalAlignment="Left" Margin="257,134,0,0" VerticalAlignment="Top"/>
+                        <Label Content="Statut chambre" HorizontalAlignment="Left" Margin="257,165,0,0" VerticalAlignment="Top"/>
+                        <DatePicker x:Name="mres_dtpDateDebut" HorizontalAlignment="Left" Margin="380,10,0,0" VerticalAlignment="Top"/>
+                        <DatePicker x:Name="mres_dtpDateFin" HorizontalAlignment="Left" Margin="380,41,0,0" VerticalAlignment="Top"/>
+                        <TextBox x:Name="mres_txtNbPersonne" HorizontalAlignment="Left" Height="23" Margin="380,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
+                        <TextBox x:Name="mres_txtPrenomLocataire" HorizontalAlignment="Left" Height="23" Margin="380,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
+                        <TextBox x:Name="mres_txtNomLocataire" HorizontalAlignment="Left" Height="23" Margin="380,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
+                        <TextBox x:Name="mres_txtStatutChambre" HorizontalAlignment="Left" Height="23" Margin="380,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
+                        <Button x:Name="mres_btnSauvegarderChambres" Content="Sauvegarder" HorizontalAlignment="Left" Margin="448,195,0,0" VerticalAlignment="Top" Width="85" Height="27"/>
+                    </Grid>
+                </GroupBox>
             </Grid>
         </GroupBox>
 

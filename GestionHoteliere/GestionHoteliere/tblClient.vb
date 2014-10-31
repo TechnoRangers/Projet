@@ -15,11 +15,16 @@ Partial Public Class tblClient
     Public Property NomClient As String
     Public Property PrenomClient As String
     Public Property NoTelephone As String
+    Public Property NoCellulaire As String
     Public Property AdresseClient As String
+    Public Property AdresseSecondaireClient As String
     Public Property EmailClient As String
     Public Property CodePostal As String
+    Public Property NomEntreprise As String
+    Public Property CodeVille As String
 
     Public Overridable Property tblReservationChambre As ICollection(Of tblReservationChambre) = New HashSet(Of tblReservationChambre)
     Public Overridable Property tblReservationSalle As ICollection(Of tblReservationSalle) = New HashSet(Of tblReservationSalle)
+    Public Overridable Property tblVille As tblVille
 
 End Class

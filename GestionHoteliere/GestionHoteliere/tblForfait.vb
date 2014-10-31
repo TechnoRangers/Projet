@@ -16,6 +16,8 @@ Partial Public Class tblForfait
     Public Property PrixForfait As Decimal
     Public Property DescForfait As String
     Public Property NbNuit As Byte
+    Public Property DateDebut As Date
+    Public Property DateFin As Date
     Public Property CodeTypeChambre As String
 
     Public Overridable Property tblTypeChambre As tblTypeChambre
