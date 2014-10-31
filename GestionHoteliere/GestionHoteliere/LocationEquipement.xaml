@@ -13,16 +13,6 @@
                     <GridViewColumn Header="Quantite" HeaderStringFormat="Quantite" DisplayMemberBinding="{Binding Quantite}"/>
                 </GridView>
             </ListView.View>
-            <!--<Grid>
-                <Grid.ColumnDefinitions >
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Text="{Binding Path=Name}" />
-                <TextBlock Grid.Column="1" Text="{Binding Path=Nombre}" />
-                <TextBlock Grid.Column="2" Text="{Binding Path=Quantite}" />
-            </Grid>-->
         </ListView>
 
         <Button Name="LocEqui_BtnAjout" Content="Ajouter" HorizontalAlignment="Left" Margin="240,149,0,0" VerticalAlignment="Top" Width="75" />

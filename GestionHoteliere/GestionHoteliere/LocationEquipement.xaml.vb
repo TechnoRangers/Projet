@@ -15,18 +15,21 @@
         Dim bool As Boolean = True
         Dim produit As MyItem
         Dim checkup As MyItem
-        Dim value As Int32
+        Dim value As Object
         Dim NewEqui As tblFournitureReservationSalle
         NewEqui = New tblFournitureReservationSalle
         value = InputBox("Quantité", "Quantité", 1)
+        If value = "" Then
+            value = 1
+        End If
 
         Dim Rep = (From It In MaBd.tblFourniture Where It.DescFourniture = LocEqui_ListBoxInventaire.SelectedItem.ToString Select It.CodeFourniture).Single
 
-        'produit = New With {Key .Name = LocEqui_ListBoxInventaire.SelectedItem, .Nombre = Rep, .Quantite = value}
         produit = New MyItem
         produit.Name = LocEqui_ListBoxInventaire.SelectedItem
         produit.Nombre = Rep
         produit.Quantite = value
+        'checkup pour voir si l'item est déja dans la liste 
         For Each el In LocEqui_ListBoxReserv.Items
             checkup = New MyItem
             checkup = el
@@ -34,6 +37,7 @@
                 bool = False
             End If
         Next
+        'ajoute l'item 
         If bool Then
             LocEqui_ListBoxReserv.Items.Add(produit)
             LocEqui_ListBoxReserv.SelectedItem = produit
@@ -46,16 +50,13 @@
             NewEqui.QuantiteFourniture = produit.Quantite
 
             MaBd.tblFournitureReservationSalle.Add(NewEqui)
-            'MaBd.SaveChanges()
         Else
-        MessageBox.Show("l'objet est déjà dans la liste")
+            MessageBox.Show("l'objet est déjà dans la liste")
         End If
-        'LocEqui_ListBoxInventaire.Items.Remove(LocEqui_ListBoxInventaire.SelectedItem)
     End Sub
 
     Private Sub LocEqui_BtnEnl_Click(sender As Object, e As RoutedEventArgs) Handles LocEqui_BtnEnl.Click
-        'remove les items dans la premiere liste 
-        'LocEqui_ListBoxInventaire.Items.Add(LocEqui_ListBoxReserv.SelectedItem)
+        'Enleve les éléments de la liste et la table 
         Dim rep = (From it In MaBd.tblFournitureReservationSalle Where it.NoSeqReservSalle = noRes.NoSeqReservSalle Select it).ToList
         Dim produit As MyItem
         For Each A In rep
@@ -63,7 +64,6 @@
             produit = LocEqui_ListBoxReserv.SelectedItem
             If produit.Nombre = A.CodeFourniture Then
                 MaBd.tblFournitureReservationSalle.Remove(A)
-                'MaBd.SaveChanges()
             End If
         Next
         LocEqui_ListBoxReserv.Items.Remove(LocEqui_ListBoxReserv.SelectedItem)
@@ -113,7 +113,7 @@
 
     End Sub
 
-    Public Class MyItem
+    Public Class MyItem 'Un item permet d'aller chercher les variable plus facilements dans les listview et de les rentrer plus facilement 
         Public Property Nombre() As String
             Get
                 Return m_Nombre
@@ -144,6 +144,7 @@
     End Class
 
     Private Sub LocEqui_BtnValider_Click(sender As Object, e As RoutedEventArgs) Handles LocEqui_BtnValider.Click
+        'Sauvegarde les modifications des la base de donné 
         MaBd.SaveChanges()
     End Sub
 End Class

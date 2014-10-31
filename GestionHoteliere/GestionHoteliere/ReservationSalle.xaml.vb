@@ -210,10 +210,6 @@
                         X += 1
                     End If
                 Next
-                ' LocSal_BtnValider.IsEnabled = False
-                LocSal_BtnSuppSalle.IsEnabled = True
-                LocSal_BtnModiSalle.IsEnabled = True
-
             Catch ex As Exception
                 MessageBox.Show("Cette réservation n'existe pas ")
             End Try
@@ -224,66 +220,84 @@
     End Sub
 
     Private Sub LocSal_BtnSuppSalle_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnSuppSalle.Click
+        'Supprimer une réservation
+
         Dim Reservation As tblReservationSalle
-        Dim Resp As Boolean = MessageBox.Show("Êtes-vous sûr de supprimer cette réservation", "caption", MessageBoxButton.YesNo)
+        Dim rep2 = (From it In MaBd.tblReservationSalle
+           Where it.NoSeqReservSalle = LocSal_TxtBoxNoRes.Text
+           Select it)
+        If rep2.ToList.Count > 0 Then
+            Dim Resp As Boolean = MessageBox.Show("Êtes-vous sûr de supprimer cette réservation", "caption", MessageBoxButton.YesNo)
 
-        If Resp Then
-            Reservation = (From It In MaBd.tblReservationSalle
-                          Where It.NoSeqReservSalle = LocSal_TxtBoxNoRes.Text
-                          Select It).Single()
-            MaBd.tblReservationSalle.Remove(Reservation)
-            MaBd.SaveChanges()
+            If Resp Then
+                Reservation = (From It In MaBd.tblReservationSalle
+                              Where It.NoSeqReservSalle = LocSal_TxtBoxNoRes.Text
+                              Select It).Single()
+                MaBd.tblReservationSalle.Remove(Reservation)
+                MaBd.SaveChanges()
 
-            LocSal_TxtBoxNoRes.Text = ""
-            LocSal_TxtBoxCredit.Text = ""
-            LocSal_TxtBoxNb.Text = ""
-            LocSal_TxtBoxPrix.Text = ""
+                LocSal_TxtBoxNoRes.Text = ""
+                LocSal_TxtBoxCredit.Text = ""
+                LocSal_TxtBoxNb.Text = ""
+                LocSal_TxtBoxPrix.Text = ""
 
-            LocSal_TxtBoxTel.Text = ""
-            LocSal_TxtBoxAdr.Text = ""
-            LocSal_TxtBoxClient.Text = ""
-            LocSal_TxtBoxEmail.Text = ""
-            LocSal_TxtBoxNom.Text = ""
-            LocSal_TxtBoxPre.Text = ""
+                LocSal_TxtBoxTel.Text = ""
+                LocSal_TxtBoxAdr.Text = ""
+                LocSal_TxtBoxClient.Text = ""
+                LocSal_TxtBoxEmail.Text = ""
+                LocSal_TxtBoxNom.Text = ""
+                LocSal_TxtBoxPre.Text = ""
 
-            LocSal_CmbBoxEtat.SelectedIndex = -1
-            LocSal_CmbBoxPaiement.SelectedIndex = -1
-            LocSal_CmbBoxSalle.SelectedIndex = -1
+                LocSal_CmbBoxEtat.SelectedIndex = -1
+                LocSal_CmbBoxPaiement.SelectedIndex = -1
+                LocSal_CmbBoxSalle.SelectedIndex = -1
 
-            MessageBox.Show("La réservation a été supprimer")
+                MessageBox.Show("La réservation a été supprimer")
 
+            Else
+                MessageBox.Show("la réservation n'a pas été supprimer")
+            End If
         Else
-            MessageBox.Show("la réservation n'a pas été supprimer")
+            MessageBox.Show("Cette réservation n'existe pas")
         End If
-
 
     End Sub
 
     Private Sub LocSal_BtnModiSalle_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnModiSalle.Click
-        Dim ResChange = (From it In MaBd.tblReservationSalle
-                         Where it.NoSeqReservSalle = LocSal_TxtBoxNoRes.Text
-                         Select it).Single()
+        Dim rep = (From it In MaBd.tblReservationSalle
+           Where it.NoSeqReservSalle = LocSal_TxtBoxNoRes.Text
+           Select it)
+        If rep.ToList.Count > 0 Then
 
-        ResChange.NbPersonne = LocSal_TxtBoxNb.Text
-        If Not IsNothing(LocSal_TxtBoxCredit.Text) Then
-            ResChange.NoCarteCredit = LocSal_TxtBoxCredit.Text
+            Dim ResChange = (From it In MaBd.tblReservationSalle
+                             Where it.NoSeqReservSalle = LocSal_TxtBoxNoRes.Text
+                             Select it).Single()
+
+            ResChange.NbPersonne = LocSal_TxtBoxNb.Text
+            If Not IsNothing(LocSal_TxtBoxCredit.Text) Then
+                ResChange.NoCarteCredit = LocSal_TxtBoxCredit.Text
+            Else
+                ResChange.NoCarteCredit = rep.Single.NoCarteCredit
+            End If
+
+            ResChange.ModePaiement = LocSal_CmbBoxPaiement.SelectedItem
+            ResChange.PrixReservSalle = LocSal_TxtBoxPrix.Text
+
+            Dim res = (From it In MaBd.tblSalle
+                Where it.NomSalle.Equals(LocSal_CmbBoxSalle.SelectedItem.ToString)
+                Select it.CodeSalle).Single()
+            ResChange.CodeSalle = res
+
+            ResChange.DateReservSalle = LocSal_DatePicker.SelectedDate
+            Try
+                MaBd.SaveChanges()
+                MessageBox.Show("La modification a été faite")
+            Catch ex As Exception
+                MessageBox.Show("Erreur")
+            End Try
+        Else
+            MessageBox.Show("Cette réservation n'existe pas")
         End If
-        ResChange.ModePaiement = LocSal_CmbBoxPaiement.SelectedItem
-        ResChange.PrixReservSalle = LocSal_TxtBoxPrix.Text
-
-        Dim res = (From it In MaBd.tblSalle
-            Where it.NomSalle.Equals(LocSal_CmbBoxSalle.SelectedItem.ToString)
-            Select it.CodeSalle).Single()
-        ResChange.CodeSalle = res
-
-        ResChange.DateReservSalle = LocSal_DatePicker.SelectedDate
-        Try
-            MaBd.SaveChanges()
-            MessageBox.Show("La modification a été faite")
-        Catch ex As Exception
-            MessageBox.Show("Erreur")
-        End Try
-
     End Sub
 
     Private Sub LocSal_BtnEqu_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnEqu.Click
@@ -302,9 +316,13 @@
         If LocSal_TxtBoxNoRes.Text.Length = 4 Then
             LocSal_BtnEqu.IsEnabled = True
             LocSal_RecSal.IsEnabled = True
+            LocSal_BtnModiSalle.IsEnabled = True
+            LocSal_BtnSuppSalle.IsEnabled = True
         Else
             LocSal_BtnEqu.IsEnabled = False
             LocSal_RecSal.IsEnabled = False
+            LocSal_BtnModiSalle.IsEnabled = False
+            LocSal_BtnSuppSalle.IsEnabled = False
         End If
 
 
