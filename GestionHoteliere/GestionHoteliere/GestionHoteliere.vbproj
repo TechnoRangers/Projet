@@ -254,6 +254,9 @@
     <Compile Include="ListeReservation.xaml.vb">
       <DependentUpon>ListeReservation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LocationEquipement.xaml.vb">
+      <DependentUpon>LocationEquipement.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Menu.xaml.vb">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
@@ -530,6 +533,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ListeReservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LocationEquipement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

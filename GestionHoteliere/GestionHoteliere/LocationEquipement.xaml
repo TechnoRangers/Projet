@@ -1,0 +1,34 @@
+﻿<Window x:Class="LocationEquipement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Location d'equipement" Height="400" Width="637.2" Loaded="Window_Loaded" Icon="icone_Hotel.ico">
+    <Grid>
+        <ListBox Name="LocEqui_ListBoxInventaire" HorizontalAlignment="Left" Height="218" Margin="23,80,0,0" VerticalAlignment="Top" Width="200">
+        </ListBox>
+        <ListView Name="LocEqui_ListBoxReserv" HorizontalAlignment="Left" Height="218" Margin="340,82,0,0" VerticalAlignment="Top" Width="250">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Item" HeaderStringFormat="item" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Code" HeaderStringFormat="Code" DisplayMemberBinding="{Binding Nombre}"/>
+                    <GridViewColumn Header="Quantite" HeaderStringFormat="Quantite" DisplayMemberBinding="{Binding Quantite}"/>
+                </GridView>
+            </ListView.View>
+            <!--<Grid>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="{Binding Path=Name}" />
+                <TextBlock Grid.Column="1" Text="{Binding Path=Nombre}" />
+                <TextBlock Grid.Column="2" Text="{Binding Path=Quantite}" />
+            </Grid>-->
+        </ListView>
+
+        <Button Name="LocEqui_BtnAjout" Content="Ajouter" HorizontalAlignment="Left" Margin="240,149,0,0" VerticalAlignment="Top" Width="75" />
+        <Button Name="LocEqui_BtnEnl" Content="enlever" HorizontalAlignment="Left" Margin="240,198,0,0" VerticalAlignment="Top" Width="75" />
+        <Button Name="LocEqui_BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="340,325,0,0" VerticalAlignment="Top" Width="106" Height="37" />
+        <Button Name="LocEqui_BtnAnnuler" Content="Quitter" HorizontalAlignment="Left" Margin="451,325,0,0" VerticalAlignment="Top" Width="97" Height="37" />
+
+    </Grid>
+</Window>

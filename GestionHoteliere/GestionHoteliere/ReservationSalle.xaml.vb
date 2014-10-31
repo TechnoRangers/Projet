@@ -26,24 +26,28 @@
                     Throw New System.Exception
                 End If
             Next
+            If LocSal_DatePicker.SelectedDate < Date.Today Then
+                message = "Veuillez choisir une date valide"
+                Throw New System.Exception
+            End If
             If LocSal_TxtBoxClient.Text.Trim.Length = 0 Then
-                message = "Veuillez remplir le champs"
+                message = "Veuillez choisir numero client"
                 Throw New System.Exception
             End If
             If LocSal_TxtBoxNb.Text.Trim.Length = 0 Then
-                message = "Veuillez remplir le champs"
+                message = "Veuillez indiquer le nombre de personne"
                 Throw New System.Exception
             End If
             If LocSal_TxtBoxPrix.Text.Trim.Length = 0 Then
-                message = "Veuillez remplir le champs"
+                message = "Veuillez indiquer le prix"
                 Throw New System.Exception
             End If
             If LocSal_CmbBoxSalle.SelectedIndex = -1 Then
-                message = "Veuillez remplir le champs"
+                message = "Veuillez choisir la salle"
                 Throw New System.Exception
             End If
             If LocSal_CmbBoxPaiement.SelectedIndex = -1 Then
-                message = "Veuillez remplir le champs"
+                message = "Veuillez choisir le mode de paiement"
                 Throw New System.Exception
             End If
         Catch ex As Exception
@@ -69,7 +73,6 @@
         ' Ajoute les objets dans les comboBox
         LocSal_CmbBoxPaiement.Items.Add("Credit")
         LocSal_CmbBoxPaiement.Items.Add("Argent")
-        LocSal_CmbBoxPaiement.Items.Add("Nature")
         LocSal_CmbBoxEtat.Items.Add("Non-Payé")
         LocSal_CmbBoxEtat.Items.Add("Payé")
         LocSal_CmbBoxEtat.Items.Add("Annulé")
@@ -107,7 +110,6 @@
                 LocSal_TxtBoxNoRes.Text = NewEl.NoSeqReservSalle
                 NoRes = NewEl.NoSeqReservSalle
                 MessageBox.Show("La réservation a été ajouter")
-                ' LocSal_Equi.IsEnabled = True
             Catch ex As Exception
                 MessageBox.Show("Veuillez verifier tous les champs")
             End Try
@@ -208,7 +210,7 @@
                         X += 1
                     End If
                 Next
-                LocSal_BtnAjout.IsEnabled = False
+                ' LocSal_BtnValider.IsEnabled = False
                 LocSal_BtnSuppSalle.IsEnabled = True
                 LocSal_BtnModiSalle.IsEnabled = True
 
@@ -285,8 +287,27 @@
     End Sub
 
     Private Sub LocSal_BtnEqu_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnEqu.Click
-        'Dim asd As New LocationEquipement(MaBd, LocSal_TxtBoxNoRes.Text)
-        'asd.Show()
+        Dim rep = (From it In MaBd.tblReservationSalle
+                   Where it.NoSeqReservSalle = LocSal_TxtBoxNoRes.Text
+                   Select it)
+        If rep.ToList.Count > 0 Then
+            Dim asd As New LocationEquipement(MaBd, LocSal_TxtBoxNoRes.Text)
+            asd.Show()
+        Else
+            MessageBox.Show("Cette réservation n'éxiste pas")
+        End If
+    End Sub
+
+    Private Sub LocSal_TxtBoxNoRes_TextChanged(sender As Object, e As TextChangedEventArgs) Handles LocSal_TxtBoxNoRes.TextChanged
+        If LocSal_TxtBoxNoRes.Text.Length = 4 Then
+            LocSal_BtnEqu.IsEnabled = True
+            LocSal_RecSal.IsEnabled = True
+        Else
+            LocSal_BtnEqu.IsEnabled = False
+            LocSal_RecSal.IsEnabled = False
+        End If
+
+
     End Sub
 End Class
 

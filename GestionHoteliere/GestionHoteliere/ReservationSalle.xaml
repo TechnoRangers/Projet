@@ -10,12 +10,16 @@
     </Window.Background>
     <Viewbox Stretch="Uniform">
         <Grid Height="473">
-            <Button Name="LocSal_BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="426,446,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button Name="LocSal_BtnCancel" Content="Annuler" HorizontalAlignment="Left" Margin="505,446,0,0" VerticalAlignment="Top" Width="75"/>
-            <GroupBox Header="Client" HorizontalAlignment="Left" Margin="12,115,0,0" VerticalAlignment="Top" Height="131" Width="574">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="434*"/>
+                <RowDefinition Height="39*"/>
+            </Grid.RowDefinitions>
+            <Button Name="LocSal_BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="426,11.656,0,0" VerticalAlignment="Top" Width="75" Grid.Row="1"/>
+            <Button Name="LocSal_BtnCancel" Content="Annuler" HorizontalAlignment="Left" Margin="505,11.656,0,0" VerticalAlignment="Top" Width="75" Grid.Row="1"/>
+            <GroupBox Header="Client" HorizontalAlignment="Left" Margin="12,115,-0.4,0" VerticalAlignment="Top" Height="131" Width="574">
 
             </GroupBox>
-            <Label Name="LocSal_LblCredit" Content="Carte de Credit" HorizontalAlignment="Left" Margin="7,358,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.502,1.633"/>
+            <Label Name="LocSal_LblCredit" Content="Carte de Credit" HorizontalAlignment="Left" Margin="3,358,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.502,1.633"/>
             <TextBox Name="LocSal_TxtBoxCredit" HorizontalAlignment="Left" Height="23" Margin="102,359,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyDown="OnKeyDownHandler" />
             <TextBox Name="LocSal_TxtBoxExpi" HorizontalAlignment="Left" Height="23" Margin="102,387,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="54" KeyDown="OnKeyDownHandler" />
             <Button Name="LocSal_BtnRec" Content="Rechercher" HorizontalAlignment="Left" Margin="420,210,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.419,0.926"/>
@@ -24,7 +28,7 @@
             <Label Name="LocSal_lblNom" Content="Nom" HorizontalAlignment="Left" Margin="277,131,0,0" VerticalAlignment="Top"/>
             <TextBox Name="LocSal_TxtBoxPre" HorizontalAlignment="Left" Height="23" Margin="94,133,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="178"/>
             <TextBox Name="LocSal_TxtBoxNom" HorizontalAlignment="Left" Height="23" Margin="326,133,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="186"/>
-            <ComboBox Name="LocSal_CmbBoxPaiement" HorizontalAlignment="Left" Margin="244,330,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox Name="LocSal_CmbBoxPaiement" HorizontalAlignment="Left" Margin="113,330,0,0" VerticalAlignment="Top" Width="120"/>
             <ComboBox Name="LocSal_CmbBoxEtat" HorizontalAlignment="Left" Margin="460,330,0,0" VerticalAlignment="Top" Width="120"/>
             <Label Name="LocSal_LblExpi" Content="Date d'expiration" HorizontalAlignment="Left" Margin="3,387,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.362,-0.336"/>
             <Label Name="LocSal_Prix" Content="Prix" HorizontalAlignment="Left" Margin="426,357,0,0" VerticalAlignment="Top"/>
@@ -42,15 +46,15 @@
             <Label Name="LocSal_LblSalle" Content="Salle" HorizontalAlignment="Left" Margin="24,268,0,0" VerticalAlignment="Top"/>
             <ComboBox Name="LocSal_CmbBoxSalle" HorizontalAlignment="Left" Margin="59,271,0,0" VerticalAlignment="Top" Width="120"/>
             <Label Name="LocSal_LblNbPers" Content="Nombre de personne" HorizontalAlignment="Left" Margin="241,267,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="LocSal_LblModePai" Content="Mode de Paiement" HorizontalAlignment="Left" Margin="129,330,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="LocSal_LblModePai" Content="Mode de Paiement" HorizontalAlignment="Left" Margin="3,328,0,0" VerticalAlignment="Top"/>
             <Label x:Name="LocSal_LblEtat" Content="État" HorizontalAlignment="Left" Margin="420,329,0,0" VerticalAlignment="Top"/>
             <Label x:Name="LocSal_Date" Content="Date " HorizontalAlignment="Left" Margin="383,19,0,0" VerticalAlignment="Top"/>
             <DatePicker Name="LocSal_DatePicker" HorizontalAlignment="Left" Margin="426,19,0,0" VerticalAlignment="Top"/>
             <TextBox Name="LocSal_TxtBoxNb" HorizontalAlignment="Left" Height="23" Margin="375,271,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="46" KeyDown="OnKeyDownHandler" />
-            <Button x:Name="LocSal_RecSal" Content="Recherche Réservation" HorizontalAlignment="Left" Margin="-60,446,0,5" Width="144" IsDefault="True"/>
-            <Button Name="LocSal_BtnSuppSalle" Content="Supprimer la réservation" HorizontalAlignment="Left" Margin="89,446,0,0" VerticalAlignment="Top" Width="155" IsEnabled="False" />
-            <Button Name="LocSal_BtnModiSalle" Content="Modifier la réservation" HorizontalAlignment="Left" Margin="249,446,0,0" VerticalAlignment="Top" Width="138" IsEnabled="False"/>
-            <Button Name="LocSal_BtnEqu" Content="Équipement" HorizontalAlignment="Left" Margin="-60,419,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="LocSal_RecSal" Content="Recherche Réservation" HorizontalAlignment="Left" Margin="-60,11.656,0,5" Width="144" IsDefault="True" IsEnabled="False" Grid.Row="1"/>
+            <Button Name="LocSal_BtnSuppSalle" Content="Supprimer la réservation" HorizontalAlignment="Left" Margin="89,11.656,0,0" VerticalAlignment="Top" Width="155" IsEnabled="False" Grid.Row="1" />
+            <Button Name="LocSal_BtnModiSalle" Content="Modifier la réservation" HorizontalAlignment="Left" Margin="249,11.656,0,0" VerticalAlignment="Top" Width="138" IsEnabled="False" Grid.Row="1"/>
+            <Button Name="LocSal_BtnEqu" Content="Équipement" HorizontalAlignment="Left" Margin="-60,419,0,0" VerticalAlignment="Top" Width="75" IsEnabled="False" Grid.RowSpan="2"/>
 
         </Grid>
     </Viewbox>
