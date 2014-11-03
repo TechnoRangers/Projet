@@ -1,0 +1,34 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Facture"
+    Title="Facture" WindowStartupLocation="CenterScreen" Height="238.045" Width="292.519">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF437E87" Offset="1"/>
+            <GradientStop Color="White"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <GroupBox Header="Ajouter un facture" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="190" Width="266">
+            <Grid HorizontalAlignment="Left" Height="180" VerticalAlignment="Top" Width="256" Margin="0,0,-3.2,-12">
+                <Label Content="Type facture" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <ComboBox x:Name="fac_cmbTypeFacture" SelectedValuePath="Content" HorizontalAlignment="Left" Margin="114,10,0,0" VerticalAlignment="Top" Width="120">
+                    <ComboBoxItem Content="Restaurant"/>
+                    <ComboBoxItem Content="Cuisine"/>
+                    <ComboBoxItem Content="Spa"/>
+                    <ComboBoxItem Content="Bar"/>
+                    <ComboBoxItem Content="Autre"/>
+                </ComboBox>
+                <Label Content="Montant facture" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                <Label Content="No. employé" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="fac_txtNoEmploye" HorizontalAlignment="Left" IsEnabled="False" Text="{Binding NoEmploye}" Height="23" Margin="114,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Label Content="No. réservation" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="fac_txtNoReservation" HorizontalAlignment="Left" IsEnabled="False" Text="{Binding NoSeqReservChambre}"  Height="23" Margin="114,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Button x:Name="fac_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="156,131,0,0" VerticalAlignment="Top" Width="78" Height="26"/>
+                <xctk:MaskedTextBox x:Name="fac_txtMontantFacture" PromptChar=" " Mask="0000\,00" HorizontalAlignment="Left" Margin="114,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>

@@ -235,6 +235,7 @@ CREATE TABLE Reservation.tblChambreReservationChambre
 CREATE TABLE Reservation.tblReservationChambre
 (
 	NoSeqReservChambre			int			NOT NULL	IDENTITY(1000,1),
+	StatutReservChambre			varchar(15)	NOT NULL,
 	PrixReservChambre			money		NULL,
 	ModePaiement				varchar(20)	NOT NULL,
 	StatutPaiement				varchar(10)	NULL,

@@ -164,6 +164,9 @@
     <Compile Include="EtatChambre.xaml.vb">
       <DependentUpon>EtatChambre.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Facture.xaml.vb">
+      <DependentUpon>Facture.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ForfaitAppli.xaml.vb">
       <DependentUpon>ForfaitAppli.xaml</DependentUpon>
     </Compile>
@@ -178,9 +181,6 @@
     </Compile>
     <Compile Include="Interfaces principales\Employe.xaml.vb">
       <DependentUpon>Employe.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Interfaces principales\Facture.xaml.vb">
-      <DependentUpon>Facture.xaml</DependentUpon>
     </Compile>
     <Compile Include="Interfaces principales\Forfait.xaml.vb">
       <DependentUpon>Forfait.xaml</DependentUpon>
@@ -416,6 +416,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Facture.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ForfaitAppli.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -433,10 +437,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Interfaces principales\Employe.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Interfaces principales\Facture.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

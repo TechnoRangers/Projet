@@ -12,6 +12,7 @@ Imports System.Collections.Generic
 
 Partial Public Class tblReservationChambre
     Public Property NoSeqReservChambre As Integer
+    Public Property StatutReservChambre As String
     Public Property PrixReservChambre As Nullable(Of Decimal)
     Public Property ModePaiement As String
     Public Property StatutPaiement As String

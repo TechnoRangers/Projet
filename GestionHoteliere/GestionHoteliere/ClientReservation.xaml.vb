@@ -10,6 +10,7 @@
         BD = _BD
 
         Dim res = From tabReserv In BD.tblReservationChambre
+                  Where tabReserv.StatutReservChambre = "En cours"
                   Select tabReserv
 
         cli_dtgReservationClient.ItemsSource = res.ToList
@@ -114,7 +115,7 @@
             MessageBox.Show("Aucun client selectionné. Vous devez rechercher un client pour afficher ses réservations.")
         Else
             Dim ReservationsClient = From tabReserv In BD.tblReservationChambre
-                                 Where tabReserv.NoSeqClient = Client.NoSeqClient
+                                 Where tabReserv.NoSeqClient = Client.NoSeqClient And tabReserv.StatutReservChambre = "En cours"
                                  Select tabReserv
 
             cli_dtgReservationClient.ItemsSource = ReservationsClient.ToList
@@ -129,6 +130,20 @@
             ReservationSelection = CType(cli_dtgReservationClient.SelectedItem, tblReservationChambre)
             Dim FenetreModifReserv As New ModifReservation(BD, ReservationSelection)
             FenetreModifReserv.ShowDialog()
+
+            If Client IsNot Nothing Then
+                Dim res = From tabReserv In BD.tblReservationChambre
+                      Where tabReserv.StatutReservChambre = "En cours" And tabReserv.NoSeqClient = Client.NoSeqClient
+                      Select tabReserv
+
+                cli_dtgReservationClient.ItemsSource = res.ToList
+            Else
+                Dim res = From tabReserv In BD.tblReservationChambre
+                      Where tabReserv.StatutReservChambre = "En cours"
+                      Select tabReserv
+
+                cli_dtgReservationClient.ItemsSource = res.ToList
+            End If
         End If
     End Sub
 
@@ -277,10 +292,27 @@
         Client = Nothing
 
         Dim Reserv = From tabReserv In BD.tblReservationChambre
+                     Where tabReserv.StatutReservChambre = "En cours"
                      Select tabReserv
 
         cli_dtgReservationClient.ItemsSource = Reserv.ToList
     End Sub
 
+    Private Sub cli_btnAjoutFacture_Click(sender As Object, e As RoutedEventArgs) Handles cli_btnAjoutFacture.Click
+        'Employe temporaire pendant qu'on a pas de login
+        Dim Emp As New tblEmploye
+        Emp.NoEmploye = 1000
+
+        If cli_dtgReservationClient.SelectedItem IsNot Nothing Then
+            Dim ReservSelection As tblReservationChambre
+            ReservSelection = CType(cli_dtgReservationClient.SelectedItem, tblReservationChambre)
+
+            Dim FenetreFacture As Facture
+            FenetreFacture = New Facture(BD, ReservSelection, Emp)
+            FenetreFacture.ShowDialog()
+        Else
+            MessageBox.Show("Aucune réservation sélectionnée.")
+        End If
+    End Sub
 End Class
 

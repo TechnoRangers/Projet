@@ -9,61 +9,62 @@
         </LinearGradientBrush>
     </Window.Background>
 
-    <Grid HorizontalAlignment="Left" Width="843" Margin="0,0,0,-2.2">
-        <GroupBox Header="Informations client" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="556" Width="311">
-            <Grid HorizontalAlignment="Left" Height="546" VerticalAlignment="Top" Width="301" Margin="0,0,-1.8,-12.4">
-                <Label x:Name="Res_LblPren" Content="*Prénom" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
-                <TextBox x:Name="cli_txtPrenomClient" HorizontalAlignment="Left" Height="29" Margin="108,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179" TabIndex="1"/>
-                <Label x:Name="Res_LblNom" Content="*Nom" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" FontSize="14"/>
-                <TextBox x:Name="cli_txtNomClient" HorizontalAlignment="Left" Height="29" Margin="108,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179" RenderTransformOrigin="0.504,0.356" TabIndex="2"/>
-                <Label x:Name="Res_LblCodePostal" Content="*Code postal" HorizontalAlignment="Left" FontSize="14" Margin="10,78,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="cli_txtCodePostalClient" HorizontalAlignment="Left" Height="29" Margin="108,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179" TabIndex="3"/>
-                <Label x:Name="Res_LblAdresse" Content="Adresse 1" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" FontSize="14"/>
-                <Label Content="*   = Champ obligatoire pour la recherche" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Width="277" Height="29" />
-                <TextBox x:Name="cli_txtAdresseClient2" Text="{Binding AdresseSecondaireClient}" HorizontalAlignment="Left" Height="29" Margin="108,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" TabIndex="5"/>
-                <Label x:Name="Res_LblAdresse_Copy" Content="Adresse 2" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" FontSize="14"/>
-                <TextBox x:Name="cli_txtAdresseClient" Text="{Binding AdresseClient}" HorizontalAlignment="Left" Height="29" Margin="108,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" TabIndex="4"/>
-                <Label x:Name="Res_LblAdresse_Copy1" Content="Pays" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" FontSize="14"/>
-                <ComboBox x:Name="cli_cmbPays" HorizontalAlignment="Left" Margin="108,214,0,0" VerticalAlignment="Top" Width="179" Height="29" TabIndex="6"/>
-                <Label x:Name="Res_NoTel" Content="No. Téléphone" HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="1.184,-2.778"/>
-                <TextBox x:Name="cli_txtNoTelephoneClient" Text="{Binding NoTelephone}" HorizontalAlignment="Left" Height="29" Margin="116,320,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="171" TabIndex="9"/>
-                <Label x:Name="Res_NoTel_Copy" Content="No. Cellulaire" HorizontalAlignment="Left" Margin="10,354,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="1.184,-2.778"/>
-                <TextBox x:Name="cli_txtNoCellulaireClient" Text="{Binding NoCellulaire}" HorizontalAlignment="Left" Height="29" Margin="116,354,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="171" TabIndex="10"/>
-                <Label x:Name="Res_LblEmail" Content="E-mail" HorizontalAlignment="Left" Margin="10,387,0,0" VerticalAlignment="Top" FontSize="14"/>
-                <TextBox x:Name="cli_txtEmailClient" Text="{Binding EmailClient}" HorizontalAlignment="Left" Height="28" Margin="116,388,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="171" TabIndex="11"/>
-                <Button x:Name="Cli_BtnRechercher" Content="Rechercher" HorizontalAlignment="Left" Margin="202,455,0,0" Width="89" TabIndex="8" Height="36" VerticalAlignment="Top"/>
-                <Button x:Name="cli_btnAjouterClient" Content="Créer client" HorizontalAlignment="Left" Margin="108,455,0,0" VerticalAlignment="Top" Width="89" Height="36"/>
-                <Label x:Name="Res_LblEmail_Copy" Content="Nom Entreprise" HorizontalAlignment="Left" Margin="10,421,0,0" VerticalAlignment="Top" FontSize="14"/>
-                <TextBox x:Name="cli_txtNomEntreprise" Text="{Binding NomEntreprise}" HorizontalAlignment="Left" Height="28" Margin="116,422,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="171" TabIndex="12"/>
-                <Label x:Name="Res_LblAdresse_Copy2" Content="Province" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" FontSize="14"/>
-                <ComboBox x:Name="cli_cmbProvince" HorizontalAlignment="Left" Margin="108,248,0,0" VerticalAlignment="Top" Width="179" Height="29" TabIndex="7"/>
-                <Label x:Name="Res_LblAdresse_Copy3" Content="Ville" HorizontalAlignment="Left" Margin="10,282,0,0" VerticalAlignment="Top" FontSize="14"/>
-                <ComboBox x:Name="cli_cmbVille" HorizontalAlignment="Left" Margin="108,282,0,0" VerticalAlignment="Top" Width="179" Height="29" TabIndex="8"/>
-                <Button x:Name="cli_btnVider" Content="Vider" HorizontalAlignment="Left" Margin="202,496,0,0" VerticalAlignment="Top" Width="89" Height="36"/>
-            </Grid>
-        </GroupBox>
-        <GroupBox Header="Réservation précédantes" HorizontalAlignment="Left" Margin="326,10,0,0" VerticalAlignment="Top" Height="435" Width="485">
-            <Grid HorizontalAlignment="Left" Height="425" VerticalAlignment="Top" Width="475" Margin="0,0,-3,-12.2">
-                <DataGrid x:Name="cli_dtgReservationClient" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="358" Width="455">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="No. Réservation" Binding="{Binding NoSeqReservChambre}"/>
-                        <DataGridTextColumn Header="Prix" Binding="{Binding PrixReservChambre}"/>
-                        <DataGridTextColumn Header="Mode Paiement" Binding="{Binding ModePaiement}"/>
-                        <DataGridTextColumn Header="Statut Paiement" Binding="{Binding StatutPaiement}"/>
-                        <DataGridTextColumn Header="No. Client" Binding="{Binding NoSeqClient}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-                <Button x:Name="Res_BtnModifier" Content="Modifier Réservation" HorizontalAlignment="Left" Margin="330,373,0,0" Width="135" Height="39" VerticalAlignment="Top"/>
-                <Button x:Name="cli_btnAfficherReservClient" Content="Afficher les réservations du client" HorizontalAlignment="Left" Margin="133,373,0,0" VerticalAlignment="Top" Width="192" Height="39"/>
-            </Grid>
-        </GroupBox>
-        <GroupBox Header="Continuer avec la réservation" HorizontalAlignment="Left" Margin="548,450,0,0" VerticalAlignment="Top" Height="116" Width="263">
-            <Grid HorizontalAlignment="Left" Height="106" VerticalAlignment="Top" Width="253" Margin="0,0,-3.4,-12.4">
-                <Button x:Name="Cli_BtnContinuer" Content="Consulter la disponibilité des chambres" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="227" Height="33" TabIndex="9"/>
-                <Button x:Name="Cli_BtnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="148,48,0,0" VerticalAlignment="Top" Width="89" Height="31" TabIndex="10"/>
-            </Grid>
-        </GroupBox>
-    </Grid>
-
-
+    <Viewbox Stretch="Uniform">
+        <Grid HorizontalAlignment="Left" Width="843" Margin="0,0,0,-2.2" Height="562">
+            <GroupBox Header="Informations client" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="531" Width="311">
+                <Grid HorizontalAlignment="Left" Height="521" VerticalAlignment="Top" Width="301" Margin="0,0,-1.8,-12.2">
+                    <Label x:Name="Res_LblPren" Content="*Prénom" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox x:Name="cli_txtPrenomClient" HorizontalAlignment="Left" Height="29" Margin="108,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179" TabIndex="1"/>
+                    <Label x:Name="Res_LblNom" Content="*Nom" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox x:Name="cli_txtNomClient" HorizontalAlignment="Left" Height="29" Margin="108,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179" RenderTransformOrigin="0.504,0.356" TabIndex="2"/>
+                    <Label x:Name="Res_LblCodePostal" Content="*Code postal" HorizontalAlignment="Left" FontSize="14" Margin="10,78,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="cli_txtCodePostalClient" HorizontalAlignment="Left" Height="29" Margin="108,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179" TabIndex="3"/>
+                    <Label x:Name="Res_LblAdresse" Content="Adresse 1" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="*   = Champ obligatoire pour la recherche" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Width="277" Height="29" />
+                    <TextBox x:Name="cli_txtAdresseClient2" Text="{Binding AdresseSecondaireClient}" HorizontalAlignment="Left" Height="29" Margin="108,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" TabIndex="5"/>
+                    <Label x:Name="Res_LblAdresse_Copy" Content="Adresse 2" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox x:Name="cli_txtAdresseClient" Text="{Binding AdresseClient}" HorizontalAlignment="Left" Height="29" Margin="108,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="179" TabIndex="4"/>
+                    <Label x:Name="Res_LblAdresse_Copy1" Content="Pays" HorizontalAlignment="Left" Margin="10,214,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <ComboBox x:Name="cli_cmbPays" HorizontalAlignment="Left" Margin="108,214,0,0" VerticalAlignment="Top" Width="179" Height="29" TabIndex="6"/>
+                    <Label x:Name="Res_NoTel" Content="No. Téléphone" HorizontalAlignment="Left" Margin="10,320,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="1.184,-2.778"/>
+                    <TextBox x:Name="cli_txtNoTelephoneClient" Text="{Binding NoTelephone}" HorizontalAlignment="Left" Height="29" Margin="116,320,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="171" TabIndex="9"/>
+                    <Label x:Name="Res_NoTel_Copy" Content="No. Cellulaire" HorizontalAlignment="Left" Margin="10,354,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="1.184,-2.778"/>
+                    <TextBox x:Name="cli_txtNoCellulaireClient" Text="{Binding NoCellulaire}" HorizontalAlignment="Left" Height="29" Margin="116,354,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="171" TabIndex="10"/>
+                    <Label x:Name="Res_LblEmail" Content="E-mail" HorizontalAlignment="Left" Margin="10,387,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox x:Name="cli_txtEmailClient" Text="{Binding EmailClient}" HorizontalAlignment="Left" Height="28" Margin="116,388,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="171" TabIndex="11"/>
+                    <Button x:Name="Cli_BtnRechercher" Content="Rechercher" HorizontalAlignment="Left" Margin="202,455,0,0" Width="89" TabIndex="8" Height="36" VerticalAlignment="Top"/>
+                    <Button x:Name="cli_btnAjouterClient" Content="Créer client" HorizontalAlignment="Left" Margin="108,455,0,0" VerticalAlignment="Top" Width="89" Height="36"/>
+                    <Label x:Name="Res_LblEmail_Copy" Content="Nom Entreprise" HorizontalAlignment="Left" Margin="10,421,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox x:Name="cli_txtNomEntreprise" Text="{Binding NomEntreprise}" HorizontalAlignment="Left" Height="28" Margin="116,422,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="171" TabIndex="12"/>
+                    <Label x:Name="Res_LblAdresse_Copy2" Content="Province" HorizontalAlignment="Left" Margin="10,248,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <ComboBox x:Name="cli_cmbProvince" HorizontalAlignment="Left" Margin="108,248,0,0" VerticalAlignment="Top" Width="179" Height="29" TabIndex="7"/>
+                    <Label x:Name="Res_LblAdresse_Copy3" Content="Ville" HorizontalAlignment="Left" Margin="10,282,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <ComboBox x:Name="cli_cmbVille" HorizontalAlignment="Left" Margin="108,282,0,0" VerticalAlignment="Top" Width="179" Height="29" TabIndex="8"/>
+                    <Button x:Name="cli_btnVider" Content="Vider" HorizontalAlignment="Left" Margin="10,455,0,0" VerticalAlignment="Top" Width="89" Height="36"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Réservations en cours" HorizontalAlignment="Left" Margin="326,10,0,0" VerticalAlignment="Top" Height="435" Width="485">
+                <Grid HorizontalAlignment="Left" Height="425" VerticalAlignment="Top" Width="475" Margin="0,0,-3,-12.2">
+                    <DataGrid x:Name="cli_dtgReservationClient" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="358" Width="455">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="No. Réservation" Binding="{Binding NoSeqReservChambre}"/>
+                            <DataGridTextColumn Header="Prix" Binding="{Binding PrixReservChambre}"/>
+                            <DataGridTextColumn Header="Mode Paiement" Binding="{Binding ModePaiement}"/>
+                            <DataGridTextColumn Header="Statut Paiement" Binding="{Binding StatutPaiement}"/>
+                            <DataGridTextColumn Header="No. Client" Binding="{Binding NoSeqClient}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="Res_BtnModifier" Content="Modifier Réservation" HorizontalAlignment="Left" Margin="330,373,0,0" Width="135" Height="39" VerticalAlignment="Top"/>
+                    <Button x:Name="cli_btnAfficherReservClient" Content="Afficher les réservations du client" HorizontalAlignment="Left" Margin="133,373,0,0" VerticalAlignment="Top" Width="192" Height="39"/>
+                    <Button x:Name="cli_btnAjoutFacture" Content="Ajouter facture" HorizontalAlignment="Left" Margin="10,373,0,0" VerticalAlignment="Top" Width="118" Height="39"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="Continuer avec la réservation" HorizontalAlignment="Left" Margin="326,450,0,0" VerticalAlignment="Top" Height="91" Width="354">
+                <Grid HorizontalAlignment="Left" Height="62" VerticalAlignment="Top" Width="343">
+                    <Button x:Name="Cli_BtnContinuer" Content="Consulter la disponibilité des chambres" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" Width="227" Height="33" TabIndex="9"/>
+                    <Button x:Name="Cli_BtnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="242,14,0,0" VerticalAlignment="Top" Width="89" Height="33" TabIndex="10"/>
+                </Grid>
+            </GroupBox>
+        </Grid>
+    </Viewbox>
 </Window>
