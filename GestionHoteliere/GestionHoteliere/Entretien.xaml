@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Entretien"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Entretien" Height="300" Width="514.4" WindowStartupLocation="CenterScreen" Icon="icone_Hotel.ico">
+    Title="Entretien" Height="300" Width="911.2" WindowStartupLocation="CenterScreen" Icon="icone_Hotel.ico">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF437E87" Offset="1"/>
@@ -9,19 +9,31 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
-        <Button x:Name="Ent_BtnCheckUp" HorizontalAlignment="Left" Margin="25,78,0,0" VerticalAlignment="Top" Width="212" Height="169" >
-            <StackPanel Orientation="Horizontal" Width="208" Height="169">
+        <Button x:Name="Ent_BtnCheckUp" HorizontalAlignment="Left" Margin="25,78,0,0" VerticalAlignment="Top" Width="206" Height="169" >
+            <StackPanel Orientation="Horizontal" Width="206" Height="169">
                 <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Check-Up.jpg" Stretch="Fill" Width="133" Margin="0,0,0,-0.2"/>
-                <TextBlock Text="Check up" Height="18" Margin="10,26,15,26.4" FontSize="14"/>
+                <TextBlock Text="Chambre" Margin="4,75,15,73.8" FontSize="14" Width="62"/>
             </StackPanel>
         </Button>
-        <Label x:Name="Ent_LblTitre" Content="Entretien chambre" HorizontalAlignment="Left" Margin="162,23,0,0" VerticalAlignment="Top" Width="184" Height="36" FontSize="20"/>
-        <Button x:Name="Ent_BtnEtatChambre" HorizontalAlignment="Left" Margin="258,78,0,0" VerticalAlignment="Top" Width="226" Height="169">
+        <Label x:Name="Ent_LblTitre" Content="Entretien" HorizontalAlignment="Left" Margin="441,24,0,0" VerticalAlignment="Top" Width="94" Height="36" FontSize="20"/>
+        <Button x:Name="Ent_BtnEtatChambre" HorizontalAlignment="Left" Margin="249,78,0,0" VerticalAlignment="Top" Width="217" Height="169">
             <StackPanel Orientation="Horizontal" Width="208" Height="169">
                 <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Oeil.jpg" Stretch="Fill" Width="125" Margin="0,0,0,-0.2"/>
                 <TextBlock Text="Etat chambre" Height="18" Margin="2,26,15,26.4" FontSize="14"/>
             </StackPanel>
         </Button>
+        <Button x:Name="Ent_BtnCheckUpSalle"  HorizontalAlignment="Left" Margin="493,78,0,0" VerticalAlignment="Top" Width="181" Height="169">
+            <StackPanel Orientation="Horizontal" Width="193" Height="169">
+                <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Check-Up.jpg" Stretch="Fill" Width="133" Margin="0,0,0,-0.2"/>
+                <TextBlock Text="Salle" Margin="4,75,15,73.8" FontSize="14" Width="32"/>
+            </StackPanel>
+        </Button>
+        <Button x:Name="Ent_BtnEtatSalle"  HorizontalAlignment="Left" Margin="689,78,0,0" VerticalAlignment="Top" Width="189" Height="169">
+            <StackPanel Orientation="Horizontal" Width="189" Height="169">
+                <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Oeil.jpg" Stretch="Fill" Width="125" Margin="0,0,0,-0.2"/>
+                <TextBlock Text="Etat salle" Height="18" Margin="2,26,15,26.4" FontSize="14"/>
+            </StackPanel>
+        </Button> 
 
     </Grid>
 </Window>

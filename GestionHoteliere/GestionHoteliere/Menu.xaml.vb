@@ -68,7 +68,7 @@
 
     Private Sub Men_BtnEntretien_Click(sender As Object, e As RoutedEventArgs) Handles Men_BtnEntretien.Click
 
-        Dim Entretien_ As New Entretien
+        Dim Entretien_ As New Entretien(MaBD)
         Entretien_.Show()
         'Me.Close()
     End Sub

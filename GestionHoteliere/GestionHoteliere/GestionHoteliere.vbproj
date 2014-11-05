@@ -146,6 +146,9 @@
     <Compile Include="ChangementHoraire.xaml.vb">
       <DependentUpon>ChangementHoraire.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CheckUpSalle.xaml.vb">
+      <DependentUpon>CheckUpSalle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ClientReservation.xaml.vb">
       <DependentUpon>ClientReservation.xaml</DependentUpon>
     </Compile>
@@ -163,6 +166,9 @@
     </Compile>
     <Compile Include="EtatChambre.xaml.vb">
       <DependentUpon>EtatChambre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EtatSalle.xaml.vb">
+      <DependentUpon>EtatSalle.xaml</DependentUpon>
     </Compile>
     <Compile Include="Facture.xaml.vb">
       <DependentUpon>Facture.xaml</DependentUpon>
@@ -380,6 +386,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CheckUpSalle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClientReservation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -413,6 +423,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EtatChambre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EtatSalle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

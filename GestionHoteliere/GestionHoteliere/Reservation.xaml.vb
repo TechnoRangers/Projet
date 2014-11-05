@@ -2,14 +2,17 @@
     Dim MaBD As P2014_BD_GestionHotelEntities
 
     Dim Selection As tblChambre
+    Dim MonForfait As tblForfait
     Dim ListeChambreReservation As New List(Of tblChambre)
     Dim ListeReservationChambre As New List(Of tblChambreReservationChambre)
     Dim ReservationChambre As tblReservationChambre
     Dim PrixReservation As Double
+    Dim PrixForfait As Double
 
-    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _ListeChambreReservation As List(Of tblChambre))
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _ListeChambreReservation As List(Of tblChambre), Optional ByRef _MonForfait As tblForfait = Nothing)
         InitializeComponent()
         MaBD = _MaBD
+        MonForfait = _MonForfait
         ListeChambreReservation = _ListeChambreReservation
         ReservationChambre = New tblReservationChambre
 
@@ -19,13 +22,23 @@
             ChambReservChambre.NoSeqReservChambre = ReservationChambre.NoSeqReservChambre
             ListeReservationChambre.Add(ChambReservChambre)
             'PrixReservation += Chambre.PrixChambre
+            PrixForfait += _MonForfait.PrixForfait
         Next
+        If _MonForfait IsNot Nothing Then
+            Res_DatePickerArr.IsEnabled = False
+            Res_DatePikerDep.IsEnabled = False
+            Res_DatePickerArr.SelectedDate = _MonForfait.DateDebut
+            Res_DatePikerDep.SelectedDate = _MonForfait.DateFin
+            Res_TxtBoxNomForfait.Text = _MonForfait.NomForfait
+            Res_TextBoxMontant.Text = PrixForfait.ToString
+        Else
+            Res_DatePickerArr.SelectedDate = System.DateTime.Today
+            Res_DatePikerDep.SelectedDate = DateAdd("d", 1, Now)
+        End If
 
-        Res_DatePickerArr.SelectedDate = System.DateTime.Today
-        Res_DatePikerDep.SelectedDate = DateAdd("d", 1, Now)
         Res_TextBoxNbChambre.Text = ListeReservationChambre.Count
-
         res_lbvChambres.SelectedItem = ListeChambreReservation.ToList.First
+
     End Sub
 
     Private Sub Res_frmReservation_Loaded(sender As Object, e As RoutedEventArgs) Handles Res_frmReservation.Loaded
@@ -83,6 +96,7 @@
 
         'Enregistrement de la réservation
         Try
+            ReservationChambre.StatutReservChambre = "En cours"
             ReservationChambre.ModePaiement = Res_ComboBoxMoyenPaiement.SelectionBoxItem.ToString
             ReservationChambre.PrixReservChambre = CType(Res_TextBoxMontant.Text, Integer)
             ReservationChambre.NoSeqClient = 1000
@@ -100,6 +114,7 @@
                     Reserv.NoSeqReservChambre = ReservationChambre.NoSeqReservChambre
                     Reserv.StatutChambreReservChambre = "Occupe"
                     MaBD.tblChambreReservationChambre.Add(Reserv)
+                    Reserv.tblForfait.Add(MonForfait)
                 Next
                 MaBD.SaveChanges()
             Catch ex As Exception

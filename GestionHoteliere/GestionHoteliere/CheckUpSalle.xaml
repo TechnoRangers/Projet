@@ -1,0 +1,86 @@
+﻿<Window x:Name="Che_FrmSalle" x:Class="CheckUpSalle"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Techno Rangers Version 1.4 CheckUpSalle" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="icone_Hotel.ico" Width="1019.2">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF437E87" Offset="1"/>
+            <GradientStop Color="White"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Viewbox Stretch="Uniform" Margin="0,0,20.6,0.2">
+        <Grid Margin="0,0,-6.4,0" Width="1373" Height="785">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="Che_LblNoReservation" Content="No reservation :" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" FontSize="16" Height="32" Width="140"/>
+            <ComboBox x:Name="Che_ComboBoxNoReservationSalle" HorizontalAlignment="Left" Margin="155,29,0,0" VerticalAlignment="Top" Width="126" Height="32"/>
+            <GroupBox x:Name="Che_GroupBoxListeFour" Header="Liste fourniture" HorizontalAlignment="Left" Margin="-11,81,0,0" VerticalAlignment="Top" Height="407" Width="572" FontSize="20"/>
+            <Button x:Name="Che_BtnEnregistrer" Content="Enregistrer" HorizontalAlignment="Left" Margin="667,652,0,0" VerticalAlignment="Top" Width="159" Height="44" FontSize="16">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB"/>
+                        <GradientStop Color="#FFDDDDDD"/>
+                        <GradientStop Color="#FF5ECB24"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="Che_BtnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="831,652,0,0" VerticalAlignment="Top" Width="159" Height="44" FontSize="16">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB"/>
+                        <GradientStop Color="#FFDDDDDD"/>
+                        <GradientStop Color="#FFE92929"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <GroupBox x:Name="Che_GrpBoxCommentaires" Header="Commentaires" HorizontalAlignment="Left" Margin="-11,501,-16.8,0" VerticalAlignment="Top" Height="127" Width="1319" FontSize="14" Grid.ColumnSpan="2">
+                <Grid HorizontalAlignment="Left" Height="100" Margin="10,0,-2,0" VerticalAlignment="Top" Width="936">
+                    <RichTextBox x:Name="Che_RichTxtBoxCom" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="1268" Margin="10,0,-342,0">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text=""/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </Grid>
+            </GroupBox>
+            <Grid HorizontalAlignment="Left" Height="381" Margin="10,115,0,0" VerticalAlignment="Top" Width="551">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="594*"/>
+                    <ColumnDefinition Width="61*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid x:Name="Che_Datagrid" HorizontalAlignment="Right" AutoGenerateColumns="False"  Margin="-1,10,10.4,0" VerticalAlignment="Top" Height="341" Width="541" FontSize="14" Grid.ColumnSpan="2">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Fourniture.DescFourniture}" Width="185" ClipboardContentBinding="{x:Null}" Header="Fourniture"/>
+                        <DataGridTextColumn Binding="{Binding Salle.NomSalle}" Width="155" ClipboardContentBinding="{x:Null}" Header="Nom salle"/>
+                        <DataGridCheckBoxColumn Binding="{Binding ARemplacer}" ClipboardContentBinding="{x:Null}" Width="100" Header="À remplacer"/>
+                        <DataGridCheckBoxColumn Binding="{Binding AReparer}" ClipboardContentBinding="{x:Null}" Width="100" Header="À réparer"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+
+            </Grid>
+            <GroupBox x:Name="Che_GrpBoxListeEntretien" Header="Liste entretien" HorizontalAlignment="Left" Margin="577,77,0,0" VerticalAlignment="Top" Height="415" Width="731" FontSize="20">
+                <Grid HorizontalAlignment="Left" Height="395" Margin="10,10,-2.6,-12.2" VerticalAlignment="Top" Width="711">
+                    <DataGrid x:Name="Che_DatagridLstEntretien" HorizontalAlignment="Left" AutoGenerateColumns="False"  Margin="10,10,0,0" VerticalAlignment="Top" Height="341" Width="675" FontSize="14">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding NoEmploye}" ClipboardContentBinding="{x:Null}" Header="NoEmploye"/>
+                            <DataGridTextColumn Binding="{Binding DescFourniture}" ClipboardContentBinding="{x:Null}" Header="Fourniture" Width="120"/>
+                            <DataGridTextColumn Binding="{Binding EtatFourniture}" ClipboardContentBinding="{x:Null}" Header="Etat" Width="100"/>
+                            <DataGridTextColumn Binding="{Binding DateDemande}" ClipboardContentBinding="{x:Null}" Header="DateDebut"/>
+                            <DataGridTextColumn Binding="{Binding DateEffectue}" ClipboardContentBinding="{x:Null}" Header="DateFin"/>
+                            <DataGridTextColumn Binding="{Binding StatutEntretien}" ClipboardContentBinding="{x:Null}" Header="Statut" Width="120"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </GroupBox>
+
+        </Grid>
+    </Viewbox>
+</Window>
+
