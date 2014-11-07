@@ -332,3 +332,12 @@ CREATE TABLE Reservation.tblFournitureReservationSalle
 	CodeSalle				char(3)		NOT NULL,
 	QuantiteFourniture		smallint	NOT NULL
 )
+
+/* **********************Message******************************** */
+CREATE TABLE tblMessage
+(
+	//NoSeq 		INT				NOT NULL	IDENT(0,1),
+	Titre		VARCHAR(30)		NOT NULL,
+	DateM		DATE			NOT NULL,
+	Message		Text			NOT NULL
+)

@@ -146,5 +146,6 @@
     Private Sub LocEqui_BtnValider_Click(sender As Object, e As RoutedEventArgs) Handles LocEqui_BtnValider.Click
         'Sauvegarde les modifications des la base de donné 
         MaBd.SaveChanges()
+        MessageBox.Show("you did it")
     End Sub
 End Class
