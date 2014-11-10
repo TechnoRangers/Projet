@@ -268,6 +268,7 @@ CREATE TABLE Reservation.tblClient
 	AdresseClient			varchar(30)	NOT NULL,
 	AdresseSecondaireClient	varchar(30)	NULL,
 	EmailClient				varchar(30)	NOT NULL,
+	MdpClient				varchar(20) NULL,
 	CodePostal				char(6)		NULL,
 	NomEntreprise			varchar(50)	NULL,
 	CodeVille				char(3)		NULL	
