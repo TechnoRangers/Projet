@@ -12,7 +12,7 @@
     <Viewbox Stretch="Uniform">
         <Grid HorizontalAlignment="Left" Width="843" Margin="0,0,0,-2.2" Height="562">
             <GroupBox Header="Informations client" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="552" Width="311">
-                <Border CornerRadius="5" Background="LightSkyBlue" Margin="0,0,-2.6,-1.8" BorderBrush="Black" BorderThickness="4">
+                <Border CornerRadius="5"  Margin="0,0,-2.6,-1.8" BorderBrush="Black" BorderThickness="4">
                     <Grid HorizontalAlignment="Left" Height="521" VerticalAlignment="Top" Width="301" Margin="0,0,-1.8,-12.2">
                         <Label x:Name="Res_LblPren" Content="*Prénom" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14"/>
                         <TextBox x:Name="cli_txtPrenomClient" HorizontalAlignment="Left" Height="29" Margin="108,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179" TabIndex="1"/>
@@ -58,7 +58,7 @@
                 </Border>
             </GroupBox>
             <GroupBox Header="Réservations en cours" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="326,10,0,0" VerticalAlignment="Top" Height="435" Width="507">
-                <Border CornerRadius="5" Background="LightSkyBlue" Margin="0,0,-2.6,-1.8" BorderBrush="Black" BorderThickness="4">
+                <Border CornerRadius="5"  Margin="0,0,-2.6,-1.8" BorderBrush="Black" BorderThickness="4">
                     <Grid HorizontalAlignment="Left" Height="425" VerticalAlignment="Top" Width="475" Margin="0,0,-3,-12.2">
                         <DataGrid x:Name="cli_dtgReservationClient" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="14,3,0,0" VerticalAlignment="Top" Height="358" Width="455">
                             <DataGrid.Columns>
@@ -88,7 +88,7 @@
                 </Border>
             </GroupBox>
             <GroupBox Header="Continuer avec la réservation" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="326,450,0,0" VerticalAlignment="Top" Height="112" Width="507">
-                <Border CornerRadius="5" Background="LightSkyBlue" Margin="0,0,-2.6,-1.8" BorderBrush="Black" BorderThickness="4">
+                <Border CornerRadius="5"  Margin="0,0,-2.6,-1.8" BorderBrush="Black" BorderThickness="4">
                     <Grid HorizontalAlignment="Right" Height="91" VerticalAlignment="Top" Width="485" Margin="0,0,-13,-21.4">
                         <Button x:Name="Cli_BtnContinuer" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="-3,20,0,0" VerticalAlignment="Top" Width="256" Height="48" TabIndex="9">
                             <Border CornerRadius="5" Height="33" Width="246" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">

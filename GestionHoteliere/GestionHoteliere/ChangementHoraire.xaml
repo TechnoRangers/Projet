@@ -3,15 +3,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="ChangementHoraire" Height="347.49" Width="346.14" Icon="icone_Hotel.ico">
     <Grid Margin="0,0,4,0.2">
+        <GroupBox Header=" Chiffre de travail" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+            <Border CornerRadius="5"  Margin="0,0,-1.8,71.4" BorderBrush="Black" BorderThickness="4">
+                <Grid Margin="0,0,-0.2,-3.8">
         <Label x:Name="Cha_LblNoEmp" Content="Numéro de l'employé" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Cha_LblHreDeb" Content="Heure de commencement" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Cha_LblHreFin" Content="Heure de fin" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top"/>
         <Label x:Name="Hor_LblDate" Content="Date" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Cha_TxtNoEmp" HorizontalAlignment="Left" Text="{Binding NoEmploye}" Height="23" Margin="182,30,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-        <DatePicker x:Name="Cha_DtpDate" HorizontalAlignment="Left" Text="{Binding DateChiffre}" Margin="182,79,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="Cha_BtnAnnuler" Content="Quitter" HorizontalAlignment="Left" Margin="10,266,0,0" VerticalAlignment="Top" Width="115" Height="43"/>
-        <Button x:Name="Cha_BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="187,266,0,0" VerticalAlignment="Top" Width="115" Height="43"/>
-        <ComboBox x:Name="Cha_CmbHreDeb" HorizontalAlignment="Left" Height="23" Margin="182,125,0,0"  VerticalAlignment="Top" Width="41">
+            <DatePicker x:Name="Cha_DtpDate" HorizontalAlignment="Left" Text="{Binding DateChiffre}" Margin="182,79,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="Cha_CmbHreDeb" HorizontalAlignment="Left" Height="23" Margin="182,125,0,0"  VerticalAlignment="Top" Width="41">
             <ComboBoxItem Content="00"></ComboBoxItem>
             <ComboBoxItem Content="01"></ComboBoxItem>
             <ComboBoxItem Content="02"></ComboBoxItem>
@@ -77,19 +78,33 @@
             <ComboBoxItem Content="50"></ComboBoxItem>
             <ComboBoxItem Content="55"></ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="Cha_CmbMinfin" HorizontalAlignment="Left" Height="23" Margin="252,165,0,0"  VerticalAlignment="Top" Width="50">          
-            <ComboBoxItem Content="00"></ComboBoxItem>
-            <ComboBoxItem Content="05"></ComboBoxItem>
-            <ComboBoxItem Content="10"></ComboBoxItem>
-            <ComboBoxItem Content="15"></ComboBoxItem>
-            <ComboBoxItem Content="20"></ComboBoxItem>
-            <ComboBoxItem Content="25"></ComboBoxItem>
-            <ComboBoxItem Content="30"></ComboBoxItem>
-            <ComboBoxItem Content="35"></ComboBoxItem>
-            <ComboBoxItem Content="40"></ComboBoxItem>
-            <ComboBoxItem Content="45"></ComboBoxItem>
-            <ComboBoxItem Content="50"></ComboBoxItem>
-            <ComboBoxItem Content="55"></ComboBoxItem>
-        </ComboBox>
+            <ComboBox x:Name="Cha_CmbMinfin" HorizontalAlignment="Left" Height="23" Margin="252,165,0,0"  VerticalAlignment="Top" Width="50">
+                <ComboBoxItem Content="00"></ComboBoxItem>
+                <ComboBoxItem Content="05"></ComboBoxItem>
+                <ComboBoxItem Content="10"></ComboBoxItem>
+                <ComboBoxItem Content="15"></ComboBoxItem>
+                <ComboBoxItem Content="20"></ComboBoxItem>
+                <ComboBoxItem Content="25"></ComboBoxItem>
+                <ComboBoxItem Content="30"></ComboBoxItem>
+                <ComboBoxItem Content="35"></ComboBoxItem>
+                <ComboBoxItem Content="40"></ComboBoxItem>
+                <ComboBoxItem Content="45"></ComboBoxItem>
+                <ComboBoxItem Content="50"></ComboBoxItem>
+                <ComboBoxItem Content="55"></ComboBoxItem>
+            </ComboBox>
+                </Grid>
+            </Border>
+        </GroupBox>
+        <Button x:Name="Cha_BtnAnnuler"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="0,266,0,0" VerticalAlignment="Top" Width="135" Height="43">
+            <Border CornerRadius="5" Height="35" Width="123" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+                <TextBlock Text="Quitter" FontSize="14" Margin="33,5,0,0.2" HorizontalAlignment="Left" Width="55"/>
+            </Border>
+        </Button>
+        <Button x:Name="Cha_BtnValider"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="197,266,0,0" VerticalAlignment="Top" Width="139" Height="43">
+            <Border CornerRadius="5" Height="35" Width="123" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+                <TextBlock Text="Valider" FontSize="14" Margin="33,5,0,0.2" HorizontalAlignment="Left" Width="55"/>
+            </Border>
+        </Button>
+
     </Grid>
 </Window>
