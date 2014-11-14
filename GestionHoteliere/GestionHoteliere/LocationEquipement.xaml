@@ -15,10 +15,25 @@
             </ListView.View>
         </ListView>
 
-        <Button Name="LocEqui_BtnAjout" Content="Ajouter" HorizontalAlignment="Left" Margin="240,149,0,0" VerticalAlignment="Top" Width="75" />
-        <Button Name="LocEqui_BtnEnl" Content="enlever" HorizontalAlignment="Left" Margin="240,198,0,0" VerticalAlignment="Top" Width="75" />
-        <Button Name="LocEqui_BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="340,325,0,0" VerticalAlignment="Top" Width="106" Height="37" />
-        <Button Name="LocEqui_BtnAnnuler" Content="Quitter" HorizontalAlignment="Left" Margin="451,325,0,0" VerticalAlignment="Top" Width="97" Height="37" />
-
+        <Button Name="LocEqui_BtnAjout" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="228,151,0,0" VerticalAlignment="Top" Width="100">
+            <Border CornerRadius="5" Height="35" Width="90" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+                <TextBlock Text="Ajouter" FontSize="14" Margin="20,5,0,0.2" HorizontalAlignment="Left" Width="55"/>
+            </Border>
+        </Button>
+        <Button Name="LocEqui_BtnEnl" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="228,198,0,0" VerticalAlignment="Top" Width="100">
+            <Border CornerRadius="5" Height="35" Width="90" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+                <TextBlock Text="Enlever" FontSize="14" Margin="20,5,0,0.2" HorizontalAlignment="Left" Width="55"/>
+            </Border>
+        </Button>
+        <Button Name="LocEqui_BtnValider" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="340,325,0,0" VerticalAlignment="Top" Width="123" Height="47">
+            <Border CornerRadius="5" Height="37" Width="113" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+                <TextBlock Text="Valider" FontSize="14" Margin="33,6,0,-4.2" HorizontalAlignment="Left" Width="55"/>
+            </Border>
+        </Button>
+        <Button Name="LocEqui_BtnAnnuler" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="493,325,0,0" VerticalAlignment="Top" Width="116" Height="47">
+            <Border CornerRadius="5" Height="35" Width="106" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+                <TextBlock Text="Quitter" FontSize="14" Margin="30,5,0,0.2" HorizontalAlignment="Left" Width="55"/>
+            </Border>
+        </Button>
     </Grid>
 </Window>
