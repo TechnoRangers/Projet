@@ -12,20 +12,21 @@
     <Viewbox Stretch="Uniform">
         <Grid Margin="0,0,4,-3.6" Height="531" VerticalAlignment="Top" Width="666">
             <GroupBox x:Name="Con_GrpLogin"  FontSize="20" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Right" Margin="0,0,130,0" VerticalAlignment="Bottom" Height="219" Width="422" FontWeight="Bold" >
-                <Border CornerRadius="5"  Margin="0,1,0,3.8" BorderBrush="Black" BorderThickness="4,4,4,4" HorizontalAlignment="Left" Width="401">
+                <Border CornerRadius="5"  Margin="0,1,0,3.8" BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Width="401">
                     <Grid x:Name="Con_GrdLogin" HorizontalAlignment="Left" Height="181" VerticalAlignment="Top" Width="382" Margin="0,0,0,-1.8" >
-                        <Label x:Name="Con_LblIdentifiant" Content="Identifiant : "  HorizontalAlignment="Left" Margin="3,12,0,0" VerticalAlignment="Top" FontSize="20"/>
-                        <Label x:Name="Con_LblMotDePasse"  Content="Mot de passe : " HorizontalAlignment="Left" Margin="2,49,0,0" VerticalAlignment="Top" FontSize="20"/>
-                        <Label x:Name="Con_LblHotel"       Content="Hôtel : "        HorizontalAlignment="Left" Margin="3,88,0,0" VerticalAlignment="Top" FontSize="20"/>
-                        <TextBox     x:Name="Con_TxtIdentifiant" FontSize="14"  HorizontalAlignment="Left"  Margin="177,19,-44,0"  VerticalAlignment="Top" Width="177" Height="23" TextWrapping="Wrap"/>
-                        <PasswordBox x:Name="Con_TxtMotPasse"     FontSize="14" HorizontalAlignment="Left" Margin="178,56,0,0"     VerticalAlignment="Top" Width="176" Height="25"/>
-                        <Button      x:Name="Con_BtnConnexion"    Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="202,125,0,0"  VerticalAlignment="Top" Width="158" Height="56">
-                            <Border CornerRadius="5" Height="46" Width="148" Background="DodgerBlue" Margin="0" BorderBrush="Black" BorderThickness="4" >
+                        <Label       x:Name="Con_LblIdentifiant"     Content="Identifiant : "       HorizontalAlignment="Left" FontSize="20" Margin="3,12,0,0" VerticalAlignment="Top" />
+                        <Label       x:Name="Con_LblMotDePasse"      Content="Mot de passe : "      HorizontalAlignment="Left" FontSize="20" Margin="2,49,0,0" VerticalAlignment="Top" />
+                        <Label       x:Name="Con_LblHotel"           Content="Hôtel : "             HorizontalAlignment="Left" FontSize="20" Margin="3,88,0,0" VerticalAlignment="Top" />
+                        <Label       x:Name="con_lblErreurConnexion" Content="Erreur de connexion"  HorizontalAlignment="Left" FontSize="20" Margin="5,139,0,0" VerticalAlignment="Top" Foreground="Red"/>
+                        <TextBox     x:Name="Con_TxtIdentifiant"     FontSize="14"                  HorizontalAlignment="Left" Margin="177,19,-44,0" VerticalAlignment="Top" Width="177" Height="23" TextWrapping="Wrap"/>
+                        <PasswordBox x:Name="Con_TxtMotPasse"        FontSize="14"                  HorizontalAlignment="Left" Margin="178,56,0,0"   VerticalAlignment="Top" Width="176" Height="25"/>
+                        <ComboBox    x:Name="Con_CmbHotel"           FontSize="14"                  HorizontalAlignment="Left" Margin="178,93,0,0"   VerticalAlignment="Top" Width="176" Height="23" />
+                        
+                        <Button      x:Name="Con_BtnConnexion"       Background="Transparent"       HorizontalAlignment="Left" Margin="202,125,0,0"  VerticalAlignment="Top" Width="158" Height="56" BorderBrush="Transparent"  BorderThickness="0">
+                            <Border CornerRadius="5" Background="teal" BorderBrush="Black" BorderThickness="3" Height="46" Width="148" Margin="0"  >
                                 <TextBlock Text="Connexion" Margin="27,6,19.6,7.8" FontSize="20"/>
                             </Border>
                         </Button>
-                        <Label x:Name="con_lblErreurConnexion" Content="Erreur de connexion" HorizontalAlignment="Left" Margin="5,139,0,0" VerticalAlignment="Top" Foreground="Red" FontSize="20"/>
-                        <ComboBox    x:Name="Con_CmbHotel"        HorizontalAlignment="Left" Margin="178,93,0,0"   VerticalAlignment="Top" FontSize="14" Width="176" Height="23" />
                     </Grid>
                 </Border>
             </GroupBox>

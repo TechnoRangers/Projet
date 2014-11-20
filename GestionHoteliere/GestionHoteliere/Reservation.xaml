@@ -12,67 +12,70 @@
     </Window.Background>
     <Viewbox Stretch="Uniform">
         <Grid x:Name="Res_grdReservation" Margin="10,0,3.2,-3.8" Width="917">
-            <GroupBox x:Name="Res_GroupBoxSejour" Header="Séjour" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="266,47,0,0" VerticalAlignment="Top" Height="176" Width="625" FontSize="16" RenderTransformOrigin="0.5,0.5">
-                <Border CornerRadius="5"  Margin="0,0,-2.2,-1.6" BorderBrush="Black" BorderThickness="4">
+
+            <Label x:Name="Res_LblChambre"          Content="Chambres"      HorizontalAlignment="Left" Margin="0,42,0,0"    VerticalAlignment="Top" FontSize="24" />
+            <ListView x:Name="res_lbvChambres"      ItemsSource="{Binding}" HorizontalAlignment="Left" Margin="0,77,0,0"    VerticalAlignment="Top" FontSize="14" Width="260" Height="219" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Numéro chambre" DisplayMemberBinding="{Binding NoSeqChambre}" Width="Auto" />
+                        <GridViewColumn Header="Nombre Lit"     DisplayMemberBinding="{Binding NbLit}"        Width="Auto" />
+                        <GridViewColumn Header="Lit"            DisplayMemberBinding="{Binding TypeLit}"      Width="Auto" />
+                        <GridViewColumn Header="Étage"          DisplayMemberBinding="{Binding EtageChambre}" Width="Auto"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Label   x:Name="Res_LblNbChambre"     Content="Nombre chambre" HorizontalAlignment="Left" Margin="20,329,0,0"  VerticalAlignment="Top" FontSize="14" Width="122"/>
+            <TextBox x:Name="Res_TextBoxNbChambre" TextWrapping="Wrap"      HorizontalAlignment="Left" Margin="142,329,0,0" VerticalAlignment="Top" FontSize="14" Width="83"  Height="23" IsEnabled="False"/>
+
+            <GroupBox x:Name="Res_GroupBoxSejour" Header="Séjour" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="266,47,0,0" VerticalAlignment="Top" Height="176" Width="625" FontSize="24" >
+                <Border CornerRadius="5"  Margin="0,0,-2.2,-1.6" BorderBrush="Black" BorderThickness="3">
                     <Grid x:Name="Res_GrdSejour" HorizontalAlignment="Left" Height="171" Margin="10,-12,-2.2,-10.2" VerticalAlignment="Top" Width="605">
-                        <Label x:Name="Res_LblDateArr" Content="Date d'arrivée" HorizontalAlignment="Left" Margin="304,18,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.205,1.789" FontSize="14"/>
-                        <DatePicker x:Name="Res_DatePickerArr" HorizontalAlignment="Left" Margin="416,16,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="Res_LblDateDep" Content="Date départ" HorizontalAlignment="Left" Margin="304,48,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.652,0.525" FontSize="14"/>
-                        <DatePicker x:Name="Res_DatePikerDep" HorizontalAlignment="Left" Margin="416,48,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="Res_LblNbAdulte" Content="Nombre personnes" HorizontalAlignment="Left" Margin="10,116,0,0" VerticalAlignment="Top" FontSize="14"/>
-                        <Label x:Name="Res_LblTypeChambre" Content="Type chambre" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" FontSize="14"/>
-                        <Label x:Name="Res_LblNoChambre" Content="No chambre" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.508,-0.005" FontSize="14"/>
-                        <TextBox x:Name="Res_TextBoxNoChambre" Text="{Binding NoSeqChambre}" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="137,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" FontSize="14"/>
-                        <TextBox x:Name="Res_TextBoxTypeChambre" Text="{Binding CodeTypeChambre}" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="137,48,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="131" FontSize="14"/>
-                        <Label Content="Nom locataire" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" FontSize="14"/>
-                        <Label Content="Prénom locataire" HorizontalAlignment="Left" Margin="304,82,0,0" VerticalAlignment="Top" FontSize="14"/>
-                        <TextBox x:Name="Res_TextBoxNomLocataire" MaxLength="20" HorizontalAlignment="Left" Height="23" Margin="137,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131" FontSize="14"/>
-                        <TextBox x:Name="Res_TextBoxPrenomLocataire" MaxLength="20" HorizontalAlignment="Left" Height="23" Margin="416,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" FontSize="14"/>
-                        <xctk:MaskedTextBox x:Name="Res_TextBoxNbAdulte" PromptChar=" " HorizontalAlignment="Left" Mask="000" Height="23" Margin="137,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="54" FontSize="14"/>
-                        <Label x:Name="Res_LblNomForfait" Content="Nom forfait " HorizontalAlignment="Left" Margin="304,116,0,0" VerticalAlignment="Top" Width="106" FontSize="14"/>
-                        <TextBox x:Name="Res_TxtBoxNomForfait" HorizontalAlignment="Left" Height="23" Margin="416,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="176" FontSize="14" IsEnabled="False"/>
+                        <Label              x:Name="Res_LblNoChambre"           Content="No chambre"                                 HorizontalAlignment="Left" Margin="10,14,0,0"   VerticalAlignment="Top" FontSize="14"/>
+                        <TextBox            x:Name="Res_TextBoxNoChambre"       Text="{Binding NoSeqChambre}"    TextWrapping="Wrap" HorizontalAlignment="Left" Margin="137,14,0,0"  VerticalAlignment="Top" FontSize="14" Width="54"  Height="23" IsEnabled="False" />
+                        <Label              x:Name="Res_LblTypeChambre"         Content="Type chambre"                               HorizontalAlignment="Left" Margin="10,48,0,0"   VerticalAlignment="Top" FontSize="14"/>
+                        <TextBox            x:Name="Res_TextBoxTypeChambre"     Text="{Binding CodeTypeChambre}" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="137,48,0,0"  VerticalAlignment="Top" FontSize="14" Width="131" Height="23" IsEnabled="False" />
+                        <Label              x:Name="Res_LblNomLoc"              Content="Nom locataire"                              HorizontalAlignment="Left" Margin="10,82,0,0"   VerticalAlignment="Top" FontSize="14"/>
+                        <TextBox            x:Name="Res_TextBoxNomLocataire"    MaxLength="20"                   TextWrapping="Wrap" HorizontalAlignment="Left" Margin="137,82,0,0"  VerticalAlignment="Top" FontSize="14" Width="131" Height="23" />
+                        <Label              x:Name="Res_LblPrenLoc"             Content="Prénom locataire"                           HorizontalAlignment="Left" Margin="304,82,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                        <TextBox            x:Name="Res_TextBoxPrenomLocataire" MaxLength="20"                   TextWrapping="Wrap" HorizontalAlignment="Left" Margin="416,83,0,0"  VerticalAlignment="Top" FontSize="14" Width="176" Height="23" />
+                        <Label              x:Name="Res_LblNbAdulte"            Content="Nombre personnes"                           HorizontalAlignment="Left" Margin="10,116,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                        <xctk:MaskedTextBox x:Name="Res_TextBoxNbAdulte"        Mask="000"    PromptChar=" "     TextWrapping="Wrap" HorizontalAlignment="Left" Margin="137,119,0,0" VerticalAlignment="Top" FontSize="14" Width="54"  Height="23" />
+                        <Label              x:Name="Res_LblDateArr"             Content="Date d'arrivée"                             HorizontalAlignment="Left" Margin="304,18,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                        <DatePicker         x:Name="Res_DatePickerArr"                                                               HorizontalAlignment="Left" Margin="416,16,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                        <Label              x:Name="Res_LblDateDep"             Content="Date départ"                                HorizontalAlignment="Left" Margin="304,48,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                        <DatePicker         x:Name="Res_DatePikerDep"                                                                HorizontalAlignment="Left" Margin="416,48,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                        <Label              x:Name="Res_LblNomForfait"          Content="Nom forfait "                               HorizontalAlignment="Left" Margin="304,116,0,0" VerticalAlignment="Top" FontSize="14" Width="106" />
+                        <TextBox            x:Name="Res_TxtBoxNomForfait"       Text=""                          TextWrapping="Wrap" HorizontalAlignment="Left" Margin="416,118,0,0" VerticalAlignment="Top" FontSize="14" Width="176" Height="23" IsEnabled="False"/>
                     </Grid>
                 </Border>
             </GroupBox>
-            <GroupBox x:Name="Res_GroupBoxPaiement" Header="Paiement" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="265,232,0,0" VerticalAlignment="Top" Height="64" Width="632" FontSize="16">
-                <Border CornerRadius="5"  Margin="0,0,-2.6,-1.8" BorderBrush="Black" BorderThickness="4">
+
+            <GroupBox x:Name="Res_GroupBoxPaiement" Header="Paiement" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="265,232,0,0" VerticalAlignment="Top" Height="70" Width="626" FontSize="24">
+                <Border CornerRadius="5"  Margin="0,0,-2.6,-1.8" BorderBrush="Black" BorderThickness="3">
                     <Grid HorizontalAlignment="Left" Height="79" Margin="0,-25,-2.8,-18.8" VerticalAlignment="Top" Width="622">
-                        <Label x:Name="Res_LblMoyenPaiement" Content="Moyen de paiement" HorizontalAlignment="Left" Margin="28,27,0,0" VerticalAlignment="Top" FontSize="14"/>
-                        <ComboBox x:Name="Res_ComboBoxMoyenPaiement" HorizontalAlignment="Left" Margin="167,27,0,0" VerticalAlignment="Top" Width="120">
+                        <Label    x:Name="Res_LblMoyenPaiement"      Content="Moyen de paiement" HorizontalAlignment="Left" Margin="28,27,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                        <ComboBox x:Name="Res_ComboBoxMoyenPaiement"                             HorizontalAlignment="Left" Margin="167,27,0,0" VerticalAlignment="Top" FontSize="14" Width="120" >
                             <ComboBoxItem Content="Carte de crédit"/>
                             <ComboBoxItem Content="Argent"/>
                             <ComboBoxItem Content="Chèque"/>
                         </ComboBox>
-                        <Label x:Name="Res_LblMontant" Content="Montant" HorizontalAlignment="Left" Margin="292,27,0,0" VerticalAlignment="Top" FontSize="14"/>
-                        <TextBox x:Name="Res_TextBoxMontant" HorizontalAlignment="Left" Height="23" Margin="361,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                        <Label x:Name="Res_LblDollars" Content="$" HorizontalAlignment="Left" Margin="486,27,0,0" VerticalAlignment="Top"/>
+                        <Label    x:Name="Res_LblMontant"            Content="Montant"           HorizontalAlignment="Left" Margin="292,27,0,0" VerticalAlignment="Top" FontSize="14"/>
+                        <TextBox  x:Name="Res_TextBoxMontant"        Text="" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="361,29,0,0" VerticalAlignment="Top" FontSize="14" Width="120" Height="23"/>
+                        <Label    x:Name="Res_LblDollars"            Content="$"                 HorizontalAlignment="Left" Margin="486,27,0,0" VerticalAlignment="Top" FontSize="14"/>
                     </Grid>
                 </Border>
             </GroupBox>
-            <Button  x:Name="Res_btnReserver" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="741,307,0,0" VerticalAlignment="Top" Width="156" Height="45" FontSize="20">
-                <Border CornerRadius="5" Height="35" Width="123" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+
+            <Button  x:Name="Res_btnReserver" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="747,311,0,-0.2" VerticalAlignment="Top" Width="156" Height="45" FontSize="20">
+                <Border CornerRadius="5" Height="35" Width="123" Background="YellowGreen" Margin="0" BorderBrush="Black" BorderThickness="3">
                     <TextBlock Text="Réserver" FontSize="14" Margin="31,5,0,0.2" HorizontalAlignment="Left" Width="55"/>
                 </Border>
             </Button>
-            <Button  x:Name="Res_btnAnnuler" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="580,307,0,0" VerticalAlignment="Top" Width="156" Height="45" FontSize="20">
-                <Border CornerRadius="5" Height="35" Width="123" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+            <Button  x:Name="Res_btnAnnuler" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="580,312,0,-1.2" VerticalAlignment="Top" Width="156" Height="45" FontSize="20">
+                <Border CornerRadius="5" Height="35" Width="123" Background="DarkRed" Margin="0" BorderBrush="Black" BorderThickness="3">
                     <TextBlock Text="Annuler" FontSize="14" Margin="33,5,0,0.2" HorizontalAlignment="Left" Width="55"/>
                 </Border>
             </Button>
-            <ListView x:Name="res_lbvChambres" ItemsSource="{Binding}" Margin="0,47,657,141.6">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Numéro chambre" Width="Auto" DisplayMemberBinding="{Binding NoSeqChambre}"/>
-                        <GridViewColumn Header="Nombre Lit" Width="Auto" DisplayMemberBinding="{Binding NbLit}"/>
-                        <GridViewColumn Header="Lit" Width="Auto" DisplayMemberBinding="{Binding TypeLit}"/>
-                        <GridViewColumn Header="Étage" Width="Auto" DisplayMemberBinding="{Binding EtageChambre}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-            <Label x:Name="Res_LblNbChambre" Content="Nombre chambre" HorizontalAlignment="Left" Margin="20,329,0,0" VerticalAlignment="Top" Width="122" FontSize="14"/>
-            <TextBox x:Name="Res_TextBoxNbChambre"  HorizontalAlignment="Left" Height="23" Margin="142,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" IsEnabled="False"/>
-            <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="1458,381,-424,0" VerticalAlignment="Top" Width="100"/>
-            <Label Content="Chambres" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Viewbox>
 </Window>
