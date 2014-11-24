@@ -13,28 +13,28 @@
                            Where tabCategorie.CodeCategorie <> "TOU"
                            Select tabCategorie
 
-        ajoutinv_cmbCategorie.ItemsSource = resCategorie.ToList
-        ajoutinv_cmbCategorie.DisplayMemberPath = "NomCategorie"
-        ajoutinv_cmbCategorie.SelectedValue = resCategorie.ToList.First
+        AjtInv_CmbCategorie.ItemsSource = resCategorie.ToList
+        AjtInv_CmbCategorie.DisplayMemberPath = "NomCategorie"
+        AjtInv_CmbCategorie.SelectedValue = resCategorie.ToList.First
         MaCategorie = resCategorie.ToList.First
 
         'Remplir ComboBox Fournisseur
         Dim resFournisseur = From tabFournisseur In MaBD.tblFournisseur
                             Select tabFournisseur
 
-        ajoutinv_cmbFournisseur.ItemsSource = resFournisseur.ToList
-        ajoutinv_cmbFournisseur.DisplayMemberPath = "NomFournisseur"
-        ajoutinv_cmbFournisseur.SelectedValue = resFournisseur.ToList.First
+        AjtInv_CmbFournisseur.ItemsSource = resFournisseur.ToList
+        AjtInv_CmbFournisseur.DisplayMemberPath = "NomFournisseur"
+        AjtInv_CmbFournisseur.SelectedValue = resFournisseur.ToList.First
         MonFournisseur = resFournisseur.ToList.First
     End Sub
 
-    Private Sub ajoutinv_btnConfirmer_Click(sender As Object, e As RoutedEventArgs) Handles ajoutinv_btnConfirmer.Click
+    Private Sub AjtInv_btnConfirmer_Click(sender As Object, e As RoutedEventArgs) Handles AjtInv_btnConfirmer.Click
         Dim NouvProduit As New tblFourniture
 
         Try
-            NouvProduit.CodeFourniture = ajoutinv_txtCodeFourniture.Text
+            NouvProduit.CodeFourniture = AjtInv_TxtCodeFourniture.Text
             NouvProduit.CodeCategorie = MaCategorie.CodeCategorie
-            NouvProduit.DescFourniture = ajoutinv_txtDescription.Text
+            NouvProduit.DescFourniture = AjtInv_txtDesc.Text
 
             MaBD.tblFourniture.Add(NouvProduit)
             MaBD.SaveChanges()
@@ -44,7 +44,7 @@
 
                 FournitureFournisseur.CodeFourniture = NouvProduit.CodeFourniture
                 FournitureFournisseur.CodeFournisseur = MonFournisseur.CodeFournisseur
-                FournitureFournisseur.PrixFournitureFournisseur = ajoutinv_txtPrix.Text
+                FournitureFournisseur.PrixFournitureFournisseur = AjtInv_txtPrix.Text
 
                 MaBD.tblFournitureFournisseur.Add(FournitureFournisseur)
                 MaBD.SaveChanges()
@@ -54,15 +54,16 @@
         Catch ex As Exception
             MessageBox.Show("Ce produit existe déjà.")
         End Try
-        
+
         Me.Close()
     End Sub
 
-    Private Sub ajoutinv_cmbFournisseur_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ajoutinv_cmbFournisseur.SelectionChanged
-        MonFournisseur = CType(ajoutinv_cmbFournisseur.SelectedValue, tblFournisseur)
+    Private Sub AjtInv_cmbFournisseur_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles AjtInv_cmbFournisseur.SelectionChanged
+        MonFournisseur = CType(AjtInv_cmbFournisseur.SelectedValue, tblFournisseur)
     End Sub
 
-    Private Sub ajoutinv_cmbCategorie_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ajoutinv_cmbCategorie.SelectionChanged
-        MaCategorie = CType(ajoutinv_cmbCategorie.SelectedValue, tblCategorieFourniture)
+    Private Sub AjtInv_cmbCategorie_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles AjtInv_cmbCategorie.SelectionChanged
+        MaCategorie = CType(AjtInv_cmbCategorie.SelectedValue, tblCategorieFourniture)
     End Sub
+
 End Class

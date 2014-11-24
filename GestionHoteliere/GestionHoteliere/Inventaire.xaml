@@ -10,40 +10,40 @@
     </Window.Background>
     <Viewbox Stretch="Uniform">
         <Grid Margin="0,0,-0.6,0" VerticalAlignment="Top">
-            <GroupBox x:Name="Inv_GroupBoxRecherche" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="329,35,0,0" VerticalAlignment="Top" Height="59" Width="347" Header="Recherche">
-                <Border CornerRadius="5"  Margin="0,0,-2.2,-1.6" BorderBrush="Black" BorderThickness="4">
+            <GroupBox x:Name="Inv_GroupBoxRecherche" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="329,35,0,0" VerticalAlignment="Top" Height="77" Width="347" Header="Recherche" FontSize="24">
+                <Border CornerRadius="5"  Margin="0,0,-2.2,-1.6" BorderBrush="Black" BorderThickness="3">
                     <Grid HorizontalAlignment="Left" Height="59" Margin="13,-6,0,-16.2" VerticalAlignment="Top" Width="330">
-                        <TextBox x:Name="Inv_textBoxRechercheCode" HorizontalAlignment="Left" Height="23" Margin="122,11,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" TabIndex="2"/>
-                        <Label x:Name="Inv_LblCodeFourniture" Content="Code fourniture" HorizontalAlignment="Left" Margin="-4,7,0,0" VerticalAlignment="Top" FontSize="16"/>
+                        <TextBox x:Name="Inv_textBoxRechercheCode" HorizontalAlignment="Left" Height="23" Margin="122,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="181" FontSize="14" TabIndex="2"/>
+                        <Label x:Name="Inv_LblCodeFourniture" Content="Code fourniture" HorizontalAlignment="Left" Margin="-4,11,0,0" VerticalAlignment="Top" FontSize="14"/>
                     </Grid>
                 </Border>
             </GroupBox>
             <Button  Name="Inv_btnAjouter" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="809,191,0,0" VerticalAlignment="Top" Width="178" Height="40" FontSize="18" TabIndex="4">
-                <Border CornerRadius="5" Height="30" Width="168" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+                <Border CornerRadius="5" Height="30" Width="168" Background="YellowGreen" Margin="0" BorderBrush="Black" BorderThickness="3">
                     <TextBlock Text="Ajouter un produit" FontSize="14" Margin="25,3,0,2.4" HorizontalAlignment="Left" Width="113"/>
                 </Border>
             </Button>
             <Button  Name="Inv_btnSupprimer" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="810,236,-1,0" VerticalAlignment="Top" Width="178" Height="40" TabIndex="5">
-                <Border CornerRadius="5" Height="30" Width="168" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+                <Border CornerRadius="5" Height="30" Width="168" Background="#e46e1a" Margin="0" BorderBrush="Black" BorderThickness="3">
                     <TextBlock Text="Supprimer un produit " FontSize="14" Margin="16,3,0,2.4" HorizontalAlignment="Left" Width="129"/>
                 </Border>
             </Button>
             <Label x:Name="Inv_Hotel" Content="Selection Hôtel " HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="110" FontSize="14"/>
             <ComboBox x:Name="Inv_ComboBoxHotel" HorizontalAlignment="Left" Margin="125,65,0,0" VerticalAlignment="Top" Width="183" Height="22" IsReadOnly="True" TabIndex="1"/>
             <Button  Name="Inv_btnCommander" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="808,332,0,0" VerticalAlignment="Top" Width="178" Height="40" FontSize="16" TabIndex="6">
-                <Border CornerRadius="5" Height="30" Width="168" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+                <Border CornerRadius="5" Height="30" Width="168" Background="Teal" Margin="0" BorderBrush="Black" BorderThickness="3">
                     <TextBlock Text="Commander un produit" FontSize="14" Margin="9,2,-7,3.4" HorizontalAlignment="Left" Width="158"/>
                 </Border>
             </Button>
             <Button  Name="Inv_btnAnnuler" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="809,432,0,0" VerticalAlignment="Top" Width="177" Height="50" FontSize="16" TabIndex="8">
-                <Border CornerRadius="5" Height="26" Width="167" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+                <Border CornerRadius="5" Height="26" Width="167" Background="#e46e1a" Margin="0" BorderBrush="Black" BorderThickness="3">
                     <TextBlock Text="Annuler" FontSize="14" Margin="57,1,0,-3.4" HorizontalAlignment="Left" Width="47"/>
                 </Border>
             </Button>
-            <GroupBox x:Name="Inv_GroupBoxFiltre" Background="Transparent" BorderBrush="Transparent" BorderThickness="0"  Header="Catégories" HorizontalAlignment="Left" Margin="810,117,0,0" VerticalAlignment="Top" Height="69" Width="177" FontSize="16">
-                <Border CornerRadius="5"  Margin="0,0,-2.2,-1.6" BorderBrush="Black" BorderThickness="4">
+            <GroupBox x:Name="Inv_GroupBoxFiltre" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" FontSize="24" Header="Catégories" HorizontalAlignment="Left" Margin="810,117,0,0" VerticalAlignment="Top" Height="69" Width="177">
+                <Border CornerRadius="5"  Margin="0,0,-2.2,-6.4" BorderBrush="Black" BorderThickness="3">
                     <Grid HorizontalAlignment="Left" Height="51" Margin="10,0,0,0" VerticalAlignment="Top" Width="147">
-                        <ComboBox x:Name="inv_cmbCategorie" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="120" TabIndex="3"/>
+                        <ComboBox x:Name="inv_cmbCategorie" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" Width="120" FontSize="14" TabIndex="3"/>
                     </Grid>
                 </Border>
             </GroupBox>
@@ -60,12 +60,12 @@
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="Inv_BtnImprimer" IsEnabled="False"  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="809,377,0,0" VerticalAlignment="Top" Width="177" Height="50" FontSize="16">
-                <Border CornerRadius="5" Height="30" Width="167" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+                <Border CornerRadius="5" Height="30" Width="167" Background="YellowGreen" Margin="0" BorderBrush="Black" BorderThickness="3">
                     <TextBlock Text="Imprimer" FontSize="14" Margin="51,2,0,3.4" HorizontalAlignment="Left" Width="55"/>
                 </Border>
             </Button>
             <Button  Background="Transparent" BorderBrush="Transparent" BorderThickness="0" x:Name="Inv_btnAjoutHotel" HorizontalAlignment="Left" Margin="810,284,-1,0" VerticalAlignment="Top" Width="178" RenderTransformOrigin="0.038,0.038" Height="40" TabIndex="5">
-                <Border CornerRadius="5" Height="30" Width="168" Background="Chartreuse" Margin="0" BorderBrush="Black" BorderThickness="4">
+                <Border CornerRadius="5" Height="30" Width="168" Background="YellowGreen" Margin="0" BorderBrush="Black" BorderThickness="3">
                     <TextBlock Text="Assigner un produit " FontSize="14" Margin="22,3,0,2.4" HorizontalAlignment="Left" Width="115" RenderTransformOrigin="0.5,0.5">
                         <TextBlock.RenderTransform>
                             <TransformGroup>
