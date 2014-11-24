@@ -3,8 +3,8 @@
     Dim MaBD As P2014_BD_GestionHotelEntities
     Dim _maChambre As tblChambre
 
-    Sub New()
-        MaBD = New P2014_BD_GestionHotelEntities
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities)
+        MaBD = _BD
         _maChambre = New tblChambre
         InitializeComponent()
     End Sub
@@ -41,7 +41,7 @@
         If _maChambre.NoSeqChambre <> 0 Then
             Dim res = From t1 In _maChambre.tblFournitureChambre Select t1.tblFourniture
 
-            Dim res2 = From el In res Select New With {.Fourniture = el, .EstCocher = False}
+            Dim res2 = From el In res Select New With {.Fourniture = el, .ARemplacer = False, .AReparer = False}
 
             Che_Datagrid.ItemsSource = res2.ToList
             'Dim res = From t1 In MaBD.tblFournitureChambre Join t2 In MaBD.tblFourniture On t1.CodeFourniture Equals t2.CodeFourniture
@@ -74,14 +74,16 @@
 
         If Che_ComboBoxNoChambre.SelectedItem IsNot Nothing Then
 
-            Dim res = From el In Che_Datagrid.ItemsSource Where el.EstCocher = True Select el.Fourniture
+            Dim res = From el In Che_Datagrid.ItemsSource Where el.ARemplacer = True Select el.Fourniture
+
+            Dim res2 = From el In Che_Datagrid.ItemsSource Where el.AReparer = True Select el.Fourniture
 
             For Each f As tblFourniture In res
-                Dim res2 = From t1 In MaBD.tblEntretienFournitureChambre
+                Dim res3 = From t1 In MaBD.tblEntretienFournitureChambre
                            Where f.CodeFourniture = t1.CodeFourniture And t1.NoSeqChambre = _maChambre.NoSeqChambre
                            Select t1
 
-                If res2.Count <> 0 Then
+                If res3.Count <> 0 Then
                     Dim update = (From t1 In MaBD.tblEntretienFournitureChambre
                  Where f.CodeFourniture = t1.CodeFourniture Select t1)
 
@@ -120,11 +122,51 @@
                 End If
             Next
 
+            For Each f2 As tblFourniture In res2
+                Dim res4 = From t1 In MaBD.tblEntretienFournitureChambre
+                           Where f2.CodeFourniture = t1.CodeFourniture And t1.NoSeqChambre = _maChambre.NoSeqChambre
+                           Select t1
 
-            If res.ToList.Count <> 0 Then
+                If res4.Count <> 0 Then
+                    Dim update = (From t1 In MaBD.tblEntretienFournitureChambre
+                                  Where f2.CodeFourniture = t1.CodeFourniture Select t1)
+
+                    update.First().EtatFourniture = "A réparer"
+                    update.First().CommentaireFourniture = Commentaires.Text
+                    update.First().DateDemande = Date.Today
+                    update.First().StatutEntretien = "En cours"
+
+                    Try
+                        MaBD.SaveChanges()
+                    Catch ex As Exception
+                        MessageBox.Show("Erreur")
+                    End Try
+
+                Else
+                    Dim MonItem As New tblEntretienFournitureChambre()
+                    Try
+                        MonItem.EtatFourniture = "A réparer"
+                        MonItem.CommentaireFourniture = Commentaires.Text
+                        MonItem.DateDemande = Date.Today
+                        MonItem.StatutEntretien = "En cours"
+                        MonItem.CodeFourniture = f2.CodeFourniture
+                        MonItem.NoSeqChambre = _maChambre.NoSeqChambre
+                        MonItem.NoEmploye = 1009
+
+
+                        MaBD.tblEntretienFournitureChambre.Add(MonItem)
+                        MaBD.SaveChanges()
+                    Catch ex As Exception
+                        MaBD.tblEntretienFournitureChambre.Remove(MonItem)
+                        MessageBox.Show("Erreur lors de l'ajout de l'item")
+                    End Try
+                End If
+            Next
+
+            If res.ToList.Count <> 0 Or res2.ToList.Count <> 0 Then
 
                 MessageBox.Show("L'enregistrement a bien été effectuer")
-            Else
+            ElseIf res.ToList.Count = 0 And res2.ToList.Count = 0 Then
                 MessageBox.Show("Aucune fourniture n'a été cochée")
             End If
 

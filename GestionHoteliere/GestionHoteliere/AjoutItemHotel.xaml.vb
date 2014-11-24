@@ -11,14 +11,14 @@
         MonHotel = _MonHotel
     End Sub
 
-    Private Sub ajoutitemhot_btnConfirmer_Click(sender As Object, e As RoutedEventArgs) Handles ajoutitemhot_btnConfirmer.Click
+    Private Sub AjtIH_btnConfirmer_Click(sender As Object, e As RoutedEventArgs) Handles AjtIH_BtnConfirmer.Click
         Try
             If FournitureSelection IsNot Nothing Then
                 FournitureHotel.CodeFourniture = FournitureSelection.CodeFourniture
                 FournitureHotel.CodeHotel = MonHotel.CodeHotel
-                FournitureHotel.QuantiteMin = ajoutitemhot_txtQuantiteMin.Text
-                FournitureHotel.QuantiteMax = ajoutitemhot_txtQuantiteMax.Text
-                FournitureHotel.QuantiteFournitureHotel = ajoutitemhot_txtQuantite.Text
+                FournitureHotel.QuantiteMin = AjtIH_TxtQuantiteMin.Text
+                FournitureHotel.QuantiteMax = AjtIH_TxtQuantiteMax.Text
+                FournitureHotel.QuantiteFournitureHotel = AjtIH_TxtQuantite.Text
 
                 MaBD.tblFournitureHotel.Add(FournitureHotel)
                 MaBD.SaveChanges()
@@ -34,20 +34,20 @@
                               Where FournitureHotel.CodeFourniture = FournitureSelection.CodeFourniture
                               Select tabfourhot).ToList.First
 
-            FournitureHotel.QuantiteFournitureHotel += ajoutitemhot_txtQuantite.Text
+            FournitureHotel.QuantiteFournitureHotel += AjtIH_TxtQuantite.Text
             MaBD.SaveChanges()
             MessageBox.Show("L'item existait déjà, la quantité à été additionnée.")
         End Try
         Me.Close()
     End Sub
 
-    Private Sub ajoutitemhot_lbvFourniture_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ajoutitemhot_lbvFourniture.SelectionChanged
-        FournitureSelection = CType(ajoutitemhot_lbvFourniture.SelectedItem, tblFourniture)
+    Private Sub AjtIH_lbvFourniture_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles AjtIH_lbvFourniture.SelectionChanged
+        FournitureSelection = CType(AjtIH_lbvFourniture.SelectedItem, tblFourniture)
     End Sub
 
     Sub FiltrerDatagrid()
         If Fournisseur IsNot Nothing Then
-            Fournisseur = CType(ajoutitemhot_cmbFournisseur.SelectedValue, tblFournisseur)
+            Fournisseur = CType(AjtIH_CmbFournisseur.SelectedValue, tblFournisseur)
 
             Dim Fournitures = From tabFourniture In MaBD.tblFourniture
                               Join tabFournitureFournisseur In MaBD.tblFournitureFournisseur On tabFourniture.CodeFourniture Equals tabFournitureFournisseur.CodeFourniture
@@ -55,22 +55,22 @@
                               Where tabFournisseur.CodeFournisseur = Fournisseur.CodeFournisseur
                               Select tabFourniture
 
-            ajoutitemhot_lbvFourniture.ItemsSource = Fournitures.ToList
+            AjtIH_lbvFourniture.ItemsSource = Fournitures.ToList
         End If
     End Sub
 
-    Private Sub ajoutitemhot_cmbFournisseur_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles ajoutitemhot_cmbFournisseur.SelectionChanged
+    Private Sub AjtIH_CmbFournisseur_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles AjtIH_CmbFournisseur.SelectionChanged
         FiltrerDatagrid()
     End Sub
 
-    Private Sub ajoutitemhot_frmAjoutItemHotel_Loaded(sender As Object, e As RoutedEventArgs) Handles ajoutitemhot_frmAjoutItemHotel.Loaded
+    Private Sub AjtIH_frmAjoutItemHotel_Loaded(sender As Object, e As RoutedEventArgs) Handles AjtIH_frmAjoutItemHotel.Loaded
         Dim res = From tabFournisseur In MaBD.tblFournisseur
                   Select tabFournisseur
 
-        ajoutitemhot_cmbFournisseur.ItemsSource = res.ToList
-        ajoutitemhot_cmbFournisseur.DisplayMemberPath = "NomFournisseur"
-        ajoutitemhot_cmbFournisseur.SelectedValue = res.ToList.First
-        Fournisseur = ajoutitemhot_cmbFournisseur.SelectedValue
+        AjtIH_CmbFournisseur.ItemsSource = res.ToList
+        AjtIH_CmbFournisseur.DisplayMemberPath = "NomFournisseur"
+        AjtIH_CmbFournisseur.SelectedValue = res.ToList.First
+        Fournisseur = AjtIH_CmbFournisseur.SelectedValue
         FiltrerDatagrid()
     End Sub
 End Class

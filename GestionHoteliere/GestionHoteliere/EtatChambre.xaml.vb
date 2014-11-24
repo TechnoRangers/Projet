@@ -3,10 +3,11 @@
     Dim MaBD As P2014_BD_GestionHotelEntities
     Dim _maChambre As tblChambre
 
-    Sub New()
-        MaBD = New P2014_BD_GestionHotelEntities
-        _maChambre = New tblChambre
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities)
         InitializeComponent()
+        MaBD = _BD
+        _maChambre = New tblChambre
+
     End Sub
     Private Sub Eta_FrmEta_Loaded(sender As Object, e As RoutedEventArgs) Handles Eta_FrmEta.Loaded
         'Remplir ComboBoxNoChambre
@@ -24,7 +25,7 @@
 
         FiltrerDatagrid()
 
-     
+
 
     End Sub
 
@@ -80,7 +81,7 @@
         Me.Close()
     End Sub
 
- 
+
     Private Sub Eta_BtnValider_Click(sender As Object, e As RoutedEventArgs) Handles Eta_BtnValider.Click
 
         Dim update = (From t1 In MaBD.tblEntretienFournitureChambre Join t2 In MaBD.tblFourniture On t1.CodeFourniture Equals t2.CodeFourniture
