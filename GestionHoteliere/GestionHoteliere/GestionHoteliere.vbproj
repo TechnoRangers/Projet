@@ -140,11 +140,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
-    <Compile Include="CheckUp.xaml.vb">
-      <DependentUpon>CheckUp.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ChangementHoraire.xaml.vb">
       <DependentUpon>ChangementHoraire.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CheckUp.xaml.vb">
+      <DependentUpon>CheckUp.xaml</DependentUpon>
     </Compile>
     <Compile Include="CheckUpSalle.xaml.vb">
       <DependentUpon>CheckUpSalle.xaml</DependentUpon>
@@ -376,13 +376,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CheckUp.xaml">
-    </Page>
     <Page Include="AjoutItemInventaire.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChangementHoraire.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CheckUp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

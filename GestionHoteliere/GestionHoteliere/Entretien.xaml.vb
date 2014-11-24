@@ -9,7 +9,7 @@
 
     Private Sub Ent_BtnCheckUp_Click(sender As Object, e As RoutedEventArgs) Handles Ent_BtnCheckUp.Click
 
-        Dim CheckUp As New CheckUp
+        Dim CheckUp As New CheckUp(MaBD)
         CheckUp.Show()
         Me.Close()
 
@@ -18,7 +18,7 @@
 
     Private Sub Ent_BtnEtatChambre_Click(sender As Object, e As RoutedEventArgs) Handles Ent_BtnEtatChambre.Click
 
-        Dim EtatChambre As New EtatChambre
+        Dim EtatChambre As New EtatChambre(MaBD)
         EtatChambre.Show()
         Me.Close()
 
