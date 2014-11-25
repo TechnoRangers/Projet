@@ -21,12 +21,12 @@
                         <TextBox     x:Name="Con_TxtIdentifiant"     FontSize="14"                  HorizontalAlignment="Left" Margin="177,19,-44,0" VerticalAlignment="Top" Width="177" Height="23" TextWrapping="Wrap"/>
                         <PasswordBox x:Name="Con_TxtMotPasse"        FontSize="14"                  HorizontalAlignment="Left" Margin="178,56,0,0"   VerticalAlignment="Top" Width="176" Height="25"/>
                         <ComboBox    x:Name="Con_CmbHotel"           FontSize="14"                  HorizontalAlignment="Left" Margin="178,93,0,0"   VerticalAlignment="Top" Width="176" Height="23" />
-                        
-                        <Button      x:Name="Con_BtnConnexion"       Background="Transparent"       HorizontalAlignment="Left" Margin="202,125,0,0"  VerticalAlignment="Top" Width="158" Height="56" BorderBrush="Transparent"  BorderThickness="0">
-                            <Border CornerRadius="5" Background="teal" BorderBrush="Black" BorderThickness="3" Height="46" Width="148" Margin="0"  >
-                                <TextBlock Text="Connexion" Margin="27,6,19.6,7.8" FontSize="20"/>
-                            </Border>
-                        </Button>
+
+                        <Border CornerRadius="5" Background="teal" BorderBrush="Black" BorderThickness="3" Height="46" Width="148" Margin="206,134,28,1"  >
+                            <Button      x:Name="Con_BtnConnexion"       Background="Transparent"       HorizontalAlignment="Left" Margin="-3.2,-3.2,-2.4,-2.8"  VerticalAlignment="Top" Width="148" Height="46" BorderBrush="Transparent"  BorderThickness="0">
+                                <TextBlock Text="Connexion" FontSize="20"/>
+                            </Button>
+                        </Border>
                     </Grid>
                 </Border>
             </GroupBox>
