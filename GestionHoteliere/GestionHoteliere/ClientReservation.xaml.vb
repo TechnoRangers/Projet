@@ -100,7 +100,7 @@
                 cli_cmbVille.SelectedValue = VilleClient
 
             Catch ex As Exception
-                MessageBox.Show("Ce client n'est jamais venu à l'hôtel avant.")
+                MessageBox.Show("Erreur")
             End Try
         End If
     End Sub

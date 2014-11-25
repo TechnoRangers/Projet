@@ -6,7 +6,6 @@
     Dim ListeChambreReservation As New List(Of tblChambre)
     Dim ListeReservationChambre As New List(Of tblChambreReservationChambre)
     Dim ReservationChambre As tblReservationChambre
-    Dim PrixReservation As Double
     Dim PrixForfait As Double
 
     Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _ListeChambreReservation As List(Of tblChambre), Optional ByRef _MonForfait As tblForfait = Nothing)
@@ -22,7 +21,12 @@
             ChambReservChambre.NoSeqReservChambre = ReservationChambre.NoSeqReservChambre
             ListeReservationChambre.Add(ChambReservChambre)
             'PrixReservation += Chambre.PrixChambre
-            PrixForfait += _MonForfait.PrixForfait
+            If MonForfait IsNot Nothing Then
+                PrixForfait += _MonForfait.PrixForfait
+            Else
+                PrixForfait = 0
+            End If
+
         Next
         If _MonForfait IsNot Nothing Then
             Res_DatePickerArr.IsEnabled = False
