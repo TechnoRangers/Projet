@@ -10,7 +10,7 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform" Margin="0,0,-6.6,-0.4">
-        <Grid Margin="0,0,3.6,-0.4" Width="1243">
+        <Grid  Width="1243">
             <Grid Height="785" Margin="10,-8,-1,8.2" RenderTransformOrigin="0.5,0.5">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="31.4"/>
@@ -19,108 +19,81 @@
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
 
-                <GroupBox Header="réservation" FontSize="24" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="236" Margin="0,10,-213.6,-214" VerticalAlignment="Top" Width="264">
-                    <Border CornerRadius="5"  Margin="0,1,-2,11.8" BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Width="254">
-                        <Grid>
-                            <Button  x:Name="Men_btnResChambre"   Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="0"  Margin="4,2,4.4,84">
-                                <Border CornerRadius="5" Height="74" Width="221" Background="Teal" Margin="0" BorderBrush="Black" BorderThickness="3" >
-                                    <StackPanel Orientation="Horizontal" Height="70" Margin="-4,0,-4.2,-4.4">
-                                        <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Chambre.jpg" Margin="10,2,20,6.4" RenderTransformOrigin="-9.848,-2.054" Width="105"/>
-                                        <TextBlock Text="Chambre" FontSize="20" Height="34" Margin="0,0,0,18.4" VerticalAlignment="Bottom" Width="74"/>
-                                    </StackPanel>
-                                </Border>
-                            </Button>
-                            <Border CornerRadius="5" Height="74" Width="221" Background="Teal" Margin="13,95,14,13.4" BorderBrush="Black" BorderThickness="3" >
-                                <Button x:Name="Men_btnResSalle" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="0"  HorizontalAlignment="Left" Margin="-3.2,-3.2,-3.4,-3.6" Width="221">
-                                    <StackPanel Orientation="Horizontal" Height="64" Width="211">
-                                        <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Salle.jpg" Margin="10,4,45,4" Width="100"/>
-                                        <TextBlock Text="Salle" FontSize="20" Margin="0,19,0,17" Width="45"/>
-                                    </StackPanel>
-                                </Button>
-                            </Border>
-                        </Grid>
-                    </Border>
+                <GroupBox Header="réservation" FontSize="24"  HorizontalAlignment="Left" Height="184" Margin="1,7,-214.6,-159" VerticalAlignment="Top" Width="264">
+                    <Grid>
+                        <Button Background="Teal"  x:Name="Men_btnResChambre"  Margin="24,44,24,81">
+                            <StackPanel Orientation="Horizontal" Margin="0,6,0,3.8" Width="218">
+                                <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Chambre.jpg" Margin="10,0,20,1.6" RenderTransformOrigin="-9.848,-2.054" Width="103"/>
+                                <TextBlock Text="Chambre" FontSize="20" Height="34" Margin="-10,0,0,8.6" VerticalAlignment="Bottom" Width="83"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Background="Teal" x:Name="Men_btnResSalle"    HorizontalAlignment="Left" Margin="24,115,0,10" Width="216">
+                            <StackPanel Orientation="Horizontal" Height="64" Width="211">
+                                <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Salle.jpg" Margin="10,5,45,9" Width="100"/>
+                                <TextBlock Text="Salle" FontSize="20" Margin="-20,18" Width="45"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
                 </GroupBox>
 
-                <GroupBox Header="Gestion" FontSize="24" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="236" Margin="0,223,-213.6,-427" VerticalAlignment="Top" Width="264">
-                    <Border CornerRadius="5"  Margin="0,1,-2.8,13.8" BorderBrush="Black" BorderThickness="3">
-                        <Grid>
-                            <Button  x:Name="Men_btnInventaire" Background="Transparent" BorderBrush="Transparent" BorderThickness="0"    Margin="4,2,6.4,85.6">
-                                <Border CornerRadius="5" Height="74" Width="221" Background="Teal" Margin="0" BorderBrush="Black" BorderThickness="3" >
-                                    <StackPanel Orientation="Horizontal" Height="70" Margin="-4,0,-4.2,-4.4">
-                                        <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Inventaire.jpg" Margin="10,-2,05,2.4" Width="115"/>
-                                        <TextBlock Text="Inventaire" FontSize="20" Margin="0,20,0,16.4" Width="82"/>
-                                    </StackPanel>
-                                </Border>
-                            </Button>
-                            <Button x:Name="Men_BtnConsoleAdmin" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="88" Margin="7,86,0,0" VerticalAlignment="Top" Width="229">
-                                <Border CornerRadius="5" Height="74" Width="221" Background="Teal" Margin="0" BorderBrush="Black" BorderThickness="3" >
-                                    <StackPanel Orientation="Horizontal" Height="70" Margin="-4,0,-4.2,-4.4">
-                                        <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Ajouter.jpg" Margin="05,4,05,6.4" Width="80"/>
-                                        <TextBlock Text="Console admin" FontSize="20" Margin="0,20,0,16.4" Width="121"/>
-                                    </StackPanel>
-                                </Border>
-                            </Button>
-                        </Grid>
-                    </Border>
+                <GroupBox Header="Gestion" FontSize="24"  HorizontalAlignment="Left" Height="187" Margin="0,196,-213.6,-351" VerticalAlignment="Top" Width="264">
+                    <Grid>
+                        <Button Background="Teal"  x:Name="Men_btnInventaire"     Margin="25,41,25,87.2">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0.4">
+                                <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Inventaire.jpg" Margin="3,4,5,4.2" Width="115"/>
+                                <TextBlock Text="Inventaire" FontSize="20" Margin="-5,16,0,10.2" Width="90"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Background="Teal" x:Name="Men_BtnConsoleAdmin"  HorizontalAlignment="Left" Height="59" Margin="25,114,0,0" VerticalAlignment="Top" Width="214">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,0.2">
+                                <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Ajouter.jpg" Margin="5,6,5,8.2" Width="80"/>
+                                <TextBlock Text="Console admin" FontSize="20" Margin="-12,16,0,20.4" Width="134"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
                 </GroupBox>
 
-                <GroupBox Header="Personnel" FontSize="24" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="229" Margin="2,436,-213.6,-633" VerticalAlignment="Top" Width="262">
-                    <Border CornerRadius="5"  Margin="0,1,-2.4,4.6" BorderBrush="Black" BorderThickness="3">
-                        <Grid>
-                            <Button x:Name="Men_BtnEntretien" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="80" Margin="6,6,0,0" VerticalAlignment="Top" Width="228" Click="Men_BtnEntretien_Click">
-                                <Border CornerRadius="5" Height="74" Width="221" Background="Teal" Margin="0" BorderBrush="Black" BorderThickness="3" >
-                                    <StackPanel Orientation="Horizontal" Height="70" Margin="-4,0,5.8,-4.4">
-                                        <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Entretien.gif" Width="97" Margin="10,4,10,6.4"/>
-                                        <TextBlock Text="Entretien" FontSize="20" Margin="10,20,15,16.4" Width="79" RenderTransformOrigin="0.553,0.191"/>
-                                    </StackPanel>
-                                </Border>
-                            </Button>
-                            <Button x:Name="Men_BtnHoraires" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="6,79,0,0" VerticalAlignment="Top" Width="228" Height="98">
-                                <Border CornerRadius="5" Height="74" Width="221" Background="Teal" Margin="0" BorderBrush="Black" BorderThickness="3" >
-                                    <StackPanel Orientation="Horizontal" Height="63" Margin="-4,1,-4.2,1.6">
-                                        <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Horaires.jpg" Width="65" Margin="20,4,33,6.2"/>
-                                        <TextBlock Text="Horaires" FontSize="20" Margin="10,17,15,25.2" Width="71"/>
-                                    </StackPanel>
-                                </Border>
-                            </Button>
-                        </Grid>
-                    </Border>
+                <GroupBox Header="Personnel" FontSize="24"  HorizontalAlignment="Left" Height="183" Margin="0,388,-211.6,-539" VerticalAlignment="Top" Width="262">
+                    <Grid Margin="0,0,0,-0.2">
+                        <Button Background="Teal" x:Name="Men_BtnEntretien"  HorizontalAlignment="Left" Height="62" Margin="24,42,0,0" VerticalAlignment="Top" Width="214" Click="Men_BtnEntretien_Click">
+                            <StackPanel Orientation="Horizontal" Height="70" Margin="-4,0,5.8,-4.4">
+                                <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Entretien.gif" Width="97" Margin="10,6,10,14.4"/>
+                                <TextBlock Text="Entretien" FontSize="20" Margin="10,20,15,16.4" Width="79" RenderTransformOrigin="0.553,0.191"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Background="Teal" x:Name="Men_BtnHoraires"  HorizontalAlignment="Left" Margin="24,109,0,0" VerticalAlignment="Top" Width="214" Height="62">
+                            <StackPanel Orientation="Horizontal" Height="63" Margin="-4,1,-4.2,1.6">
+                                <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Horaires.jpg" Width="65" Margin="20,4,33,6.2"/>
+                                <TextBlock Text="Horaires" FontSize="20" Margin="10,17,15,18.2" Width="78"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
                 </GroupBox>
 
-                <GroupBox Header="Statistique" FontSize="24" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="133" Margin="2,650,-213.6,-751" VerticalAlignment="Top" Width="262">
-                    <Border CornerRadius="5"  Margin="0,1,-2.4,-6.6" BorderBrush="Black" BorderThickness="3">
-                        <Grid>
-                            <Button x:Name="Men_btnStatistique" Background="Transparent" BorderBrush="Transparent" BorderThickness="0"  HorizontalAlignment="Left" Height="82" VerticalAlignment="Top" Width="236"  IsEnabled="False" Click="Men_btnStatistique_Click" Margin="0,6,0,0" >
-                                <Border CornerRadius="5" Height="74" Width="221" Background="Teal" Margin="0" BorderBrush="Black" BorderThickness="3" >
-                                    <StackPanel Orientation="Horizontal" Margin="2,0,-2.2,-0.4">
-                                        <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\statistiques.png" Margin="20,4,20,-2.4" Height="64" Width="64"/>
-                                        <TextBlock Text="Statistiques" FontSize="20" Width="103"  Height="34" Margin="0,18,117.8,13.6" Foreground="Black"/>
-                                    </StackPanel>
-                                </Border>
-                            </Button>
-                        </Grid>
-                    </Border>
+                <GroupBox Header="Statistique" FontSize="24"  HorizontalAlignment="Left" Height="133" Margin="0,576,-211.6,-677" VerticalAlignment="Top" Width="262">
+                    <Grid>
+                        <Button Background="Teal" x:Name="Men_btnStatistique"   HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="214"  IsEnabled="False" Click="Men_btnStatistique_Click" Margin="25,50,0,0" >
+                            <StackPanel Orientation="Horizontal" Margin="2,0,-2.2,-0.4">
+                                <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\statistiques.png" Margin="20,4,20,2" Width="64"/>
+                                <TextBlock Text="Statistiques" FontSize="20" Width="103"  Height="34" Margin="0,18,117.8,13.6" Foreground="Black"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
                 </GroupBox>
 
-                <GroupBox Header="Information" FontSize="24" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Height="191" Margin="986,16,-1188.6,-175" VerticalAlignment="Top" Width="253">
-                    <Border CornerRadius="5"  Margin="0,1,3,5.4" BorderBrush="Black" BorderThickness="3">
-                        <Grid>
-                            <Label x:Name="Men_LblNomEmploye" Content="Nom employé"  FontSize="20" HorizontalAlignment="Right" Height="32" Margin="0,100,0.8,0" VerticalAlignment="Top" Width="218"/>
-                            <Label x:Name="Men_LbltypeEmploi" Content="Type employé" FontSize="20" HorizontalAlignment="Right" Height="34" Margin="0,53,0.8,0"  VerticalAlignment="Top" Width="218"/>
-                            <Label x:Name="Men_LblHotel"      Content="Nom hotel"    FontSize="20" HorizontalAlignment="Right" Height="34" Margin="0,10,0.8,0"  VerticalAlignment="Top" Width="218"/>
-                        </Grid>
-                    </Border>
+                <GroupBox Header="Information" FontSize="24"  HorizontalAlignment="Right" Height="180"  VerticalAlignment="Top" Margin="0,10,-1173.6,-157" Width="253">
+                    <Grid>
+                        <Label x:Name="Men_LblNomEmploye" Content="Nom employé"  FontSize="20" HorizontalAlignment="Right" Height="42" Margin="0,128,24.8,0" VerticalAlignment="Top" Width="218"/>
+                        <Label x:Name="Men_LbltypeEmploi" Content="Type employé" FontSize="20" HorizontalAlignment="Right" Height="39" Margin="0,84,24.8,0"  VerticalAlignment="Top" Width="218"/>
+                        <Label x:Name="Men_LblHotel"      Content="Nom hotel"    FontSize="20" HorizontalAlignment="Right" Height="39" Margin="0,40,24.8,0"  VerticalAlignment="Top" Width="218"/>
+                    </Grid>
                 </GroupBox>
 
                 <Label x:Name="Men_LblBeinvenue"  Content="Bienvenue"    HorizontalAlignment="Left"  Height="100" Margin="470,32,-735.6,-100" VerticalAlignment="Top" Width="316" FontSize="65"/>
                 <Image HorizontalAlignment="Left" Height="570" Margin="290,134,-930.6,-672" VerticalAlignment="Top" Width="691" Source="logo_hotel_payette.png"/>
-                <Button x:Name="Men_btnQuitter" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="1030,690,-1182.6,-742">
-                    <Border CornerRadius="5" Height="75" Width="194" Background="Teal" Margin="0" BorderBrush="Black" BorderThickness="3" >
-                        <TextBlock Text="Quitter" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,17,57.6,9.6" Height="31" Width="66"/>
-                    </Border>
+                <Button Background="#e46e1a" x:Name="Men_btnQuitter"  Margin="1042,639,-1173.6,-677">
+                    <TextBlock Text="Quitter" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,31,0,22" Height="31" Width="66"/>
                 </Button>
-
             </Grid>
         </Grid>
     </Viewbox>

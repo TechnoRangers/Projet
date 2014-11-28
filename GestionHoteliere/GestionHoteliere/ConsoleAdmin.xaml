@@ -9,33 +9,30 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-        <Grid>
-            <GroupBox Header="Réservation" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="223" Width="185">
-                <Grid HorizontalAlignment="Left" Height="203" VerticalAlignment="Top" Width="175" Margin="0,10,-2.2,-13">
-                    <Button x:Name="btn_Pays" Content="Pays" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btn_Province" Content="Province" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btn_Ville" Content="Ville" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btn_EquipementRecreatif" Content="EquipementRecreatif" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top" Width="155"/>
-                    <Button x:Name="btn_Hotel" Content="Hotel" HorizontalAlignment="Left" Margin="90,2,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btn_Salle" Content="Salle" HorizontalAlignment="Left" Margin="90,29,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btn_Chambre" Content="Chambre" HorizontalAlignment="Left" Margin="90,56,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btn_Facture" Content="Facture" HorizontalAlignment="Left" Margin="90,82,0,0" VerticalAlignment="Top" Width="75"/>
-                    <Button x:Name="btn_TypeChambre" Content="TypeChambre" HorizontalAlignment="Left" Margin="10,136,0,0" VerticalAlignment="Top" Width="155"/>
-                    <Button x:Name="btn_EquipementGeneriqueChambre" Content="EquipementGeneriqueChambre" HorizontalAlignment="Left" Margin="10,163,0,0" VerticalAlignment="Top" Width="155"/>
-                    <Button x:Name="btn_Forfait" Content="Forfait" HorizontalAlignment="Left" Margin="10,82,0,0" VerticalAlignment="Top" Width="75"/>
+        <Grid Height="317">
+            <GroupBox Header="Réservation" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="197" FontSize="24" Width="336">
+                <Grid HorizontalAlignment="Left" Height="203" VerticalAlignment="Top" Width="336" Margin="0,20,0,-26.2">
+                    <Button x:Name="btn_Pays" Content="Pays" HorizontalAlignment="Left" Margin="21,30,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Height="27"/>
+                    <Button x:Name="btn_Province" Content="Province" HorizontalAlignment="Left" Margin="21,75,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Height="27"/>
+                    <Button x:Name="btn_Ville" Content="Ville" HorizontalAlignment="Left" Margin="21,120,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Height="26"/>
+                    <Button x:Name="btn_Hotel" Content="Hotel" HorizontalAlignment="Left" Margin="232,75,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Height="27"/>
+                    <Button x:Name="btn_Salle" Content="Salle" HorizontalAlignment="Left" Margin="233,120,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Height="27"/>
+                    <Button x:Name="btn_Chambre" Content="Chambre" HorizontalAlignment="Left" Margin="133,75,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Height="26"/>
+                    <Button x:Name="btn_TypeChambre" Content="TypeChambre" HorizontalAlignment="Left" Margin="133,30,0,0" VerticalAlignment="Top" FontSize="14" Width="174" Height="27"/>
+                    <Button x:Name="btn_Forfait" Content="Forfait" HorizontalAlignment="Left" Margin="133,120,0,0" VerticalAlignment="Top" Width="75" FontSize="14" Height="27"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Header="Approvisionnement" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" Height="223" Width="172">
-                <Grid HorizontalAlignment="Left" Height="213" VerticalAlignment="Top" Width="162" Margin="0,0,-2.8,-13">
-                    <Button x:Name="btn_Fournisseur" Content="Fournisseur" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Width="139"/>
-                    <Button x:Name="btn_Fourniture" Content="Fourniture" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="139"/>
-                    <Button x:Name="btn_CategorieFourniture" Content="CategorieFourniture" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Width="139"/>
+            <GroupBox Header="Approvisionnement" HorizontalAlignment="Left" Margin="10,204,0,0" FontSize="24" VerticalAlignment="Top" Height="103" Width="214">
+                <Grid HorizontalAlignment="Left" Height="73" VerticalAlignment="Top" Width="255" Margin="0,30,0,0">
+                    <Button x:Name="btn_Fournisseur" Content="Fournisseur" HorizontalAlignment="Left" Margin="14,40,0,0" VerticalAlignment="Top" Width="85" FontSize="14" Height="27"/>
+                    <Button x:Name="btn_Fourniture" Content="Fourniture" HorizontalAlignment="Left" Margin="106,41,0,0" VerticalAlignment="Top" Width="89" FontSize="14" Height="26"/>
+                    <Button x:Name="btn_CategorieFourniture" Content="CategorieFourniture" HorizontalAlignment="Left" Margin="14,7,0,0" VerticalAlignment="Top" Width="181" FontSize="14" Height="28"/>
                 </Grid>
             </GroupBox>
-            <GroupBox Header="Personnel" HorizontalAlignment="Left" Margin="377,10,0,0" VerticalAlignment="Top" Height="57" Width="117">
-                <Button x:Name="btn_Employe" Content="Employe" HorizontalAlignment="Left" Margin="16,9,0,0" VerticalAlignment="Top" Width="75"/>
+            <GroupBox Header="Personnel" HorizontalAlignment="Left" Margin="229,206,0,0" VerticalAlignment="Top" Height="101" Width="117" FontSize="24">
+                <Button x:Name="btn_Employe" Content="Employe" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top" Width="90" Height="28" FontSize="14"/>
             </GroupBox>
-            <Button x:Name="consadm_btnRetour" Content="Retour" HorizontalAlignment="Left" Margin="409,201,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="consadm_btnRetour" Content="Retour" Background="#e46e1a" HorizontalAlignment="Left" Margin="351,256,0,0" VerticalAlignment="Top" Width="93" Height="32"/>
         </Grid>
     </Viewbox>
 </Window>

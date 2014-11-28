@@ -119,9 +119,6 @@
     <Compile Include="AjoutItemHotel.xaml.vb">
       <DependentUpon>AjoutItemHotel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AjoutItemInventaire.xaml.vb">
-      <DependentUpon>AjoutItemInventaire.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AjoutItemInventaire2.xaml.vb">
       <DependentUpon>AjoutItemInventaire2.xaml</DependentUpon>
     </Compile>
@@ -257,9 +254,6 @@
     <Compile Include="Inventaire.xaml.vb">
       <DependentUpon>Inventaire.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ListeReservation.xaml.vb">
-      <DependentUpon>ListeReservation.xaml</DependentUpon>
-    </Compile>
     <Compile Include="LocationEquipement.xaml.vb">
       <DependentUpon>LocationEquipement.xaml</DependentUpon>
     </Compile>
@@ -373,10 +367,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AjoutItemInventaire2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AjoutItemInventaire.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -545,10 +535,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Inventaire.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ListeReservation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

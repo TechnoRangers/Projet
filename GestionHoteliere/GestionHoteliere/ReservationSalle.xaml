@@ -9,100 +9,61 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-    <Grid Margin="0,0,-0.4,0">
-        <Button Name="LocSal_BtnValider" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="617,370,0,0" VerticalAlignment="Top" Width="140">
-            <Border CornerRadius="5" Height="35" Width="123" Background="Teal" Margin="0" BorderBrush="Black" BorderThickness="3">
-                <TextBlock Text="Valider" FontSize="14" Margin="35.8,6.8,0,5" HorizontalAlignment="Left" Width="42"/>
-            </Border>
-        </Button>
-        <Button Name="LocSal_BtnCancel" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="454,370,0,0" VerticalAlignment="Top" Width="130">
-            <Border CornerRadius="5" Height="35" Width="123" Background="#e46e1a" Margin="0" BorderBrush="Black" BorderThickness="3">
-                <TextBlock Text="Annuler" FontSize="14" Margin="32.8,4.8,0,7" HorizontalAlignment="Left" Width="51"/>
-            </Border>
-        </Button>
-        <GroupBox Header="Client" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="452,13,0,0" VerticalAlignment="Top" Height="344" Width="300" FontSize="24">
-            <Border CornerRadius="5"  Margin="0,0,-2.8,-3.8" BorderBrush="Black" BorderThickness="3">
-                <Grid Margin="-0.2,-0.2,0.4,-1.8">
-                    <TextBox x:Name="LocSal_TxtBoxClient" TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,10,0,0"  VerticalAlignment="Top" FontSize="14" Width="115"  Height="23" KeyDown="OnKeyDownHandler" />
-                    <Label   x:Name="LocSal_LblClient"    Content="No.Client"          HorizontalAlignment="Left" Margin="10,10,0,0"  VerticalAlignment="Top" FontSize="14"/>
-                    <Label   x:Name="LocSal_LblPre"       Content="Prenom"             HorizontalAlignment="Left" Margin="10,50,0,0"  VerticalAlignment="Top" FontSize="14"/>
-                    <Label   x:Name="LocSal_lblNom"       Content="Nom"                HorizontalAlignment="Left" Margin="10,90,0,0"  VerticalAlignment="Top" FontSize="14"/>
-                    <TextBox x:Name="LocSal_TxtBoxPre"    TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,50,0,0"  VerticalAlignment="Top" FontSize="14" Width="178"  Height="23" />
-                    <TextBox x:Name="LocSal_TxtBoxNom"    TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,90,0,0"  VerticalAlignment="Top" FontSize="14" Width="178"  Height="23" />
-                    <Label   x:Name="LocSal_lblTel"       Content="Téléphone"          HorizontalAlignment="Left" Margin="9,130,0,0"  VerticalAlignment="Top" FontSize="14"/>
-                    <TextBox x:Name="LocSal_TxtBoxTel"    TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,130,0,0" VerticalAlignment="Top" FontSize="14" Width="178"  Height="23" KeyDown="OnKeyDownHandler" />
-                    <Label   x:Name="LocSal_lblAdr"       Content="Adresse"            HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" FontSize="14"/>
-                    <TextBox x:Name="LocSal_TxtBoxAdr"    TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,170,0,0" VerticalAlignment="Top" FontSize="14" Width="178"  Height="23"/>
-                    <Label   x:Name="LocSal_LblEmail"     Content="E-mail"             HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" FontSize="14"/>
-                    <TextBox x:Name="LocSal_TxtBoxEmail"  TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,210,0,0" VerticalAlignment="Top" FontSize="14" Width="178"  Height="23"/>
-
-                    <Button Name="LocSal_BtnRec" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="10,260,0,0" VerticalAlignment="Top" Width="110" RenderTransformOrigin="0.419,0.926">
-                        <Border CornerRadius="5" Height="35" Width="100" Background="LightSeaGreen" Margin="0" BorderBrush="Black" BorderThickness="3">
-                            <TextBlock Text="Rechercher" FontSize="14" Margin="13.8,4.8,-2.4,0" HorizontalAlignment="Left" Width="83"/>
-                        </Border>
-                    </Button>
-                    <Button Name="LocSal_BtnAjout" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="155,260,0,0" VerticalAlignment="Top" Width="110">
-                        <Border CornerRadius="5" Height="35" Width="100" Background="YellowGreen" Margin="0" BorderBrush="Black" BorderThickness="3">
-                            <TextBlock Text="Ajouter" FontSize="14" Margin="24.8,5.8,0,-1" HorizontalAlignment="Left" Width="55"/>
-                        </Border>
-                    </Button>
+        <Grid Width="765" Height="504">
+            <GroupBox x:Name="LocSal_GrbClient"    Header="Client"              HorizontalAlignment="Left" Margin="456,17,0,0"  VerticalAlignment="Top" FontSize="24"  Width="300" Height="344" >
+                <Grid Margin="0,33,0,10" Width="284">
+                    <TextBox x:Name="LocSal_TxtBoxClient"    TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,10,0,0"   VerticalAlignment="Top" FontSize="14" Width="115"  Height="23" KeyDown="OnKeyDownHandler" />
+                    <Label   x:Name="LocSal_LblClient"       Content="No.Client"          HorizontalAlignment="Left" Margin="10,10,0,0"   VerticalAlignment="Top" FontSize="14"/>
+                    <Label   x:Name="LocSal_LblPre"          Content="Prenom"             HorizontalAlignment="Left" Margin="10,50,0,0"   VerticalAlignment="Top" FontSize="14"/>
+                    <Label   x:Name="LocSal_lblNom"          Content="Nom"                HorizontalAlignment="Left" Margin="10,90,0,0"   VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox x:Name="LocSal_TxtBoxPre"       TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,50,0,0"   VerticalAlignment="Top" FontSize="14" Width="178"  Height="23" />
+                    <TextBox x:Name="LocSal_TxtBoxNom"       TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,90,0,0"   VerticalAlignment="Top" FontSize="14" Width="178"  Height="23" />
+                    <Label   x:Name="LocSal_lblTel"          Content="Téléphone"          HorizontalAlignment="Left" Margin="9,130,0,0"   VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox x:Name="LocSal_TxtBoxTel"       TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,130,0,0"  VerticalAlignment="Top" FontSize="14" Width="178"  Height="23" KeyDown="OnKeyDownHandler" />
+                    <Label   x:Name="LocSal_lblAdr"          Content="Adresse"            HorizontalAlignment="Left" Margin="10,170,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox x:Name="LocSal_TxtBoxAdr"       TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,170,0,0"  VerticalAlignment="Top" FontSize="14" Width="178"  Height="23"/>
+                    <Label   x:Name="LocSal_LblEmail"        Content="E-mail"             HorizontalAlignment="Left" Margin="10,210,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox x:Name="LocSal_TxtBoxEmail"     TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,210,0,0"  VerticalAlignment="Top" FontSize="14" Width="178"  Height="23"/>
+                    <Button Name="LocSal_BtnRec"             Content="Rechercher"         HorizontalAlignment="Left" Margin="10,260,0,0"  VerticalAlignment="Top"               Width="110" Height="31" />
+                    <Button Name="LocSal_BtnAjout"           Content="Ajouter"            HorizontalAlignment="Left" Margin="155,260,0,0" VerticalAlignment="Top"               Width="110" Height="31"/>
                 </Grid>
-            </Border>
-        </GroupBox>
-
-        <Button x:Name="LocSal_RecSal" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="285,8,0,450.2" Width="135" IsDefault="True" IsEnabled="False">
-            <Border CornerRadius="5" Height="35" Width="123" Background="LightSeaGreen" Margin="0" BorderBrush="Black" BorderThickness="3">
-                <TextBlock Text="Rechercher" FontSize="14" Margin="24,5,0,7.2" HorizontalAlignment="Left" Width="70"/>
-            </Border>
-        </Button>
-        <Button Name="LocSal_BtnSuppSalle" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="0,365,0,0" VerticalAlignment="Top" Width="155" IsEnabled="False">
-            <Border CornerRadius="5" Height="35" Width="123" Background="#e46e1a" Margin="0" BorderBrush="Black" BorderThickness="3">
-                <TextBlock Text="Supprimer" FontSize="14" Margin="28,4,0,7.2" HorizontalAlignment="Left" Width="62"/>
-            </Border>
-        </Button>
-        <Button Name="LocSal_BtnModiSalle" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="160,365,0,0" VerticalAlignment="Top" Width="138" IsEnabled="False">
-            <Border CornerRadius="5" Height="35" Width="123" Background="yellow" Margin="0" BorderBrush="Black" BorderThickness="3">
-                <TextBlock Text="Modifier" FontSize="14" Margin="32.8,4.8,0,7" HorizontalAlignment="Left" Width="52"/>
-            </Border>
-        </Button>
-        <GroupBox Header="Paiement" HorizontalAlignment="Left" Margin="10,225,0,0" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Top" Height="132" Width="437" FontSize="24">
-            <Border CornerRadius="5"  Margin="0,0,-3,-4.2" BorderBrush="Black" BorderThickness="3">
-                <Grid>
+            </GroupBox>
+            <GroupBox x:Name="LocSal_GrbPaiement"  Header="Paiement"            HorizontalAlignment="Left" Margin="10,225,0,0"  VerticalAlignment="Top" FontSize="24"  Width="437" Height="132" >
+                <Grid Margin="0,33,0,10" Width="422">
                     <Label      x:Name="LocSal_LblModePai"   Content="Mode de Paiement"   HorizontalAlignment="Left" Margin="-1,10,0,0"   VerticalAlignment="Top"  FontSize="14"/>
-                    <ComboBox   x:Name="LocSal_CmbBoxPaiement"                            HorizontalAlignment="Left" Margin="117,10,0,0" VerticalAlignment="Top"  FontSize="14" Width="120"/>
-                    <Label      x:Name="LocSal_LblCredit"    Content="Carte de Credit"    HorizontalAlignment="Left" Margin="0,60,0,0"   VerticalAlignment="Top"  FontSize="14"/>
-                    <TextBox    x:Name="LocSal_TxtBoxCredit" TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="105,61,0,0" VerticalAlignment="Top"  FontSize="14" Width="120" Height="23" KeyDown="OnKeyDownHandler" />
-                    <Label      x:Name="LocSal_LblEtat"      Content="État"               HorizontalAlignment="Left" Margin="246,10,0,0" VerticalAlignment="Top"  FontSize="14"/>
-                    <ComboBox   x:Name="LocSal_CmbBoxEtat"                                HorizontalAlignment="Left" Margin="284,10,0,0" VerticalAlignment="Top"  FontSize="14" Width="127"/>
-                    <Label      x:Name="LocSal_LblExpi"      Content="Date d'expiration"  HorizontalAlignment="Left" Margin="232,60,0,0"   VerticalAlignment="Top"  FontSize="14"/>
-                    <TextBox    x:Name="LocSal_TxtBoxExpi"   TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="350,61,0,0" VerticalAlignment="Top"  FontSize="14" Width="61" Height="23"  KeyDown="OnKeyDownHandler" />
+                    <ComboBox   x:Name="LocSal_CmbBoxPaiement"                            HorizontalAlignment="Left" Margin="117,10,0,0"  VerticalAlignment="Top"  FontSize="14" Width="120"/>
+                    <Label      x:Name="LocSal_LblCredit"    Content="Carte de Credit"    HorizontalAlignment="Left" Margin="0,60,0,0"    VerticalAlignment="Top"  FontSize="14"/>
+                    <TextBox    x:Name="LocSal_TxtBoxCredit" TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="105,61,0,0"  VerticalAlignment="Top"  FontSize="14" Width="120" Height="23" KeyDown="OnKeyDownHandler" />
+                    <Label      x:Name="LocSal_LblEtat"      Content="État"               HorizontalAlignment="Left" Margin="246,10,0,0"  VerticalAlignment="Top"  FontSize="14"/>
+                    <ComboBox   x:Name="LocSal_CmbBoxEtat"                                HorizontalAlignment="Left" Margin="284,10,0,0"  VerticalAlignment="Top"  FontSize="14" Width="127"/>
+                    <Label      x:Name="LocSal_LblExpi"      Content="Date d'expiration"  HorizontalAlignment="Left" Margin="232,60,0,0"  VerticalAlignment="Top"  FontSize="14"/>
+                    <TextBox    x:Name="LocSal_TxtBoxExpi"   TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="350,61,0,0"  VerticalAlignment="Top"  FontSize="14" Width="61"  Height="23" KeyDown="OnKeyDownHandler" />
                 </Grid>
-            </Border>
-        </GroupBox>
-        <GroupBox Header="Information Salle" HorizontalAlignment="Left" FontSize="24" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Margin="10,47,0,0" VerticalAlignment="Top" Height="178" Width="437">
-            <Border CornerRadius="5"  Margin="0,0,-3,-4.2" BorderBrush="Black" BorderThickness="3">
-                <Grid>
+            </GroupBox>
+            <GroupBox x:Name="LocSal_GrbInfo"      Header="Information Salle"   HorizontalAlignment="Left" Margin="10,47,0,0"   VerticalAlignment="Top"  FontSize="24" Width="437" Height="178" >
+                <Grid Margin="0,33,0,9.6" Width="422">
                     <Label      x:Name="LocSal_Prix"         Content="Prix"               HorizontalAlignment="Left" Margin="211,163,0,0" VerticalAlignment="Top"  FontSize="14"/>
                     <TextBox    x:Name="LocSal_TxtBoxPrix"   TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="300,163,0,0" VerticalAlignment="Top"  FontSize="14" Width="120" Height="23" />
-                    <Label      x:Name="LocSal_LblSalle"     Content="Salle"              HorizontalAlignment="Left" Margin="8,49,0,0"  VerticalAlignment="Top"  FontSize="14"/>
-                    <ComboBox   x:Name="LocSal_CmbBoxSalle"                               HorizontalAlignment="Left" Margin="77,50,0,0"  VerticalAlignment="Top"  FontSize="14" Width="120"/>
-                    <Label      x:Name="LocSal_LblNbPers"    Content="Nombre de personne" HorizontalAlignment="Left" Margin="220,49,0,0" VerticalAlignment="Top"  FontSize="14"/>
-                    <Label      x:Name="LocSal_Datedeb"         Content="Date Debut"      HorizontalAlignment="Left" Margin="10,10,0,0"   VerticalAlignment="Top"  FontSize="14"/>
-                    <DatePicker x:Name="LocSal_DatePicker"                                HorizontalAlignment="Left" Margin="85,10,0,0"   VerticalAlignment="Top"  FontSize="14" Width="130"/>
-                    <Label      x:Name="LocSal_Datefin"         Content="Date Fin"        HorizontalAlignment="Left" Margin="220,10,0,0"   VerticalAlignment="Top"  FontSize="14"/>
-                    <DatePicker x:Name="LocSal_DatePicker2"                               HorizontalAlignment="Left" Margin="279,10,0,0"   VerticalAlignment="Top"  FontSize="14" Width="132"/>
-                    <TextBox    x:Name="LocSal_TxtBoxNb"     TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="365,50,0,0" VerticalAlignment="Top"  FontSize="14" Width="46"  Height="23" KeyDown="OnKeyDownHandler" />
+                    <Label      x:Name="LocSal_LblSalle"     Content="Salle"              HorizontalAlignment="Left" Margin="8,51,0,0"    VerticalAlignment="Top"  FontSize="14"/>
+                    <ComboBox   x:Name="LocSal_CmbBoxSalle"                               HorizontalAlignment="Left" Margin="91,53,0,0"   VerticalAlignment="Top"  FontSize="14" Width="130"/>
+                    <Label      x:Name="LocSal_LblNbPers"    Content="Nombre de personne" HorizontalAlignment="Left" Margin="226,51,0,0"  VerticalAlignment="Top"  FontSize="14"/>
+                    <Label      x:Name="LocSal_Datedeb"      Content="Date Debut"         HorizontalAlignment="Left" Margin="10,12,0,0"   VerticalAlignment="Top"  FontSize="14"/>
+                    <DatePicker x:Name="LocSal_DatePicker"                                HorizontalAlignment="Left" Margin="91,13,0,0"   VerticalAlignment="Top"  FontSize="14" Width="130"/>
+                    <Label      x:Name="LocSal_Datefin"      Content="Date Fin"           HorizontalAlignment="Left" Margin="220,10,0,0"  VerticalAlignment="Top"  FontSize="14"/>
+                    <DatePicker x:Name="LocSal_DatePicker2"                               HorizontalAlignment="Left" Margin="283,11,0,0"  VerticalAlignment="Top"  FontSize="14" Width="132"/>
+                    <TextBox    x:Name="LocSal_TxtBoxNb"     TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="368,53,0,0"  VerticalAlignment="Top"  FontSize="14" Width="46"  Height="23" KeyDown="OnKeyDownHandler" />
 
-                    <Button Name="LocSal_BtnEqu" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Width="130" IsEnabled="False">
-                        <Border CornerRadius="5" Height="35" Width="123" Background="YellowGreen" Margin="0" BorderBrush="Black" BorderThickness="3">
-                            <TextBlock Text="Équipement" FontSize="14" Margin="23,4,0,7.2" HorizontalAlignment="Left" Width="76"/>
-                        </Border>
-                    </Button>
+                    <Button Name="LocSal_BtnEqu" Content="Equipement" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Width="130" IsEnabled="False" Height="38"/>
+
                 </Grid>
-            </Border>
-        </GroupBox>
-        <Label      x:Name="LocSal_NoRes"        Content="No.Réservation"     HorizontalAlignment="Left" Margin="10,19,0,0"   VerticalAlignment="Top"  FontSize="14"/>
-        <TextBox    x:Name="LocSal_TxtBoxNoRes"  TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="134,20,0,0"  VerticalAlignment="Top"  FontSize="14" Width="120" Height="23" KeyDown="OnKeyDownHandler" />
-    </Grid>
+            </GroupBox>
+            <Label    x:Name="LocSal_NoRes"        Content="No.Réservation"     HorizontalAlignment="Left" Margin="10,19,0,0"   VerticalAlignment="Top"  FontSize="14"/>
+            <TextBox  x:Name="LocSal_TxtBoxNoRes"  TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="134,20,0,0"  VerticalAlignment="Top"  FontSize="14" Width="120" Height="23"                    KeyDown="OnKeyDownHandler"/>
+            <Button   x:Name="LocSal_RecSal"       Content="Rechercher"         HorizontalAlignment="Left" Margin="283,15,0,0"  VerticalAlignment="Top"                Width="135" Height="31" IsEnabled="False"  IsDefault="True"/>
+            <Button   x:Name="LocSal_BtnSuppSalle" Content="Supprimer"          HorizontalAlignment="Left" Margin="0,365,0,0"   VerticalAlignment="Top"                Width="140" Height="40" IsEnabled="False"/>
+            <Button   x:Name="LocSal_BtnModiSalle" Content="Modifier"           HorizontalAlignment="Left" Margin="160,365,0,0" VerticalAlignment="Top"                Width="140" Height="40" IsEnabled="False"/>
+            <Button   x:Name="LocSal_BtnValider"   Content="Valider"            HorizontalAlignment="Left" Margin="616,370,0,0" VerticalAlignment="Top"                Width="140" Height="40"/>
+            <Button   x:Name="LocSal_BtnCancel"    Content="Annuler"            HorizontalAlignment="Left" Margin="454,370,0,0" VerticalAlignment="Top"                Width="140" Height="40"/>
+        </Grid>
     </Viewbox>
 </Window>

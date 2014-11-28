@@ -31,11 +31,6 @@
         FenetreChambre.ShowDialog()
     End Sub
 
-    Private Sub btn_Facture_Click(sender As Object, e As RoutedEventArgs) Handles btn_Facture.Click
-        'Dim FenetreFacture As Facture
-        'FenetreFacture = New Facture(MaBD)
-        'FenetreFacture.ShowDialog()
-    End Sub
 
     Private Sub btn_Forfait_Click(sender As Object, e As RoutedEventArgs) Handles btn_Forfait.Click
         Dim FenetreForfait As Forfait
