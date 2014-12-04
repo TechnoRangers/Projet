@@ -10,7 +10,6 @@
     </Window.Background>
     <Viewbox Stretch="Uniform">
         <Grid x:Name="Dis_GrdDispo">
-
             <DataGrid x:Name="Dis_GrtChambre"                          HorizontalAlignment="Left" Margin="10,33,0,0"   VerticalAlignment="Top" Width="488" Height="426" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="No chambre"    Binding="{Binding NoSeqChambre}"/>

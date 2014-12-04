@@ -9,19 +9,19 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-        <Grid>
-            <DataGrid x:Name="vil_dtgVille" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="144" Width="245">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Code Ville" Binding="{Binding CodeVille, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Nom Ville" Binding="{Binding NomVille, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Code Province" Binding="{Binding CodeProvince, Mode=OneWay}"/>
-                </DataGrid.Columns>
-            </DataGrid>
-            <Button x:Name="vil_btnAjouter" Content="Ajouter" HorizontalAlignment="Left" Margin="260,13,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="vil_btnModifier" Content="Modifier" HorizontalAlignment="Left" Margin="260,40,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="vil_btnSupprimer" Content="Supprimer" HorizontalAlignment="Left" Margin="260,67,0,0" VerticalAlignment="Top" Width="75"/>
+    <Grid Margin="0,0,10,10" Width="509">
+        <DataGrid x:Name="vil_dtgVille"   AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="38,46,0,0"  VerticalAlignment="Top" Width="325" Height="144">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Code Ville"    Binding="{Binding CodeVille, Mode=OneWay}"/>
+                <DataGridTextColumn Header="Nom Ville"     Binding="{Binding NomVille, Mode=OneWay}" Width="150"/>
+                <DataGridTextColumn Header="Code Province" Binding="{Binding CodeProvince, Mode=OneWay}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="vil_btnAjouter"   Content="Ajouter"           HorizontalAlignment="Left" Margin="382,46,0,0" VerticalAlignment="Top" Width="75" Height="30"/>
+        <Button x:Name="vil_btnModifier"  Content="Modifier"          HorizontalAlignment="Left" Margin="382,96,0,0" VerticalAlignment="Top" Width="75" Height="30"/>
+        <Button x:Name="vil_btnSupprimer" Content="Supprimer"         HorizontalAlignment="Left" Margin="382,146,0,0" VerticalAlignment="Top" Width="75" Height="30"/>
 
-        </Grid>
+    </Grid>
     </Viewbox>
-    
+
 </Window>

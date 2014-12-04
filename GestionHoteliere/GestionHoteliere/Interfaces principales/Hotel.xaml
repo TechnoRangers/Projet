@@ -9,21 +9,21 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-        <Grid>
-            <DataGrid x:Name="hot_dtgHotel" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="244" Width="667">
+        <Grid Margin="0,0,10,10">
+            <DataGrid x:Name="hot_dtgHotel"     AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0"      VerticalAlignment="Top" Width="667" Height="244">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Code Hôtel" Binding="{Binding CodeHotel, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Nom Hôtel" Binding="{Binding NomHotel, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Nombre Chambres" Binding="{Binding NbChambre, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Adresse" Binding="{Binding AdresseHotel, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Étoiles" Binding="{Binding NbEtoiles, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Code Hôtel"   Binding="{Binding CodeHotel, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Nom Hôtel"    Binding="{Binding NomHotel, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Nb Chambres"  Binding="{Binding NbChambre, Mode=OneWay}" Width="85"/>
+                    <DataGridTextColumn Header="Adresse"      Binding="{Binding AdresseHotel, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Étoiles"      Binding="{Binding NbEtoiles, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Type Service" Binding="{Binding TypeService, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Code Ville" Binding="{Binding CodeVille, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Code Ville"   Binding="{Binding CodeVille, Mode=OneWay}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="hot_btnAjouter" Content="Ajouter" HorizontalAlignment="Left" Margin="682,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.059,-0.5"/>
-            <Button x:Name="hot_btnModifier" Content="Modifier" HorizontalAlignment="Left" Margin="682,37,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="hot_btnSupprimer" Content="Supprimer" HorizontalAlignment="Left" Margin="682,64,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button   x:Name="hot_btnAjouter"   Content="Ajouter"           HorizontalAlignment="Left" Margin="682,10,0,0"     VerticalAlignment="Top" Width="75"  Height="30"/>
+            <Button   x:Name="hot_btnModifier"  Content="Modifier"          HorizontalAlignment="Left" Margin="682,60,-0.6,0"  VerticalAlignment="Top" Width="75"  Height="30"/>
+            <Button   x:Name="hot_btnSupprimer" Content="Supprimer"         HorizontalAlignment="Left" Margin="682,110,-0.6,0" VerticalAlignment="Top" Width="75"  Height="30"/>
 
         </Grid>
     </Viewbox>

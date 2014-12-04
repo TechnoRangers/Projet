@@ -9,19 +9,19 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-        <Grid>
-            <DataGrid x:Name="for_dtgForfait" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="232" Width="472">
+        <Grid Margin="0,0,10,10">
+            <DataGrid x:Name="for_dtgForfait" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0"      VerticalAlignment="Top" Height="232" Width="472">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Code Forfait" Binding="{Binding CodeForfait, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Nom Forfait" Binding="{Binding NomForfait, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Nom Forfait"  Binding="{Binding NomForfait, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Prix Forfait" Binding="{Binding PrixForfait, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Description" Binding="{Binding DescForfait, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Nombre de nuits" Binding="{Binding NbNuit, Mode=OneWay}"/>
-                </DataGrid.Columns>
+                    <DataGridTextColumn Header="Nb de nuits"  Binding="{Binding NbNuit, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Description"  Binding="{Binding DescForfait, Mode=OneWay}"/>
+               </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="for_btnAjouter" Content="Ajouter" HorizontalAlignment="Left" Margin="487,10,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="for_btnModifier" Content="Modifier" HorizontalAlignment="Left" Margin="487,37,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="for_btnSupprimer" Content="Supprimer" HorizontalAlignment="Left" Margin="487,64,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="for_btnAjouter"   Content="Ajouter"           HorizontalAlignment="Left" Margin="487,10,-0.4,0"  VerticalAlignment="Top" Height="30"  Width="75"/>
+            <Button x:Name="for_btnModifier"  Content="Modifier"          HorizontalAlignment="Left" Margin="487,60,-0.4,0"  VerticalAlignment="Top" Height="30"  Width="75"/>
+            <Button x:Name="for_btnSupprimer" Content="Supprimer"         HorizontalAlignment="Left" Margin="487,110,-0.4,0" VerticalAlignment="Top" Height="30"  Width="75"/>
 
         </Grid>
     </Viewbox>

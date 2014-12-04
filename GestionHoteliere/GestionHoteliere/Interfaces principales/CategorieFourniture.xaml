@@ -9,16 +9,16 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-        <Grid>
-            <DataGrid x:Name="catfour_dtgCategorieFourniture" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="163" Width="226">
+        <Grid Height="357" Width="533">
+            <DataGrid x:Name="catfour_dtgCategorieFourniture" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="95,59,0,0"   VerticalAlignment="Top" Height="160" Width="212.6">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Code Catégorie" Binding="{Binding CodeCategorie, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Nom Catégorie" Binding="{Binding NomCategorie, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Nom Catégorie"  Binding="{Binding NomCategorie,  Mode=OneWay}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="catfour_btnAjouter" Content="Ajouter" HorizontalAlignment="Left" Margin="241,12,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="catfour_btnModifier" Content="Modifier" HorizontalAlignment="Left" Margin="241,39,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="catfour_btnSupprimer" Content="Supprimer" HorizontalAlignment="Left" Margin="241,66,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button   x:Name="catfour_btnAjouter"             Content="Ajouter"           HorizontalAlignment="Left" Margin="365,59,0,0"  VerticalAlignment="Top" Height="30"  Width="100"/>
+            <Button   x:Name="catfour_btnModifier"            Content="Modifier"          HorizontalAlignment="Left" Margin="365,107,0,0" VerticalAlignment="Top" Height="30"  Width="100"/>
+            <Button   x:Name="catfour_btnSupprimer"           Content="Supprimer"         HorizontalAlignment="Left" Margin="365,157,0,0" VerticalAlignment="Top" Height="30"  Width="100"/>
         </Grid>
     </Viewbox>
 </Window>

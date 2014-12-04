@@ -161,7 +161,7 @@
         Me.Close()
     End Sub
 
-    Private Sub mres_btnAnnulerReservation_Click(sender As Object, e As RoutedEventArgs) Handles mres_btnAnnulerReservation.Click
+    Private Sub mres_btnAnnulerReservation_Click(sender As Object, e As RoutedEventArgs) Handles mres_btnAnnulerReserv.Click
         MaReserv.StatutReservChambre = "Annulé"
         MaBD.SaveChanges()
         MessageBox.Show("La réservation a été annulée.")

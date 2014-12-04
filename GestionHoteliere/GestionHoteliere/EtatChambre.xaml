@@ -9,68 +9,40 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-    <Grid>
-        <Grid HorizontalAlignment="Left" Height="507" VerticalAlignment="Top" Width="731" Margin="10,10,-9.8,-9.8">
-            <Label x:Name="Eta_LblNoChambre" Content="NoChambre :" HorizontalAlignment="Left" Margin="23,34,0,0" VerticalAlignment="Top" FontSize="14"/>
-            <ComboBox x:Name="Eta_CmbBoxNoChambre" HorizontalAlignment="Left" Margin="119,34,0,0" VerticalAlignment="Top" Width="125" Height="29"/>
-            <GroupBox x:Name="Eta_GrpBoxFournitureRemplacer" Header="Liste des fournitures à remplacer" HorizontalAlignment="Left" Margin="23,85,0,0" VerticalAlignment="Top" Height="298" Width="348" FontSize="14">
-                <Grid HorizontalAlignment="Left" Height="277" Margin="4,0,-2,-4.2" VerticalAlignment="Top" Width="334">
-                    <DataGrid x:Name="eta_Datagrid" HorizontalAlignment="Left" AutoGenerateColumns="False"  Margin="10,10,0,0" VerticalAlignment="Top" Height="257" Width="314">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding DescFourniture}" Width="155" ClipboardContentBinding="{x:Null}" Header="Fourniture"/>
-                            <DataGridTextColumn Binding="{Binding EtatFourniture}" Width="156" ClipboardContentBinding="{x:Null}" Header="Etat fourniture"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </Grid>
-            </GroupBox>
-            <GroupBox x:Name="Eta_GrpBoxCommentaires" Header="Commentaires" HorizontalAlignment="Left" Margin="376,85,0,0" VerticalAlignment="Top" Height="298" Width="327">
-                <Grid HorizontalAlignment="Left" Height="288" VerticalAlignment="Top" Width="317" Margin="0,0,-2.6,-12">
-                    <RichTextBox x:Name="Eta_RichTexBoxCom" HorizontalAlignment="Left" Height="278" Margin="10,0,0,0" VerticalAlignment="Top" Width="297">
-                        <FlowDocument>
-                            <Paragraph>
-                                <Run Text=""/>
-                            </Paragraph>
-                        </FlowDocument>
-                    </RichTextBox>
-                </Grid>
-            </GroupBox>
-            <Button x:Name="Eta_BtnInventaire" Content="Inventaire" HorizontalAlignment="Left" Margin="410,423,0,0" VerticalAlignment="Top" Width="133" Height="36">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
-                        <GradientStop Color="#FFEBEBEB"/>
-                        <GradientStop Color="#FFDDDDDD"/>
-                        <GradientStop Color="#FFF0F82F"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-            <Button x:Name="Eta_BtnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="560,423,0,0" VerticalAlignment="Top" Width="133" Height="36">
-                <Button.Background>
-                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
-                        <GradientStop Color="#FFEBEBEB"/>
-                        <GradientStop Color="#FFDDDDDD"/>
-                        <GradientStop Color="#FFF22626" Offset="0.009"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-            <GroupBox x:Name="Eta_GrpBoxEnregistrer" Header="Remplacement effectué" HorizontalAlignment="Left" Margin="23,392,0,0" VerticalAlignment="Top" Height="94" Width="348">
-                <Grid HorizontalAlignment="Left" Height="80" Margin="0,0,-2.8,-8" VerticalAlignment="Top" Width="338">
-                    <ComboBox x:Name="Eta_ComboBoxFourniture" HorizontalAlignment="Left" Margin="22,24,0,0" VerticalAlignment="Top" Width="126" Height="27"/>
-                    <Button x:Name="Eta_BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="179,15,0,0" VerticalAlignment="Top" Width="133" Height="36">
-                        <Button.Background>
-                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                <GradientStop Color="#FFF3F3F3" Offset="0"/>
-                                <GradientStop Color="#FFEBEBEB"/>
-                                <GradientStop Color="#FFDDDDDD"/>
-                                <GradientStop Color="#FF8DDC37"/>
-                            </LinearGradientBrush>
-                        </Button.Background>
-                    </Button>
-                </Grid>
-            </GroupBox>
+        <Grid>
+            <Grid HorizontalAlignment="Left" Height="507" VerticalAlignment="Top" Width="731" Margin="10,10,-9.8,-9.8">
+                <Label    x:Name="Eta_LblNoChambre"              Content="No chambre :"                     HorizontalAlignment="Left" Margin="23,34,0,0"   VerticalAlignment="Top"                           FontSize="14"/>
+                <ComboBox x:Name="Eta_CmbBoxNoChambre"                                                      HorizontalAlignment="Left" Margin="147,34,0,0"  VerticalAlignment="Top" Width="125" Height="29"/>
+                <GroupBox x:Name="Eta_GrpBoxFournitureRemplacer" Header="Liste des fournitures à remplacer" HorizontalAlignment="Left" Margin="23,83,0,0"   VerticalAlignment="Top" Width="348" Height="298"  FontSize="14">
+                    <Grid HorizontalAlignment="Left" Height="277" Margin="0,21,0,-0.4" VerticalAlignment="Top" Width="348">
+                        <DataGrid    x:Name="eta_Datagrid"                             HorizontalAlignment="Left" Margin="18,22,0,0"   VerticalAlignment="Top" Width="314" Height="242" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding DescFourniture}" Width="155" ClipboardContentBinding="{x:Null}" Header="Fourniture"/>
+                                <DataGridTextColumn Binding="{Binding EtatFourniture}" Width="156" ClipboardContentBinding="{x:Null}" Header="Etat fourniture"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </GroupBox>
+                <GroupBox x:Name="Eta_GrpBoxCommentaires"        Header="Commentaires"                      HorizontalAlignment="Left" Margin="376,85,0,0"  VerticalAlignment="Top" Width="327" Height="296" >
+                    <Grid HorizontalAlignment="Left" Height="288" VerticalAlignment="Top" Width="327" Margin="0,10,0,-2">
+                        <RichTextBox x:Name="Eta_RichTexBoxCom"                        HorizontalAlignment="Left" Margin="15,33,0,0"  VerticalAlignment="Top" Width="297" Height="240" >
+                            <FlowDocument>
+                                <Paragraph>
+                                    <Run Text=""/>
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+                    </Grid>
+                </GroupBox>
+                <Button   x:Name="Eta_BtnInventaire"             Content="Inventaire" Background="Yellow"   HorizontalAlignment="Left" Margin="570,437,0,0" VerticalAlignment="Top" Width="133" Height="36"/>
+                <Button   x:Name="Eta_BtnAnnuler"                Content="Annuler"    Background="#e46e1a"  HorizontalAlignment="Left" Margin="376,437,0,0" VerticalAlignment="Top" Width="133" Height="36"/>
+                <GroupBox x:Name="Eta_GrpBoxEnregistrer"         Header="Remplacement effectué"             HorizontalAlignment="Left" Margin="23,392,0,0"  VerticalAlignment="Top" Width="348" Height="94" >
+                    <Grid HorizontalAlignment="Left" Height="65" Margin="0,29,0,0" VerticalAlignment="Top" Width="338">
+                        <ComboBox    x:Name="Eta_ComboBoxFourniture"                   HorizontalAlignment="Left" Margin="22,20,0,0"  VerticalAlignment="Top" Width="126" Height="27"/>
+                        <Button      x:Name="Eta_BtnValider"         Content="Valider" HorizontalAlignment="Left" Margin="179,15,0,0" VerticalAlignment="Top" Width="133" Height="36" Background="YellowGreen"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
         </Grid>
-
-    </Grid>
     </Viewbox>
 </Window>

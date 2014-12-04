@@ -8,27 +8,27 @@
             <GradientStop Color="White"/>
         </LinearGradientBrush>
     </Window.Background>
-    <Grid>
-        <Button x:Name="Ent_BtnCheckUp" HorizontalAlignment="Left" Margin="25,78,0,0" VerticalAlignment="Top" Width="206" Height="169" >
+    <Grid>        
+        <Label  x:Name="Ent_LblTitre"        Content="Entretien" HorizontalAlignment="Left" Margin="441,24,0,0" VerticalAlignment="Top" Width="94"  Height="36" FontSize="20"/>
+        <Button x:Name="Ent_BtnCheckUp"      Background="teal"   HorizontalAlignment="Left" Margin="25,78,0,0"  VerticalAlignment="Top" Width="206" Height="169" >
             <StackPanel Orientation="Horizontal" Width="206" Height="169">
                 <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Check-Up.jpg" Stretch="Fill" Width="133" Margin="0,0,0,-0.2"/>
                 <TextBlock Text="Chambre" Margin="4,75,15,73.8" FontSize="14" Width="62"/>
             </StackPanel>
         </Button>
-        <Label x:Name="Ent_LblTitre" Content="Entretien" HorizontalAlignment="Left" Margin="441,24,0,0" VerticalAlignment="Top" Width="94" Height="36" FontSize="20"/>
-        <Button x:Name="Ent_BtnEtatChambre" HorizontalAlignment="Left" Margin="249,78,0,0" VerticalAlignment="Top" Width="217" Height="169">
+        <Button x:Name="Ent_BtnEtatChambre"  Background="teal"   HorizontalAlignment="Left" Margin="249,78,0,0" VerticalAlignment="Top" Width="217" Height="169">
             <StackPanel Orientation="Horizontal" Width="208" Height="169">
                 <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Oeil.jpg" Stretch="Fill" Width="125" Margin="0,0,0,-0.2"/>
                 <TextBlock Text="Etat chambre" Height="18" Margin="2,26,15,26.4" FontSize="14"/>
             </StackPanel>
         </Button>
-        <Button x:Name="Ent_BtnCheckUpSalle"  HorizontalAlignment="Left" Margin="493,78,0,0" VerticalAlignment="Top" Width="181" Height="169">
+        <Button x:Name="Ent_BtnCheckUpSalle" Background="teal"   HorizontalAlignment="Left" Margin="493,78,0,0" VerticalAlignment="Top" Width="181" Height="169">
             <StackPanel Orientation="Horizontal" Width="193" Height="169">
                 <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Check-Up.jpg" Stretch="Fill" Width="133" Margin="0,0,0,-0.2"/>
                 <TextBlock Text="Salle" Margin="4,75,15,73.8" FontSize="14" Width="32"/>
             </StackPanel>
         </Button>
-        <Button x:Name="Ent_BtnEtatSalle"  HorizontalAlignment="Left" Margin="689,78,0,0" VerticalAlignment="Top" Width="189" Height="169">
+        <Button x:Name="Ent_BtnEtatSalle"    Background="teal"   HorizontalAlignment="Left" Margin="689,78,0,0" VerticalAlignment="Top" Width="189" Height="169">
             <StackPanel Orientation="Horizontal" Width="189" Height="169">
                 <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Oeil.jpg" Stretch="Fill" Width="125" Margin="0,0,0,-0.2"/>
                 <TextBlock Text="Etat salle" Height="18" Margin="2,26,15,26.4" FontSize="14"/>

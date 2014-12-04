@@ -2,35 +2,35 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="ModifChambre"
-    Title="ModifChambre" Height="349.386" Width="517.728" Icon="/GestionHoteliere;component/icone_Hotel.ico">
+    Title="ModifChambre" Height="403.425" Width="527.653" Icon="/GestionHoteliere;component/icone_Hotel.ico">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF437E87" Offset="1"/>
             <GradientStop Color="White"/>
         </LinearGradientBrush>
     </Window.Background>
-    <Grid>
-        <GroupBox x:Name="chamb_grbChambre" Header="Chambre" HorizontalAlignment="Left" VerticalAlignment="Top" Height="312" Width="501">
-            <Grid HorizontalAlignment="Left" Height="302" VerticalAlignment="Top" Width="491" Margin="0,0,-2.2,-12.4">
-                <Label Content="Numéro Chambre : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <Label Content="Étage Chambre : " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-                <Label Content="Statut Chambre : " HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
-                <Label Content="Description : " HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="chamb_txtNoSeqChambre" IsEnabled="False" Text="{Binding NoSeqChambre}" HorizontalAlignment="Left" Height="23" Margin="129,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="1"/>
-                <TextBox x:Name="chamb_txtStatutChambre" Text="{Binding StatutChambre}" HorizontalAlignment="Left" Height="23" Margin="129,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="4"/>
-                <TextBox x:Name="chamb_txtDescChambre" AcceptsReturn="True" Text="{Binding DescChambre}" HorizontalAlignment="Left" Height="84" Margin="11,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="470" TabIndex="5"/>
-                <Label Content="Type Lit : " HorizontalAlignment="Left" Margin="254,10,0,0" VerticalAlignment="Top"/>
-                <Label Content="Nombre Lits :" HorizontalAlignment="Left" Margin="254,41,0,0" VerticalAlignment="Top"/>
-                <Label Content="Type Chambre : " HorizontalAlignment="Left" Margin="254,72,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="chamb_txtTypeLit" MaxLength="30" Text="{Binding TypeLit}" HorizontalAlignment="Left" Height="23" Margin="360,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="5"/>
-                <TextBox x:Name="chamb_txtCodeTypeChambre" Text="{Binding CodeTypeChambre}" HorizontalAlignment="Left" Height="23" Margin="360,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="7"/>
-                <Button x:Name="chamb_btnConfirmer" Content="Confirmer" HorizontalAlignment="Left" Margin="406,270,0,0" VerticalAlignment="Top" Width="75" TabIndex="10"/>
-                <Label Content="Code Hotel : " HorizontalAlignment="Left" Margin="254,103,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="chamb_txtCodeHotel" Text="{Binding CodeHotel}" HorizontalAlignment="Left" Height="23" Margin="360,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="8"/>
-                <Label Content="Code Chambre" HorizontalAlignment="Left" Margin="11,41,0,0" VerticalAlignment="Top"/>
-                <TextBox x:Name="chamb_txtCodeChambre" Text="{Binding CodeChambre}" HorizontalAlignment="Left" Height="23" Margin="129,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="2"/>
-                <xctk:MaskedTextBox x:Name="chamb_txtEtageChambre" HorizontalAlignment="Left" PromptChar=" " Mask="000" Text="{Binding EtageChambre}" Margin="129,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="3"/>
-                <xctk:MaskedTextBox x:Name="chamb_txtNbLit" Text="{Binding NbLit}" PromptChar=" " Mask="00" HorizontalAlignment="Left" Margin="360,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TabIndex="6"/>
+    <Grid Margin="0,0,-6.4,0.2">
+        <GroupBox x:Name="chamb_grbChambre" Header="Chambre" HorizontalAlignment="Center" VerticalAlignment="Top" Height="365" Width="493" FontSize="24">
+            <Grid HorizontalAlignment="Left" Height="324" VerticalAlignment="Top" Width="499" Margin="0,37,0,0">
+                <Label                                                Content="Numéro Chambre : "      HorizontalAlignment="Left" Margin="2,10,0,0"    VerticalAlignment="Top" FontSize="14"/>
+                <Label                                                Content="Étage Chambre : "       HorizontalAlignment="Left" Margin="2,72,0,0"    VerticalAlignment="Top" FontSize="14"/>
+                <Label                                                Content="Statut Chambre : "      HorizontalAlignment="Left" Margin="2,103,0,0"   VerticalAlignment="Top" FontSize="14"/>
+                <Label                                                Content="Description : "         HorizontalAlignment="Left" Margin="10,150,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                <TextBox            x:Name="chamb_txtNoSeqChambre"    Text="{Binding NoSeqChambre}"    HorizontalAlignment="Left" Margin="129,10,0,0"  VerticalAlignment="Top" FontSize="14" Width="120" Height="23" TabIndex="1" TextWrapping="Wrap" IsEnabled="False"/>
+                <TextBox            x:Name="chamb_txtStatutChambre"   Text="{Binding StatutChambre}"   HorizontalAlignment="Left" Margin="129,103,0,0" VerticalAlignment="Top" FontSize="14" Width="120" Height="23" TabIndex="4" TextWrapping="Wrap"/>
+                <TextBox            x:Name="chamb_txtDescChambre"     Text="{Binding DescChambre}"     HorizontalAlignment="Left" Margin="11,181,0,0"  VerticalAlignment="Top" FontSize="14" Width="470" Height="84" TabIndex="5" TextWrapping="Wrap" AcceptsReturn="True"/>
+                <Label                                                Content="Type Lit : "            HorizontalAlignment="Left" Margin="254,10,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                <Label                                                Content="Nombre Lits :"          HorizontalAlignment="Left" Margin="254,41,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                <Label                                                Content="Type Chambre : "        HorizontalAlignment="Left" Margin="254,72,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                <TextBox            x:Name="chamb_txtTypeLit"         Text="{Binding TypeLit}"         HorizontalAlignment="Left" Margin="360,10,0,0"  VerticalAlignment="Top" FontSize="14" Width="120" Height="23" TabIndex="5" TextWrapping="Wrap"  MaxLength="30" />
+                <TextBox            x:Name="chamb_txtCodeTypeChambre" Text="{Binding CodeTypeChambre}" HorizontalAlignment="Left" Margin="360,72,0,0"  VerticalAlignment="Top" FontSize="14" Width="120" Height="23" TabIndex="7" TextWrapping="Wrap" />
+                <Button             x:Name="chamb_btnConfirmer"       Content="Confirmer"              HorizontalAlignment="Left" Margin="381,284,0,0" VerticalAlignment="Top" FontSize="14" Width="100" Height="30" TabIndex="10"/>
+                <Label                                                Content="Code Hotel : "          HorizontalAlignment="Left" Margin="254,103,0,0" VerticalAlignment="Top" FontSize="14"/>
+                <TextBox            x:Name="chamb_txtCodeHotel"       Text="{Binding CodeHotel}"       HorizontalAlignment="Left" Margin="360,103,0,0" VerticalAlignment="Top" FontSize="14" Width="120" Height="23" TabIndex="8" TextWrapping="Wrap"/>
+                <Label                                                Content="Code Chambre"           HorizontalAlignment="Left" Margin="2,41,0,0"    VerticalAlignment="Top" FontSize="14"/>
+                <TextBox            x:Name="chamb_txtCodeChambre"     Text="{Binding CodeChambre}"     HorizontalAlignment="Left" Margin="129,41,0,0"  VerticalAlignment="Top" FontSize="14" Width="120" Height="23" TabIndex="2" TextWrapping="Wrap"/>
+                <xctk:MaskedTextBox x:Name="chamb_txtEtageChambre"    Text="{Binding EtageChambre}"    HorizontalAlignment="Left" Margin="129,72,0,0"  VerticalAlignment="Top" FontSize="14" Width="120" Mask="000"  TabIndex="3" TextWrapping="Wrap" PromptChar=" "/>
+                <xctk:MaskedTextBox x:Name="chamb_txtNbLit"           Text="{Binding NbLit}"           HorizontalAlignment="Left" Margin="360,41,0,0"  VerticalAlignment="Top" FontSize="14" Width="120" Mask="00"   TabIndex="6" TextWrapping="Wrap" PromptChar=" "/>
             </Grid>
         </GroupBox>
 

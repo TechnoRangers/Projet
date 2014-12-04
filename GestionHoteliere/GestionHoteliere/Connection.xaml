@@ -11,21 +11,19 @@
     </Window.Background>
     <Viewbox Stretch="Uniform">
         <Grid Margin="0,0,0.6,-3.6" Height="507" VerticalAlignment="Top">
-            <GroupBox x:Name="Con_GrpLogin" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="225" Width="420" FontWeight="Bold" Margin="167,0,168,10">
-                <Grid x:Name="Con_GrdLogin" HorizontalAlignment="Center" Height="181" VerticalAlignment="Top" Width="382" Margin="0,34,0,0">
-                    <Label       x:Name="Con_LblIdentifiant"     Content="Identifiant : "       HorizontalAlignment="Left" FontSize="20" Margin="3,12,0,0" VerticalAlignment="Top" />
-                    <Label       x:Name="Con_LblMotDePasse"      Content="Mot de passe : "      HorizontalAlignment="Left" FontSize="20" Margin="2,49,0,0" VerticalAlignment="Top" />
-                    <Label       x:Name="Con_LblHotel"           Content="Hôtel : "             HorizontalAlignment="Left" FontSize="20" Margin="3,88,0,0" VerticalAlignment="Top" />
-                    <Label       x:Name="con_lblErreurConnexion" Content="Erreur de connexion"  HorizontalAlignment="Left" FontSize="20" Margin="5,139,0,0" VerticalAlignment="Top" Foreground="Red" Width="197"/>
-                    <TextBox     x:Name="Con_TxtIdentifiant"     FontSize="14"                  HorizontalAlignment="Left" Margin="177,19,0,0" VerticalAlignment="Top" Width="195" Height="23" TextWrapping="Wrap"/>
-                    <PasswordBox x:Name="Con_TxtMotPasse"        FontSize="14"                  HorizontalAlignment="Left" Margin="178,56,0,0"   VerticalAlignment="Top" Width="194" Height="25"/>
-                    <ComboBox    x:Name="Con_CmbHotel"           FontSize="14"                  HorizontalAlignment="Left" Margin="178,93,0,0"   VerticalAlignment="Top" Width="194" Height="23" />
-                    <Button      x:Name="Con_BtnConnexion"  Background="teal" HorizontalAlignment="Left" Margin="220,129,0,-3"  VerticalAlignment="Top" Width="152" Height="55">
-                        <TextBlock Text="Connexion" FontSize="20" Margin="0,13,0,14.2" Width="103"/>
-                    </Button>
+            <GroupBox x:Name="Con_GrpLogin" FontSize="20" HorizontalAlignment="Center" Margin="167,0,168,10"      VerticalAlignment="Bottom" Height="225" Width="420" FontWeight="Bold">
+                <Grid x:Name="Con_GrdLogin" HorizontalAlignment="Center" Height="181" VerticalAlignment="Top" Width="396" Margin="0,34,0,0">
+                    <Label       x:Name="Con_LblIdentifiant"     Content="Identifiant : "        HorizontalAlignment="Left" Margin="3,12,0,0"    VerticalAlignment="Top" FontSize="20"/>
+                    <Label       x:Name="Con_LblMotDePasse"      Content="Mot de passe : "       HorizontalAlignment="Left" Margin="2,49,0,0"    VerticalAlignment="Top" FontSize="20"/>
+                    <Label       x:Name="Con_LblHotel"           Content="Hôtel : "              HorizontalAlignment="Left" Margin="3,88,0,0"    VerticalAlignment="Top" FontSize="20"/>
+                    <Label       x:Name="con_lblErreurConnexion" Content="Erreur de connexion"   HorizontalAlignment="Left" Margin="5,139,0,0"   VerticalAlignment="Top" FontSize="20" Foreground="Red" Width="197"/>
+                    <TextBox     x:Name="Con_TxtIdentifiant"     FontSize="14"                   HorizontalAlignment="Left" Margin="177,19,0,0"  VerticalAlignment="Top" Width="195"   Height="23"      TextWrapping="Wrap" Text=""/>
+                    <PasswordBox x:Name="Con_TxtMotPasse"        FontSize="14"                   HorizontalAlignment="Left" Margin="178,56,0,0"  VerticalAlignment="Top" Width="194"   Height="25"/>
+                    <ComboBox    x:Name="Con_CmbHotel"           FontSize="14"                   HorizontalAlignment="Left" Margin="178,93,0,0"  VerticalAlignment="Top" Width="194"   Height="23"/>
+                    <Button      x:Name="Con_BtnConnexion" Content="Connexion" Background="teal" HorizontalAlignment="Left" Margin="220,126,0,0" VerticalAlignment="Top" Width="152"   Height="55"/>
                 </Grid>
             </GroupBox>
-            <Image Margin="169,-6,170,208" Source="logo_hotel_payette.png" Stretch="Fill"/>
+            <Image    x:Name="Con_ImgLogo"  Source="logo_hotel_payette.png"            Margin="169,-6,170,208"    Stretch="Fill"/>
         </Grid>
     </Viewbox>
 </Window>  

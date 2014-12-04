@@ -23,10 +23,10 @@
             value = 1
         End If
 
-        Dim Rep = (From It In MaBd.tblFourniture Where It.DescFourniture = LocEqui_ListBoxInventaire.SelectedItem.ToString Select It.CodeFourniture).Single
+        Dim Rep = (From It In MaBd.tblFourniture Where It.DescFourniture = LocEqui_ListBoxInv.SelectedItem.ToString Select It.CodeFourniture).Single
 
         produit = New MyItem
-        produit.Name = LocEqui_ListBoxInventaire.SelectedItem
+        produit.Name = LocEqui_ListBoxInv.SelectedItem
         produit.Nombre = Rep
         produit.Quantite = value
         'checkup pour voir si l'item est déja dans la liste 
@@ -84,7 +84,7 @@
                    Select it.DescFourniture)
         'Remplie la listview 
         For Each row In rep.ToList
-            LocEqui_ListBoxInventaire.Items.Add(row)
+            LocEqui_ListBoxInv.Items.Add(row)
         Next
         'Pour rechercher les objets réserver
         Dim Rep2 = (From I In MaBd.tblFournitureReservationSalle

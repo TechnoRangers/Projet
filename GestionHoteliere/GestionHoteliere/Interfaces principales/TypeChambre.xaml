@@ -10,16 +10,16 @@
     </Window.Background>
     <Viewbox Stretch="Uniform">
         <Grid>
-            <DataGrid x:Name="typchamb_dtgTypeChambre" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="140" Width="337">
+            <DataGrid x:Name="typchamb_dtgTypeChambre" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0"  VerticalAlignment="Top" Height="140" Width="337">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Code Type Chambre" Binding="{Binding CodeTypeChambre, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Nom Type Chambre" Binding="{Binding NomTypeChambre, Mode=OneWay}"/>
-                    <DataGridTextColumn Header="Description" Binding="{Binding DescTypeChambre, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Nom Type Chambre"  Binding="{Binding NomTypeChambre, Mode=OneWay}"/>
+                    <DataGridTextColumn Header="Description"       Binding="{Binding DescTypeChambre, Mode=OneWay}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="typchamb_btnAjouter" Content="Ajouter" HorizontalAlignment="Left" Margin="352,9,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="typchamb_btnModifier" Content="Modifier" HorizontalAlignment="Left" Margin="352,36,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="typchamb_btnSupprimer" Content="Supprimer" HorizontalAlignment="Left" Margin="352,63,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button   x:Name="typchamb_btnAjouter"     Content="Ajouter"           HorizontalAlignment="Left" Margin="352,9,0,0"  VerticalAlignment="Top" Height="30"  Width="75"/>
+            <Button   x:Name="typchamb_btnModifier"    Content="Modifier"          HorizontalAlignment="Left" Margin="352,49,0,0" VerticalAlignment="Top" Height="30"  Width="75"/>
+            <Button   x:Name="typchamb_btnSupprimer"   Content="Supprimer"         HorizontalAlignment="Left" Margin="352,89,0,0" VerticalAlignment="Top" Height="30"  Width="75"/>
 
         </Grid>
     </Viewbox>

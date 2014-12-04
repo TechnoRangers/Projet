@@ -221,9 +221,6 @@
     <Compile Include="Interfaces secondaires\ModifEmploye.xaml.vb">
       <DependentUpon>ModifEmploye.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces secondaires\ModifFacture.xaml.vb">
-      <DependentUpon>ModifFacture.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Interfaces secondaires\ModifForfait.xaml.vb">
       <DependentUpon>ModifForfait.xaml</DependentUpon>
     </Compile>
@@ -491,10 +488,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Interfaces secondaires\ModifEmploye.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Interfaces secondaires\ModifFacture.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
