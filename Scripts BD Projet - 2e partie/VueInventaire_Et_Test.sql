@@ -77,6 +77,18 @@ JOIN Approvisionnement.tblCategorieFourniture AS CF
 	ON F.CodeCategorie = CF.CodeCategorie
 
 
+CREATE PROC Reservation.PrixTypeChambreHotel(@CodeHotel CHAR(3))
+AS
+SELECT TC.CodeTypeChambre, TC.NomTypeChambre, TC.DescTypeChambre, PTC.PrixTypeChambre
+FROM Reservation.tblTypeChambre AS TC
+JOIN Reservation.tblPrixTypeChambre AS PTC
+	ON TC.CodeTypeChambre = PTC.CodeTypeChambre
+WHERE PTC.CodeHotel = 'NML' AND (GETDATE() BETWEEN PTC.DateDebutPrix AND PTC.DateFinPrix)
+
+GO
+
+DROP PROC Reservation.PrixTypeChambreHotel
+
 --SELECT *
 --FROM Approvisionnement.VueInventaire
 --ORDER BY NoSeqFourniture

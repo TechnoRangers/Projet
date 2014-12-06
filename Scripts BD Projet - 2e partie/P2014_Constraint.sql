@@ -1,6 +1,8 @@
 USE P2014_BD_GestionHotel
 GO
 
+ALTER TABLE dbo.tblMessage ADD CONSTRAINT PK_Mes_NoSeq PRIMARY KEY(NoSeq)
+
 /**************************************** Primary key Personnel ****************************************/ 
 ALTER TABLE Personnel.tblEmploye ADD CONSTRAINT PK_Emp_NoEmp PRIMARY KEY(NoEmploye)
 ALTER TABLE Personnel.tblChiffreTravail ADD CONSTRAINT PK_ChHo_NoChHo PRIMARY KEY(NoChiffreTravail)

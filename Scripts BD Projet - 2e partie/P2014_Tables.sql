@@ -164,6 +164,7 @@ CREATE TABLE Reservation.tblHotel
 (
 	CodeHotel			char(3)			NOT NULL,
 	NomHotel			varchar(80)		NOT NULL,
+	DescHotel			varchar(400)	NULL,
 	NbChambre			smallint		NOT NULL,
 	AdresseHotel		varchar(50)		NOT NULL,
 	NbEtoiles			tinyint			NOT NULL,
@@ -337,8 +338,8 @@ CREATE TABLE Reservation.tblFournitureReservationSalle
 /* **********************Message******************************** */
 CREATE TABLE tblMessage
 (
-	//NoSeq 		INT				NOT NULL	IDENT(0,1),
+	NoSeq 		INT				NOT NULL	IDENTITY(1000,1),
 	Titre		VARCHAR(30)		NOT NULL,
 	DateM		DATE			NOT NULL,
-	Message		Text			NOT NULL
+	MessageM	Text			NOT NULL
 )
