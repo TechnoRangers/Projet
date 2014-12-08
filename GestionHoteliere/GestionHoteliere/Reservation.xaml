@@ -33,11 +33,11 @@
                     <Label              x:Name="Res_LblTypeChambre"         Content="Type chambre"                               HorizontalAlignment="Left" Margin="10,48,0,0"   VerticalAlignment="Top" FontSize="14"/>
                     <TextBox            x:Name="Res_TextBoxTypeChambre"     Text="{Binding CodeTypeChambre}" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="137,48,0,0"  VerticalAlignment="Top" FontSize="14" Width="131" Height="23" IsEnabled="False" />
                     <Label              x:Name="Res_LblNomLoc"              Content="Nom locataire"                              HorizontalAlignment="Left" Margin="10,82,0,0"   VerticalAlignment="Top" FontSize="14"/>
-                    <TextBox            x:Name="Res_TextBoxNomLocataire"    MaxLength="20"                   TextWrapping="Wrap" HorizontalAlignment="Left" Margin="137,82,0,0"  VerticalAlignment="Top" FontSize="14" Width="131" Height="23" />
+                    <TextBox            x:Name="Res_TextBoxNomLocataire"    Text="{Binding NomLocataire}" MaxLength="20"                   TextWrapping="Wrap" HorizontalAlignment="Left" Margin="137,82,0,0"  VerticalAlignment="Top" FontSize="14" Width="131" Height="23" />
                     <Label              x:Name="Res_LblPrenLoc"             Content="Prénom locataire"                           HorizontalAlignment="Left" Margin="304,82,0,0"  VerticalAlignment="Top" FontSize="14"/>
-                    <TextBox            x:Name="Res_TextBoxPrenomLocataire" MaxLength="20"                   TextWrapping="Wrap" HorizontalAlignment="Left" Margin="416,83,0,0"  VerticalAlignment="Top" FontSize="14" Width="176" Height="23" />
+                    <TextBox            x:Name="Res_TextBoxPrenomLocataire" Text="{Binding PrenomLocataire}" MaxLength="20"                   TextWrapping="Wrap" HorizontalAlignment="Left" Margin="416,83,0,0"  VerticalAlignment="Top" FontSize="14" Width="176" Height="23" />
                     <Label              x:Name="Res_LblNbAdulte"            Content="Nombre personnes"                           HorizontalAlignment="Left" Margin="10,116,0,0"  VerticalAlignment="Top" FontSize="14"/>
-                    <xctk:MaskedTextBox x:Name="Res_TextBoxNbAdulte"        Mask="000"    PromptChar=" "     TextWrapping="Wrap" HorizontalAlignment="Left" Margin="137,119,0,0" VerticalAlignment="Top" FontSize="14" Width="54"  Height="23" />
+                    <xctk:MaskedTextBox x:Name="Res_TextBoxNbAdulte"        Text="{Binding NbPersonne}" Mask="000"    PromptChar=" "     TextWrapping="Wrap" HorizontalAlignment="Left" Margin="137,119,0,0" VerticalAlignment="Top" FontSize="14" Width="54"  Height="23" />
                     <Label              x:Name="Res_LblDateArr"             Content="Date d'arrivée"                             HorizontalAlignment="Left" Margin="304,18,0,0"  VerticalAlignment="Top" FontSize="14"/>
                     <DatePicker         x:Name="Res_DatePickerArr"                                                               HorizontalAlignment="Left" Margin="416,16,0,0"  VerticalAlignment="Top" FontSize="14"/>
                     <Label              x:Name="Res_LblDateDep"             Content="Date départ"                                HorizontalAlignment="Left" Margin="304,48,0,0"  VerticalAlignment="Top" FontSize="14"/>
@@ -58,7 +58,11 @@
                     <TextBox  x:Name="Res_TextBoxMontant"        Text="" TextWrapping="Wrap"   HorizontalAlignment="Left" Margin="433,30,0,0"  VerticalAlignment="Top" FontSize="14" Width="133" Height="23"/>
                     <Label    x:Name="Res_LblDollars"            Content="$"                   HorizontalAlignment="Left" Margin="566,27,0,0"  VerticalAlignment="Top" FontSize="14"/>
                     <Label    x:Name="Res_LblTypeCarte"          Content="Type de carte"       HorizontalAlignment="Left" Margin="28,58,0,0"   VerticalAlignment="Top" FontSize="14"/>
-                    <ComboBox x:Name="Res_CmbTypeCarte"                                        HorizontalAlignment="Left" Margin="167,61,0,29" VerticalAlignment="Top" FontSize="14" Width="120"/>
+                    <ComboBox x:Name="Res_CmbTypeCarte"                                        HorizontalAlignment="Left" Margin="167,61,0,29" VerticalAlignment="Top" FontSize="14" Width="120">
+                        <ComboBoxItem Content="Visa"/>
+                        <ComboBoxItem Content="American express"/>
+                        <ComboBoxItem Content="MasterCard"/>
+                    </ComboBox>
                     <Label    x:Name="Res_LblNoCarte"            Content="Numéro de carte"     HorizontalAlignment="Left" Margin="28,87,0,0"   VerticalAlignment="Top" FontSize="14"/>
                     <TextBox  x:Name="Res_TxtNoCarte"            Text="" TextWrapping="Wrap"   HorizontalAlignment="Left" Margin="167,89,0,4"  VerticalAlignment="Top" FontSize="14" Width="120"/>
                     <Label    x:Name="Res_LblDateExp"            Content="Date expiration"     HorizontalAlignment="Left" Margin="292,87,0,0"  VerticalAlignment="Top" FontSize="14"/>

@@ -3,10 +3,12 @@
     Dim BD As P2014_BD_GestionHotelEntities
     Dim _MonForfait As tblForfait
     Dim ListeChambresDispo As New List(Of tblChambre)
+    Dim Client As tblClient
 
-    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities)
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, ByRef _Client As tblClient)
         InitializeComponent()
         BD = _BD
+        Client = _Client
     End Sub
     Private Sub For_FrmFor_Loaded(sender As Object, e As RoutedEventArgs) Handles For_FrmFor.Loaded
 
@@ -98,8 +100,14 @@
             Dim res = From el In BD.tblChambre Where el.NoSeqChambre = i Select el
             ChambresSelection.Add(res.First)
         Next
+        Try
+            BD.SaveChanges()
+        Catch ex As Exception
+            Dim i As Integer
 
-        Dim Reservation_ As New Reservation(BD, ChambresSelection, _MonForfait)
+            i = 9
+        End Try
+        Dim Reservation_ As New Reservation(BD, ChambresSelection, _MonForfait.DateDebut, _MonForfait.DateFin, _MonForfait, Client)
         Reservation_.Show()
         Me.Close()
     End Sub

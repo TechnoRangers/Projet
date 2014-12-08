@@ -260,6 +260,9 @@
     <Compile Include="ModifReservation.xaml.vb">
       <DependentUpon>ModifReservation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PrixTypeChambreHotel_Result.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Reservation.xaml.vb">
       <DependentUpon>Reservation.xaml</DependentUpon>
     </Compile>
@@ -324,6 +327,9 @@
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblHotel.vb">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tblMessage.vb">
       <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="tblPays.vb">

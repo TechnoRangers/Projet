@@ -4,7 +4,7 @@
 
     Dim TypeChambre As tblTypeChambre
     Dim Client As tblClient
-
+    Dim ChambresSelection As New List(Of tblChambre)
     Dim ListeChambresDispo As New List(Of tblChambre)
 
     Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _Client As tblClient)
@@ -29,19 +29,26 @@
     End Sub
 
     Private Sub Dis_BtnRéserver_Click(sender As Object, e As RoutedEventArgs) Handles Dis_BtnRéserver.Click
-        Dim ChambresSelection As New List(Of tblChambre)
 
-        'Dim temp = From ch In BD.tblChambre, el In cv Where el.NoSeqChambre = ch.NoSeqChambre Select ch
+        If ChambresSelection.Count <> 0 Then
 
-        For Each Chambre In Dis_GrtChambre.SelectedItems
-            Dim i As Integer = Chambre.NoSeqChambre
-            Dim res = From el In BD.tblChambre Where el.NoSeqChambre = i Select el
-            ChambresSelection.Add(res.First)
-        Next
+            Dim DateDebut As Date
+            Dim DateFin As Date
+            Dim Forfait As tblForfait
 
-        Dim Reservation_ As New Reservation(BD, ChambresSelection)
-        Reservation_.Show()
-        Me.Close()
+            DateDebut = Dis_dtpDateDebut.SelectedDate
+            DateFin = Dis_dtpDateFin.SelectedDate
+            Forfait = Nothing
+            'Dim temp = From ch In BD.tblChambre, el In cv Where el.NoSeqChambre = ch.NoSeqChambre Select ch
+
+
+            Dim Reservation_ As New Reservation(BD, ChambresSelection, DateDebut, DateFin, Forfait, Client)
+            Reservation_.Show()
+            Me.Close()
+        Else
+            MessageBox.Show("Veuillez ajouter les chambres à la liste avant de poursuivre")
+        End If
+
     End Sub
 
     Private Sub Dis_BtnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Dis_BtnAnnuler.Click
@@ -49,7 +56,7 @@
     End Sub
 
     Private Sub Dis_CmbTypeChambre_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles Dis_CmbTypeChambre.SelectionChanged
-        TypeChambre = CType(dis_cmbTypeChambre.SelectedItem, tblTypeChambre)
+        TypeChambre = CType(Dis_cmbTypeChambre.SelectedItem, tblTypeChambre)
 
         FiltrerDatagrid()
     End Sub
@@ -76,23 +83,29 @@
             Dim Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
                           Select tabChambre
 
-            If dis_txtEtageChambre.Text <> "" And dis_txtNbLit.Text <> Nothing Then
-                Etage = CType(dis_txtEtageChambre.Text, Integer)
-                NbLit = CType(dis_txtNbLit.Text, Integer)
+            If TypeChambre IsNot Nothing Then
+                Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
+                              Where tabChambre.CodeTypeChambre = TypeChambre.CodeTypeChambre
+                              Select tabChambre
+            End If
+
+            If Dis_txtEtageChambre.Text <> "" And Dis_txtNbLit.Text <> Nothing Then
+                Etage = CType(Dis_txtEtageChambre.Text, Integer)
+                NbLit = CType(Dis_txtNbLit.Text, Integer)
 
                 Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
                               Where tabChambre.EtageChambre = Etage And tabChambre.NbLit = NbLit
                               Select tabChambre
 
-            ElseIf dis_txtEtageChambre.Text <> "" Then
-                Etage = CType(dis_txtEtageChambre.Text, Integer)
+            ElseIf Dis_txtEtageChambre.Text <> "" Then
+                Etage = CType(Dis_txtEtageChambre.Text, Integer)
 
                 Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
                               Where tabChambre.EtageChambre = Etage
                               Select tabChambre
 
-            ElseIf dis_txtNbLit.Text <> "" Then
-                NbLit = CType(dis_txtNbLit.Text, Integer)
+            ElseIf Dis_txtNbLit.Text <> "" Then
+                NbLit = CType(Dis_txtNbLit.Text, Integer)
 
                 Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
                               Where tabChambre.NbLit = NbLit
@@ -113,8 +126,20 @@
     End Sub
 
     Private Sub Dis_BtnForfait_Click(sender As Object, e As RoutedEventArgs) Handles Dis_BtnForfait.Click
-        Dim ForfaitAppli_ As New ForfaitAppli(BD)
+        Dim ForfaitAppli_ As New ForfaitAppli(BD, Client)
         ForfaitAppli_.Show()
+    End Sub
+
+    Private Sub Btn_AjouterChambre_Click(sender As Object, e As RoutedEventArgs) Handles Btn_AjouterChambre.Click
+
+        For Each Chambre In Dis_GrtChambre.SelectedItems
+            Dim i As Integer = Chambre.NoSeqChambre
+            Dim res = From el In BD.tblChambre Where el.NoSeqChambre = i Select el
+            ChambresSelection.Add(res.First)
+        Next
+
+        MessageBox.Show("L'ajout dans la liste de chambre a bien réussi")
+
     End Sub
 End Class
 

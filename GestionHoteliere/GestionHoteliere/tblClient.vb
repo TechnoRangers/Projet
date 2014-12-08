@@ -19,6 +19,7 @@ Partial Public Class tblClient
     Public Property AdresseClient As String
     Public Property AdresseSecondaireClient As String
     Public Property EmailClient As String
+    Public Property MdpClient As String
     Public Property CodePostal As String
     Public Property NomEntreprise As String
     Public Property CodeVille As String
