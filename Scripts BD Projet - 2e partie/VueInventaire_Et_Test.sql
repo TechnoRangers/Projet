@@ -75,7 +75,7 @@ JOIN Approvisionnement.tblFournisseur AS Four
 	ON FF.CodeFournisseur = Four.CodeFournisseur
 JOIN Approvisionnement.tblCategorieFourniture AS CF
 	ON F.CodeCategorie = CF.CodeCategorie
-
+GO
 
 CREATE PROC Reservation.PrixTypeChambreHotel(@CodeHotel CHAR(3))
 AS
@@ -87,7 +87,7 @@ WHERE PTC.CodeHotel = 'NML' AND (GETDATE() BETWEEN PTC.DateDebutPrix AND PTC.Dat
 
 GO
 
-DROP PROC Reservation.PrixTypeChambreHotel
+--DROP PROC Reservation.PrixTypeChambreHotel
 
 --SELECT *
 --FROM Approvisionnement.VueInventaire

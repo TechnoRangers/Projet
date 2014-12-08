@@ -14,9 +14,10 @@ CREATE TABLE Personnel.tblEmploye
 	NoTelephoneEmploye	varchar(14)		NOT NULL,
 	NasEmploye			char(11)		NOT NULL,
 	DateNaissance		date			NOT NULL,
-	IdentifiantEmploye	char(8)			NULL,
-	MdpEmploye			char(8)			NULL,
+	IdentifiantEmploye	varchar(10)			NULL,
+	MdpEmploye			varchar(10)			NULL,
 	NombreHeuresSemaines smallint		NULL,
+	DatePremierCo		date			NULL,
 	CodeHotel			char(3)			NULL
 )
 
