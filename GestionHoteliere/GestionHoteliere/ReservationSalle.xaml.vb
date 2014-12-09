@@ -124,7 +124,12 @@
 
     Private Sub LocSal_BtnRec_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnRec.Click
         'Recher du client par le nom de famille et le Tel 
+        Dim message As String = "Ce client n'existe pas"
         Try
+            If LocSal_TxtBoxNom.Text.Trim.Length = 0 Then
+                message = "Vieullez rentrer un nom "
+                Throw New Exception
+            End If
             Dim Res = (From Cl In MaBd.tblClient
                         Where Cl.NoTelephone.Equals(LocSal_TxtBoxTel.Text) And Cl.NomClient.Equals(LocSal_TxtBoxNom.Text)
                         Select Cl)
@@ -134,25 +139,28 @@
             LocSal_TxtBoxAdr.Text = Res.First.AdresseClient
             LocSal_TxtBoxEmail.Text = Res.First.EmailClient
         Catch ex As Exception
-            MessageBox.Show("Ce client n'existe pas")
+            MessageBox.Show(message)
         End Try
     End Sub
 
     Private Sub LocSal_BtnAjout_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnAjout.Click
         'Inscription d'un client si le client n'existe pas 
-        Dim NewCl As tblClient
-        NewCl = New tblClient
 
-        NewCl.NomClient = LocSal_TxtBoxNom.Text
-        NewCl.PrenomClient = LocSal_TxtBoxPre.Text
-        NewCl.NoTelephone = LocSal_TxtBoxTel.Text
-        NewCl.AdresseClient = LocSal_TxtBoxAdr.Text
-        NewCl.EmailClient = LocSal_TxtBoxEmail.Text
+        If validationClient() Then
+            Dim NewCl As tblClient
+            NewCl = New tblClient
 
-        MaBd.tblClient.Add(NewCl)
-        MaBd.SaveChanges()
+            NewCl.NomClient = LocSal_TxtBoxNom.Text
+            NewCl.PrenomClient = LocSal_TxtBoxPre.Text
+            NewCl.NoTelephone = LocSal_TxtBoxTel.Text
+            NewCl.AdresseClient = LocSal_TxtBoxAdr.Text
+            NewCl.EmailClient = LocSal_TxtBoxEmail.Text
 
-        LocSal_TxtBoxClient.Text = NewCl.NoSeqClient.ToString
+            MaBd.tblClient.Add(NewCl)
+            MaBd.SaveChanges()
+
+            LocSal_TxtBoxClient.Text = NewCl.NoSeqClient.ToString
+        End If
     End Sub
 
     Private Sub OnKeyDownHandler(ByVal sender As Object, ByVal e As KeyEventArgs)
@@ -313,7 +321,7 @@
     End Sub
 
     Private Sub LocSal_TxtBoxNoRes_TextChanged(sender As Object, e As TextChangedEventArgs) Handles LocSal_TxtBoxNoRes.TextChanged
-        If LocSal_TxtBoxNoRes.Text.Length = 4 Then
+        If LocSal_TxtBoxNoRes.Text.Trim.Length <= 4 Then
             LocSal_BtnEqu.IsEnabled = True
             LocSal_RecSal.IsEnabled = True
             LocSal_BtnModiSalle.IsEnabled = True
@@ -327,5 +335,36 @@
 
 
     End Sub
+
+    Function validationClient()
+        Dim message As String = "Une erreur est subvenue à la création du client"
+        Try
+            If LocSal_TxtBoxPre.Text.Trim.Length = 0 Then
+                message = "Vieullez rentrer un prénom "
+                Throw New Exception
+            End If
+            If LocSal_TxtBoxNom.Text.Trim.Length = 0 Then
+                message = "Vieullez rentrer un nom "
+                Throw New Exception
+            End If
+            If LocSal_TxtBoxTel.Text.Trim.Length = 0 Then
+                message = "Vieullez rentrer un numéros de téléphone "
+                Throw New Exception
+            End If
+            If LocSal_TxtBoxAdr.Text.Trim.Length = 0 Then
+                message = "Vieullez rentrer une adresse"
+                Throw New Exception
+            End If
+            If LocSal_TxtBoxEmail.Text.Trim.Length = 0 Then
+                message = "Vieullez rentrer une adresse courriel "
+                Throw New Exception
+            End If
+        Catch ex As Exception
+            MessageBox.Show(message)
+            Return False
+        End Try
+        Return True
+    End Function
+
 End Class
 
