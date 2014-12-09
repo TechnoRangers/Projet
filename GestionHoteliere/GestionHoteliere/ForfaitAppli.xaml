@@ -9,74 +9,58 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-        <Grid>
-            <GroupBox x:Name="For_GrpBoxForfait" Header="Liste Forfait" Background="Transparent" FontSize="24" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="30,42,-0.2,0" VerticalAlignment="Top" Height="270" Width="1215">
-                <Border CornerRadius="5"  Margin="0,0,-2.6,-1.8" BorderBrush="Black" BorderThickness="4">
-                    <Grid HorizontalAlignment="Left" Height="247" Margin="0,-17,-3.4,-6" VerticalAlignment="Top" Width="1205">
-                        <DataGrid x:Name="For_dataGridForfait" FontSize="14" AutoGenerateColumns="False"  HorizontalAlignment="Left" Margin="21,28,0,0" VerticalAlignment="Top" Height="209" Width="1165">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding CodeForfait}"     ClipboardContentBinding="{x:Null}" Header=" Code forfait"/>
-                                <DataGridTextColumn Binding="{Binding NomForfait}"      ClipboardContentBinding="{x:Null}" Header="Nom forfait"/>
-                                <DataGridTextColumn Binding="{Binding PrixForfait}"     ClipboardContentBinding="{x:Null}" Header="Prix forfait"/>
-                                <DataGridTextColumn Binding="{Binding DescForfait}"     ClipboardContentBinding="{x:Null}" Header="Description forfait"/>
-                                <DataGridTextColumn Binding="{Binding NbNuit}"          ClipboardContentBinding="{x:Null}" Header="Nombre nuit"/>
-                                <DataGridTextColumn Binding="{Binding DateDebut}"       ClipboardContentBinding="{x:Null}" Header="Date debut"/>
-                                <DataGridTextColumn Binding="{Binding DateFin}"         ClipboardContentBinding="{x:Null}" Header="Date fin"/>
-                                <DataGridTextColumn Binding="{Binding CodeTypeChambre}" ClipboardContentBinding="{x:Null}" Header="Code type chambre"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </Grid>
-                </Border>
+        <Grid Margin="0,0,10,10">
+            <GroupBox x:Name="For_GrpBoxForfait"         Header="Liste Forfait"   HorizontalAlignment="Left" Margin="30,38,-0.6,0" VerticalAlignment="Top" Height="270" Width="1215" FontSize="24">
+                <Grid HorizontalAlignment="Left" Height="236" Margin="0,34,0,0" VerticalAlignment="Top" Width="1205">
+                    <DataGrid x:Name="For_dataGridForfait" FontSize="14" AutoGenerateColumns="False"  HorizontalAlignment="Left" Margin="21,13,0,0" VerticalAlignment="Top" Height="209" Width="1165">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding CodeForfait}"     ClipboardContentBinding="{x:Null}" Header=" Code forfait"/>
+                            <DataGridTextColumn Binding="{Binding NomForfait}"      ClipboardContentBinding="{x:Null}" Header="Nom forfait"/>
+                            <DataGridTextColumn Binding="{Binding PrixForfait}"     ClipboardContentBinding="{x:Null}" Header="Prix forfait"/>
+                            <DataGridTextColumn Binding="{Binding DescForfait}"     ClipboardContentBinding="{x:Null}" Header="Description forfait"/>
+                            <DataGridTextColumn Binding="{Binding NbNuit}"          ClipboardContentBinding="{x:Null}" Header="Nombre nuit"/>
+                            <DataGridTextColumn Binding="{Binding DateDebut}"       ClipboardContentBinding="{x:Null}" Header="Date debut"/>
+                            <DataGridTextColumn Binding="{Binding DateFin}"         ClipboardContentBinding="{x:Null}" Header="Date fin"/>
+                            <DataGridTextColumn Binding="{Binding CodeTypeChambre}" ClipboardContentBinding="{x:Null}" Header="Code type chambre"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </GroupBox>
-            <GroupBox x:Name="For_GrpBoxReservation" Header="Réservation" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="30,317,0,0" VerticalAlignment="Top" Height="380" Width="625" FontSize="24">
-                <Border CornerRadius="5"  Margin="0,0,-2.6,-1.8" BorderBrush="Black" BorderThickness="4">
-                    <Grid HorizontalAlignment="Left" Height="353" Margin="0,0,-2.2,-1.8" VerticalAlignment="Top" Width="615">
-                        <Label    x:Name="For_LblForfait"    Content="Forfait :" HorizontalAlignment="Left" Margin="19,20,0,0" VerticalAlignment="Top" FontSize="14" Width="70" />
-                        <ComboBox x:Name="For_CmbBoxForfait"                     HorizontalAlignment="Left" Margin="89,20,0,0" VerticalAlignment="Top" FontSize="14" Width="176"/>                       
-                        <DataGrid x:Name="For_DateGridDispoChambre"              HorizontalAlignment="Left" Margin="19,65,0,0" VerticalAlignment="Top" FontSize="14" Width="586" Height="224" AutoGenerateColumns="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding NoSeqChambre}"    ClipboardContentBinding="{x:Null}" Header="No chambre"/>
-                                <DataGridTextColumn Binding="{Binding EtageChambre}"    ClipboardContentBinding="{x:Null}" Header="Etage"/>
-                                <DataGridTextColumn Binding="{Binding NbLit}"           ClipboardContentBinding="{x:Null}" Header="Nombre de lit"/>
-                                <DataGridTextColumn Binding="{Binding TypeLit}"         ClipboardContentBinding="{x:Null}" Header="Type de lit"/>
-                                <DataGridTextColumn Binding="{Binding DescChambre}"     ClipboardContentBinding="{x:Null}" Header="Description"/>
-                                <DataGridTextColumn Binding="{Binding CodeTypeChambre}" ClipboardContentBinding="{x:Null}" Header="Code type chambre"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                        <Label   x:Name="For_LblEtage"    Content="Etage :"           HorizontalAlignment="Left" Margin="19,305,0,0"  VerticalAlignment="Top" FontSize="14"/>
-                        <TextBox x:Name="For_TxtBoxEtage" Text="" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="75,308,0,0"  VerticalAlignment="Top" FontSize="14" Height="23" Width="79" />
-                        <Label   x:Name="For_LblNbLit"    Content="Nombre de lit :"   HorizontalAlignment="Left" Margin="205,305,0,0" VerticalAlignment="Top" FontSize="14"/>   
-                        <TextBox x:Name="For_TxtBoxNbLit" Text="" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="312,308,0,0" VerticalAlignment="Top" FontSize="14" Height="23" Width="86" />
-                        
-                        <Button  x:Name="For_BtnReserver" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" Margin="476,291,0,0" VerticalAlignment="Top" Width="129" Height="50">
-                            <Border CornerRadius="5" Height="40" Width="123" Background="YellowGreen" Margin="0" BorderBrush="Black" BorderThickness="4">
-                                <TextBlock Text="Réserver" FontSize="14" Margin="31,7,0,-2" HorizontalAlignment="Left" Width="55"/>
-                            </Border>
-                        </Button>
-                    </Grid>
-                </Border>
+            <GroupBox x:Name="For_GrpBoxReservation"     Header="Réservation"     HorizontalAlignment="Left" Margin="30,317,0,0"   VerticalAlignment="Top" Height="380" Width="625"  FontSize="24">
+                <Grid HorizontalAlignment="Left" Height="353" Margin="0,31,0,-4" VerticalAlignment="Top" Width="615">
+                    <Label    x:Name="For_LblForfait"  Content="Forfait :" HorizontalAlignment="Left" Margin="19,18,0,0" VerticalAlignment="Top" FontSize="14" Width="70" />
+                    <ComboBox x:Name="For_CmbBoxForfait"                           HorizontalAlignment="Left" Margin="89,20,0,0"   VerticalAlignment="Top" FontSize="14" Width="176"/>
+                    <DataGrid x:Name="For_DateGridDispoChambre"                    HorizontalAlignment="Left" Margin="19,65,0,0"   VerticalAlignment="Top" FontSize="14" Width="586" Height="224" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding NoSeqChambre}"    ClipboardContentBinding="{x:Null}" Header="No chambre"/>
+                            <DataGridTextColumn Binding="{Binding EtageChambre}"    ClipboardContentBinding="{x:Null}" Header="Etage"/>
+                            <DataGridTextColumn Binding="{Binding NbLit}"           ClipboardContentBinding="{x:Null}" Header="Nombre de lit"/>
+                            <DataGridTextColumn Binding="{Binding TypeLit}"         ClipboardContentBinding="{x:Null}" Header="Type de lit"/>
+                            <DataGridTextColumn Binding="{Binding DescChambre}"     ClipboardContentBinding="{x:Null}" Header="Description"/>
+                            <DataGridTextColumn Binding="{Binding CodeTypeChambre}" ClipboardContentBinding="{x:Null}" Header="Code type chambre"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label    x:Name="For_LblEtage"    Content="Etage :"           HorizontalAlignment="Left" Margin="273,18,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox  x:Name="For_TxtBoxEtage" Text="" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="338,20,0,0"  VerticalAlignment="Top" FontSize="14" Width="57"  Height="23"/>
+                    <Label    x:Name="For_LblNbLit"    Content="Nombre de lit :"   HorizontalAlignment="Left" Margin="407,18,0,0"  VerticalAlignment="Top" FontSize="14"/>
+                    <TextBox  x:Name="For_TxtBoxNbLit" Text="" TextWrapping="Wrap" HorizontalAlignment="Left" Margin="516,20,0,0"  VerticalAlignment="Top" FontSize="14" Width="86"  Height="23"/>
+                    <Button   x:Name="For_BtnReserver" Content="Réserver"          HorizontalAlignment="Left" Margin="476,291,0,0" VerticalAlignment="Top"               Width="129" Height="50"  Background="Teal"/>
+                    <Button   x:Name="For_BtnAnnuler"  Content="Annuler"           HorizontalAlignment="Left" Margin="19,293,0,0"  VerticalAlignment="Top"               Width="130" Height="47"  Background="#e46e1a"/>
+                </Grid>                                                                                                                                                  
             </GroupBox>
-            
-            <GroupBox x:Name="For_GrpBoxForfaitReserve" Background="Transparent" BorderBrush="Transparent" BorderThickness="0"  Header="Forfait reservé" HorizontalAlignment="Left" Margin="670,317,0,0" VerticalAlignment="Top" Height="380" Width="575" FontSize="24">
-                <Border CornerRadius="5" Margin="0,0,-2.6,-1.8" BorderBrush="Black" BorderThickness="4">
-                    <Grid HorizontalAlignment="Left" Height="362" VerticalAlignment="Top" Width="565" Margin="0,-11,-3.4,0">
-                        <DataGrid x:Name="For_DataGridForfaitReserve" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" FontSize="14" Width="545" Height="222"  AutoGenerateColumns="False" >
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Binding="{Binding NoChambre}" ClipboardContentBinding="{x:Null}" Header="No chambre"/>
-                                <DataGridTextColumn Binding="{Binding NomForfait}" ClipboardContentBinding="{x:Null}" Header="NomForfait"/>
-                                <DataGridTextColumn Binding="{Binding NomClient}" ClipboardContentBinding="{x:Null}" Header="Nom client"/>
-                                <DataGridTextColumn Binding="{Binding PrenomClient}" ClipboardContentBinding="{x:Null}" Header="Prénom client"/>
-                                <DataGridTextColumn Binding="{Binding DateDebut}" ClipboardContentBinding="{x:Null}" Header="Date début"/>
-                                <DataGridTextColumn Binding="{Binding DateFin}" ClipboardContentBinding="{x:Null}" Header="Date fin"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                        <Button x:Name="For_BtnAnnuler" Background="Transparent" BorderBrush="Transparent" BorderThickness="0"  HorizontalAlignment="Left" Margin="425,303,0,0" VerticalAlignment="Top" Width="130" Height="47">
-                            <Border CornerRadius="5" Height="40" Width="123" Background="DarkRed" Margin="0" BorderBrush="Black" BorderThickness="4">
-                                <TextBlock Text="Annuler" FontSize="14" Margin="31,7,0,-2" HorizontalAlignment="Left" Width="55"/>
-                            </Border>
-                        </Button>
-                    </Grid>
-                </Border>
+            <GroupBox x:Name="For_GrpBoxForfaitReserve"  Header="Forfait reservé" HorizontalAlignment="Left" Margin="670,317,0,0"  VerticalAlignment="Top" Height="380" Width="575"  FontSize="24">
+                <Grid HorizontalAlignment="Left" Height="362" VerticalAlignment="Top" Width="565" Margin="0,31,0,-13">
+                    <DataGrid x:Name="For_DataGridForfaitReserve" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" FontSize="14" Width="545" Height="222"  AutoGenerateColumns="False" >
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding NoChambre}" ClipboardContentBinding="{x:Null}" Header="No chambre"/>
+                            <DataGridTextColumn Binding="{Binding NomForfait}" ClipboardContentBinding="{x:Null}" Header="NomForfait"/>
+                            <DataGridTextColumn Binding="{Binding NomClient}" ClipboardContentBinding="{x:Null}" Header="Nom client"/>
+                            <DataGridTextColumn Binding="{Binding PrenomClient}" ClipboardContentBinding="{x:Null}" Header="Prénom client"/>
+                            <DataGridTextColumn Binding="{Binding DateDebut}" ClipboardContentBinding="{x:Null}" Header="Date début"/>
+                            <DataGridTextColumn Binding="{Binding DateFin}" ClipboardContentBinding="{x:Null}" Header="Date fin"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </GroupBox>
         </Grid>
     </Viewbox>
