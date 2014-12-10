@@ -1,0 +1,404 @@
+.form-horizontal h4
+{
+    color : blue;
+    font-size : 14px;
+}
+
+.col-md-8
+{
+    width:51.66%;
+}
+
+section
+{
+    width : 600px;
+  display : inline-block ;
+}
+
+.TitreLogin
+{
+    margin:0;
+    margin-top:10px;
+}
+
+.blocmessage
+{
+    display:inline-block;
+    height:auto;
+    width:580px;
+    background-color:#D6ECF1 ;
+    margin-top:60px;
+}
+
+.titrebloc
+{
+    font-family:Tahoma;
+    font-size:26px;
+    font-weight:bold;
+    margin-left:180px;
+    color:blue;
+}
+
+.message1
+{
+    height:auto;
+    width:auto;
+    margin-left:6px;
+
+}
+
+.titremessage
+{
+    margin:0;
+    margin-top:23px;
+    color:red;
+    font-family:Verdana;
+    font-size:23px;
+    font-weight:bold;
+}
+
+.datemessage
+{
+    margin:0;
+    margin-top:10px;
+    font-family:Tahoma;
+    font-size : 18px;
+    color:snow  ;
+    font-weight:bold;
+}
+
+.message
+{
+    font-family:Tahoma;
+    margin-top:10px;
+    margin-right:5px;
+    font-size:15px;
+    color:black;
+    text-align:justify;
+}
+
+body
+{
+    background: url(images/gris1.jpg);
+}
+
+.dossier
+{
+    display : inline-block ;
+    width:50%;
+    height:625px;
+    border: solid black 1px;
+    float:left;
+    margin-top:30px;
+}
+
+.BlocTitreDossier
+{
+    height:135px;
+    background-color:#BBDDDD;
+}
+
+.imageDossier
+{
+    width:200px;
+    height:135px;
+    display:inline-block ;
+}
+
+.TitreDossier
+{
+    display:inline-block;
+    font-family:Tahoma;
+    margin:0;
+    margin-left:105px;
+    font-size:42px;
+    font:bolder;
+    color:white ;
+}
+
+.BlocTitreHoraire
+{
+    height:135px;
+    background-color:#F7E177;
+}
+
+.imageHoraire
+{
+    width:200px;
+    height:135px;
+    display:inline-block ;
+}
+
+.TitreHoraire
+{
+    display:inline-block;
+    font-family:Tahoma;
+    margin:0;
+    margin-left:105px;
+    font-size:42px;
+    font:bolder;
+    color:#F6FCFC;
+}
+
+h1
+{
+    
+    font-family : 'Times New Roman' ;
+    margin-top :25px;
+    margin-left :200px;
+    font-weight :bold;
+    color:royalblue ;
+
+}
+
+.horaire
+{
+    display: inline-block;
+    width:50%;
+    height:625px;
+    border: solid black 1px;
+    margin-top: 30px;
+}
+
+h2
+{
+    margin-left:50px;
+    font-weight:bold ;
+    font-size:23px;
+
+}
+
+h3
+{
+    margin-left:50px;
+    font-weight:bold ;
+    font-size:23px;
+}
+
+.infos
+{
+    display:block;
+    margin-left:50px;
+    height:302px;
+    width:500px;
+}
+
+.LigneBleue
+{
+   
+   display:block;
+   
+}
+
+.LigneBlanche
+{
+    background-color: white;
+    display:block;
+    
+}
+
+#TextBox
+{
+    float:right;
+    margin-right:40px;
+    width:140px;
+}
+
+.libelle1
+{
+    color:dimgray ;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.libelle2
+{
+    color:black ;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.TitreIdentifiantMDP
+{
+    display:block ;
+    width:460px;
+    height:70px;
+    margin-top: 5px;
+    margin-left:49px;
+}
+
+
+.ID
+{
+    display:inline-block;
+    color:red;
+    font-size:18px;
+    font-weight : bolder;
+    
+}
+
+.IDMDP
+{
+    display:inline-block;
+    margin:0;
+    background-color:white;
+    border: solid black 1px;
+    margin-top: 5px;
+    float:right;
+    margin-right:3px;
+    width:135px;
+}
+
+.NewID
+{
+    margin-left:15px;
+}
+
+
+.LblID
+{
+    margin-left :1px;
+    color:dimgray;
+    font-size : 17px;
+    font-weight:bold;
+}
+
+.calendar
+{
+    margin-left:120px;
+    margin-top:53px;
+}
+
+.dateChiffre
+{
+    color:dimgray;
+    margin-left:32%;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.lblDate
+{
+    color: red;
+
+}
+
+.ligneHeure
+{
+    font-family:Tahoma;
+    font-size:18px;
+    color:#949292;
+    font-weight:bold;
+    margin-left:18px;
+}
+
+.LabelHeureDebut
+{
+    float:right;
+    color:red;
+    margin-right:30px;
+}
+
+.btnModifier
+{
+    font-family:Tahoma;
+    font-size:16px;
+    margin-left :545px;
+    color:black;
+    width:135px;
+    color: #ffffff;
+  background-color: #474949;
+  border-color: #474949;
+    
+}
+
+.ConteneurAPropos
+{
+    width:700px;
+    height:auto;
+    background-color:white;
+    margin-left:120px;
+    
+}
+
+.TitreAPropos
+{
+    color:#3d9dec;
+    font-weight:bolder;
+    font-size:22px;
+}
+
+.GrosTitre
+{
+    color:#4452c8;
+     font-weight:bolder;
+    font-size:16px;
+    margin:0;
+}
+
+.IntroductionHotel
+{
+    text-align:justify;
+    color:#6181aa;
+    font-family:Tahoma;
+    font-size:12px;
+}
+
+#carte
+{
+    width:1200px;
+    height:750px;
+}
+
+.InfosLocalisation
+{
+    position:absolute;
+    width:270px;
+    height:750px;
+    border: solid black 1px;
+    right:300px;
+    top:51px;
+    background-color:#994444;
+    opacity:0.7;
+}
+
+.ContenuLocalisation
+{
+    display:block;
+    position:absolute;
+    font-family:Tahoma;
+    top:71px;
+    right:310px;
+    width:250px;
+    height:auto;
+}
+
+.TitreLocalisation
+{
+    margin:0;
+    font-size:24px;
+    font-weight:bold;
+    color:#eab522;
+}
+
+.ParagrapheLocalisation
+{
+    font-weight:bolder;
+    font-size:12px;
+    color:white;
+    text-align:justify;
+    word-spacing:-1px;
+}
+
+.lblAdresse
+{
+    font-size:13px;
+    font-weight:700;
+    color:white;
+}
+
+.lblCoordo
+{
+    color:white;
+    font-weight:300;
+}
