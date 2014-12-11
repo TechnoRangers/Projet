@@ -158,6 +158,9 @@
     <Compile Include="DispoChambre.xaml.vb">
       <DependentUpon>DispoChambre.xaml</DependentUpon>
     </Compile>
+    <Compile Include="dispoSalle.xaml.vb">
+      <DependentUpon>dispoSalle.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Entretien.xaml.vb">
       <DependentUpon>Entretien.xaml</DependentUpon>
     </Compile>
@@ -410,6 +413,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DispoChambre.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="dispoSalle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
