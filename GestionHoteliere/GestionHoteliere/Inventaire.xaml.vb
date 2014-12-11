@@ -28,6 +28,8 @@
         inv_cmbCategorie.DisplayMemberPath = "NomCategorie"
         inv_cmbCategorie.SelectedValue = Categories.ToList.Last
 
+
+
     End Sub
 
     Private Sub Inv_ComboBoxHotel_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles Inv_ComboBoxHotel.SelectionChanged
@@ -56,6 +58,18 @@
 
             DatagridInv.ItemsSource = resinventaire.ToList
         End If
+
+        Dim res = From t1 In MaBD.VueInventaire
+                  Where t1.QuantiteFournitureHotel <= t1.QuantiteMin
+                  Select t1.CodeFourniture
+
+        If res.ToList.Count >= 1 Then
+            inv_LblQteMin.Visibility = Windows.Visibility.Visible
+
+        Else
+            inv_LblQteMin.Visibility = Windows.Visibility.Hidden
+        End If
+
     End Sub
 
     Private Sub Inv_btnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Inv_btnAnnuler.Click

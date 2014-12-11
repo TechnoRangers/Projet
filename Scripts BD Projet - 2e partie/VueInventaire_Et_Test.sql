@@ -36,6 +36,13 @@ WHERE NoSeqChambre NOT IN (SELECT CRC.NoSeqChambre
 						   )
 GO
 
+CREATE PROC Approvisionnement.RemplacerFourniture(@CodeHotel CHAR(3), @CodeFourniture VARCHAR(10))
+AS
+UPDATE Approvisionnement.tblFournitureHotel
+SET QuantiteFournitureHotel = (QuantiteFournitureHotel-1)
+WHERE CodeHotel = @CodeHotel AND CodeFourniture = @CodeFourniture
+GO
+
 
 CREATE TRIGGER TestSupprimerFourniture 
 ON Approvisionnement.tblFourniture

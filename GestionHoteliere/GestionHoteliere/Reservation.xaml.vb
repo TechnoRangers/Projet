@@ -97,52 +97,58 @@
     End Sub
 
     Private Sub Res_btnReserver_Click(sender As Object, e As RoutedEventArgs) Handles Res_btnReserver.Click
-        Dim MaBD = New P2014_BD_GestionHotelEntities
-        Dim cli = From el In MaBD.tblClient Where el.NoSeqClient = Client.NoSeqClient Select el
+
+        If Res_DatePickerArr.SelectedDate > Res_DatePikerDep.SelectedDate Or Res_DatePikerDep.SelectedDate < Res_DatePickerArr.SelectedDate Or Res_TextBoxNomLocataire.Text = "" Or Res_TextBoxPrenomLocataire.Text = "" Or Res_TextBoxNbAdulte.Text = "" Or Res_ComboBoxMoyenPaiement.SelectedItem Is Nothing Then
+            MessageBox.Show("Erreur. Vérifier la compatibilité des dates et si les champs sont bien remplis")
+        Else
+            Dim MaBD = New P2014_BD_GestionHotelEntities
+            Dim cli = From el In MaBD.tblClient Where el.NoSeqClient = Client.NoSeqClient Select el
 
 
-        Dim i As Integer = 0
+            Dim i As Integer = 0
 
-        'Validation que tous les champs on été remplis
-        For Each chamb In ListeChambreReservation
-            Dim Reserv As tblChambreReservationChambre = chamb.tblChambreReservationChambre(i)
-            If Reserv.DateDebutReservation = Nothing Or Reserv.DateFinReservation = Nothing Or Reserv.NomLocataire = Nothing Or Reserv.PrenomLocataire = Nothing Then
-                MessageBox.Show("Certains champs de réservation n'ont pas été remplis.")
-                Exit Sub
-                i += 1
-            End If
-        Next
+            'Validation que tous les champs on été remplis
+            For Each chamb In ListeChambreReservation
+                Dim Reserv As tblChambreReservationChambre = chamb.tblChambreReservationChambre(i)
+                If Reserv.DateDebutReservation = Nothing Or Reserv.DateFinReservation = Nothing Or Reserv.NomLocataire = Nothing Or Reserv.PrenomLocataire = Nothing Then
+                    MessageBox.Show("Certains champs de réservation n'ont pas été remplis.")
+                    Exit Sub
+                    i += 1
+                End If
+            Next
 
-        'Enregistrement de la réservation
-        Try
+            'Enregistrement de la réservation
+            Try
 
-            If Res_TxtBoxNomForfait.Text <> "" Then
-                Dim ff = (From el In MaBD.tblForfait Where el.CodeForfait = MonForfait.CodeForfait Select el).First
-                'MonForfait.tblChambreReservationChambre.Add(ReservationChambre.tblChambreReservationChambre(ReservationChambre.tblChambreReservationChambre.Count - 1))
-                For Each crc In ReservationChambre.tblChambreReservationChambre
-                    ff.tblChambreReservationChambre.Add(crc)
-                Next
-            End If
+                If Res_TxtBoxNomForfait.Text <> "" Then
+                    Dim ff = (From el In MaBD.tblForfait Where el.CodeForfait = MonForfait.CodeForfait Select el).First
+                    'MonForfait.tblChambreReservationChambre.Add(ReservationChambre.tblChambreReservationChambre(ReservationChambre.tblChambreReservationChambre.Count - 1))
+                    For Each crc In ReservationChambre.tblChambreReservationChambre
+                        ff.tblChambreReservationChambre.Add(crc)
+                    Next
+                End If
 
 
-            ReservationChambre.StatutReservChambre = "En cours"
-            ReservationChambre.PrixReservChambre = CDbl(Res_TextBoxMontant.Text)
-            ReservationChambre.ModePaiement = Res_ComboBoxMoyenPaiement.SelectionBoxItem.ToString
-            ReservationChambre.StatutPaiement = "Payé"
-            ReservationChambre.NoCarteCredit = Res_TxtNoCarte.Text
-            ReservationChambre.DateExpirationCarteCredit = Res_TxtDateExp.Text
-            ReservationChambre.TypeCarteCredit = Res_CmbTypeCarte.Text
-            ReservationChambre.NomCarteCredit = Res_TxtNomProprio.Text
-            cli.First.tblReservationChambre.Add(ReservationChambre)
+                ReservationChambre.StatutReservChambre = "En cours"
+                ReservationChambre.PrixReservChambre = CDbl(Res_TextBoxMontant.Text)
+                ReservationChambre.ModePaiement = Res_ComboBoxMoyenPaiement.SelectionBoxItem.ToString
+                ReservationChambre.StatutPaiement = "Payé"
+                ReservationChambre.NoCarteCredit = Res_TxtNoCarte.Text
+                ReservationChambre.DateExpirationCarteCredit = Res_TxtDateExp.Text
+                ReservationChambre.TypeCarteCredit = Res_CmbTypeCarte.Text
+                ReservationChambre.NomCarteCredit = Res_TxtNomProprio.Text
+                cli.First.tblReservationChambre.Add(ReservationChambre)
 
-            MaBD.SaveChanges()
+                MaBD.SaveChanges()
 
-            MessageBox.Show("La réservation a été enregistrée.")
-        Catch ex As Exception
-            MessageBox.Show("Erreur dans l'ajout de la réservation")
-        End Try
+                MessageBox.Show("La réservation a été enregistrée.")
+            Catch ex As Exception
+                MessageBox.Show("Erreur dans l'ajout de la réservation. Vérifier la compatibilité des dates et si les champs sont bien remplis")
+            End Try
 
-        Me.Close()
+            Me.Close()
+        End If
+
     End Sub
 
     Private Sub Res_btnAnnuler_Click(sender As Object, e As RoutedEventArgs) Handles Res_btnAnnuler.Click
@@ -156,51 +162,52 @@
 
         i = 0
 
+        If Res_DatePikerDep.SelectedDate < Res_DatePickerArr.SelectedDate Then
+            MessageBox.Show("Erreur. La date de départ doit être après la date d'arrivé")
+        Else
+            If compteur > 0 Then
+                For Each NoChambre In ListeChambreReservation
+                    If NoChambre.NoSeqChambre = Res_TextBoxNoChambre.Text Then
+                        Nb = i
+                    Else
+                        i += 1
+                    End If
+                Next
+
+                Dim Chambre As tblChambre = ListeChambreReservation(Nb)
+                Dim chambreReservationChambre As tblChambreReservationChambre
+                For Each Chamb In ListeChambreReservation
+                    If Chamb.NoSeqChambre = Res_TextBoxNoChambre.Text Then
+                        chambreReservationChambre = Chamb.tblChambreReservationChambre(0)
+                    End If
+                Next
 
 
-        If compteur > 0 Then
-            For Each NoChambre In ListeChambreReservation
-                If NoChambre.NoSeqChambre = Res_TextBoxNoChambre.Text Then
-                    Nb = i
-                Else
-                    i += 1
-                End If
-            Next
 
-            Dim Chambre As tblChambre = ListeChambreReservation(Nb)
-            Dim chambreReservationChambre As tblChambreReservationChambre
-            For Each Chamb In ListeChambreReservation
-                If Chamb.NoSeqChambre = Res_TextBoxNoChambre.Text Then
-                    chambreReservationChambre = Chamb.tblChambreReservationChambre(0)
-                End If
-            Next
+                Dim PrixChambre = From t1 In MaBD.tblPrixTypeChambre
+                                  Where Chambre.CodeTypeChambre = t1.CodeTypeChambre And (chambreReservationChambre.DateDebutReservation > t1.DateDebutPrix And chambreReservationChambre.DateFinReservation < t1.DateFinPrix) And t1.CodeHotel = "NFN"
+                                  Select t1.PrixTypeChambre
+
+                PrixReservation -= PrixChambre.First * DateDiff("d", chambreReservationChambre.DateDebutReservation, chambreReservationChambre.DateFinReservation)
+
+                For Each Chamb In ListeChambreReservation
+                    If Chamb.NoSeqChambre = Res_TextBoxNoChambre.Text Then
+                        chambreReservationChambre = Chamb.tblChambreReservationChambre(0)
+                        chambreReservationChambre.DateDebutReservation = Res_DatePickerArr.SelectedDate
+                        chambreReservationChambre.DateFinReservation = Res_DatePikerDep.SelectedDate
+                    End If
+                Next
 
 
+                Dim PrixChambre2 = From t1 In MaBD.tblPrixTypeChambre
+                                  Where Chambre.CodeTypeChambre = t1.CodeTypeChambre And (chambreReservationChambre.DateDebutReservation > t1.DateDebutPrix And chambreReservationChambre.DateFinReservation < t1.DateFinPrix) And t1.CodeHotel = "NFN"
+                                  Select t1.PrixTypeChambre
 
-            Dim PrixChambre = From t1 In MaBD.tblPrixTypeChambre
-                              Where Chambre.CodeTypeChambre = t1.CodeTypeChambre And (chambreReservationChambre.DateDebutReservation > t1.DateDebutPrix And chambreReservationChambre.DateFinReservation < t1.DateFinPrix) And t1.CodeHotel = "NFN"
-                              Select t1.PrixTypeChambre
+                PrixReservation += PrixChambre2.First * DateDiff("d", chambreReservationChambre.DateDebutReservation, chambreReservationChambre.DateFinReservation)
+            End If
 
-            PrixReservation -= PrixChambre.First * DateDiff("d", chambreReservationChambre.DateDebutReservation, chambreReservationChambre.DateFinReservation)
-
-            For Each Chamb In ListeChambreReservation
-                If Chamb.NoSeqChambre = Res_TextBoxNoChambre.Text Then
-                    chambreReservationChambre = Chamb.tblChambreReservationChambre(0)
-                    chambreReservationChambre.DateDebutReservation = Res_DatePickerArr.SelectedDate
-                    chambreReservationChambre.DateFinReservation = Res_DatePikerDep.SelectedDate
-                End If
-            Next
-
-
-            Dim PrixChambre2 = From t1 In MaBD.tblPrixTypeChambre
-                              Where Chambre.CodeTypeChambre = t1.CodeTypeChambre And (chambreReservationChambre.DateDebutReservation > t1.DateDebutPrix And chambreReservationChambre.DateFinReservation < t1.DateFinPrix) And t1.CodeHotel = "NFN"
-                              Select t1.PrixTypeChambre
-
-            PrixReservation += PrixChambre2.First * DateDiff("d", chambreReservationChambre.DateDebutReservation, chambreReservationChambre.DateFinReservation)
+            Res_TextBoxMontant.Text = PrixReservation.ToString
         End If
-
-        Res_TextBoxMontant.Text = PrixReservation.ToString
-
 
     End Sub
 End Class

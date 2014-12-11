@@ -99,7 +99,14 @@
             MessageBox.Show("Erreur")
         End Try
 
+        Dim res = From t1 In MaBD.tblFourniture
+                  Where t1.DescFourniture = Eta_ComboBoxFourniture.Text
+                  Select t1.CodeFourniture
+
+        MaBD.RemplacerFourniture("NFN", res.First.ToString)
+
         FiltrerDatagrid()
+
 
     End Sub
 End Class
