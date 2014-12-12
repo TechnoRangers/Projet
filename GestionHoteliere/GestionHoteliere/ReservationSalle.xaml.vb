@@ -76,7 +76,7 @@
             For Each Nom In rep.ToList
                 LocSal_CmbBoxSalle.Items.Add(Nom)
             Next
-        recherche()
+
 
             ' Ajoute les objets dans les comboBox
             LocSal_CmbBoxPaiement.Items.Add("Credit")
@@ -85,7 +85,9 @@
             LocSal_CmbBoxEtat.Items.Add("Payé")
             LocSal_CmbBoxEtat.Items.Add("Annulé")
 
-            LocSal_DatePicker.SelectedDate = Date.Today
+        LocSal_DatePicker.SelectedDate = Date.Today
+
+        recherche()
     End Sub
 
     Private Sub LocSal_BtnValider_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnValider.Click
@@ -134,18 +136,34 @@
         'Recher du client par le nom de famille et le Tel 
         Dim message As String = "Ce client n'existe pas"
         Try
-            If LocSal_TxtBoxNom.Text.Trim.Length = 0 Then
-                message = "Vieullez rentrer un nom "
-                Throw New Exception
+            If LocSal_TxtBoxClient.Text = "" Then
+                If LocSal_TxtBoxNom.Text.Trim.Length = 0 Then
+                    message = "Vieullez rentrer un nom "
+                    Throw New Exception
+                End If
+                Dim Res = (From Cl In MaBd.tblClient
+                            Where Cl.NoTelephone.Equals(LocSal_TxtBoxTel.Text) And Cl.NomClient.Equals(LocSal_TxtBoxNom.Text)
+                            Select Cl)
+                'Remplie les donnée client pour que le commis puisse voir si c'est le bon client 
+                LocSal_TxtBoxClient.Text = (Res.First.NoSeqClient).ToString
+                LocSal_TxtBoxPre.Text = Res.First.PrenomClient
+                LocSal_TxtBoxAdr.Text = Res.First.AdresseClient
+                LocSal_TxtBoxEmail.Text = Res.First.EmailClient
+            Else
+                Dim Res = From it In MaBd.tblClient
+                          Where it.NoSeqClient = LocSal_TxtBoxClient.Text
+                          Select it
+                'Remplie les donnée client pour que le commis puisse voir si c'est le bon client 
+                LocSal_TxtBoxClient.Text = (Res.First.NoSeqClient).ToString
+                LocSal_TxtBoxPre.Text = Res.First.PrenomClient
+                LocSal_TxtBoxAdr.Text = Res.First.AdresseClient
+                LocSal_TxtBoxEmail.Text = Res.First.EmailClient
+                LocSal_TxtBoxTel.Text = Res.First.NoTelephone
+                LocSal_TxtBoxNom.Text = Res.First.NomClient
             End If
-            Dim Res = (From Cl In MaBd.tblClient
-                        Where Cl.NoTelephone.Equals(LocSal_TxtBoxTel.Text) And Cl.NomClient.Equals(LocSal_TxtBoxNom.Text)
-                        Select Cl)
-            'Remplie les donnée client pour que le commis puisse voir si c'est le bon client 
-            LocSal_TxtBoxClient.Text = (Res.First.NoSeqClient).ToString
-            LocSal_TxtBoxPre.Text = Res.First.PrenomClient
-            LocSal_TxtBoxAdr.Text = Res.First.AdresseClient
-            LocSal_TxtBoxEmail.Text = Res.First.EmailClient
+
+
+
         Catch ex As Exception
             MessageBox.Show(message)
         End Try
@@ -188,44 +206,45 @@
             Try
                 Dim X As Int16
                 Dim El As tblReservationSalle
-                Dim Rep = From It In MaBd.tblReservationSalle Where It.NoSeqReservSalle = NoRes Select It
-                El = Rep.Single
 
-                LocSal_TxtBoxClient.Text = El.NoSeqClient
-                LocSal_TxtBoxNb.Text = El.NbPersonne
-                LocSal_CmbBoxEtat.SelectedItem = El.StatutPaiement
-                LocSal_CmbBoxPaiement.SelectedItem = El.ModePaiement
-                LocSal_TxtBoxPrix.Text = El.PrixReservSalle
-                LocSal_DatePicker.SelectedDate = El.DateReservSalle
+            Dim Rep = From It In MaBd.tblReservationSalle Where It.NoSeqReservSalle = NoRes Select It
+            El = Rep.Single
 
-                Dim Res = (From Cl In MaBd.tblClient
-                            Where Cl.NoSeqClient = El.NoSeqClient
-                            Select Cl)
-                'Remplie les donnée client pour que le commis puisse voir si c'est le bon client 
-                LocSal_TxtBoxNom.Text = Res.First.NomClient
-                LocSal_TxtBoxPre.Text = Res.First.PrenomClient
-                LocSal_TxtBoxAdr.Text = Res.First.AdresseClient
-                LocSal_TxtBoxEmail.Text = Res.First.EmailClient
-                LocSal_TxtBoxTel.Text = Res.First.NoTelephone
-                'Pour mettre les bonne valeurs dans les combobox 
-                X = 0
-                For Each item In LocSal_CmbBoxSalle.Items
-                    If item.Equals(Rep.Single.tblSalle.NomSalle) Then
-                        LocSal_CmbBoxSalle.SelectedIndex = X
-                    Else
-                        X += 1
-                    End If
-                Next
+            LocSal_TxtBoxClient.Text = El.NoSeqClient
+            LocSal_TxtBoxNb.Text = El.NbPersonne
+            LocSal_CmbBoxEtat.SelectedItem = El.StatutPaiement
+            LocSal_CmbBoxPaiement.SelectedItem = El.ModePaiement
+            LocSal_TxtBoxPrix.Text = El.PrixReservSalle
+            LocSal_DatePicker.SelectedDate = El.DateReservSalle
 
-                X = 0
-                For Each item In LocSal_CmbBoxEtat.Items
-                    If item.Equals(Rep.Single.StatutPaiement) Then
-                        LocSal_CmbBoxEtat.SelectedIndex = X
-                    Else
-                        X += 1
-                    End If
-                Next
-            Catch ex As Exception
+            Dim Res = (From Cl In MaBd.tblClient
+                        Where Cl.NoSeqClient = El.NoSeqClient
+                        Select Cl)
+            'Remplie les donnée client pour que le commis puisse voir si c'est le bon client 
+            LocSal_TxtBoxNom.Text = Res.First.NomClient
+            LocSal_TxtBoxPre.Text = Res.First.PrenomClient
+            LocSal_TxtBoxAdr.Text = Res.First.AdresseClient
+            LocSal_TxtBoxEmail.Text = Res.First.EmailClient
+            LocSal_TxtBoxTel.Text = Res.First.NoTelephone
+            'Pour mettre les bonne valeurs dans les combobox 
+            X = 0
+            For Each item In LocSal_CmbBoxSalle.Items
+                If item.Equals(Rep.Single.tblSalle.NomSalle) Then
+                    LocSal_CmbBoxSalle.SelectedIndex = X
+                Else
+                    X += 1
+                End If
+            Next
+
+            X = 0
+            For Each item In LocSal_CmbBoxEtat.Items
+                If item.Equals(Rep.Single.StatutPaiement) Then
+                    LocSal_CmbBoxEtat.SelectedIndex = X
+                Else
+                    X += 1
+                End If
+            Next
+        Catch ex As Exception
             If NoRes <> 0 Then
                 MessageBox.Show("un erreur est subvenue")
             End If
@@ -319,5 +338,7 @@
         Dim it As New dispoSalle(MaBd)
         it.Show()
     End Sub
+
+
 End Class
 

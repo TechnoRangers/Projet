@@ -24,8 +24,8 @@
                     <TextBox x:Name="LocSal_TxtBoxAdr"       TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,170,0,0"  VerticalAlignment="Top" FontSize="14" Width="178"  Height="23"/>
                     <Label   x:Name="LocSal_LblEmail"        Content="E-mail"             HorizontalAlignment="Left" Margin="10,210,0,0"  VerticalAlignment="Top" FontSize="14"/>
                     <TextBox x:Name="LocSal_TxtBoxEmail"     TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="83,210,0,0"  VerticalAlignment="Top" FontSize="14" Width="178"  Height="23"/>
-                    <Button Name="LocSal_BtnRec"             Content="Rechercher"         HorizontalAlignment="Left" Margin="10,260,0,0"  VerticalAlignment="Top"               Width="110" Height="31" />
-                    <Button Name="LocSal_BtnAjout"           Content="Ajouter"            HorizontalAlignment="Left" Margin="155,260,0,0" VerticalAlignment="Top"               Width="110" Height="31"/>
+                    <Button Name="LocSal_BtnRec"             Content="Rechercher"         HorizontalAlignment="Left" Margin="10,260,0,0"  VerticalAlignment="Top"               Width="110" Height="31" Background="LightSeaGreen"/>
+                    <Button Name="LocSal_BtnAjout"           Content="Ajouter"            HorizontalAlignment="Left" Margin="155,260,0,0" VerticalAlignment="Top"               Width="110" Height="31" Background="YellowGreen"/>
                 </Grid>
             </GroupBox>
             <GroupBox x:Name="LocSal_GrbPaiement"  Header="Paiement"            HorizontalAlignment="Left" Margin="10,225,0,0"  VerticalAlignment="Top" FontSize="24"  Width="437" Height="132" >
@@ -53,13 +53,13 @@
                     <DatePicker x:Name="LocSal_DatePicker2"                               HorizontalAlignment="Left" Margin="283,11,0,0"  VerticalAlignment="Top"  FontSize="14" Width="132"/>
                     <TextBox    x:Name="LocSal_TxtBoxNb"     TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="368,53,0,0"  VerticalAlignment="Top"  FontSize="14" Width="46"  Height="23" KeyDown="OnKeyDownHandler" />
 
-                    <Button Name="LocSal_BtnEqu" Content="Equipement" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Width="130" IsEnabled="False" Height="38"/>
+                    <Button Name="LocSal_BtnEqu" Content="Equipement" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Width="130" IsEnabled="False" Height="38" Background="teal"/>
 
                 </Grid>
             </GroupBox>
-            <Button   x:Name="LocSal_BtnModiSalle" Content="Modifier"           HorizontalAlignment="Left" Margin="454,370,0,0" VerticalAlignment="Top"                Width="140" Height="40" IsEnabled="False" Visibility="Hidden"/>
-            <Button   x:Name="LocSal_BtnValider"   Content="Valider"            HorizontalAlignment="Left" Margin="454,370,0,0" VerticalAlignment="Top"                Width="140" Height="40" IsEnabled="False" Visibility="Hidden"/>
-            <Button   x:Name="LocSal_BtnCancel"    Content="Annuler"            HorizontalAlignment="Left" Margin="616,370,0,0" VerticalAlignment="Top"                Width="140" Height="40"/>
+            <Button   x:Name="LocSal_BtnModiSalle" Content="Modifier"           HorizontalAlignment="Left" Margin="454,370,0,0" VerticalAlignment="Top"                Width="140" Height="40" IsEnabled="False" Visibility="Hidden" Background="YellowGreen"/>
+            <Button   x:Name="LocSal_BtnValider"   Content="Valider"            HorizontalAlignment="Left" Margin="454,370,0,0" VerticalAlignment="Top"                Width="140" Height="40" IsEnabled="False" Visibility="Hidden" Background="YellowGreen"/>
+            <Button   x:Name="LocSal_BtnCancel"    Content="Quitter"            HorizontalAlignment="Left" Margin="616,370,0,0" VerticalAlignment="Top"                Width="140" Height="40" Background="#e46e1a"/>
             <Label Content="Prix" HorizontalAlignment="Left" Margin="273,179,0,0" VerticalAlignment="Top" FontSize="14"/>
         </Grid>
     </Viewbox>

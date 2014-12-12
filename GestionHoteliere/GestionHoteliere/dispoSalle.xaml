@@ -9,7 +9,7 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-        <Grid Height="319" Width="597">
+        <Grid Height="311" Width="794">
             <DataGrid HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Height="255" Width="363" x:Name="Dis_SalList" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="No. Réservation"    Binding="{Binding NoSeqReservSalle}"/>
@@ -18,11 +18,19 @@
                     <DataGridTextColumn Header="Date Début"    Binding="{Binding DateReservSalle}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button   x:Name="DispoS_btnAfficher"       Content="Afficher"              HorizontalAlignment="Left" Margin="415,95,0,0"  VerticalAlignment="Top"                Width="140" Height="40" IsDefault="True"/>
-            <Button   x:Name="LocSal_BtnSuppSalle"      Content="Supprimer"             HorizontalAlignment="Left" Margin="415,209,0,0"   VerticalAlignment="Top"                Width="140" Height="40"/>
-            <Button   x:Name="LocSal_BtnModiSalle"      Content="Modifier"              HorizontalAlignment="Left" Margin="415,150,0,0" VerticalAlignment="Top"                Width="140" Height="40" />
-            <Button   x:Name="LocSal_BtnAjout"          Content="Nouvelle Réservation"  HorizontalAlignment="Left" Margin="398,38,0,0" VerticalAlignment="Top"                Width="168" Height="40" />
-            <Button   x:Name="Men_btnQuitter"           HorizontalAlignment="Left"      Margin="415,269,0,0"                 VerticalAlignment="Top"         Content="Quitter"         FontSize="20" Background="#e46e1a" Width="140" Height="40" FontWeight="Bold"/>
+            <GroupBox x:Name="LocSal_GrbClient"                 HorizontalAlignment="Left" Margin="387,1,0,0"  VerticalAlignment="Top" FontSize="24"  Width="388" Height="300" >
+                <Grid  Width="366">
+                    <ComboBox   x:Name="DispoS_CmbBoxSalle"                               HorizontalAlignment="Left" Margin="228,96,0,0"   VerticalAlignment="Top"  FontSize="14" Width="130"/>
+                    <DatePicker x:Name="DispoS_DatePicker"                                HorizontalAlignment="Left" Margin="228,45,0,0"   VerticalAlignment="Top"  FontSize="14" Width="130"/>
+                    <Button   x:Name="DispoS_btnAfficher"       Content="Afficher"              HorizontalAlignment="Left" Margin="10,37,0,0"  VerticalAlignment="Top"                Width="140" Height="40" IsDefault="True" Background="YellowGreen"/>
+                    <Button   x:Name="DispoS_BtnSuppSalle"      Content="Supprimer"             HorizontalAlignment="Left" Margin="10,243,0,0"   VerticalAlignment="Top"                Width="140" Height="40" Background="#e46e1a"/>
+                    <Button   x:Name="DispoS_BtnModiSalle"      Content="Modifier"              HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top"                Width="140" Height="40" Background="Yellow"/>
+                    <Button   x:Name="DispoS_BtnAjout"          Content="Nouvelle Réservation"  HorizontalAlignment="Left" Margin="10,181,0,0" VerticalAlignment="Top"                Width="168" Height="40"  Background="teal"/>
+                    <Button   x:Name="DispoS_btnQuitter"           HorizontalAlignment="Left"      Margin="194,243,0,0"                 VerticalAlignment="Top"         Content="Quitter"         FontSize="20" Background="#e46e1a" Width="140" Height="40" />
+                    <Label Content="Date" HorizontalAlignment="Left" Margin="173,43,0,0" VerticalAlignment="Top" FontSize="14"/>
+                    <Label Content="Salle" HorizontalAlignment="Left" Margin="173,96,0,0" VerticalAlignment="Top" FontSize="14"/>
+                </Grid>
+            </GroupBox>
         </Grid>
     </Viewbox>
 </Window>

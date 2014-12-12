@@ -19,25 +19,28 @@
     End Sub
 
     Private Sub Dis_SalList_Loaded(sender As Object, e As RoutedEventArgs) Handles Dis_SalList.Loaded
-        Dim res = From it In MaBd.tblReservationSalle Where it.DateReservSalle >= Date.Today Select it
-        If res.ToList.Count <> 0 Then
-            Dis_SalList.ItemsSource = res.ToList
-        End If
-
+        Dim rep = From it In MaBd.tblSalle Select it.NomSalle
+        For Each Nom In rep.ToList
+            DispoS_CmbBoxSalle.Items.Add(Nom)
+        Next
+        DispoS_CmbBoxSalle.SelectedIndex = -1
+        rafraichir()
     End Sub
 
-    Private Sub LocSal_BtnAjout_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnAjout.Click
+    Private Sub DispoS_BtnAjout_Click(sender As Object, e As RoutedEventArgs) Handles DispoS_BtnAjout.Click
         Dim Salle As New ReservationSalle(MaBd, Nothing, 1)
         Salle.Show()
         Me.Close()
     End Sub
 
-    Private Sub LocSal_BtnModiSalle_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnModiSalle.Click
+    Private Sub DispoS_BtnModiSalle_Click(sender As Object, e As RoutedEventArgs) Handles DispoS_BtnModiSalle.Click
         Dim item As tblReservationSalle = Dis_SalList.SelectedItem
+        If Not Dis_SalList.SelectedIndex = -1 Then
+            Dim Salle As New ReservationSalle(MaBd, item.NoSeqReservSalle, 2)
+            Salle.Show()
+            Me.Close()
+        End If
 
-        Dim Salle As New ReservationSalle(MaBd, item.NoSeqReservSalle, 2)
-        Salle.Show()
-        Me.Close()
     End Sub
     Private Sub supprimer()
         'Supprimer une réservation
@@ -69,28 +72,68 @@
 
     End Sub
 
-    Private Sub LocSal_BtnSuppSalle_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnSuppSalle.Click
-        supprimer()
+    Private Sub DispoS_BtnSuppSalle_Click(sender As Object, e As RoutedEventArgs) Handles DispoS_BtnSuppSalle.Click
+        If Not Dis_SalList.SelectedIndex = -1 Then
+            supprimer()
+        End If
+
     End Sub
 
     Private Sub DispoS_btnAfficher_Click(sender As Object, e As RoutedEventArgs) Handles DispoS_btnAfficher.Click
         Dim item As tblReservationSalle = Dis_SalList.SelectedItem
+        If Not Dis_SalList.SelectedIndex = -1 Then
+            Dim Salle As New ReservationSalle(MaBd, item.NoSeqReservSalle, 0)
+            Salle.Show()
+            Me.Close()
+        End If
 
-        Dim Salle As New ReservationSalle(MaBd, item.NoSeqReservSalle, 0)
-        Salle.Show()
-        Me.Close()
     End Sub
 
     Private Sub rafraichir()
         Dis_SalList.ItemsSource = Nothing
 
-        Dim res = From it In MaBd.tblReservationSalle Where it.DateReservSalle >= Date.Today Select it
-        If res.ToList.Count <> 0 Then
-            Dis_SalList.ItemsSource = res.ToList
+
+        If DispoS_CmbBoxSalle.SelectedIndex = -1 And IsNothing(DispoS_DatePicker.SelectedDate) Then
+            Dim res = From it In MaBd.tblReservationSalle Where it.DateReservSalle >= Date.Today Select it
+            If res.ToList.Count <> 0 Then
+                Dis_SalList.ItemsSource = res.ToList
+            End If
         End If
+        If DispoS_CmbBoxSalle.SelectedIndex = -1 And Not IsNothing(DispoS_DatePicker.SelectedDate) Then
+            Dim res = From it In MaBd.tblReservationSalle Where it.DateReservSalle >= DispoS_DatePicker.SelectedDate Select it
+            If res.ToList.Count <> 0 Then
+                Dis_SalList.ItemsSource = res.ToList
+            End If
+        End If
+        If DispoS_CmbBoxSalle.SelectedIndex <> -1 And IsNothing(DispoS_DatePicker.SelectedDate) Then
+            Dim salle = (From el In MaBd.tblSalle Where el.NomSalle = DispoS_CmbBoxSalle.SelectedItem.ToString Select el.CodeSalle).Single
+
+            Dim res = From it In MaBd.tblReservationSalle Where it.CodeSalle = salle Select it
+            If res.ToList.Count <> 0 Then
+                Dis_SalList.ItemsSource = res.ToList
+            End If
+        End If
+        If DispoS_CmbBoxSalle.SelectedIndex <> -1 And Not IsNothing(DispoS_DatePicker.SelectedDate) Then
+            Dim salle = (From el In MaBd.tblSalle Where el.NomSalle = DispoS_CmbBoxSalle.SelectedItem.ToString Select el.CodeSalle).Single
+
+            Dim res = From it In MaBd.tblReservationSalle Where it.CodeSalle = salle And it.DateReservSalle >= DispoS_DatePicker.SelectedDate Select it
+            If res.ToList.Count <> 0 Then
+                Dis_SalList.ItemsSource = res.ToList
+            End If
+        End If
+
     End Sub
 
-    Private Sub Men_btnQuitter_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnQuitter.Click
+    Private Sub Men_btnQuitter_Click(sender As Object, e As RoutedEventArgs) Handles DispoS_btnQuitter.Click
         Me.Close()
+    End Sub
+
+
+    Private Sub DispoS_DatePicker_SelectedDateChanged(sender As Object, e As SelectionChangedEventArgs) Handles DispoS_DatePicker.SelectedDateChanged
+        rafraichir()
+    End Sub
+
+    Private Sub DispoS_CmbBoxSalle_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles DispoS_CmbBoxSalle.SelectionChanged
+        rafraichir()
     End Sub
 End Class
