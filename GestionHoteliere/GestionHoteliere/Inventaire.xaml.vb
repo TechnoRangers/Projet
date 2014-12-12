@@ -130,4 +130,8 @@
         FenetreAjoutItemHotel.ShowDialog()
         FiltrerDatagrid()
     End Sub
+
+    Private Sub Inv_btnModifierProduit_Click(sender As Object, e As RoutedEventArgs) Handles Inv_btnModifierProduit.Click
+
+    End Sub
 End Class

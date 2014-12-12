@@ -14,7 +14,7 @@
             Men_LbltypeEmploi.Visibility = Windows.Visibility.Hidden
             Men_LblNomEmploye.Visibility = Windows.Visibility.Hidden
         Else
-            Men_LblNomEmploye.Content = _EmployeConnexion.NomEmploye
+            Men_LblNomEmploye.Content = _EmployeConnexion.PrenomEmploye + " " + _EmployeConnexion.NomEmploye
             Men_LbltypeEmploi.Content = _EmployeConnexion.TypeEmploi
             Men_LblHotel.Content = HotelConnexion.NomHotel
 
