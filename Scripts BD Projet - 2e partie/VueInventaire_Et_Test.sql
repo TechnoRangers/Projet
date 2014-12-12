@@ -90,7 +90,7 @@ SELECT TC.CodeTypeChambre, TC.NomTypeChambre, TC.DescTypeChambre, PTC.PrixTypeCh
 FROM Reservation.tblTypeChambre AS TC
 JOIN Reservation.tblPrixTypeChambre AS PTC
 	ON TC.CodeTypeChambre = PTC.CodeTypeChambre
-WHERE PTC.CodeHotel = 'NML' AND (GETDATE() BETWEEN PTC.DateDebutPrix AND PTC.DateFinPrix)
+WHERE PTC.CodeHotel = @CodeHotel AND (GETDATE() BETWEEN PTC.DateDebutPrix AND PTC.DateFinPrix)
 
 GO
 
