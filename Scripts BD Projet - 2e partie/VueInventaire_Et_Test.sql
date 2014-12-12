@@ -94,6 +94,7 @@ WHERE PTC.CodeHotel = @CodeHotel AND (GETDATE() BETWEEN PTC.DateDebutPrix AND PT
 
 GO
 
+
 --DROP PROC Reservation.PrixTypeChambreHotel
 
 --SELECT *

@@ -63,6 +63,12 @@ Partial Public Class P2014_BD_GestionHotelEntities
         Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction("RemplacerFourniture", codeHotelParameter, codeFournitureParameter)
     End Function
 
+    Public Overridable Function GetReservationsHotel(codeHotel As String) As ObjectResult(Of Nullable(Of Integer))
+        Dim codeHotelParameter As ObjectParameter = If(codeHotel IsNot Nothing, New ObjectParameter("CodeHotel", codeHotel), New ObjectParameter("CodeHotel", GetType(String)))
+
+        Return DirectCast(Me, IObjectContextAdapter).ObjectContext.ExecuteFunction(Of Nullable(Of Integer))("GetReservationsHotel", codeHotelParameter)
+    End Function
+
     Public Overridable Function PrixTypeChambreHotel(codeHotel As String) As ObjectResult(Of PrixTypeChambreHotel_Result)
         Dim codeHotelParameter As ObjectParameter = If(codeHotel IsNot Nothing, New ObjectParameter("CodeHotel", codeHotel), New ObjectParameter("CodeHotel", GetType(String)))
 

@@ -4,13 +4,19 @@
     Dim ProvinceSelection As tblProvince
     Dim PaysSelection As tblPays
     Dim Client As tblClient
+    Dim HotelConnexion As tblHotel
 
-    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities)
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, Optional ByRef _MonHotel As tblHotel = Nothing)
         InitializeComponent()
         BD = _BD
 
+        HotelConnexion = _MonHotel
+
+        'Affiche les réservation en cours dans l'hotel choisi
         Dim res = From tabReserv In BD.tblReservationChambre
-                  Where tabReserv.StatutReservChambre = "En cours"
+                  Join tabChambreReserv In BD.tblChambreReservationChambre On tabChambreReserv.NoSeqReservChambre Equals tabReserv.NoSeqReservChambre
+                  Join tabChambre In BD.tblChambre On tabChambreReserv.NoSeqChambre Equals tabChambre.NoSeqChambre
+                  Where tabReserv.StatutReservChambre <> "Annulé" And tabReserv.StatutReservChambre <> "Terminé" And tabChambre.CodeHotel = HotelConnexion.CodeHotel
                   Select tabReserv
 
         cli_dtgReservationClient.ItemsSource = res.ToList
@@ -45,7 +51,7 @@
 
     Private Sub Cli_BtnContinuer_Click(sender As Object, e As RoutedEventArgs) Handles Cli_BtnContinuer.Click
         If Client IsNot Nothing Then
-            Dim Dispo_ As New DispoChambre(BD, Client)
+            Dim Dispo_ As New DispoChambre(BD, Client, HotelConnexion)
             Dispo_.Show()
             Me.Close()
         Else
@@ -115,7 +121,7 @@
             MessageBox.Show("Aucun client selectionné. Vous devez rechercher un client pour afficher ses réservations.")
         Else
             Dim ReservationsClient = From tabReserv In BD.tblReservationChambre
-                                 Where tabReserv.NoSeqClient = Client.NoSeqClient And tabReserv.StatutReservChambre = "En cours"
+                                 Where tabReserv.NoSeqClient = Client.NoSeqClient And tabReserv.StatutReservChambre = "En cours" And tabReserv.tblChambreReservationChambre.First.tblChambre.CodeHotel = HotelConnexion.CodeHotel
                                  Select tabReserv
 
             cli_dtgReservationClient.ItemsSource = ReservationsClient.ToList
@@ -132,15 +138,22 @@
             FenetreModifReserv.ShowDialog()
 
             If Client IsNot Nothing Then
+
+                'Affiche les réservation en cours dans l'hotel choisi
                 Dim res = From tabReserv In BD.tblReservationChambre
-                      Where tabReserv.StatutReservChambre = "En cours" And tabReserv.NoSeqClient = Client.NoSeqClient
-                      Select tabReserv
+                          Join tabChambreReserv In BD.tblChambreReservationChambre On tabChambreReserv.NoSeqReservChambre Equals tabReserv.NoSeqReservChambre
+                          Join tabChambre In BD.tblChambre On tabChambreReserv.NoSeqChambre Equals tabChambre.NoSeqChambre
+                          Where tabReserv.StatutReservChambre <> "Annulé" And tabReserv.StatutReservChambre <> "Terminé" And tabChambre.CodeHotel = HotelConnexion.CodeHotel And tabReserv.NoSeqClient = Client.NoSeqClient
+                          Select tabReserv
 
                 cli_dtgReservationClient.ItemsSource = res.ToList
             Else
+                'Affiche les réservation en cours dans l'hotel choisi
                 Dim res = From tabReserv In BD.tblReservationChambre
-                      Where tabReserv.StatutReservChambre = "En cours"
-                      Select tabReserv
+                          Join tabChambreReserv In BD.tblChambreReservationChambre On tabChambreReserv.NoSeqReservChambre Equals tabReserv.NoSeqReservChambre
+                          Join tabChambre In BD.tblChambre On tabChambreReserv.NoSeqChambre Equals tabChambre.NoSeqChambre
+                          Where tabReserv.StatutReservChambre <> "Annulé" And tabReserv.StatutReservChambre <> "Terminé" And tabChambre.CodeHotel = HotelConnexion.CodeHotel
+                          Select tabReserv
 
                 cli_dtgReservationClient.ItemsSource = res.ToList
             End If
@@ -201,7 +214,8 @@
 
     End Sub
 
-    Private Sub cli_cmbPays_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cli_cmbPays.SelectionChanged    
+#Region "StuffVille"
+    Private Sub cli_cmbPays_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles cli_cmbPays.SelectionChanged
         FiltrerPays()
     End Sub
 
@@ -253,6 +267,7 @@
         End If
 
     End Sub
+#End Region
 
     Private Sub cli_btnVider_Click(sender As Object, e As RoutedEventArgs) Handles cli_btnVider.Click
 

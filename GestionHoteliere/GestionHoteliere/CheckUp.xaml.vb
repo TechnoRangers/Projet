@@ -2,10 +2,12 @@
 
     Dim MaBD As P2014_BD_GestionHotelEntities
     Dim _maChambre As tblChambre
+    Dim HotelConnexion As tblHotel
 
-    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities)
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, ByRef _MonHotel As tblHotel)
         MaBD = _BD
         _maChambre = New tblChambre
+        HotelConnexion = _MonHotel
         InitializeComponent()
     End Sub
 
@@ -15,7 +17,8 @@
 
         'Remplir ComboBoxNoChambre
         Dim NoChambre = From tabChambre In MaBD.tblChambre
-                     Select tabChambre
+                        Where tabChambre.CodeHotel = HotelConnexion.CodeHotel
+                        Select tabChambre
 
         Che_ComboBoxNoChambre.ItemsSource = NoChambre.ToList
         Che_ComboBoxNoChambre.DisplayMemberPath = "NoSeqChambre"

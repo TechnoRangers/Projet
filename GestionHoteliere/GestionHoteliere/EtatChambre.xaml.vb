@@ -2,17 +2,20 @@
 
     Dim MaBD As P2014_BD_GestionHotelEntities
     Dim _maChambre As tblChambre
+    Dim HotelConnexion As tblHotel
 
-    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities)
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, ByRef _MonHotel As tblHotel)
         InitializeComponent()
         MaBD = _BD
+        HotelConnexion = _MonHotel
         _maChambre = New tblChambre
 
     End Sub
     Private Sub Eta_FrmEta_Loaded(sender As Object, e As RoutedEventArgs) Handles Eta_FrmEta.Loaded
         'Remplir ComboBoxNoChambre
         Dim NoChambre = From tabChambre In MaBD.tblChambre
-                     Select tabChambre
+                        Where tabChambre.CodeHotel = HotelConnexion.CodeHotel
+                        Select tabChambre
 
         Eta_CmbBoxNoChambre.ItemsSource = NoChambre.ToList
         Eta_CmbBoxNoChambre.DisplayMemberPath = "NoSeqChambre"

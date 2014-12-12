@@ -4,17 +4,20 @@
 
     Dim TypeChambre As tblTypeChambre
     Dim Client As tblClient
+    Dim HotelConnexion As tblHotel
     Dim ChambresSelection As New List(Of tblChambre)
     Dim ListeChambresDispo As New List(Of tblChambre)
 
-    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _Client As tblClient)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _Client As tblClient, ByRef _MonHotel As tblHotel)
         InitializeComponent()
         BD = _MaBD
         Client = _Client
+        HotelConnexion = _MonHotel
     End Sub
 
     Private Sub Dis_frmDisponibilite_Loaded(sender As Object, e As RoutedEventArgs) Handles Dis_frmDisponibilite.Loaded
 
+        Dis_LblNomHotel.Content = HotelConnexion.NomHotel
         dis_dtpDateDebut.SelectedDate = System.DateTime.Today
         dis_dtpDateFin.SelectedDate = DateAdd("d", 1, Now)
 
@@ -81,11 +84,12 @@
             DateFin = DateFin.Date
 
             Dim Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
+                          Where tabChambre.CodeHotel = HotelConnexion.CodeHotel
                           Select tabChambre
 
             If TypeChambre IsNot Nothing Then
                 Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
-                              Where tabChambre.CodeTypeChambre = TypeChambre.CodeTypeChambre
+                              Where tabChambre.CodeTypeChambre = TypeChambre.CodeTypeChambre And tabChambre.CodeHotel = HotelConnexion.CodeHotel
                               Select tabChambre
             End If
 
@@ -94,21 +98,21 @@
                 NbLit = CType(Dis_txtNbLit.Text, Integer)
 
                 Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
-                              Where tabChambre.EtageChambre = Etage And tabChambre.NbLit = NbLit
+                              Where tabChambre.EtageChambre = Etage And tabChambre.NbLit = NbLit And tabChambre.CodeHotel = HotelConnexion.CodeHotel
                               Select tabChambre
 
             ElseIf Dis_txtEtageChambre.Text <> "" Then
                 Etage = CType(Dis_txtEtageChambre.Text, Integer)
 
                 Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
-                              Where tabChambre.EtageChambre = Etage
+                              Where tabChambre.EtageChambre = Etage And tabChambre.CodeHotel = HotelConnexion.CodeHotel
                               Select tabChambre
 
             ElseIf Dis_txtNbLit.Text <> "" Then
                 NbLit = CType(Dis_txtNbLit.Text, Integer)
 
                 Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
-                              Where tabChambre.NbLit = NbLit
+                              Where tabChambre.NbLit = NbLit And tabChambre.CodeHotel = HotelConnexion.CodeHotel
                               Select tabChambre
             End If
 
@@ -137,6 +141,7 @@
             Dim res = From el In BD.tblChambre Where el.NoSeqChambre = i Select el
             ChambresSelection.Add(res.First)
         Next
+        Dis_lstListeChambre.ItemsSource = ChambresSelection.ToList
 
         MessageBox.Show("L'ajout dans la liste de chambre a bien réussi")
 

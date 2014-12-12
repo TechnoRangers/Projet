@@ -19,7 +19,7 @@
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
 
-                <GroupBox Header="réservation"    HorizontalAlignment="Left" Margin="1,7,-214,-159"       VerticalAlignment="Top" Height="184"  Width="264" FontSize="24">
+                <GroupBox Header="Réservation"    HorizontalAlignment="Left" Margin="1,7,-214,-159"       VerticalAlignment="Top" Height="184"  Width="264" FontSize="24">
                     <Grid>
                         <Button Background="Teal"  x:Name="Men_btnResChambre"  Margin="24,44,24,81">
                             <StackPanel Orientation="Horizontal" Margin="0,6,0,3.8" Width="218">
@@ -53,7 +53,7 @@
                 </GroupBox>
                 <GroupBox Header="Personnel"      HorizontalAlignment="Left" Margin="0,388,-211,-539"     VerticalAlignment="Top" Height="183"  Width="262" FontSize="24">
                     <Grid Margin="0,0,0,-0.2">
-                        <Button Background="Teal" x:Name="Men_BtnEntretien"  HorizontalAlignment="Left" Height="62" Margin="24,42,0,0" VerticalAlignment="Top" Width="214" Click="Men_BtnEntretien_Click">
+                        <Button Click="Stuff"  Background="Teal" x:Name="Men_BtnEntretien"  HorizontalAlignment="Left" Height="62" Margin="24,42,0,0" VerticalAlignment="Top" Width="214">
                             <StackPanel Orientation="Horizontal" Height="70" Margin="-4,0,5.8,-4.4">
                                 <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Entretien.gif" Width="97" Margin="10,6,10,14.4"/>
                                 <TextBlock Text="Entretien" FontSize="20" Margin="10,20,15,16.4" Width="79" RenderTransformOrigin="0.553,0.191"/>

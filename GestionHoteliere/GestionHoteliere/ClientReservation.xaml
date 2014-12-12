@@ -48,7 +48,7 @@
                     <DataGrid x:Name="cli_dtgReservationClient" FontSize="14" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="487" Height="351" AutoGenerateColumns="False" IsReadOnly="True" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="No. Réservation" Binding="{Binding NoSeqReservChambre}"/>
-                            <DataGridTextColumn Header="Prix"            Binding="{Binding PrixReservChambre}"/>
+                            <DataGridTextColumn Header="Prix"            Binding="{Binding PrixReservChambre, StringFormat={}{0:c}}"/>
                             <DataGridTextColumn Header="Mode Paiement"   Binding="{Binding ModePaiement}"/>
                             <DataGridTextColumn Header="Statut Paiement" Binding="{Binding StatutPaiement}"/>
                             <DataGridTextColumn Header="No. Client"      Binding="{Binding NoSeqClient}"/>

@@ -2,16 +2,20 @@
 
     Dim BD As P2014_BD_GestionHotelEntities
     Dim _MaReservationSalle As tblReservationSalle
+    Dim HotelConnexion As tblHotel
 
-    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities)
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, ByRef _MonHotel As tblHotel)
         InitializeComponent()
         BD = _BD
+        HotelConnexion = _MonHotel
     End Sub
     Private Sub Che_FrmSalle_Loaded(sender As Object, e As RoutedEventArgs) Handles Che_FrmSalle.Loaded
 
         'Remplir ComboBoxNomSalle
-        Dim NoReservation = From el In BD.tblReservationSalle
-                     Select el
+        Dim NoReservation = From tabReservSalle In BD.tblReservationSalle
+                            Join tabSalle In BD.tblSalle On tabReservSalle.CodeSalle Equals tabSalle.CodeSalle
+                            Where tabSalle.CodeHotel = HotelConnexion.CodeHotel
+                            Select tabReservSalle
 
         Che_ComboBoxNoReservationSalle.ItemsSource = NoReservation.ToList
         Che_ComboBoxNoReservationSalle.DisplayMemberPath = "NoSeqReservSalle"
@@ -43,9 +47,6 @@
 
         End If
     End Sub
-
-
-
 
     Private Sub Che_BtnEnregistrer_Click(sender As Object, e As RoutedEventArgs) Handles Che_BtnEnregistrer.Click
 

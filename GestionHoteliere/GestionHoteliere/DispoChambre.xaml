@@ -10,6 +10,7 @@
     </Window.Background>
     <Viewbox Stretch="Uniform">
         <Grid x:Name="Dis_GrdDispo" Margin="0,0,10,0">
+            <Label      x:Name="Dis_LblNomHotel"  Content="NomHotel" HorizontalAlignment="Left" Margin="10,4,0,0"   VerticalAlignment="Top" FontSize="14"/>
             <DataGrid x:Name="Dis_GrtChambre"                                                         HorizontalAlignment="Left" Margin="10,33,0,0"   VerticalAlignment="Top" Width="488" Height="426" AutoGenerateColumns="False" CanUserAddRows="False">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="No chambre"    Binding="{Binding NoSeqChambre}"/>
@@ -37,7 +38,16 @@
             <Button   x:Name="Dis_BtnForfait"     Content="Choisir forfait" Background="YellowGreen"  HorizontalAlignment="Left" Margin="503,256,0,0" VerticalAlignment="Top" Width="123" Height="52"/>
             <Button   x:Name="Dis_BtnAnnuler"     Content="Annuler"         Background="#e46e1a"      HorizontalAlignment="Left" Margin="503,409,0,0" VerticalAlignment="Top" Width="123" Height="50"/>
             <Button   x:Name="Dis_BtnRéserver"    Content="Réserver"        Background="Teal"         HorizontalAlignment="Left" Margin="689,409,0,0" VerticalAlignment="Top" Width="117" Height="50"/>
-            <Button   x:Name="Btn_AjouterChambre" Content="Ajouter chambre" Background="YellowGreen"  HorizontalAlignment="Left" Margin="684,256,0,0" VerticalAlignment="Top" Width="122" Height="52"/>
+            <Button   x:Name="Btn_AjouterChambre" Content="Ajouter chambre" Background="YellowGreen"  HorizontalAlignment="Left" Margin="503,331,0,0" VerticalAlignment="Top" Width="122" Height="52"/>
+            <Label      x:Name="Dis_LblNomHotel_Copy"  Content="Liste chambre" HorizontalAlignment="Left" Margin="641,245,0,0"   VerticalAlignment="Top" FontSize="14"/>
+            <ListView  x:Name="Dis_lstListeChambre" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding}" Margin="641,274,0,0" Width="155" Height="130">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="No.Chambre" Width="Auto" DisplayMemberBinding="{Binding NoSeqChambre}"/>
+                        <GridViewColumn Header="Type"            Width="Auto" DisplayMemberBinding="{Binding CodeTypeChambre}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
         </Grid>
     </Viewbox>
