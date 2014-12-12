@@ -44,7 +44,7 @@
                 Throw New System.Exception
             End If
             If LocSal_TxtBoxClient.Text.Trim.Length = 0 Then
-                message = "Veuillez choisir numero client"
+                message = "Veuillez rentrer un client"
                 Throw New System.Exception
             End If
             If LocSal_TxtBoxNb.Text.Trim.Length = 0 Then
@@ -61,6 +61,14 @@
             End If
             If LocSal_CmbBoxPaiement.SelectedIndex = -1 Then
                 message = "Veuillez choisir le mode de paiement"
+                Throw New System.Exception
+            End If
+            If LocSal_TxtBoxCredit.Text.Trim.Length = 0 Then
+                message = "Veuillez rentrer une carte de crédit"
+                Throw New System.Exception
+            End If
+            If LocSal_TxtBoxExpi.Text.Trim.Length = 0 Then
+                message = "Veuillez rentrer la date d'expiration"
                 Throw New System.Exception
             End If
         Catch ex As Exception
@@ -181,6 +189,7 @@
             NewCl.NoTelephone = LocSal_TxtBoxTel.Text
             NewCl.AdresseClient = LocSal_TxtBoxAdr.Text
             NewCl.EmailClient = LocSal_TxtBoxEmail.Text
+            NewCl.NomEntreprise = LocSal_TxtBoxComp.Text
 
             MaBd.tblClient.Add(NewCl)
             MaBd.SaveChanges()
@@ -200,12 +209,24 @@
                 e.Handled = True
         End Select
     End Sub
+    Private Sub letter_KeyDown(ByVal sender As Object, ByVal e As KeyEventArgs)
+
+
+        Select Case e.Key
+            Case Key.D0 To Key.D9
+                e.Handled = True
+            Case Key.NumPad0 To Key.NumPad9
+                e.Handled = True
+            Case Else
+                e.Handled = False
+        End Select
+    End Sub
 
     Private Sub recherche()
         'recherche de réservation de Salle 
-            Try
-                Dim X As Int16
-                Dim El As tblReservationSalle
+        Try
+            Dim X As Int16
+            Dim El As tblReservationSalle
 
             Dim Rep = From It In MaBd.tblReservationSalle Where It.NoSeqReservSalle = NoRes Select It
             El = Rep.Single
@@ -248,7 +269,7 @@
             If NoRes <> 0 Then
                 MessageBox.Show("un erreur est subvenue")
             End If
-            End Try
+        End Try
     End Sub
 
     Private Sub LocSal_BtnModiSalle_Click(sender As Object, e As RoutedEventArgs) Handles LocSal_BtnModiSalle.Click
