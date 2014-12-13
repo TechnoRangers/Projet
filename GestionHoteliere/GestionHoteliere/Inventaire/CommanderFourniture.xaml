@@ -32,7 +32,7 @@
         </ListView>
         <GroupBox Header="Prix Total" HorizontalAlignment="Left" BorderBrush="Transparent" BorderThickness="0" Margin="247,10,0,0" FontSize="24" VerticalAlignment="Top" Height="85" Width="125">
             <Grid HorizontalAlignment="Left" Height="54" Margin="0,21,0,0" VerticalAlignment="Top" Width="125">
-                <Label x:Name="com_lblPrixTotal" Content="Label" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="42,23,40,2"/>
+                <Label x:Name="com_lblPrixTotal" Content="Label" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="34,23,48,2"/>
             </Grid>
         </GroupBox>
         

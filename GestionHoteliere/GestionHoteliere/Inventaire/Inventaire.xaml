@@ -35,13 +35,12 @@
             </DataGrid>
             <Label    x:Name="Inv_Hotel"             Content="Selection Hôtel "     HorizontalAlignment="Left"                          Margin="7,74,0,0"       VerticalAlignment="Top" Width="110"             FontSize="14"/>
             <ComboBox x:Name="Inv_ComboBoxHotel"                                    HorizontalAlignment="Left"                          Margin="125,77,0,0"     VerticalAlignment="Top" Width="180" Height="22"                   TabIndex="1" IsReadOnly="True" />
-            <Button   x:Name="Inv_btnAjoutHotel"     Content="Assigner un produit"  HorizontalAlignment="Left" Background="YellowGreen" Margin="790,176,-0.6,0" VerticalAlignment="Top" Width="180" Height="50"                   TabIndex="5"/>
+            <Button   x:Name="Inv_btnAjoutHotel"     Content="Assigner un produit"  HorizontalAlignment="Left" Background="YellowGreen" Margin="790,251,-0.6,0" VerticalAlignment="Top" Width="180" Height="50"                   TabIndex="5"/>
             <Button   x:Name="Inv_btnCommander"      Content="Commander un produit" HorizontalAlignment="Left" Background="teal"        Margin="790,590,0,0"    VerticalAlignment="Top" Width="180" Height="50"                   TabIndex="6"/>
             <Button   x:Name="Inv_btnAnnuler"        Content="Annuler"              HorizontalAlignment="Left" Background="#e46e1a"     Margin="10,590,0,0"     VerticalAlignment="Top" Width="180" Height="50" FontSize="14"     TabIndex="8"/>
-            <Button   x:Name="Inv_btnAjouter"        Content="Ajouter un produit"   HorizontalAlignment="Left" Background="YellowGreen" Margin="790,250,-0.6,0" VerticalAlignment="Top" Width="180" Height="50" FontSize="14"     TabIndex="4"/>
+            <Button   x:Name="Inv_btnAjouter"        Content="Ajouter un produit"   HorizontalAlignment="Left" Background="YellowGreen" Margin="790,325,-0.6,0" VerticalAlignment="Top" Width="180" Height="50" FontSize="14"     TabIndex="4"/>
             <Button   x:Name="Inv_btnSupprimer"      Content="Supprimer un produit" HorizontalAlignment="Left" Background="#e46e1a"     Margin="790,402,-0.6,0" VerticalAlignment="Top" Width="180" Height="50" FontSize="14"     TabIndex="5"/>
             <Label x:Name="inv_LblQteMin" Foreground="red"  Content="* Quantité minimum atteinte pour une fourniture. Veuillez passer une commande"  HorizontalAlignment="Left" Margin="10,118,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
-            <Button   x:Name="Inv_btnModifierProduit"     Content="Modifier un produit"  HorizontalAlignment="Left" Background="Yellow" Margin="790,325,-0.6,0" VerticalAlignment="Top" Width="180" Height="50"                   TabIndex="5"/>
 
         </Grid>
 

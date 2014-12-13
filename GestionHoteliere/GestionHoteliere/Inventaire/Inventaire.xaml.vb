@@ -3,12 +3,14 @@
     Dim MaBD As P2014_BD_GestionHotelEntities
     Dim _monHotel As tblHotel
     Dim _macategorie As tblCategorieFourniture
+    Dim EmployeConnexion As tblEmploye
 
-    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _MonEmploye As tblEmploye)
         MaBD = New P2014_BD_GestionHotelEntities
         _monHotel = New tblHotel
         _macategorie = New tblCategorieFourniture
         InitializeComponent()
+        EmployeConnexion = _MonEmploye
     End Sub
 
     Private Sub Inv_frmInventaire_Loaded(sender As Object, e As RoutedEventArgs) Handles Inv_frmInventaire.Loaded
@@ -79,7 +81,7 @@
     Private Sub Inv_btnCommander_Click(sender As Object, e As RoutedEventArgs) Handles Inv_btnCommander.Click
 
         Dim FenetreCommande As CommanderFourniture
-        FenetreCommande = New CommanderFourniture(MaBD)
+        FenetreCommande = New CommanderFourniture(MaBD, EmployeConnexion)
         FenetreCommande.ShowDialog()
 
     End Sub
@@ -119,7 +121,6 @@
 
     End Sub
 
-
     Private Sub Inv_textBoxRechercheCode_TextChanged(sender As Object, e As TextChangedEventArgs) Handles Inv_textBoxRechercheCode.TextChanged
         FiltrerDatagrid()
     End Sub
@@ -131,7 +132,4 @@
         FiltrerDatagrid()
     End Sub
 
-    Private Sub Inv_btnModifierProduit_Click(sender As Object, e As RoutedEventArgs) Handles Inv_btnModifierProduit.Click
-
-    End Sub
 End Class

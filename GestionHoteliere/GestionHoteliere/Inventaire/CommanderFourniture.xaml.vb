@@ -2,13 +2,18 @@
     Dim MaBD As P2014_BD_GestionHotelEntities
     Dim Fournisseur As tblFournisseur
     Dim ItemCommande As New List(Of tblFournitureFournisseur)
-    Dim FournitureCommande As New List(Of tblFournitureCommande)
     Dim PrixCommande As Double
+    Dim EmployeConnexion As tblEmploye
+    Dim FournitureCommande As List(Of tblFournitureCommande)
 
-    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _MonEmploye As tblEmploye)
         InitializeComponent()
         com_lblPrixTotal.Content = "0.00 $"
         MaBD = _MaBD
+        EmployeConnexion = _MonEmploye
+        com_txtNoEmploye.Text = EmployeConnexion.NoEmploye
+        com_txtNoEmploye.IsEnabled = False
+        FournitureCommande = New List(Of tblFournitureCommande)
     End Sub
 
     Private Sub com_frmCommandeFourniture_Loaded(sender As Object, e As RoutedEventArgs) Handles com_frmCommandeFourniture.Loaded
@@ -53,8 +58,29 @@
 
             ItemCommande.Add(FournitureFournisseur)
 
-            'Dim FournitureCommande As tblFournitureCommande
-            'FournitureCommande.CodeFourniture = 
+
+            Dim ItemExist As Boolean = False
+            Dim MaFournitureCommande As New tblFournitureCommande
+            MaFournitureCommande.CodeFourniture = FournitureFournisseur.CodeFourniture
+            MaFournitureCommande.QuantiteCommande = 1
+
+            For Each FourCommande As tblFournitureCommande In FournitureCommande
+                If MaFournitureCommande.CodeFourniture = FourCommande.CodeFourniture Then
+                    ItemExist = True
+                End If
+            Next
+
+            'Si l'item existe pas ou que la liste est vide, ajoute à la liste
+            If Not ItemExist Then
+                FournitureCommande.Add(MaFournitureCommande)
+            Else
+                'Si l'item existe, ajoute la quantitié
+                For Each FourCommande As tblFournitureCommande In FournitureCommande
+                    If FourCommande.CodeFourniture = MaFournitureCommande.CodeFourniture Then
+                        FourCommande.QuantiteCommande += 1
+                    End If
+                Next
+            End If
 
             CalculPrixTotal()
             com_lbvCommande.ItemsSource = ItemCommande.ToList
@@ -80,6 +106,8 @@
     End Sub
 
     Private Sub com_btnCommander_Click(sender As Object, e As RoutedEventArgs) Handles com_btnCommander.Click
+        'Dim FournitureCommande As New List(Of tblFournitureCommande)
+
         Try
             Dim Commande As New tblCommande()
 
@@ -93,17 +121,15 @@
             MaBD.SaveChanges()
 
             Try
-                For Each Fourniture As tblFournitureFournisseur In ItemCommande
-                    Dim FournitureCommande As New tblFournitureCommande
-
-                    FournitureCommande.NoCommande = Commande.NoCommande
-                    FournitureCommande.CodeFourniture = Fourniture.CodeFourniture
-                    FournitureCommande.QuantiteCommande = 1
-
-                    MaBD.tblFournitureCommande.Add(FournitureCommande)
-                    MaBD.SaveChanges()
+                For Each FourCommande As tblFournitureCommande In FournitureCommande
+                    FourCommande.NoCommande = Commande.NoCommande
+                    MaBD.tblFournitureCommande.Add(FourCommande)
                 Next
+
+                MaBD.SaveChanges()
+
                 MessageBox.Show("La commande a été complétée avec succès.")
+                Me.Close()
             Catch ex As Exception
                 MessageBox.Show("Erreur ajout table intersect")
             End Try

@@ -70,7 +70,7 @@
 
     Private Sub Men_btnInventaire_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnInventaire.Click
 
-        Dim Inventaire_ As New Inventaire(MaBD)
+        Dim Inventaire_ As New Inventaire(MaBD, EmployeConnexion)
         Inventaire_.Show()
         'Me.Close()
 
@@ -117,7 +117,7 @@
     End Sub
 
     Sub Stuff()
-        Dim Entretien_ As New Entretien(MaBD, HotelConnexion)
+        Dim Entretien_ As New Entretien(MaBD, HotelConnexion, EmployeConnexion)
         Entretien_.Show()
     End Sub
 

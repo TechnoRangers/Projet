@@ -3,10 +3,12 @@
     Dim MaBD As P2014_BD_GestionHotelEntities
     Dim _maChambre As tblChambre
     Dim HotelConnexion As tblHotel
+    Dim EmployeConnexion As tblEmploye
 
-    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, ByRef _MonHotel As tblHotel)
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, ByRef _MonHotel As tblHotel, ByRef _MonEmploye As tblEmploye)
         InitializeComponent()
         MaBD = _BD
+        EmployeConnexion = _MonEmploye
         HotelConnexion = _MonHotel
         _maChambre = New tblChambre
 
@@ -75,7 +77,7 @@
     End Sub
 
     Private Sub Eta_BtnInventaire_Click(sender As Object, e As RoutedEventArgs) Handles Eta_BtnInventaire.Click
-        Dim Inventaire As New Inventaire(MaBD)
+        Dim Inventaire As New Inventaire(MaBD, EmployeConnexion)
         Inventaire.Show()
         Me.Close()
     End Sub
