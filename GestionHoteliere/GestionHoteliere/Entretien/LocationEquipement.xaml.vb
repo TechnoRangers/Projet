@@ -19,7 +19,7 @@
         Dim NewEqui As tblFournitureReservationSalle
         NewEqui = New tblFournitureReservationSalle
         value = InputBox("Quantité", "Quantité", 1)
-        If value = "" Then
+        If value = "" Or Not IsNumeric(value) Then
             value = 1
         End If
 
@@ -146,6 +146,6 @@
     Private Sub LocEqui_BtnValider_Click(sender As Object, e As RoutedEventArgs) Handles LocEqui_BtnValider.Click
         'Sauvegarde les modifications des la base de donné 
         MaBd.SaveChanges()
-        MessageBox.Show("you did it")
+        MessageBox.Show("La modification d'équipement ont été fait avec success")
     End Sub
 End Class

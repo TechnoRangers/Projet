@@ -173,6 +173,7 @@
                 LocSal_TxtBoxEmail.Text = Res.First.EmailClient
                 LocSal_TxtBoxTel.Text = Res.First.NoTelephone
                 LocSal_TxtBoxNom.Text = Res.First.NomClient
+                LocSal_TxtBoxComp.Text = Res.First.NomEntreprise
             End If
 
 
