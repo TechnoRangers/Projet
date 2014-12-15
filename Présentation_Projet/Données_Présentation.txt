@@ -1,0 +1,64 @@
+Données présentation:
+
+Login: Réceptionniste
+	
+	UserName: BerAn001
+	Password: AB010201
+
+Login: Entretien
+	
+	UserName: CorMi001
+	Password: MC130301
+
+
+ClientRéservation(Francois)
+
+	Recherche de client
+		Prenom: Orla
+		Nom: Shannon
+		CodePostal: G1QD2W
+
+	Créer un nouveaux client
+		Prenom: Jean
+		Nom: Gagnon
+		CodePostal: G7X5M9
+		Adresse1: 2417 Rue St-Hubert
+		Ville: Saguenay
+		NoTelephone: 4188205129
+		Email: jeangagnon@gmail.com
+
+DispoChambre(Kevin)
+Présentation
+	Choisir chambre: 
+		Standard: 1001, 1002
+		Deluxe: 1140
+
+Revenir sur ClientReserv
+	Rechercher Jean Gagnon
+
+
+Salle(Charles)
+
+
+Inventaire (Vincent)
+- Se logger avec admin
+
+
+Console d'administration (Francois)
+- Ajouter une ville
+
+
+Entretien (Kevin)
+Chambre 1000
+
+Intranet (Kevin)
+	Identifiant: LafAn001
+	Mot de passe: AF011201
+
+	
+
+	
+
+
+
+

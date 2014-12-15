@@ -1,0 +1,171 @@
+Ordre de présentation:
+
+
+0. Présentation du plan (Kevin)
+	0.1 Introduction (1 et 2)
+	0.2 Contenu du projet (3 et 4)
+	0.3 Conclusion et questions (7 et 8)
+
+
+1. Expliquer le mandat
+	1.1 Centraliser le système des hôtels.
+
+2. Objectif
+	2.1 Expliquer les objectifs du projet
+
+3. Logiciel (Vincent)
+	3.1 Points d'intéret principaux application
+
+		3.1.1 Login / Menu (Vincent)
+
+		3.1.2 Réservation
+		   Page ClientReservation (Francois)
+			3.1.1 Client et recherche client
+			3.1.2 Créer un client
+			3.1.3 Prendre un client existant et afficher ses réservations
+			
+			3.1.3 Ajouter une facture
+			3.1.4 Modifier une réservation
+
+		   Page DispoChambre (Kevin)
+			3.2.1 Filtres de chambre
+			3.2.2 Réservation avec plusieurs chambres
+
+		   Page Forfait (Kevin)
+			3.3.1 Choisir un forfait
+			3.3.2 Réserver un forfait
+
+		3.2.1 Salle  (Charles)
+		   Page RéservationSalle
+			3.2.1 I don't even know
+		
+		3.2.2 Inventaire (Vincent)
+		   Page Inventaire
+			3.2.2 Créer un produit (Ex: TEST1)
+			3.2.3 Assigner un produit (Assigner TEST1 à l'hotel)
+			3.2.4 Supprimer un produit (Supprimer TEST1)
+		   Page Commande
+			2.2.5 Passer une commande avec 2-3 produits (1 seul fournisseur)
+		
+		3.2.3 Console d'admin (Francois)
+		   Page Console admin
+			3.2.4 Faire un test d'ajout/modif/supprimer
+		
+		3.2.4 Entretien (Kevin)
+			3.2.5 Check up chambre (Test avec une chambre)
+			3.2.6 Etat chambre (suivi du test)
+			"Entretien salle plutot pareil"
+			3.2.7 Check up salle 
+			3.2.8 Etat salle
+
+		3.2.5 Horaire (Vincent)
+			3.2.2 Consulter les chiffres de travail
+			3.3.2 Créer/modifier un chiffre de travail
+
+		3.2.6 Statistique (Vincent)
+	
+
+4. Partie Web
+	- Mandat (Francois)
+
+5. Intranet (Kevin)
+
+	Page de connection
+		Présentation de la page de connexion
+		
+	Dossier employe
+		Info de l'employe avec son horaire
+
+6. Site Web (Francois)
+	Points d'intéret principaux du web
+
+	6.1 Page d'acceuil:
+
+		- Slider.
+		- Lien vers pages principales.
+		- Barre de navigation
+
+	6.2 Réservation
+
+		6.2.1 Trouver&Reserver
+
+			- Affichage de tous les hôtels
+			- Filtre par ville ou par date
+			- Informations de base
+			- Bouton pour réserver dans cet hotel
+
+		6.2.2 Réservation de chambre
+
+			- Affichage des types de chambres disponible dans cet hotel
+			- Le prix affiché est le prix offert pour la période en cours (expliquer comment le prix marche)
+			- Coordonnées client, trop long à remplir. Se connecter
+
+		6.2.3 Inscription / Connection
+			- Page d'inscription
+			- Se connecter à un compte existant
+			- Page de management de compte
+
+		6.2.4 Revenir sur réservation
+			- Faire une réservation
+			- Montrer les calendrier
+			- Confirmer la réservation
+
+	6.3 Forfait
+		
+		6.3.1 Consultation de forfait
+			- Informations sur le forfait
+			- Bouton disabled pour les forfaits pas aujourd'hui
+
+		6.3.2 Réservation de forfait
+			- 1 chambre du type montré pour le nombre de nuits et le prix montré
+			- date de fin s'ajuste en fonction du nombre de nuits
+			- Dates limité dans la période de disponibilité du forfait
+			- Confirmer la réservation
+			- Revenir à l'accueil
+
+	6.4 Consultation
+		
+		6.4.1 Les types de chambre
+			- Description de chaque type de chambre avec leur fournitures
+			- Galerie de photos
+
+		6.4.2 Les salles
+			- Consultation seulement, la réservation des salles se fait par téléphone
+			- Filtre par ville ou par hotel
+		
+		6.4.3 À propos
+			- Description de l'entreprise
+
+		6.4.3 Contact
+			- Affiche tous les hotels
+			- Page d'informations avec coordonnées, heure de prise de possesion
+
+	6.5 Mobile
+		- Montrer que le site est responsive
+
+
+7. Conclusion
+	5.1 Bilan du projet
+	5.2 Appréciation
+	
+8. Période de questions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

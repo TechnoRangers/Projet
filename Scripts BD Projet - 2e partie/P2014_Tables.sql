@@ -195,15 +195,16 @@ CREATE TABLE Reservation.tblSalle
 
 CREATE TABLE Reservation.tblReservationSalle
 (
-	NoSeqReservSalle	int			NOT NULL	IDENTITY(1000,1),
-	DateReservSalle		date		NOT NULL,
-	PrixReservSalle		money		NULL,
-	ModePaiement		varchar(20)	NOT NULL,
-	StatutPaiement		varchar(10)	NULL,
-	NbPersonne			smallint	NULL,
-	NoCarteCredit		varchar(16)	NULL,
-	CodeSalle			char(3)		NOT NULL,
-	NoSeqClient			int			NOT NULL
+	NoSeqReservSalle		int			NOT NULL	IDENTITY(1000,1),
+	DateDebutReservSalle	date		NOT NULL,
+	DateFinReservSalle		date		NULL,
+	PrixReservSalle			money		NULL,
+	ModePaiement			varchar(20)	NOT NULL,
+	StatutPaiement			varchar(10)	NULL,
+	NbPersonne				smallint	NULL,
+	NoCarteCredit			varchar(16)	NULL,
+	CodeSalle				char(3)		NOT NULL,
+	NoSeqClient				int			NOT NULL
 )
 
 
