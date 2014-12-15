@@ -51,8 +51,8 @@
                     <Label      x:Name="LocSal_LblNbPers"    Content="Nombre de personne" HorizontalAlignment="Left" Margin="226,51,0,0"  VerticalAlignment="Top"  FontSize="14"/>
                     <Label      x:Name="LocSal_Datedeb"      Content="Date Debut"         HorizontalAlignment="Left" Margin="10,12,0,0"   VerticalAlignment="Top"  FontSize="14"/>
                     <DatePicker x:Name="LocSal_DatePicker"                                HorizontalAlignment="Left" Margin="91,13,0,0"   VerticalAlignment="Top"  FontSize="14" Width="130"/>
-                    <Label      x:Name="LocSal_Datefin"      Content="Date Fin"           HorizontalAlignment="Left" Margin="220,10,0,0"  VerticalAlignment="Top"  FontSize="14" Visibility="Hidden"/>
-                    <DatePicker x:Name="LocSal_DatePicker2"                               HorizontalAlignment="Left" Margin="283,11,0,0"  VerticalAlignment="Top"  FontSize="14" Width="132" Visibility="Hidden"/>
+                    <Label      x:Name="LocSal_Datefin"      Content="Date Fin"           HorizontalAlignment="Left" Margin="220,10,0,0"  VerticalAlignment="Top"  FontSize="14" />
+                    <DatePicker x:Name="LocSal_DatePicker2"                               HorizontalAlignment="Left" Margin="283,11,0,0"  VerticalAlignment="Top"  FontSize="14" Width="132" />
                     <TextBox    x:Name="LocSal_TxtBoxNb"     TextWrapping="Wrap" Text=""  HorizontalAlignment="Left" Margin="368,53,0,0"  VerticalAlignment="Top"  FontSize="14" Width="46"  Height="23" KeyDown="OnKeyDownHandler" />
 
                     <Button Name="LocSal_BtnEqu" Content="Equipement" HorizontalAlignment="Left" Margin="10,87,0,0" VerticalAlignment="Top" Width="130" IsEnabled="False" Height="38" Background="teal"/>

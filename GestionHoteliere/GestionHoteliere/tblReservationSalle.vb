@@ -12,7 +12,8 @@ Imports System.Collections.Generic
 
 Partial Public Class tblReservationSalle
     Public Property NoSeqReservSalle As Integer
-    Public Property DateReservSalle As Date
+    Public Property DateDebutReservSalle As Date
+    Public Property DateFinReservSalle As Nullable(Of Date)
     Public Property PrixReservSalle As Nullable(Of Decimal)
     Public Property ModePaiement As String
     Public Property StatutPaiement As String

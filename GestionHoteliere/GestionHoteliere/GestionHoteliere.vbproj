@@ -116,12 +116,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Inventaire\AjoutItemHotel.xaml.vb">
-      <DependentUpon>AjoutItemHotel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Inventaire\AjoutItemInventaire2.xaml.vb">
-      <DependentUpon>AjoutItemInventaire2.xaml</DependentUpon>
-    </Compile>
     <Compile Include="BD.Context.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -136,6 +130,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inventaire\AjoutItemHotel.xaml.vb">
+      <DependentUpon>AjoutItemHotel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Inventaire\AjoutItemInventaire2.xaml.vb">
+      <DependentUpon>AjoutItemInventaire2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Personnel\ChangementHoraire.xaml.vb">
       <DependentUpon>ChangementHoraire.xaml</DependentUpon>
@@ -157,6 +157,9 @@
     </Compile>
     <Compile Include="Chambre et Réservation\DispoChambre.xaml.vb">
       <DependentUpon>DispoChambre.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PrixTypeChambreHotel_Result.vb">
+      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Salle et Réservation\dispoSalle.xaml.vb">
       <DependentUpon>dispoSalle.xaml</DependentUpon>
@@ -262,9 +265,6 @@
     </Compile>
     <Compile Include="Chambre et Réservation\ModifReservation.xaml.vb">
       <DependentUpon>ModifReservation.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PrixTypeChambreHotel_Result.vb">
-      <DependentUpon>BD.tt</DependentUpon>
     </Compile>
     <Compile Include="Chambre et Réservation\Reservation.xaml.vb">
       <DependentUpon>Reservation.xaml</DependentUpon>

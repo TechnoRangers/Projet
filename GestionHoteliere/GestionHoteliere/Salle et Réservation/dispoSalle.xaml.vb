@@ -39,7 +39,7 @@
 
         If Not Dis_SalList.SelectedIndex = -1 Then
             Dim item As tblReservationSalle = Dis_SalList.SelectedItem
-            If Not item.DateReservSalle < Date.Today Then
+            If Not item.DateDebutReservSalle < Date.Today Then
                 Dim Salle As New ReservationSalle(MaBd, item.NoSeqReservSalle, 2)
                 Salle.Show()
                 Me.Close()
@@ -82,7 +82,7 @@
 
         If Not Dis_SalList.SelectedIndex = -1 Then
             Dim item As tblReservationSalle = Dis_SalList.SelectedItem
-            If Not item.DateReservSalle < Date.Today Then
+            If Not item.DateDebutReservSalle < Date.Today Then
                 supprimer()
             End If
         End If
@@ -104,13 +104,13 @@
 
 
         If DispoS_CmbBoxSalle.SelectedIndex = -1 And IsNothing(DispoS_DatePicker.SelectedDate) Then
-            Dim res = From it In MaBd.tblReservationSalle Where it.DateReservSalle >= Date.Today Select it
+            Dim res = From it In MaBd.tblReservationSalle Where it.DateDebutReservSalle >= Date.Today Select it
             If res.ToList.Count <> 0 Then
                 Dis_SalList.ItemsSource = res.ToList
             End If
         End If
         If DispoS_CmbBoxSalle.SelectedIndex = -1 And Not IsNothing(DispoS_DatePicker.SelectedDate) Then
-            Dim res = From it In MaBd.tblReservationSalle Where it.DateReservSalle >= DispoS_DatePicker.SelectedDate Select it
+            Dim res = From it In MaBd.tblReservationSalle Where it.DateDebutReservSalle >= DispoS_DatePicker.SelectedDate Select it
             If res.ToList.Count <> 0 Then
                 Dis_SalList.ItemsSource = res.ToList
             End If
@@ -126,7 +126,7 @@
         If DispoS_CmbBoxSalle.SelectedIndex <> -1 And Not IsNothing(DispoS_DatePicker.SelectedDate) Then
             Dim salle = (From el In MaBd.tblSalle Where el.NomSalle = DispoS_CmbBoxSalle.SelectedItem.ToString Select el.CodeSalle).Single
 
-            Dim res = From it In MaBd.tblReservationSalle Where it.CodeSalle = salle And it.DateReservSalle >= DispoS_DatePicker.SelectedDate Select it
+            Dim res = From it In MaBd.tblReservationSalle Where it.CodeSalle = salle And it.DateDebutReservSalle >= DispoS_DatePicker.SelectedDate Select it
             If res.ToList.Count <> 0 Then
                 Dis_SalList.ItemsSource = res.ToList
             End If

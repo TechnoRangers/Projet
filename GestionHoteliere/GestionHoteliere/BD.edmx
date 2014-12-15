@@ -314,7 +314,8 @@
             <PropertyRef Name="CodeSalle" />
           </Key>
           <Property Name="NoSeqReservSalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DateReservSalle" Type="date" Nullable="false" />
+          <Property Name="DateDebutReservSalle" Type="date" Nullable="false" />
+          <Property Name="DateFinReservSalle" Type="date" />
           <Property Name="PrixReservSalle" Type="money" />
           <Property Name="ModePaiement" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="StatutPaiement" Type="varchar" MaxLength="10" />
@@ -848,9 +849,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
         <Function Name="RemplacerFourniture" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Approvisionnement">
           <Parameter Name="CodeHotel" Type="char" Mode="In" />
           <Parameter Name="CodeFourniture" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="GetReservationsHotel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Reservation">
-          <Parameter Name="CodeHotel" Type="char" Mode="In" />
         </Function>
         <Function Name="PrixTypeChambreHotel" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Reservation">
           <Parameter Name="CodeHotel" Type="char" Mode="In" />
@@ -1425,7 +1423,8 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <PropertyRef Name="CodeSalle" />
           </Key>
           <Property Name="NoSeqReservSalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateReservSalle" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateDebutReservSalle" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateFinReservSalle" Type="DateTime" Precision="0" />
           <Property Name="PrixReservSalle" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="ModePaiement" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="StatutPaiement" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
@@ -2126,9 +2125,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <Parameter Name="CodeHotel" Mode="In" Type="String" />
             <Parameter Name="CodeFourniture" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="GetReservationsHotel" ReturnType="Collection(Int32)">
-            <Parameter Name="CodeHotel" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="PrixTypeChambreHotel" ReturnType="Collection(P2014_BD_GestionHotelModel.PrixTypeChambreHotel_Result)">
             <Parameter Name="CodeHotel" Mode="In" Type="String" />
           </FunctionImport>
@@ -2475,7 +2471,8 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             <EntityTypeMapping TypeName="P2014_BD_GestionHotelModel.tblReservationSalle">
               <MappingFragment StoreEntitySet="tblReservationSalle">
                 <ScalarProperty Name="NoSeqReservSalle" ColumnName="NoSeqReservSalle" />
-                <ScalarProperty Name="DateReservSalle" ColumnName="DateReservSalle" />
+                <ScalarProperty Name="DateDebutReservSalle" ColumnName="DateDebutReservSalle" />
+                <ScalarProperty Name="DateFinReservSalle" ColumnName="DateFinReservSalle" />
                 <ScalarProperty Name="PrixReservSalle" ColumnName="PrixReservSalle" />
                 <ScalarProperty Name="ModePaiement" ColumnName="ModePaiement" />
                 <ScalarProperty Name="StatutPaiement" ColumnName="StatutPaiement" />
@@ -2545,7 +2542,6 @@ avertissement 6002: La table/vue 'P2014_BD_GestionHotel.Approvisionnement.VueInv
             </EndProperty>
           </AssociationSetMapping>
           <FunctionImportMapping FunctionImportName="RemplacerFourniture" FunctionName="P2014_BD_GestionHotelModel.Store.RemplacerFourniture" />
-          <FunctionImportMapping FunctionImportName="GetReservationsHotel" FunctionName="P2014_BD_GestionHotelModel.Store.GetReservationsHotel" />
           <FunctionImportMapping FunctionImportName="PrixTypeChambreHotel" FunctionName="P2014_BD_GestionHotelModel.Store.PrixTypeChambreHotel">
             <ResultMapping>
               <ComplexTypeMapping TypeName="P2014_BD_GestionHotelModel.PrixTypeChambreHotel_Result">

@@ -34,7 +34,7 @@
         message = "Une erreur est subvenue"
         Try
             Dim Rep = (From it In MaBd.tblReservationSalle
-                       Where it.DateReservSalle = LocSal_DatePicker.SelectedDate
+                       Where it.DateDebutReservSalle = LocSal_DatePicker.SelectedDate
                        Select it.CodeSalle)
             Dim res = From it In MaBd.tblSalle Where it.NomSalle.Equals(LocSal_CmbBoxSalle.SelectedItem.ToString) Select it.CodeSalle
             For Each resv In Rep.ToList()
@@ -111,7 +111,8 @@
         If result = True Then
             'remplie les variable de la réservation 
             NewEl.NoSeqClient = Convert.ToInt32(LocSal_TxtBoxClient.Text)
-            NewEl.DateReservSalle = LocSal_DatePicker.Text
+            NewEl.DateDebutReservSalle = LocSal_DatePicker.Text
+            NewEl.DateFinReservSalle = LocSal_DatePicker2.Text
             NewEl.ModePaiement = LocSal_CmbBoxPaiement.SelectedItem
             NewEl.NbPersonne = Convert.ToInt32(LocSal_TxtBoxNb.Text)
             NewEl.PrixReservSalle = Convert.ToDecimal(LocSal_TxtBoxPrix.Text)
@@ -243,8 +244,8 @@
             LocSal_CmbBoxEtat.SelectedItem = El.StatutPaiement
             LocSal_CmbBoxPaiement.SelectedItem = El.ModePaiement
             LocSal_TxtBoxPrix.Text = FormatNumber(El.PrixReservSalle, 2)
-            LocSal_DatePicker.SelectedDate = El.DateReservSalle
-
+            LocSal_DatePicker.SelectedDate = El.DateDebutReservSalle
+            LocSal_DatePicker2.SelectedDate = El.DateFinReservSalle
             Dim Res = (From Cl In MaBd.tblClient
                         Where Cl.NoSeqClient = El.NoSeqClient
                         Select Cl)
@@ -308,7 +309,8 @@
             End If
 
 
-            ResChange.DateReservSalle = LocSal_DatePicker.SelectedDate
+            ResChange.DateDebutReservSalle = LocSal_DatePicker.SelectedDate
+            ResChange.DateFinReservSalle = LocSal_DatePicker2.SelectedDate
             Try
                 MaBd.SaveChanges()
                 MessageBox.Show("La modification a été faite")
