@@ -19,6 +19,10 @@
                 LocSal_BtnModiSalle.IsEnabled = True
                 LocSal_BtnModiSalle.Visibility = Windows.Visibility.Visible
                 LocSal_BtnEqu.IsEnabled = True
+            Case Else
+                LocSal_BtnEqu.IsEnabled = True
+                LocSal_BtnAjout.Visibility = Windows.Visibility.Hidden
+                LocSal_BtnRec.Visibility = Windows.Visibility.Hidden
         End Select
 
     End Sub
@@ -128,6 +132,7 @@
                 NoRes = NewEl.NoSeqReservSalle
                 MessageBox.Show("La réservation a été ajouter")
                 LocSal_BtnEqu.IsEnabled = True
+                LocSal_BtnValider.Visibility = Windows.Visibility.Hidden
             Catch ex As Exception
                 MessageBox.Show("Veuillez verifier tous les champs")
             End Try
@@ -195,6 +200,7 @@
             MaBd.SaveChanges()
 
             LocSal_TxtBoxClient.Text = NewCl.NoSeqClient.ToString
+            MessageBox.Show("Le client a été ajouter")
         End If
     End Sub
 
@@ -235,7 +241,7 @@
             LocSal_TxtBoxNb.Text = El.NbPersonne
             LocSal_CmbBoxEtat.SelectedItem = El.StatutPaiement
             LocSal_CmbBoxPaiement.SelectedItem = El.ModePaiement
-            LocSal_TxtBoxPrix.Text = El.PrixReservSalle
+            LocSal_TxtBoxPrix.Text = FormatNumber(El.PrixReservSalle, 2)
             LocSal_DatePicker.SelectedDate = El.DateReservSalle
 
             Dim Res = (From Cl In MaBd.tblClient
@@ -256,15 +262,17 @@
                     X += 1
                 End If
             Next
-
             X = 0
-            For Each item In LocSal_CmbBoxEtat.Items
-                If item.Equals(Rep.Single.StatutPaiement) Then
-                    LocSal_CmbBoxEtat.SelectedIndex = X
-                Else
-                    X += 1
-                End If
-            Next
+            If Not Rep.Single.StatutPaiement = Nothing Then
+                For Each item In LocSal_CmbBoxEtat.Items
+                    If item.Equals(Rep.Single.StatutPaiement) Then
+                        LocSal_CmbBoxEtat.SelectedIndex = X
+                    Else
+                        X += 1
+                    End If
+                Next
+            End If
+
         Catch ex As Exception
             If NoRes <> 0 Then
                 MessageBox.Show("un erreur est subvenue")
@@ -328,6 +336,11 @@
     Function validationClient()
         Dim message As String = "Une erreur est subvenue à la création du client"
         Try
+            Dim cl = From it In MaBd.tblClient Where it.NomClient = LocSal_TxtBoxNom.Text And it.NoTelephone = LocSal_TxtBoxTel.Text Select it
+            If cl.tolist.count <> 0 Then
+                message = "Ce client existe déja"
+                Throw New Exception
+            End If
             If LocSal_TxtBoxPre.Text.Trim.Length = 0 Then
                 message = "Vieullez rentrer un prénom "
                 Throw New Exception

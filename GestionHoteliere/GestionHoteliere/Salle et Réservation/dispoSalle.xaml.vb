@@ -2,6 +2,7 @@
     Dim MaBd As P2014_BD_GestionHotelEntities
 
     Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities)
+
         InitializeComponent()
         MaBd = _MaBD
 
@@ -34,11 +35,17 @@
     End Sub
 
     Private Sub DispoS_BtnModiSalle_Click(sender As Object, e As RoutedEventArgs) Handles DispoS_BtnModiSalle.Click
-        Dim item As tblReservationSalle = Dis_SalList.SelectedItem
+        'vérifie si un item est selected et ouvre la page avec les informations à modifier 
+
         If Not Dis_SalList.SelectedIndex = -1 Then
-            Dim Salle As New ReservationSalle(MaBd, item.NoSeqReservSalle, 2)
-            Salle.Show()
-            Me.Close()
+            Dim item As tblReservationSalle = Dis_SalList.SelectedItem
+            If Not item.DateReservSalle < Date.Today Then
+                Dim Salle As New ReservationSalle(MaBd, item.NoSeqReservSalle, 2)
+                Salle.Show()
+                Me.Close()
+            Else
+                MessageBox.Show("Vous ne pouvez modifier une réservation passé")
+            End If
         End If
 
     End Sub
@@ -69,12 +76,15 @@
         Else
             MessageBox.Show("Cette réservation n'existe pas")
         End If
-
     End Sub
 
     Private Sub DispoS_BtnSuppSalle_Click(sender As Object, e As RoutedEventArgs) Handles DispoS_BtnSuppSalle.Click
+
         If Not Dis_SalList.SelectedIndex = -1 Then
-            supprimer()
+            Dim item As tblReservationSalle = Dis_SalList.SelectedItem
+            If Not item.DateReservSalle < Date.Today Then
+                supprimer()
+            End If
         End If
 
     End Sub
@@ -127,7 +137,6 @@
     Private Sub Men_btnQuitter_Click(sender As Object, e As RoutedEventArgs) Handles DispoS_btnQuitter.Click
         Me.Close()
     End Sub
-
 
     Private Sub DispoS_DatePicker_SelectedDateChanged(sender As Object, e As SelectionChangedEventArgs) Handles DispoS_DatePicker.SelectedDateChanged
         rafraichir()
