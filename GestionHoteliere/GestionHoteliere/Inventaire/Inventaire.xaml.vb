@@ -4,23 +4,39 @@
     Dim _monHotel As tblHotel
     Dim _macategorie As tblCategorieFourniture
     Dim EmployeConnexion As tblEmploye
+    Dim HotelConnexion As tblHotel
 
-    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _MonEmploye As tblEmploye)
+    Sub New(ByRef _MaBD As P2014_BD_GestionHotelEntities, ByRef _MonEmploye As tblEmploye, ByRef _MonHotelConnexion As tblHotel)
         MaBD = New P2014_BD_GestionHotelEntities
-        _monHotel = New tblHotel
+        _MonHotel = New tblHotel
         _macategorie = New tblCategorieFourniture
-        InitializeComponent()
         EmployeConnexion = _MonEmploye
+        HotelConnexion = _MonHotelConnexion
+        InitializeComponent()
     End Sub
 
     Private Sub Inv_frmInventaire_Loaded(sender As Object, e As RoutedEventArgs) Handles Inv_frmInventaire.Loaded
+
         'Remplir ComboBox_Hotel
         Dim Hotels = From tabHotel In MaBD.tblHotel
                      Select tabHotel
 
-        Inv_ComboBoxHotel.ItemsSource = Hotels.ToList
-        Inv_ComboBoxHotel.DisplayMemberPath = "NomHotel"
-        Inv_ComboBoxHotel.SelectedValue = Hotels.ToList.First
+        If EmployeConnexion.TypeEmploi <> "Gestion" Then
+
+            Dim MesHotel = From tabHotel In MaBD.tblHotel
+                           Where tabHotel.CodeHotel = HotelConnexion.CodeHotel
+                           Select tabHotel
+
+            Inv_ComboBoxHotel.ItemsSource = MesHotel.ToList
+            Inv_ComboBoxHotel.DisplayMemberPath = "NomHotel"
+
+            Inv_ComboBoxHotel.SelectedValue = MesHotel.ToList.First
+        Else
+            Inv_ComboBoxHotel.ItemsSource = Hotels.ToList
+            Inv_ComboBoxHotel.DisplayMemberPath = "NomHotel"
+            Inv_ComboBoxHotel.SelectedValue = Hotels.ToList.First
+        End If
+
 
         'Remplir ComboBox_Categorie
         Dim Categories = From tabCategorie In MaBD.tblCategorieFourniture
@@ -29,8 +45,6 @@
         inv_cmbCategorie.ItemsSource = Categories.ToList
         inv_cmbCategorie.DisplayMemberPath = "NomCategorie"
         inv_cmbCategorie.SelectedValue = Categories.ToList.Last
-
-
 
     End Sub
 

@@ -24,6 +24,7 @@
                 MaVille = New tblVille()
                 MaVille.CodeVille = vil_txtCodeVille.Text
                 MaVille.NomVille = vil_txtNomVille.Text
+                MaVille.CodeProvince = vil_txtCodeProvince.Text
                 MaBD.tblVille.Add(MaVille)
             End If
             MaBD.SaveChanges()

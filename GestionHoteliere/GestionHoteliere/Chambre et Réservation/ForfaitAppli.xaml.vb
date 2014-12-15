@@ -4,11 +4,13 @@
     Dim _MonForfait As tblForfait
     Dim ListeChambresDispo As New List(Of tblChambre)
     Dim Client As tblClient
+    Dim HotelConnexion As tblHotel
 
-    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, ByRef _Client As tblClient)
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, ByRef _Client As tblClient, ByRef _MonHotel As tblHotel)
         InitializeComponent()
         BD = _BD
         Client = _Client
+        HotelConnexion = _MonHotel
     End Sub
     Private Sub For_FrmFor_Loaded(sender As Object, e As RoutedEventArgs) Handles For_FrmFor.Loaded
 
@@ -51,7 +53,7 @@
             DateFin = _MonForfait.DateFin
 
             Dim Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
-                          Where tabChambre.CodeTypeChambre = _MonForfait.CodeTypeChambre
+                          Where tabChambre.CodeTypeChambre = _MonForfait.CodeTypeChambre And tabChambre.CodeHotel = HotelConnexion.CodeHotel
                              Select tabChambre
 
             If For_TxtBoxEtage.Text <> "" And For_TxtBoxNbLit.Text <> Nothing Then
@@ -59,21 +61,21 @@
                 NbLit = CType(For_TxtBoxNbLit.Text, Integer)
 
                 Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
-                              Where tabChambre.EtageChambre = Etage And tabChambre.NbLit = NbLit And tabChambre.CodeTypeChambre = _MonForfait.CodeTypeChambre
+                              Where tabChambre.EtageChambre = Etage And tabChambre.NbLit = NbLit And tabChambre.CodeTypeChambre = _MonForfait.CodeTypeChambre And tabChambre.CodeHotel = HotelConnexion.CodeHotel
                               Select tabChambre
 
             ElseIf For_TxtBoxEtage.Text <> "" Then
                 Etage = CType(For_TxtBoxEtage.Text, Integer)
 
                 Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
-                              Where tabChambre.EtageChambre = Etage And tabChambre.CodeTypeChambre = _MonForfait.CodeTypeChambre
+                              Where tabChambre.EtageChambre = Etage And tabChambre.CodeTypeChambre = _MonForfait.CodeTypeChambre And tabChambre.CodeHotel = HotelConnexion.CodeHotel
                               Select tabChambre
 
             ElseIf For_TxtBoxNbLit.Text <> "" Then
                 NbLit = CType(For_TxtBoxNbLit.Text, Integer)
 
                 Chambre = From tabChambre In BD.VerificationDispo(DateDebut, DateFin)
-                              Where tabChambre.NbLit = NbLit And tabChambre.CodeTypeChambre = _MonForfait.CodeTypeChambre
+                              Where tabChambre.NbLit = NbLit And tabChambre.CodeTypeChambre = _MonForfait.CodeTypeChambre And tabChambre.CodeHotel = HotelConnexion.CodeHotel
                               Select tabChambre
             End If
 

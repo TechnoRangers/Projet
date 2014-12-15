@@ -667,7 +667,24 @@
   <ItemGroup>
     <Resource Include="logo_hotel_payette.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Salle et Réservation\icone_Hotel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Personnel\icone_Hotel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Inventaire\icone_Hotel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Entretien\icone_Hotel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Console admin\icone_Hotel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Chambre et Réservation\icone_Hotel.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(VisualStudioVersion)' == ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(VisualStudioVersion)' != ''" />

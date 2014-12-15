@@ -120,11 +120,17 @@
         If Client Is Nothing Then
             MessageBox.Show("Aucun client selectionné. Vous devez rechercher un client pour afficher ses réservations.")
         Else
+
             Dim ReservationsClient = From tabReserv In BD.tblReservationChambre
-                                 Where tabReserv.NoSeqClient = Client.NoSeqClient And tabReserv.StatutReservChambre = "En cours" And tabReserv.tblChambreReservationChambre.First.tblChambre.CodeHotel = HotelConnexion.CodeHotel
+                                 Where tabReserv.NoSeqClient = Client.NoSeqClient And tabReserv.StatutReservChambre <> "Annulé" And tabReserv.StatutReservChambre <> "Terminé"
                                  Select tabReserv
 
-            cli_dtgReservationClient.ItemsSource = ReservationsClient.ToList
+
+            If ReservationsClient.ToList.Count = 0 Then
+                MessageBox.Show("Ce client n'a aucune réservation en cours.")
+            Else
+                cli_dtgReservationClient.ItemsSource = ReservationsClient.ToList
+            End If
         End If
     End Sub
 

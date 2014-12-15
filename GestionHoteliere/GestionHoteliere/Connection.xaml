@@ -15,7 +15,7 @@
                 <Grid x:Name="Con_GrdLogin" HorizontalAlignment="Center" Height="181" VerticalAlignment="Top" Width="396" Margin="0,34,0,0">
                     <Label       x:Name="Con_LblIdentifiant"     Content="Identifiant : "        HorizontalAlignment="Left" Margin="3,12,0,0"    VerticalAlignment="Top" FontSize="20"/>
                     <Label       x:Name="Con_LblMotDePasse"      Content="Mot de passe : "       HorizontalAlignment="Left" Margin="2,49,0,0"    VerticalAlignment="Top" FontSize="20"/>
-                    <Label       x:Name="Con_LblHotel"           Content="Hôtel : "              HorizontalAlignment="Left" Margin="3,88,0,0"    VerticalAlignment="Top" FontSize="20"/>
+                    <Label       x:Name="Con_LblHotel"           Content="Hôtel (facultatif):"              HorizontalAlignment="Left" Margin="3,88,0,0"    VerticalAlignment="Top" FontSize="20"/>
                     <Label       x:Name="con_lblErreurConnexion" Content="Erreur de connexion"   HorizontalAlignment="Left" Margin="5,139,0,0"   VerticalAlignment="Top" FontSize="20" Foreground="Red" Width="197"/>
                     <TextBox     x:Name="Con_TxtIdentifiant"     FontSize="14"                   HorizontalAlignment="Left" Margin="177,19,0,0"  VerticalAlignment="Top" Width="195"   Height="23"      TextWrapping="Wrap" Text=""/>
                     <PasswordBox x:Name="Con_TxtMotPasse"        FontSize="14"                   HorizontalAlignment="Left" Margin="178,56,0,0"  VerticalAlignment="Top" Width="194"   Height="25"/>

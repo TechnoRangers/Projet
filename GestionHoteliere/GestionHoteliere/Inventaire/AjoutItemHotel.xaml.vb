@@ -28,14 +28,23 @@
 
             MessageBox.Show("L'item a été ajouté correctement.")
         Catch ex As Exception
-            MaBD.tblFournitureHotel.Remove(FournitureHotel)
+            'MaBD.tblFournitureHotel.Remove(FournitureHotel)
+            Dim BD As New P2014_BD_GestionHotelEntities
 
-            FournitureHotel = (From tabfourhot In MaBD.tblFournitureHotel
-                              Where FournitureHotel.CodeFourniture = FournitureSelection.CodeFourniture
-                              Select tabfourhot).ToList.First
+            BD = MaBD
 
-            FournitureHotel.QuantiteFournitureHotel += AjtIH_TxtQuantite.Text
-            MaBD.SaveChanges()
+            Dim FournitureHotel = (From tabfourhot In BD.tblFournitureHotel
+                              Where tabfourhot.CodeFourniture = FournitureSelection.CodeFourniture And tabfourhot.CodeHotel = MonHotel.CodeHotel
+                              Select tabfourhot)
+
+            Dim MaQuantite As Integer
+            Dim TextQuantite As String
+            TextQuantite = AjtIH_TxtQuantite.Text.Trim(" ")
+
+            MaQuantite = CType(TextQuantite, Integer)
+
+            FournitureHotel.First().QuantiteFournitureHotel += MaQuantite
+            BD.SaveChanges()
             MessageBox.Show("L'item existait déjà, la quantité à été additionnée.")
         End Try
         Me.Close()

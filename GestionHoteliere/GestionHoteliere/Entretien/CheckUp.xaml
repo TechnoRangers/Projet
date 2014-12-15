@@ -43,8 +43,8 @@
                             <DataGridTextColumn Binding="{Binding NoEmploye}"                 ClipboardContentBinding="{x:Null}" Header="NoEmploye"/>
                             <DataGridTextColumn Binding="{Binding DescFourniture}"            ClipboardContentBinding="{x:Null}" Header="Fourniture" Width="120"/>
                             <DataGridTextColumn Binding="{Binding EtatFourniture}"            ClipboardContentBinding="{x:Null}" Header="Etat"       Width="100"/>
-                            <DataGridTextColumn Binding="{Binding DateDemande}"               ClipboardContentBinding="{x:Null}" Header="DateDebut"/>
-                            <DataGridTextColumn Binding="{Binding DateEffectue}"              ClipboardContentBinding="{x:Null}" Header="DateFin"/>
+                            <DataGridTextColumn Binding="{Binding DateDemande, StringFormat={}{0:d}}"               ClipboardContentBinding="{x:Null}" Header="DateDebut"/>
+                            <DataGridTextColumn Binding="{Binding DateEffectue, StringFormat={}{0:d}}"              ClipboardContentBinding="{x:Null}" Header="DateFin"/>
                             <DataGridTextColumn Binding="{Binding StatutEntretien}"           ClipboardContentBinding="{x:Null}" Header="Statut"     Width="120"/>
                         </DataGrid.Columns>
                     </DataGrid>

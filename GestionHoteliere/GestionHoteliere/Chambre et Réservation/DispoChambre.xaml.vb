@@ -130,7 +130,7 @@
     End Sub
 
     Private Sub Dis_BtnForfait_Click(sender As Object, e As RoutedEventArgs) Handles Dis_BtnForfait.Click
-        Dim ForfaitAppli_ As New ForfaitAppli(BD, Client)
+        Dim ForfaitAppli_ As New ForfaitAppli(BD, Client, HotelConnexion)
         ForfaitAppli_.Show()
     End Sub
 

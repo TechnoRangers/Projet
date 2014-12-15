@@ -77,7 +77,7 @@
     End Sub
 
     Private Sub Eta_BtnInventaire_Click(sender As Object, e As RoutedEventArgs) Handles Eta_BtnInventaire.Click
-        Dim Inventaire As New Inventaire(MaBD, EmployeConnexion)
+        Dim Inventaire As New Inventaire(MaBD, EmployeConnexion, HotelConnexion)
         Inventaire.Show()
         Me.Close()
     End Sub

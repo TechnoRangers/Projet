@@ -30,15 +30,18 @@
                     Men_btnInventaire.IsEnabled = False
                     Men_BtnConsoleAdmin.IsEnabled = False
                     Men_BtnEntretien.IsEnabled = False
+                    Men_BtnHoraires.IsEnabled = False
                 Case "Entretien"
                     Men_btnResChambre.IsEnabled = False
                     Men_btnResSalle.IsEnabled = False
                     Men_btnInventaire.IsEnabled = False
                     Men_BtnConsoleAdmin.IsEnabled = False
+                    Men_BtnHoraires.IsEnabled = False
                 Case "Ventes"
                     Men_btnResChambre.IsEnabled = False
                     Men_btnInventaire.IsEnabled = False
                     Men_BtnEntretien.IsEnabled = False
+                    Men_BtnHoraires.IsEnabled = False
                 Case Else
 
             End Select
@@ -70,7 +73,7 @@
 
     Private Sub Men_btnInventaire_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnInventaire.Click
 
-        Dim Inventaire_ As New Inventaire(MaBD, EmployeConnexion)
+        Dim Inventaire_ As New Inventaire(MaBD, EmployeConnexion, HotelConnexion)
         Inventaire_.Show()
         'Me.Close()
 
