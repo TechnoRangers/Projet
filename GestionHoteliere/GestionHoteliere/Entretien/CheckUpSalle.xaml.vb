@@ -3,11 +3,13 @@
     Dim BD As P2014_BD_GestionHotelEntities
     Dim _MaReservationSalle As tblReservationSalle
     Dim HotelConnexion As tblHotel
+    Dim EmployeConnexion As tblEmploye
 
-    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, ByRef _MonHotel As tblHotel)
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, ByRef _MonHotel As tblHotel, ByRef _MonEmploye As tblEmploye)
         InitializeComponent()
         BD = _BD
         HotelConnexion = _MonHotel
+        EmployeConnexion = _MonEmploye
     End Sub
     Private Sub Che_FrmSalle_Loaded(sender As Object, e As RoutedEventArgs) Handles Che_FrmSalle.Loaded
 
@@ -90,7 +92,7 @@
                         MonItem.NoSeqReservSalle = _MaReservationSalle.NoSeqReservSalle
                         MonItem.CodeFourniture = f.CodeFourniture
                         MonItem.CodeSalle = _MaReservationSalle.CodeSalle
-                        MonItem.NoEmploye = 1009
+                        MonItem.NoEmploye = EmployeConnexion.NoEmploye
 
 
                         BD.tblEntretienFournitureSalle.Add(MonItem)
@@ -135,7 +137,7 @@
                         MonItem.NoSeqReservSalle = _MaReservationSalle.NoSeqReservSalle
                         MonItem.CodeFourniture = f2.CodeFourniture
                         MonItem.CodeSalle = _MaReservationSalle.CodeSalle
-                        MonItem.NoEmploye = 1009
+                        MonItem.NoEmploye = EmployeConnexion.NoEmploye
 
 
                         BD.tblEntretienFournitureSalle.Add(MonItem)

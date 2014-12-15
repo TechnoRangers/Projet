@@ -13,7 +13,7 @@
 
     Private Sub Ent_BtnCheckUp_Click(sender As Object, e As RoutedEventArgs) Handles Ent_BtnCheckUp.Click
 
-        Dim CheckUp As New CheckUp(MaBD, HotelConnexion)
+        Dim CheckUp As New CheckUp(MaBD, HotelConnexion, EmployeConnexion)
         CheckUp.Show()
         Me.Close()
 
@@ -29,7 +29,7 @@
     End Sub
 
     Private Sub Ent_BtnCheckUpSalle_Click(sender As Object, e As RoutedEventArgs) Handles Ent_BtnCheckUpSalle.Click
-        Dim CheckUpSalle As New CheckUpSalle(MaBD, HotelConnexion)
+        Dim CheckUpSalle As New CheckUpSalle(MaBD, HotelConnexion, EmployeConnexion)
         CheckUpSalle.Show()
         Me.Close()
     End Sub

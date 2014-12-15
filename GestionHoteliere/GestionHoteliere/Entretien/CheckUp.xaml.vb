@@ -3,11 +3,13 @@
     Dim MaBD As P2014_BD_GestionHotelEntities
     Dim _maChambre As tblChambre
     Dim HotelConnexion As tblHotel
+    Dim EmployeConnexion As tblEmploye
 
-    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, ByRef _MonHotel As tblHotel)
+    Sub New(ByRef _BD As P2014_BD_GestionHotelEntities, ByRef _MonHotel As tblHotel, ByRef _MonEmploye As tblEmploye)
         MaBD = _BD
         _maChambre = New tblChambre
         HotelConnexion = _MonHotel
+        EmployeConnexion = _MonEmploye
         InitializeComponent()
     End Sub
 
@@ -112,7 +114,7 @@
                         MonItem.StatutEntretien = "En cours"
                         MonItem.CodeFourniture = f.CodeFourniture
                         MonItem.NoSeqChambre = _maChambre.NoSeqChambre
-                        MonItem.NoEmploye = 1009
+                        MonItem.NoEmploye = EmployeConnexion.NoEmploye
 
 
                         MaBD.tblEntretienFournitureChambre.Add(MonItem)
@@ -154,7 +156,7 @@
                         MonItem.StatutEntretien = "En cours"
                         MonItem.CodeFourniture = f2.CodeFourniture
                         MonItem.NoSeqChambre = _maChambre.NoSeqChambre
-                        MonItem.NoEmploye = 1009
+                        MonItem.NoEmploye = EmployeConnexion.NoEmploye
 
 
                         MaBD.tblEntretienFournitureChambre.Add(MonItem)

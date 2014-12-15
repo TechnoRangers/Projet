@@ -191,6 +191,7 @@
             NewClient.AdresseClient = AdresseClient
             NewClient.EmailClient = EmailClient
             NewClient.CodePostal = CodePostal
+            NewClient.CodeVille = VilleSelection.CodeVille
 
             NewClient.AdresseSecondaireClient = AdresseSecondaire
             NewClient.NoCellulaire = NoCellulaire
