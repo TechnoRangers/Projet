@@ -87,6 +87,7 @@
                 <Label  x:Name="Men_LblBeinvenue" HorizontalAlignment="Left" Margin="470,32,-735.6,-100"  VerticalAlignment="Top" Height="100"  Width="316" FontSize="65" Content="Bienvenue" />
                 <Image  x:Name="Men_ImgLogo"      HorizontalAlignment="Left" Margin="290,134,-930,-672"   VerticalAlignment="Top" Height="570"  Width="691" Source="logo_hotel_payette.png"/>
                 <Button x:Name="Men_btnQuitter"   HorizontalAlignment="Left" Margin="1042,639,-1173,-672" VerticalAlignment="Top" Content="Quitter"         FontSize="20" Background="#e46e1a" Width="182" Height="65" FontWeight="Bold"/>
+                <Button x:Name="Men_btnDeconnexion"   HorizontalAlignment="Left" Margin="1042,564,-1173.6,-597" VerticalAlignment="Top" Content="Se déconnecter"         FontSize="20" Background="#e46e1a" Width="182" Height="65" FontWeight="Bold"/>
             </Grid>
         </Grid>
     </Viewbox>

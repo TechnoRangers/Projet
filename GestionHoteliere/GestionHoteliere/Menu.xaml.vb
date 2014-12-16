@@ -124,4 +124,9 @@
         Entretien_.Show()
     End Sub
 
+    Private Sub Men_btnDeconnexion_Click(sender As Object, e As RoutedEventArgs) Handles Men_btnDeconnexion.Click
+        Dim MonLogin As New Connection
+        MonLogin.Show()
+        Me.Close()
+    End Sub
 End Class
