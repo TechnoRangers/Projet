@@ -1,0 +1,246 @@
+﻿.monbtnspecial{
+    margin-right: 1%;
+}
+
+.gradient{
+  background: -webkit-linear-gradient(left, #D9EDF7 , white); 
+  background: -o-linear-gradient(right, #D9EDF7 , white); 
+  background: -moz-linear-gradient(right, #D9EDF7 , white);
+  background: linear-gradient(to right, #D9EDF7 , white); 
+}
+
+.backgradient{
+    background: -webkit-gradient(linear, left top, left bottom, from(#EBEBEB), to(#FFFFFF));
+}
+
+
+/* Solve problem on a non-solid background */
+.clickimage:hover { 
+  outline: 3px solid #DD4814; 
+} 
+
+/* Solve problem where border size changes on hover */
+.clickimage { 
+  border: 1px solid #DD4814; 
+} 
+
+.clickimage:hover { 
+  outline: 2px solid #DD4814; 
+} 
+
+
+
+.banner {
+    position: relative;
+    width: 100%;
+    overflow: auto;
+    font-size: 0;
+    line-height: 24px;
+    text-align: center;
+    color: rgba(255,255,255,.6);
+    text-shadow: 0 0 1px rgba(0,0,0,.05), 0 1px 2px rgba(0,0,0,.3);
+    /*background: #5b4d3d;*/
+    box-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+    .banner ul {
+        list-style: none;
+        width: 300%;
+    }
+
+        .banner ul li {
+            display: block;
+            float: left;
+            width: 20%;
+            /*width: 1400px;*/
+            padding: 160px 0 110px;
+            min-height: 350px;
+            /*		-webkit-background-size: 100% 100%;*/
+            -moz-background-size: 100% 100%;
+            -o-background-size: 100% 100%;
+            -ms-background-size: 100% 100%;
+            background-size: 100% 100%;
+            box-shadow: inset 0 -3px 6px rgba(0,0,0,.1);
+        }
+
+    .banner h1, .banner h2 {
+        font-size: 40px;
+        line-height: 52px;
+        color: #fff;
+    }
+
+.backgrounddivh1 {
+    background-color: rgba(20, 20, 20, 0.50);
+}
+
+.banner .btn {
+    display: inline-block;
+    margin: 25px 0 0;
+    padding: 9px 22px 7px;
+    clear: both;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid rgba(255,255,255,.4);
+    border-radius: 5px;
+}
+
+    .banner .btn:hover {
+        background: rgba(255,255,255,.05);
+    }
+
+    .banner .btn:active {
+        -webkit-filter: drop-shadow(0 -1px 2px rgba(0,0,0,.5));
+        -moz-filter: drop-shadow(0 -1px 2px rgba(0,0,0,.5));
+        -ms-filter: drop-shadow(0 -1px 2px rgba(0,0,0,.5));
+        -o-filter: drop-shadow(0 -1px 2px rgba(0,0,0,.5));
+        filter: drop-shadow(0 -1px 2px rgba(0,0,0,.5));
+    }
+
+.banner .btn, .banner .dot {
+    -webkit-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+    -moz-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+    -ms-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+    -o-filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+}
+
+.banner .dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+}
+
+    .banner .dots li {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin: 0 4px;
+        text-indent: -999em;
+        border: 2px solid #fff;
+        border-radius: 6px;
+        cursor: pointer;
+        opacity: .4;
+        -webkit-transition: background .5s, opacity .5s;
+        -moz-transition: background .5s, opacity .5s;
+        transition: background .5s, opacity .5s;
+    }
+
+        .banner .dots li.active {
+            background: #fff;
+            opacity: 1;
+        }
+
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 45px;
+    padding-bottom: 20px;
+}
+
+ul {
+    padding-left: 0px;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set widths on the form inputs since otherwise they're 100% wide */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    max-width: 280px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        margin-top: 20px;
+    }
+
+    .body-content {
+        padding: 0;
+    }
+}
+
+
+/*
+    Set the Style for parent CSS Class
+    of Calendar control
+    Parent [CssClass] = myCalendar
+*/
+.myCalendar {
+
+    background-color: #d9edf7;
+    padding-top: 10px;
+    width: 309px;
+}
+
+/*
+    Common style declaration for hyper linked text
+*/
+.myCalendar a {
+    text-decoration: none;
+}
+
+/*
+    Styles declaration for top title
+    [TitleStyle] [CssClass] = myCalendarTitle
+*/
+.myCalendar .myCalendarTitle {
+    font-weight: bold;
+    background-color: #51a8f4;
+    color: black;
+}
+
+/*
+    Styles declaration for date cells
+    [DayStyle] [CssClass] = myCalendarDay
+*/
+.myCalendar td.myCalendarDay {
+    border: solid 2px #fff;
+    border-left: 0;
+    border-top: 0;
+    font-size: 14px;
+}
+
+/*
+    Styles declaration for next/previous month links
+    [NextPrevStyle] [CssClass] = myCalendarNextPrev
+*/
+.myCalendar .myCalendarNextPrev {
+    text-align: center;
+}
+
+/*
+    Styles declaration for Week/Month selector links cells
+    [SelectorStyle] [CssClass] = myCalendarSelector
+*/
+.myCalendar td.myCalendarSelector {
+    background-color: #dddddd;
+}
+
+.myCalendar .myCalendarDay a, 
+.myCalendar .myCalendarSelector a,
+.myCalendar .myCalendarNextPrev a {
+    display: block;
+    line-height: 18px;
+}
+
+.myCalendar .myCalendarDay a:hover, 
+.myCalendar .myCalendarSelector a:hover {
+    background-color: #51a8f4;
+}
+
+.myCalendar .myCalendarNextPrev a:hover {
+    background-color: #5f87b3;
+}
+
+

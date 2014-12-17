@@ -1,0 +1,33 @@
+' ------------------------------------------------------------------------------------------- 
+' Créée le : 10 novembre 2014
+' Par : François Morin
+' Date de dernière modification : 2014-12-15 08:33:05 
+' -------------------------------------------------------------------------------------------
+
+Imports System
+Imports System.Web
+Imports Microsoft.AspNet.Identity
+Imports Microsoft.AspNet.Identity.EntityFramework
+Imports Microsoft.AspNet.Identity.Owin
+Imports Owin
+
+Partial Public Class Confirm
+    Inherits System.Web.UI.Page
+
+    Protected Property StatusMessage() As String
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Dim code As String = IdentityHelper.GetCodeFromRequest(Request)
+        Dim userId As String = IdentityHelper.GetUserIdFromRequest(Request)
+        If code IsNot Nothing AndAlso userId IsNot Nothing Then
+            Dim manager = Context.GetOwinContext().GetUserManager(Of ApplicationUserManager)()
+            Dim result = manager.ConfirmEmail(userId, code)
+            If result.Succeeded Then
+                StatusMessage = "Merci, votre compte est valide."
+                Return
+            End If
+        End If
+        StatusMessage = "Une erreur s'est produite"
+    End Sub
+
+End Class
