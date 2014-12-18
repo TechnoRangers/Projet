@@ -86,4 +86,10 @@
     Private Sub consadm_btnRetour_Click(sender As Object, e As RoutedEventArgs) Handles consadm_btnRetour.Click
         Me.Close()
     End Sub
+
+    Private Sub btn_Message_Click(sender As Object, e As RoutedEventArgs) Handles btn_Message.Click
+        Dim FenetreMessage As Message
+        FenetreMessage = New Message(MaBD)
+        FenetreMessage.ShowDialog()
+    End Sub
 End Class

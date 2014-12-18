@@ -31,7 +31,8 @@
             </GroupBox>
             <GroupBox Header="Personnel"         HorizontalAlignment="Left" Margin="10,212,0,0"  VerticalAlignment="Top" Height="96"  Width="336" FontSize="24">
                 <Grid Margin="0,30,0,0">
-                    <Button x:Name="btn_Employe"             Content="Employe"             HorizontalAlignment="Center"                      VerticalAlignment="Center" Width="110" Height="30"/>
+                    <Button x:Name="btn_Employe"             Content="Employe"             HorizontalAlignment="Center"                      VerticalAlignment="Center" Width="110" Height="30" Margin="216,20,10,16"/>
+                    <Button x:Name="btn_Message"             Content="Message"             HorizontalAlignment="Center"                      VerticalAlignment="Center" Width="110" Height="30" Margin="10,20,216,16"/>
                 </Grid>
             </GroupBox>
             <Button x:Name="consadm_btnRetour"   HorizontalAlignment="Left" Margin="387,260,0,0" VerticalAlignment="Top" Height="30"  Width="140"  Content="Retour" Background="#e46e1a"/>
