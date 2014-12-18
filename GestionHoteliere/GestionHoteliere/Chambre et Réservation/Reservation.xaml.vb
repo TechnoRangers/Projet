@@ -77,6 +77,13 @@
 
         res_lbvChambres.ItemsSource = ListeChambreReservation.ToList
 
+        Dim Rabais = From t1 In MaBD.tblRabais
+                            Select t1
+
+        Res_CmbRabais.ItemsSource = Rabais.ToList
+        Res_CmbRabais.DisplayMemberPath = "PourcentageRabais"
+        Res_CmbRabais.SelectedValue = Rabais.ToList
+
     End Sub
 
     Private Sub res_lbvChambres_SelectionChanged(sender As Object, e As SelectionChangedEventArgs) Handles res_lbvChambres.SelectionChanged
@@ -207,6 +214,24 @@
             End If
 
             Res_TextBoxMontant.Text = PrixReservation.ToString
+        End If
+
+    End Sub
+
+
+    Private Sub Res_BtnAppliquerRabais_Click(sender As Object, e As RoutedEventArgs) Handles Res_BtnAppliquerRabais.Click
+        Dim MontantTot As Double
+        Dim PrixRabais As Double
+        Dim Rabais As Double
+
+        If Res_CmbRabais.Text <> "" Then
+            Rabais = CDbl(Res_CmbRabais.Text)
+            MontantTot = CDbl(Res_TextBoxMontant.Text)
+            PrixRabais = MontantTot - (MontantTot * (Rabais / 100))
+            Res_TextBoxMontant.Text = PrixRabais.ToString
+            Res_BtnAppliquerRabais.Visibility = Windows.Visibility.Hidden
+        Else
+            MessageBox.Show("Aucun rabais sélectionné")
         End If
 
     End Sub
