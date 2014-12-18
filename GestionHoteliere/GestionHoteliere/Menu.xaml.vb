@@ -129,4 +129,9 @@
         MonLogin.Show()
         Me.Close()
     End Sub
+
+    Private Sub Men_BtnEmploye_Click(sender As Object, e As RoutedEventArgs) Handles Men_BtnEmploye.Click
+        Dim MonEmploye As New Employe(MaBD)
+        MonEmploye.Show()
+    End Sub
 End Class

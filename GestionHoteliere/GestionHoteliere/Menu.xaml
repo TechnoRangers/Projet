@@ -51,8 +51,8 @@
                         </Button>
                     </Grid>
                 </GroupBox>
-                <GroupBox Header="Personnel"      HorizontalAlignment="Left" Margin="0,388,-211,-539"     VerticalAlignment="Top" Height="183"  Width="262" FontSize="24">
-                    <Grid Margin="0,0,0,-0.2">
+                <GroupBox Header="Personnel"      HorizontalAlignment="Left" Margin="0,388,-211.6,-625"     VerticalAlignment="Top" Height="269"  Width="262" FontSize="24">
+                    <Grid Margin="0,0,0,9.8">
                         <Button Click="Stuff"  Background="Teal" x:Name="Men_BtnEntretien"  HorizontalAlignment="Left" Height="62" Margin="24,42,0,0" VerticalAlignment="Top" Width="214">
                             <StackPanel Orientation="Horizontal" Height="70" Margin="-4,0,5.8,-4.4">
                                 <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Entretien.gif" Width="97" Margin="10,6,10,14.4"/>
@@ -65,9 +65,15 @@
                                 <TextBlock Text="Horaires" FontSize="20" Margin="10,17,15,18.2" Width="78"/>
                             </StackPanel>
                         </Button>
+                        <Button Background="Teal" x:Name="Men_BtnEmploye"  HorizontalAlignment="Left" Margin="24,176,0,0" VerticalAlignment="Top" Width="214" Height="62">
+                            <StackPanel Orientation="Horizontal" Height="63" Margin="-4,1,-4.2,1.6">
+                                <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Employe.jpg" Width="65" Margin="20,4,33,6.2"/>
+                                <TextBlock Text="Employé" FontSize="20" Margin="10,17,15,18.2" Width="78"/>
+                            </StackPanel>
+                        </Button>
                     </Grid>
                 </GroupBox>
-                <GroupBox Header="Statistique"    HorizontalAlignment="Left" Margin="0,576,-211,-677"     VerticalAlignment="Top" Height="133"  Width="262" FontSize="24">
+                <GroupBox Header="Statistique"  Visibility="Hidden"  HorizontalAlignment="Left" Margin="0,576,-211,-677"     VerticalAlignment="Top" Height="133"  Width="262" FontSize="24">
                     <Grid>
                         <Button Background="Teal" x:Name="Men_btnStatistique"   HorizontalAlignment="Left" Height="63" VerticalAlignment="Top" Width="214"  IsEnabled="False" Click="Men_btnStatistique_Click" Margin="25,50,0,0" >
                             <StackPanel Orientation="Horizontal" Margin="2,0,-2.2,-0.4">

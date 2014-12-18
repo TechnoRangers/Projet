@@ -1,0 +1,4 @@
+Identifiants pour le compte d'administrateur sur le logiciel
+
+Identifiant: admin123
+Mot de passe: admin123
