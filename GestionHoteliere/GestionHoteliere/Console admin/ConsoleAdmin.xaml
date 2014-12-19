@@ -9,7 +9,7 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-        <Grid Margin="10,10,0,0" HorizontalAlignment="Left" Width="608">
+        <Grid Margin="150,10,0,0" HorizontalAlignment="Center" Width="794">
             <GroupBox Header="Réservation"       HorizontalAlignment="Left" Margin="10,10,0,0"   VerticalAlignment="Top" Height="197" Width="336" FontSize="24" >
                 <Grid HorizontalAlignment="Left" Height="164" VerticalAlignment="Top" Width="336" Margin="0,33,0,-0.2">
                     <Button x:Name="btn_Pays"                Content="Pays"                HorizontalAlignment="Left"   Margin="21,25,0,0"   VerticalAlignment="Top"    Width="75"  Height="30"/>

@@ -2,7 +2,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Name="AjtIH_frmAjoutItemHotel" x:Class="AjoutItemHotel"
-    Title="AjoutItemHotel" Height="273.582" Width="530.993">
+    Title="Ajout de produit" Height="273.582" Width="530.993">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF437E87" Offset="1"/>

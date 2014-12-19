@@ -22,7 +22,7 @@
         </ListView>
         <Button   x:Name="LocEqui_BtnAjout"   Content="Ajouter" HorizontalAlignment="Left" Margin="228,128,0,0" VerticalAlignment="Top" Width="100" Height="40" Background="YellowGreen"/>
         <Button   x:Name="LocEqui_BtnEnl"     Content="Enlever" HorizontalAlignment="Left" Margin="228,198,0,0" VerticalAlignment="Top" Width="100" Height="40" Background="#e46e1a"/>
-        <Button   x:Name="LocEqui_BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="465,312,0,0" VerticalAlignment="Top" Width="125" Height="50" Background="YellowGreen"/>
+        <Button   x:Name="LocEqui_BtnValider" Content="Valider" HorizontalAlignment="Left" Margin="465,312,0,0" VerticalAlignment="Top" Width="125" Height="50" Background="Teal"/>
         <Button   x:Name="LocEqui_BtnAnnuler" Content="Quitter" HorizontalAlignment="Left" Margin="23,312,0,0"  VerticalAlignment="Top" Width="125" Height="50" Background="#e46e1a"/>
     </Grid>
 </Window>

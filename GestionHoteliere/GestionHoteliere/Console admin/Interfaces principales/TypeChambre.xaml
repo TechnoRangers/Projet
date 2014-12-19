@@ -9,7 +9,7 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-        <Grid>
+        <Grid Margin="100 ">
             <DataGrid x:Name="typchamb_dtgTypeChambre" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,10,0,0"  VerticalAlignment="Top" Height="140" Width="337">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Code Type Chambre" Binding="{Binding CodeTypeChambre, Mode=OneWay}"/>

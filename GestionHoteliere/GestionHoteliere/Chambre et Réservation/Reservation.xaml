@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Name="Res_frmReservation" x:Class="Reservation"
     WindowStartupLocation="CenterScreen"
-    Title="Techno Rangers Version 1.02 Reservation" WindowState="Maximized" Width="952" Height="530.4" Icon="icone_Hotel.ico">
+    Title="Réservation" WindowState="Maximized" Width="952" Height="530.4" Icon="icone_Hotel.ico">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF437E87" Offset="1"/>
@@ -76,7 +76,7 @@
             <Label x:Name="Res_lblRabais" Content="Rabais " HorizontalAlignment="Left" Margin="10,375,0,0" VerticalAlignment="Top" FontSize="14"/>
             <ComboBox x:Name="Res_CmbRabais" HorizontalAlignment="Left" Margin="177,381,0,0" VerticalAlignment="Top" Width="83"/>
             <Label Content="%" HorizontalAlignment="Left" Margin="265,381,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.496,0.168" FontSize="14"/>
-            <Button x:Name="Res_BtnAppliquerRabais" Content="Appliquer" HorizontalAlignment="Left" Margin="177,414,0,0" VerticalAlignment="Top" Width="83" Height="25" FontSize="14"/>
+            <Button x:Name="Res_BtnAppliquerRabais" Content="Appliquer" Background="YellowGreen" HorizontalAlignment="Left" Margin="177,414,0,0" VerticalAlignment="Top" Width="83" Height="31" FontSize="14"/>
         </Grid>
     </Viewbox>
 </Window>

@@ -1,7 +1,7 @@
 ﻿<Window x:Name="Men_frmMenu" x:Class="Menu"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Techno Rangers Version 1.4 Menu"
+    Title="Menu"
      WindowState="Maximized" Height="895.2" Width="1380.8" Icon="icone_Hotel.ico">
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -53,19 +53,19 @@
                 </GroupBox>
                 <GroupBox Header="Personnel"      HorizontalAlignment="Left" Margin="0,388,-211.6,-625"     VerticalAlignment="Top" Height="269"  Width="262" FontSize="24">
                     <Grid Margin="0,0,0,9.8">
-                        <Button Click="Stuff"  Background="Teal" x:Name="Men_BtnEntretien"  HorizontalAlignment="Left" Height="62" Margin="24,42,0,0" VerticalAlignment="Top" Width="214">
+                        <Button Click="Stuff"  Background="Teal" x:Name="Men_BtnEntretien"  HorizontalAlignment="Left" Height="62" Margin="24,47,0,0" VerticalAlignment="Top" Width="214">
                             <StackPanel Orientation="Horizontal" Height="70" Margin="-4,0,5.8,-4.4">
                                 <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Entretien.gif" Width="97" Margin="10,6,10,14.4"/>
                                 <TextBlock Text="Entretien" FontSize="20" Margin="10,20,15,16.4" Width="79" RenderTransformOrigin="0.553,0.191"/>
                             </StackPanel>
                         </Button>
-                        <Button Background="Teal" x:Name="Men_BtnHoraires"  HorizontalAlignment="Left" Margin="24,109,0,0" VerticalAlignment="Top" Width="214" Height="62">
+                        <Button Background="Teal" x:Name="Men_BtnHoraires"  HorizontalAlignment="Left" Margin="24,114,0,0" VerticalAlignment="Top" Width="214" Height="62">
                             <StackPanel Orientation="Horizontal" Height="63" Margin="-4,1,-4.2,1.6">
                                 <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Horaires.jpg" Width="65" Margin="20,4,33,6.2"/>
                                 <TextBlock Text="Horaires" FontSize="20" Margin="10,17,15,18.2" Width="78"/>
                             </StackPanel>
                         </Button>
-                        <Button Background="Teal" x:Name="Men_BtnEmploye"  HorizontalAlignment="Left" Margin="24,176,0,0" VerticalAlignment="Top" Width="214" Height="62">
+                        <Button Background="Teal" x:Name="Men_BtnEmploye"  HorizontalAlignment="Left" Margin="24,181,0,0" VerticalAlignment="Top" Width="214" Height="62">
                             <StackPanel Orientation="Horizontal" Height="63" Margin="-4,1,-4.2,1.6">
                                 <Image Source ="C:\Users\Utilisateur\Documents\GitHub\Projet\GestionHoteliere\GestionHoteliere\Images\Employe.jpg" Width="65" Margin="20,4,33,6.2"/>
                                 <TextBlock Text="Employé" FontSize="20" Margin="10,17,15,18.2" Width="78"/>
@@ -92,8 +92,8 @@
                 </GroupBox>
                 <Label  x:Name="Men_LblBeinvenue" HorizontalAlignment="Left" Margin="470,32,-735.6,-100"  VerticalAlignment="Top" Height="100"  Width="316" FontSize="65" Content="Bienvenue" />
                 <Image  x:Name="Men_ImgLogo"      HorizontalAlignment="Left" Margin="290,134,-930,-672"   VerticalAlignment="Top" Height="570"  Width="691" Source="logo_hotel_payette.png"/>
-                <Button x:Name="Men_btnQuitter"   HorizontalAlignment="Left" Margin="1042,639,-1173,-672" VerticalAlignment="Top" Content="Quitter"         FontSize="20" Background="#e46e1a" Width="182" Height="65" FontWeight="Bold"/>
-                <Button x:Name="Men_btnDeconnexion"   HorizontalAlignment="Left" Margin="1042,564,-1173.6,-597" VerticalAlignment="Top" Content="Se déconnecter"         FontSize="20" Background="#e46e1a" Width="182" Height="65" FontWeight="Bold"/>
+                <Button x:Name="Men_btnQuitter"   HorizontalAlignment="Left" Margin="1042,592,-1173.6,-625" VerticalAlignment="Top" Content="Quitter"         FontSize="20" Background="#e46e1a" Width="182" Height="65" FontWeight="Bold"/>
+                <Button x:Name="Men_btnDeconnexion"   HorizontalAlignment="Left" Margin="1042,512,-1173.6,-545" VerticalAlignment="Top" Content="Se déconnecter"         FontSize="20" Background="#e46e1a" Width="182" Height="65" FontWeight="Bold"/>
             </Grid>
         </Grid>
     </Viewbox>

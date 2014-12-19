@@ -9,8 +9,8 @@
         </LinearGradientBrush>
     </Window.Background>
     <Viewbox Stretch="Uniform">
-        <Grid Height="357" Width="533">
-            <DataGrid x:Name="catfour_dtgCategorieFourniture" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="95,59,0,0"   VerticalAlignment="Top" Height="160" Width="212.6">
+        <Grid Height="357" Margin="150" Width="713">
+            <DataGrid x:Name="catfour_dtgCategorieFourniture" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="130,59,0,0"   VerticalAlignment="Top" Height="160" Width="212.6">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Code Catégorie" Binding="{Binding CodeCategorie, Mode=OneWay}"/>
                     <DataGridTextColumn Header="Nom Catégorie"  Binding="{Binding NomCategorie,  Mode=OneWay}"/>
